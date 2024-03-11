@@ -1,0 +1,17 @@
+2024-03-11 18:41:28,994 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-03-11 18:41:29,042 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 14620 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
+2024-03-11 18:41:29,048 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
+2024-03-11 18:41:29,049 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-03-11 18:41:31,381 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2024-03-11 18:41:31,383 INFO o.a.j.l.DirectJDKLog [main] Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
+2024-03-11 18:41:31,404 INFO o.a.j.l.DirectJDKLog [main] OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
+2024-03-11 18:41:31,415 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-03-11 18:41:31,416 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-03-11 18:41:31,416 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-03-11 18:41:31,501 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-03-11 18:41:31,502 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2391 ms
+2024-03-11 18:41:33,232 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-03-11 18:41:33,364 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-03-11 18:41:33,610 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-03-11 18:41:33,640 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-11 18:41:33,649 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 5.146 seconds (process running for 6.524)

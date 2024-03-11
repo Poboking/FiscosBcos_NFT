@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sziit.infrastructure.dao.mapper.MemberMapper">
+
+    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.MemberEntity">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="balance" column="balance" jdbcType="DOUBLE"/>
+        <result property="deletedFlag" column="deleted_flag" jdbcType="BIT"/>
+        <result property="deletedTime" column="deleted_time" jdbcType="TIMESTAMP"/>
+        <result property="keepLoginDuration" column="keep_login_duration" jdbcType="INTEGER"/>
+        <result property="latelyLoginTime" column="lately_login_time" jdbcType="TIMESTAMP"/>
+        <result property="loginPwd" column="login_pwd" jdbcType="VARCHAR"/>
+        <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+        <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+        <result property="payPwd" column="pay_pwd" jdbcType="VARCHAR"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="registeredTime" column="registered_time" jdbcType="TIMESTAMP"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+        <result property="pushClientId" column="push_client_id" jdbcType="VARCHAR"/>
+        <result property="blockChainAddr" column="block_chain_addr" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="bindRealNameTime" column="bind_real_name_time" jdbcType="TIMESTAMP"/>
+        <result property="identityCard" column="identity_card" jdbcType="VARCHAR"/>
+        <result property="accountLevel" column="account_level" jdbcType="INTEGER"/>
+        <result property="accountLevelPath" column="account_level_path" jdbcType="VARCHAR"/>
+        <result property="inviteCode" column="invite_code" jdbcType="VARCHAR"/>
+        <result property="inviterId" column="inviter_id" jdbcType="VARCHAR"/>
+        <result property="boughtFlag" column="bought_flag" jdbcType="BIT"/>
+        <result property="syncChainTime" column="sync_chain_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,balance,deleted_flag,
+        deleted_time,keep_login_duration,lately_login_time,
+        login_pwd,mobile,nick_name,
+        pay_pwd,real_name,registered_time,
+        state,version,push_client_id,
+        block_chain_addr,avatar,bind_real_name_time,
+        identity_card,account_level,account_level_path,
+        invite_code,inviter_id,bought_flag,
+        sync_chain_time
+    </sql>
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sziit.infrastructure.dao.mapper.PreSaleTaskMapper">
+
+    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.PreSaleTaskEntity">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="collectionId" column="collection_id" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="executeTime" column="execute_time" jdbcType="TIMESTAMP"/>
+        <result property="preMinute" column="pre_minute" jdbcType="INTEGER"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+        <result property="taskName" column="task_name" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,collection_id,create_time,
+        execute_time,pre_minute,state,
+        task_name,version
+    </sql>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sziit.infrastructure.dao.mapper.MemberBalanceChangeLogMapper">
+
+    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.MemberBalanceChangeLogEntity">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="balanceAfter" column="balance_after" jdbcType="DOUBLE"/>
+        <result property="balanceBefore" column="balance_before" jdbcType="DOUBLE"/>
+        <result property="balanceChange" column="balance_change" jdbcType="DOUBLE"/>
+        <result property="bizOrderNo" column="biz_order_no" jdbcType="VARCHAR"/>
+        <result property="changeTime" column="change_time" jdbcType="TIMESTAMP"/>
+        <result property="changeType" column="change_type" jdbcType="VARCHAR"/>
+        <result property="memberId" column="member_id" jdbcType="VARCHAR"/>
+        <result property="note" column="note" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,balance_after,balance_before,
+        balance_change,biz_order_no,change_time,
+        change_type,member_id,note,
+        version
+    </sql>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sziit.infrastructure.dao.mapper.DictTypeMapper">
+
+    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.DictTypeEntity">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="dictTypeCode" column="dict_type_code" jdbcType="VARCHAR"/>
+        <result property="dictTypeName" column="dict_type_name" jdbcType="VARCHAR"/>
+        <result property="lastModifyTime" column="last_modify_time" jdbcType="TIMESTAMP"/>
+        <result property="note" column="note" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,dict_type_code,dict_type_name,
+        last_modify_time,note,version
+    </sql>
+</mapper>

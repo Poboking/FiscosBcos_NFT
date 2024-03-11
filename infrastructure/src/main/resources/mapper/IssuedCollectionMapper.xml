@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sziit.infrastructure.dao.mapper.IssuedCollectionMapper">
+
+    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.IssuedCollectionEntity">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="collectionId" column="collection_id" jdbcType="VARCHAR"/>
+        <result property="collectionSerialNumber" column="collection_serial_number" jdbcType="INTEGER"/>
+        <result property="deletedFlag" column="deleted_flag" jdbcType="BIT"/>
+        <result property="deletedTime" column="deleted_time" jdbcType="TIMESTAMP"/>
+        <result property="issueTime" column="issue_time" jdbcType="TIMESTAMP"/>
+        <result property="syncChainTime" column="sync_chain_time" jdbcType="TIMESTAMP"/>
+        <result property="uniqueId" column="unique_id" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,collection_id,collection_serial_number,
+        deleted_flag,deleted_time,issue_time,
+        sync_chain_time,unique_id,version
+    </sql>
+</mapper>

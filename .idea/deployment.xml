@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="a20-nft3_7" uploadOnCheckin="ed1b1bc4-e9dc-44a8-a68c-4dd412dabbe5" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="a20-nft3_7">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="a20-nft3_7" />
+  </component>
+</project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sziit.infrastructure.dao.mapper.MemberHoldCollectionMapper">
+
+    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.MemberHoldCollectionEntity">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="collectionId" column="collection_id" jdbcType="VARCHAR"/>
+        <result property="gainWay" column="gain_way" jdbcType="VARCHAR"/>
+        <result property="holdTime" column="hold_time" jdbcType="TIMESTAMP"/>
+        <result property="issuedCollectionId" column="issued_collection_id" jdbcType="VARCHAR"/>
+        <result property="loseTime" column="lose_time" jdbcType="TIMESTAMP"/>
+        <result property="memberId" column="member_id" jdbcType="VARCHAR"/>
+        <result property="preId" column="pre_id" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="DOUBLE"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+        <result property="syncChainTime" column="sync_chain_time" jdbcType="TIMESTAMP"/>
+        <result property="transactionHash" column="transaction_hash" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,collection_id,gain_way,
+        hold_time,issued_collection_id,lose_time,
+        member_id,pre_id,price,
+        state,sync_chain_time,transaction_hash,
+        version
+    </sql>
+</mapper>

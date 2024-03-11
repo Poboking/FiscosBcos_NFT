@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/AccountRoleMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/AirDropRecordMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/BackgroundAccountMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/ChainSettingMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/CollectionGiveRecordMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/CollectionMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/CollectionStoryMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/ComposeActivityMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/ComposeMaterialMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/ComposeRecordMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/CreatorMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/DictItemMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/DictTypeMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/ExchangeCodeMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/IssuedCollectionActionLogMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/IssuedCollectionMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/LoginLogMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/MemberBalanceChangeLogMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/MemberHoldCollectionMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/MemberMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/MemberResaleCollectionMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/MenuMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/MysteryBoxCommodityMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/NoticeMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/OperLogMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/PayOrderMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/PreSaleConditionMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/PreSaleQualifyMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/PreSaleTaskMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/RoleMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/RoleMenuMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/SettlementAccountMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/SmsSendRecordMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/StorageMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/SystemSettingMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/infrastructure/src/main/resources/mapper/WithdrawRecordMapper.xml" dialect="MySQL" />
+    <file url="PROJECT" dialect="MySQL" />
+  </component>
+</project>

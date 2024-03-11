@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sziit.infrastructure.dao.mapper.ChainSettingMapper">
+
+    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.ChainSettingEntity">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="currentInUseChain" column="current_in_use_chain" jdbcType="VARCHAR"/>
+        <result property="latelyUpdateTime" column="lately_update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,current_in_use_chain,lately_update_time
+    </sql>
+</mapper>
