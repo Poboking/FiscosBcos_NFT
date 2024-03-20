@@ -55,7 +55,7 @@
     <!--                        </manifest>-->
     <!--                    </archive>-->
     <!--                    &lt;!&ndash; 设置 JAR 包输出目录 &ndash;&gt;-->
-    <!--                    <outputDirectory>D:\文务\竞赛事项\24年大学生外包创新大赛\ITEM_JAR</outputDirectory>-->
+    <!--                    <outputDirectory>输出目录</outputDirectory>-->
     <!--                    &lt;!&ndash; 设置打包后的 JAR 包的目录结构为默认 &ndash;&gt;-->
     <!--                    <descriptorRefs>-->
     <!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
