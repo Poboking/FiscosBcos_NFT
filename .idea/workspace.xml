@@ -16,8 +16,78 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb5e3f1b-65dd-4d01-8b2d-bcab56c8cd67" name="更改" comment="feat(master): perfect user module">
+    <list default="true" id="cb5e3f1b-65dd-4d01-8b2d-bcab56c8cd67" name="更改" comment="feat(master): Simplify pom.xml">
       <changelist_data name="poboking" email="" />
+      <change beforePath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570/storage_v2/_src_/schema/open_nft.R8rw4Q.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570/storage_v2/_src_/schema/open_nft.R8rw4Q.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/050708c3b1972760b79443a3094e203997cfc15e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/050708c3b1972760b79443a3094e203997cfc15e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/064b96f3b6fd0e084633a1fc22d43863f4d8b04b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/064b96f3b6fd0e084633a1fc22d43863f4d8b04b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0b717582ee0b9bc4dfbe47f84cfc06c0cbc4abff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/12ca29411ee3877282c0b2a38baf6f0db3ff55ca" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/12ca29411ee3877282c0b2a38baf6f0db3ff55ca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14f7ac5cfd09e9ed3fdad99b2508320024477575" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14f7ac5cfd09e9ed3fdad99b2508320024477575" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b075887a4ef6f16cbc913186b3262e664000ca3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b075887a4ef6f16cbc913186b3262e664000ca3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e57af5f44028609ec86d5ad5f48dd9b880b649a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/239ec7c12ddab9862571f80614e8717b2f7701cf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/239ec7c12ddab9862571f80614e8717b2f7701cf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/281b8dd301b9876601c8cd69af2e0b2f431c07c6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/281b8dd301b9876601c8cd69af2e0b2f431c07c6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29da70d97de34fdcb9bcfdeda10a6f553521f020" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29da70d97de34fdcb9bcfdeda10a6f553521f020" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/d/2d3577969db7878d3996a7c0e2ff8dc16cd1cb54" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/d/2d3577969db7878d3996a7c0e2ff8dc16cd1cb54" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/32863ec01c143ff5e823a830a47eef3bbb479b59" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393b54a143a2f25876bdfcbd2ae6dc1db9c1672e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393b54a143a2f25876bdfcbd2ae6dc1db9c1672e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3fbd1bf7a3badb875cd0357db8613579c9b6a93d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3fbd1bf7a3badb875cd0357db8613579c9b6a93d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41510d936d8b1b1f339243626ad39fe7ddc4063c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41510d936d8b1b1f339243626ad39fe7ddc4063c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/48140a2cb8c982c801fb872b863e01b66eacafee" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/48140a2cb8c982c801fb872b863e01b66eacafee" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/51dc4f27dfc6acd3b10d1c09d12c785510b80654" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/661a2b402a02b9d26804542f48daeb7d298f85c9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/661a2b402a02b9d26804542f48daeb7d298f85c9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/6733216ad9f6deb0682e8b3f36dc2931f0c59760" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/6733216ad9f6deb0682e8b3f36dc2931f0c59760" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73e2883109e172c96bf624d61e686aa0d5446529" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73e2883109e172c96bf624d61e686aa0d5446529" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76e2d6e8cca2ca180df5140e848c04d70d1c70fd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/796cada7ffecd5d7c5fede08cc70ccdb5414f612" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/796cada7ffecd5d7c5fede08cc70ccdb5414f612" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/79ce1a311ba481b04d6bd00a8be325e079c19dea" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/5/9522a2e8c97858d85a4246c2ccf3b0a25e57bbb4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b44efe67206ffeae5c2443f533e384f84d9463e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b44efe67206ffeae5c2443f533e384f84d9463e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9e5086ef5fbb872efa76a849663e274b4024dda0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9e52134e0f0b4b766f3b694f808f6e2440f123ef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8d6139ea6bdd28a8859e00ec8ac9bbcbd28f03a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8d6139ea6bdd28a8859e00ec8ac9bbcbd28f03a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7a9f7773721abe27b3d296925e3e4f12744a253" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bf867f961813c6e4b4e6871c00e2c48ad6630e85" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bf867f961813c6e4b4e6871c00e2c48ad6630e85" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bfe56e4b3f8c7abd5b41e97d2bb883b8c884f142" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c87a375540f37c99a87c098f7414d02e8fa72555" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/db986c061d33f28d6c8415b748c6d7557c62fe9d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7c4a74b4ffeee4e3bb3ef02a80e737c67012419" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7c4a74b4ffeee4e3bb3ef02a80e737c67012419" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/ee8a74bee134ce0b3ea43b896d37536c858f07ce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f468984a819abb04d50edfb4527a869f633e9445" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f468984a819abb04d50edfb4527a869f633e9445" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/a/fa16293a327f6b0f9851a9a341c4da30669c7d41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/a/fa16293a327f6b0f9851a9a341c4da30669c7d41" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/b/0b717582ee0b9bc4dfbe47f84cfc06c0cbc4abff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/e/1e57af5f44028609ec86d5ad5f48dd9b880b649a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/2/32863ec01c143ff5e823a830a47eef3bbb479b59" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/1/51dc4f27dfc6acd3b10d1c09d12c785510b80654" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/6/76e2d6e8cca2ca180df5140e848c04d70d1c70fd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/9/79ce1a311ba481b04d6bd00a8be325e079c19dea" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/5/9522a2e8c97858d85a4246c2ccf3b0a25e57bbb4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/e/9e5086ef5fbb872efa76a849663e274b4024dda0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/e/9e52134e0f0b4b766f3b694f808f6e2440f123ef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/7/b7a9f7773721abe27b3d296925e3e4f12744a253" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/f/bfe56e4b3f8c7abd5b41e97d2bb883b8c884f142" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/8/c87a375540f37c99a87c098f7414d02e8fa72555" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/b/db986c061d33f28d6c8415b748c6d7557c62fe9d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/e/ee8a74bee134ce0b3ea43b896d37536c858f07ce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-1.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-2.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-3.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-4.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-5.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-6.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-7.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-7.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/spring-boot-logger-log4j2.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring-boot-logger-log4j2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +99,7 @@
       <list>
         <option value="Kotlin Class" />
         <option value="package-info" />
+        <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -40,11 +111,25 @@
         <option value="poboking" />
       </list>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/infrastructure" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SIGN_OFF_COMMIT" value="true" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Poboking&quot;
+  }
+}</component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="34aa05e6-9ba1-4283-8d04-f02039374bdc" />
+        <option name="url" value="https://github.com/Poboking/a20-nft-3_7.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="JsBowerSettings">
     <bower-package value="" />
@@ -80,46 +165,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "17.09",
-    "last.edited.regexp": "示例文本",
-    "last_opened_file_path": "D:/CS/IDEA_javacode/a20-nft-3_7/app/src/main/resource",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15429688",
-    "project.structure.side.proportion": "0.45517242",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17.09&quot;,
+    &quot;last.edited.regexp&quot;: &quot;示例文本&quot;,
+    &quot;last_directory_selection&quot;: &quot;D:/CS/IDEA_javacode/a20-nft-3_7/app/src/main/java/org/sziit/app/biz/log/dto&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/CS/IDEA_javacode/a20-nft-3_7/app/src/main/java/org/sziit/app/biz/notice/dto/notice&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15429688&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.45517242&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.sziit.app.biz.artwork.mysteryBox" />
       <recent name="org.sziit.app.biz.dict.dto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\app\src\main\java\org\sziit\app\biz\notice\dto\notice" />
+      <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\presentation\src\main\resources" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\app\src\main\resource" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\doc" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\presentation\src\main\java\org\sziit\presentation" />
@@ -141,7 +233,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AppApplication (1)">
+  <component name="RunManager" selected="Spring Boot.PresentationApplication">
     <configuration name="AppApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.sziit.app.biz.AppApplication" />
@@ -213,6 +305,34 @@
       <workItem from="1710124330397" duration="19896000" />
       <workItem from="1710159562434" duration="3130000" />
       <workItem from="1710171652406" duration="638000" />
+      <workItem from="1710172696051" duration="366000" />
+      <workItem from="1710173133728" duration="82000" />
+      <workItem from="1710211112059" duration="139000" />
+      <workItem from="1710211749426" duration="2919000" />
+      <workItem from="1710225212677" duration="342000" />
+      <workItem from="1710234493579" duration="4267000" />
+      <workItem from="1710245712923" duration="40000" />
+      <workItem from="1710247775974" duration="735000" />
+      <workItem from="1710248760876" duration="1499000" />
+      <workItem from="1710251351376" duration="1829000" />
+      <workItem from="1710300487088" duration="1188000" />
+      <workItem from="1710304575484" duration="3025000" />
+      <workItem from="1710310565633" duration="8028000" />
+      <workItem from="1710335000161" duration="1612000" />
+      <workItem from="1710337491470" duration="213000" />
+      <workItem from="1710573136736" duration="5784000" />
+      <workItem from="1710578956912" duration="5268000" />
+      <workItem from="1710667865604" duration="19433000" />
+      <workItem from="1710728855586" duration="3506000" />
+      <workItem from="1710745947139" duration="9075000" />
+      <workItem from="1710766587653" duration="6488000" />
+      <workItem from="1710773359177" duration="4691000" />
+      <workItem from="1710819800987" duration="16000" />
+      <workItem from="1710819873937" duration="5495000" />
+      <workItem from="1710840966763" duration="24292000" />
+      <workItem from="1710918547676" duration="9782000" />
+      <workItem from="1710934622013" duration="2226000" />
+      <workItem from="1710938599372" duration="7214000" />
     </task>
     <servers />
   </component>
@@ -223,8 +343,34 @@
     <module name="common" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="4faabef5-e8f6-4881-9228-8039780b3c99" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
         <entry key="User">
           <value>
             <list>
@@ -240,12 +386,41 @@
     </option>
     <option name="TAB_STATES">
       <map>
+        <entry key="4faabef5-e8f6-4881-9228-8039780b3c99">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
                   <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
                 </map>
               </option>
             </State>
@@ -259,10 +434,19 @@
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="1440" />
     <MESSAGE value="feat(presentation &amp; infrastructure): create module" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(presentation &amp; infrastructure): create module" />
+    <MESSAGE value="fect(project): init project" />
+    <MESSAGE value="feat(master): Simplify pom.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(master): Simplify pom.xml" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.baomidou.mybatisplus.extension.plugins.pagination.Page" memberName="records" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

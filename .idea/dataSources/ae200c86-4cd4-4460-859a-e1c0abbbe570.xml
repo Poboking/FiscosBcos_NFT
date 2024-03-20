@@ -1037,8 +1037,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="307" parent="1" name="open_nft">
       <Current>1</Current>
-      <IntrospectionTimestamp>2024-03-11.19:32:29</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2024-03-11.03:32:29</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2024-03-20.08:50:29</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2024-03-19.16:50:29</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="308" parent="1" name="fisco_nft">

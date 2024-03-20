@@ -7,55 +7,59 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName system_setting
+ * 系统设置实体类，用于存储系统级别的配置信息
  */
 @TableName(value = "system_setting")
 @Data
 public class SystemSettingEntity extends Model<SystemSettingEntity> implements Serializable {
     /**
-     *
+     * 系统设置项的唯一标识符
      */
     @TableId
     private String id;
 
     /**
-     *
+     * 应用程序的schema名称，用于区分不同环境下的数据库schema
      */
     private String appSchema;
 
     /**
-     *
+     * 应用程序的访问基础URL，用于构建完整的API请求地址
      */
     private String appUrl;
 
     /**
-     *
+     * 应用程序的版本号，包含主版本号、次版本号以及修订号
      */
     private Double appVersion;
 
     /**
-     *
+     * 客户服务功能的访问URL，用于提供用户支持和帮助
      */
     private String customerServiceUrl;
 
     /**
-     *
+     * H5网关的URL地址，用于页面跳转和路由管理
      */
     private String h5gateway;
 
     /**
-     *
+     * 系统设置最后更新的时间点，用于记录最近的修改时间
      */
-    private LocalDateTime latelyUpdateTime;
+    private Timestamp latelyUpdateTime;
 
     /**
-     *
+     * 本地存储的路径，用于指定客户端存储数据的位置
      */
     private String localStoragePath;
 
+    /**
+     * 序列化版本UID，用于类在序列化和反序列化过程中保持版本兼容性
+     */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 

@@ -3,14 +3,6 @@ server:
   port: 8080
 
 
-############ DB 设置  ############
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/open_nft?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
-    username: root
-    password: liya4537
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
 ############ Mapper设置  ############
 #下面这些内容是为了让MyBatis映射
 #指定Mybatis的Mapper文件
@@ -19,8 +11,24 @@ mybatis:
   #指定Mybatis的实体目录
   type-aliases-package: org.sziit.infrastructure.dao.domain
 
+############ DB 设置  ############
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/open_nft?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&autoCommit=true
+    username: root
+    password: liya4537
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
 
 ############## Graceful Response 配置 ##############
+# Spring配套响应配置
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: true
+
+
 graceful-response:
   response-style: 1
   exclude-packages:
@@ -29,16 +37,17 @@ graceful-response:
     - io.swagger.**
     - org.springdoc.**
   # 自定义的成功响应码，不配置则为0
-  default-success-code: 0
+  default-success-code: 200
   # 自定义的成功提示，默认为ok
   default-success-msg: successful
   # 自定义的失败响应码，默认为1
-  default-error-code: 1
+  default-error-code: 500
   # 自定义的失败提示，默认为error
   default-error-msg: error
   # 设置是否将原生异常错误信息detailMessage字段填充到Response的msg中
+  # 此设置可以用于捕获异常自定义返回信息，但是会暴露系统内部异常信息
   # 默认为false，即不打开
-  origin-exception-using-detail-message: false
+  origin-exception-using-detail-message: true
   # 是否打印异常日志，默认为false
   print-exception-in-global-advice: true
 
@@ -87,7 +96,7 @@ sa-token:
   # token 有效期，单位s 默认30天, -1代表永不过期
   timeout: 2592000
   # token 临时有效期 (指定时间内无操作就视为token过期) 单位: 秒
-  activity-timeout: -1
+#  activity-timeout: -1
   # 是否允许同一账号并发登录 (为true时允许一起登录, 为false时新登录挤掉旧登录)
   is-concurrent: true
   # 在多人登录同一账号时，是否共用一个token (为true时所有登录共用一个token, 为false时每次登录新建一个token)

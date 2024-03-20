@@ -2,8 +2,11 @@ package org.sziit.app.biz.convert.artwork;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDto;
+import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.CollectionIntroRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.CollectionResaleRespDTO;
 import org.sziit.infrastructure.dao.domain.CollectionEntity;
+import org.sziit.infrastructure.dao.domain.MemberResaleCollectionEntity;
 
 /**
  * @project: a20-nft-3_7
@@ -15,5 +18,9 @@ import org.sziit.infrastructure.dao.domain.CollectionEntity;
 public interface CollectionConvert {
     CollectionConvert INSTANCE = Mappers.getMapper(CollectionConvert.class);
 
-    CollectionDetailRespDto convert(CollectionEntity bean);
+    CollectionDetailRespDTO convertToDetailRespDTO(CollectionEntity bean);
+
+    CollectionIntroRespDTO convertToIntroRespDTO(CollectionEntity bean);
+
+    CollectionResaleRespDTO convertToResaleRespDTO(MemberResaleCollectionEntity bean);
 }

@@ -1,10 +1,6 @@
 
-Q	java:S125"<This block of commented-out lines of code should be removed.(£Ÿãè
-Y
-java:S1128"DRemove this unused import 'jakarta.servlet.http.HttpServletRequest'.(õ3
-[
-java:S1128"@Remove this unused import 'org.springframework.http.HttpStatus'.(íŸ¤Šúÿÿÿÿ
-k
-java:S1128"URemove this unused import 'org.springframework.web.bind.annotation.ExceptionHandler'.(–Œ•¬
-i
-java:S1128"SRemove this unused import 'org.springframework.web.bind.annotation.ResponseStatus'.(¯×ñ
+~	java:S125"<This block of commented-out lines of code should be removed.(£Ÿãè8àÖ¿ã1J$65d8ed98-412b-41a2-b665-a01d76fbdcf8
+r	java:S106."+Replace this use of System.err by a logger.(…È¿’ÿÿÿÿÿ8“àÖ¿ã1J$16c47585-675e-4ac0-8073-c5fc0021f1dd
+m	java:S1065"+Replace this use of System.err by a logger.(•¬ªĞ8ƒŒÜ¿ã1J$7e30475d-0918-40f8-b8c0-3f1391a3d8a2
+œ
+java:S1128	"YRemove this unused import 'org.springframework.web.bind.annotation.RestControllerAdvice'.(É•„8ªŞÙ¿ã1J$0918f454-2b95-454f-a357-6affd16b6699

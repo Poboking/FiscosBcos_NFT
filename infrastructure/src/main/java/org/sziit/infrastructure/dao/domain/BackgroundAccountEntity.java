@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 后台账户实体类，用于存储后台用户账户信息。
@@ -31,12 +31,12 @@ public class BackgroundAccountEntity extends Model<BackgroundAccountEntity> impl
     /**
      * 账户删除时间
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      * Google二次验证绑定时间
      */
-    private LocalDateTime googleAuthBindTime;
+    private Timestamp googleAuthBindTime;
 
     /**
      * Google二次验证密钥
@@ -46,7 +46,7 @@ public class BackgroundAccountEntity extends Model<BackgroundAccountEntity> impl
     /**
      * 最近一次登录时间
      */
-    private LocalDateTime latelyLoginTime;
+    private Timestamp latelyLoginTime;
 
     /**
      * 登录密码
@@ -56,7 +56,7 @@ public class BackgroundAccountEntity extends Model<BackgroundAccountEntity> impl
     /**
      * 账户注册时间
      */
-    private LocalDateTime registeredTime;
+    private Timestamp registeredTime;
 
     /**
      * 账户状态

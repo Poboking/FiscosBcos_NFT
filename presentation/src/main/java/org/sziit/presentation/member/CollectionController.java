@@ -1,6 +1,9 @@
 package org.sziit.presentation.member;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -12,21 +15,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.sziit.app.biz.artwork.collection.CollectionService;
 import org.sziit.app.biz.artwork.collection.MemberResaleCollectionService;
-import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDto;
-import org.sziit.app.biz.artwork.dto.collection.CollectionQueryReqDto;
-import org.sziit.app.biz.artwork.dto.creator.CreatorRespDto;
-import org.sziit.app.biz.artwork.mysteryBox.MysteryBoxCommodityService;
+import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.CollectionIntroRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.CollectionQueryReqDTO;
+import org.sziit.app.biz.artwork.dto.collection.CollectionResaleRespDTO;
+import org.sziit.app.biz.artwork.dto.creator.CreatorRespDTO;
+import org.sziit.app.biz.artwork.dto.mysteryBox.MysteryBoxRespDTO;
+import org.sziit.app.biz.artwork.mysteryBox.MysteryBoxService;
 import org.sziit.infrastructure.common.PageResult;
-import org.sziit.infrastructure.dao.domain.CollectionEntity;
-import org.sziit.infrastructure.dao.domain.MysteryBoxCommodityEntity;
-
-import java.io.Serializable;
+import org.sziit.infrastructure.common.ToBeRealizedVO;
+import org.sziit.presentation.utils.StpUserUtil;
 
 /**
  * @project: a20-nft-3_7
  * @author: poboking
  * @date: 2024/3/8 10:58
  */
+//@CheckUserLogin
 @Log4j2
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,19 +44,23 @@ public class CollectionController {
     @Autowired
     private MemberResaleCollectionService memberResaleCollectionService;
     @Autowired
-    private MysteryBoxCommodityService mysteryBoxCommodityService;
+    private MysteryBoxService mysteryBoxService;
+
+
 
 
     @GetMapping("findLatestCollectionByPage")
     @ValidationStatusCode(code = "400")
-    public PageResult<CollectionEntity> findLatestCollectionByPage(
+    @Parameter(name = "current", description = "当前页", required = true)
+    @Parameter(name = "pageSize", description = "每页大小", required = true)
+    public PageResult<CollectionIntroRespDTO> findLatestCollectionByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             @RequestParam(name = "creatorId", required = false) String creatorId) {
         if (creatorId == null) {
-            return collectionService.getPageList(current, pageSize);
+            return collectionService.getIntroPageList(current, pageSize);
         }
-        return collectionService.getPageListByCreatorId(current, pageSize, creatorId);
+        return collectionService.getIntroPageListByCreatorId(current, pageSize, creatorId);
     }
 
     /**
@@ -59,38 +68,37 @@ public class CollectionController {
      */
     @GetMapping("findResaleCollectionByPage")
     @ValidationStatusCode(code = "400")
-    public Serializable findResaleCollectionByPage(
+    @Parameter(name = "current", description = "当前页", required = true)
+    @Parameter(name = "pageSize", description = "每页大小", required = true)
+    public PageResult<CollectionResaleRespDTO> findResaleCollectionByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             @RequestParam(name = "creatorId", required = false) String creatorId,
             @RequestParam(name = "collectionType", required = false, defaultValue = "1") String collectionType,
             @RequestParam(name = "direction", required = false) String direction,
             @RequestParam(name = "collectionId", required = false) String collectionId) {
-        CollectionQueryReqDto reqDto = CollectionQueryReqDto.builder()
+        CollectionQueryReqDTO reqDto = CollectionQueryReqDTO.builder()
                 .current(current)
                 .pageSize(pageSize)
                 .creatorId(creatorId)
-                .collectionType(collectionType)
+                .commodityType(collectionType)
                 .direction(direction)
                 .collectionId(collectionId)
                 .build();
-        if (reqDto.getCollectionType().equals("1")) {
-            return memberResaleCollectionService.getPageListByCollectionQueryParam(reqDto);
-        } else {
-            return mysteryBoxCommodityService.getPageListByCollectionQueryParam(reqDto);
-        }
+        return memberResaleCollectionService.getPageListByCollectionQueryParam(reqDto);
     }
+
 
     @GetMapping("findLatestCollectionDetailById")
     @ValidationStatusCode(code = "400")
-    public CollectionDetailRespDto findLatestCollectionDetailById(
+    public CollectionDetailRespDTO findLatestCollectionDetailById(
             @RequestParam(name = "id", required = true) String collectionId) {
         return collectionService.getCollectionDetail(collectionId);
     }
 
     @GetMapping("findCreatorById")
     @ValidationStatusCode(code = "400")
-    public CreatorRespDto findCreatorById(
+    public CreatorRespDTO findCreatorById(
             @RequestParam(name = "id", required = true) String collectionId) {
         return collectionService.getCreatorById(collectionId);
     }
@@ -98,13 +106,25 @@ public class CollectionController {
 
     @GetMapping("findLatestMysteryBoxByPage")
     @ValidationStatusCode(code = "400")
-    public PageResult<MysteryBoxCommodityEntity> findLatestMysteryBoxByPage(
+    @Parameter(name = "current", description = "当前页", required = true)
+    @Parameter(name = "pageSize", description = "每页大小", required = true)
+    public PageResult<MysteryBoxRespDTO> findLatestMysteryBoxByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             @RequestParam(name = "creatorId", required = false) String creatorId) {
         if (creatorId == null) {
-            return mysteryBoxCommodityService.getPageList(current, pageSize);
+            return mysteryBoxService.getPageList(current, pageSize);
         }
-        return mysteryBoxCommodityService.getPageListByCreatorId(current, pageSize, creatorId);
+        return mysteryBoxService.getPageListByCreatorId(current, pageSize, creatorId);
+    }
+
+    // TODO: 2024/3/18 15:52 以下方法待实现 - 查找在售藏品
+    @GetMapping("findForSaleCollection")
+    @ValidationStatusCode(code = "500")
+    @Operation(description = "Api 待实现")
+    public ToBeRealizedVO findForSaleCollection() {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): findForSaleCollection", memberId));
+        return ToBeRealizedVO.build();
     }
 }

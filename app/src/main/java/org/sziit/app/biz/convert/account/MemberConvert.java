@@ -2,7 +2,7 @@ package org.sziit.app.biz.convert.account;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.sziit.app.biz.vo.account.AccountVo;
+import org.sziit.app.biz.account.dto.account.AccountRespDTO;
 import org.sziit.infrastructure.dao.domain.MemberEntity;
 
 /**
@@ -15,6 +15,6 @@ import org.sziit.infrastructure.dao.domain.MemberEntity;
 public interface MemberConvert {
     MemberConvert INSTANCE = Mappers.getMapper(MemberConvert.class);
 
-    AccountVo convert(MemberEntity bean);
+    AccountRespDTO convert(MemberEntity bean);
 
 }

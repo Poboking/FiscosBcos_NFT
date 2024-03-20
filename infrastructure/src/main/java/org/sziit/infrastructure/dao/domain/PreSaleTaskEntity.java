@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 预售任务实体类，用于定义和管理预售活动的任务信息。
@@ -31,12 +31,12 @@ public class PreSaleTaskEntity extends Model<PreSaleTaskEntity> implements Seria
     /**
      * 任务创建时间
      */
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     /**
      * 任务执行时间
      */
-    private LocalDateTime executeTime;
+    private Timestamp executeTime;
 
     /**
      * 预售前的分钟数，用于倒计时

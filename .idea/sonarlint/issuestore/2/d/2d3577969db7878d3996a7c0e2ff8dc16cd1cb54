@@ -1,0 +1,11 @@
+
+…
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8Í“ÁÖå1J$1598796b-1126-4227-a6c1-403d28c0429f
+…
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8Î“ÁÖå1J$ed16f163-2d16-49ca-bccd-f704ec8d6c2e
+…
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ğ“ÁÖå1J$0fa370eb-1993-4a81-b98a-56818386dcfa
+€
+java:S1128"8Remove this unused import 'jakarta.annotation.Resource'.(ÄĞÛûÿÿÿÿ8Ö“ÁÖå1J$7391073d-ad61-4586-a001-50ed47851522
+o
+java:S1128"MRemove this unused import 'org.sziit.presentation.annotation.CheckUserLogin'.(¢ÜÙ½şÿÿÿÿ8–½ÁÖå1

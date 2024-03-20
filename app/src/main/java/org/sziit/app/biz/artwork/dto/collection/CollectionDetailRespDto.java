@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CollectionDetailRespDto extends CollectionBaseDto {
+public class CollectionDetailRespDTO extends CollectionBaseDTO {
 
     private String id;
 
@@ -45,5 +45,6 @@ public class CollectionDetailRespDto extends CollectionBaseDto {
     private String[] storyPicLinks;
 
     private String[] subCommoditys;
+
 }
 

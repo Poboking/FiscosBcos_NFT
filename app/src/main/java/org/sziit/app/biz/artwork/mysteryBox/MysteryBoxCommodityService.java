@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.sziit.app.biz.artwork.dto.collection.CollectionQueryReqDto;
+import org.sziit.app.biz.artwork.dto.collection.CollectionQueryReqDTO;
 import org.sziit.infrastructure.common.PageResult;
 import org.sziit.infrastructure.dao.domain.MysteryBoxCommodityEntity;
 import org.sziit.infrastructure.repository.impl.MysteryBoxCommodityRepositoryImpl;
@@ -35,15 +35,15 @@ public class MysteryBoxCommodityService {
         return PageResult.convertFor(pageList, pageSize);
     }
 
-    public PageResult<MysteryBoxCommodityEntity> getPageListByCollectionQueryParam(CollectionQueryReqDto reqDto) {
+    public PageResult<MysteryBoxCommodityEntity> getPageListByCollectionQueryParam(CollectionQueryReqDTO reqDto) {
         if (reqDto.isOrderDesc()) {
-            IPage<MysteryBoxCommodityEntity> pageResult = mysteryBoxCommodityRepository.getPriceOrderDescPageListByCreatorIdAndCollectionId(reqDto.getCurrent(), reqDto.getPageSize(),
+            IPage<MysteryBoxCommodityEntity> pageEntity = mysteryBoxCommodityRepository.getPriceOrderDescPageListByCreatorIdAndCollectionId(reqDto.getCurrent(), reqDto.getPageSize(),
                     reqDto.getCreatorId(), reqDto.getCollectionId());
-            return PageResult.convertFor(pageResult, reqDto.getPageSize());
+            return PageResult.convertFor(pageEntity, reqDto.getPageSize());
         } else {
-            IPage<MysteryBoxCommodityEntity> pageResult = mysteryBoxCommodityRepository.getPriceOrderAscPageListByCreatorIdAndCollectionId(reqDto.getCurrent(), reqDto.getPageSize(),
+            IPage<MysteryBoxCommodityEntity> pageEntity = mysteryBoxCommodityRepository.getPriceOrderAscPageListByCreatorIdAndCollectionId(reqDto.getCurrent(), reqDto.getPageSize(),
                     reqDto.getCreatorId(), reqDto.getCollectionId());
-            return PageResult.convertFor(pageResult, reqDto.getPageSize());
+            return PageResult.convertFor(pageEntity, reqDto.getPageSize());
         }
     }
 

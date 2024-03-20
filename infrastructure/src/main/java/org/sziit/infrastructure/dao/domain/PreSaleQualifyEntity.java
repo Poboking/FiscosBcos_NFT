@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 预售资格实体类，用于记录用户参与预售活动的资格信息。
@@ -36,12 +36,12 @@ public class PreSaleQualifyEntity extends Model<PreSaleQualifyEntity> implements
     /**
      * 交易时间
      */
-    private LocalDateTime dealTime;
+    private Timestamp dealTime;
 
     /**
      * 资格授予时间
      */
-    private LocalDateTime grantTime;
+    private Timestamp grantTime;
 
     /**
      * 发行的收藏品ID

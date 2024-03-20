@@ -1,0 +1,16 @@
+
+‹
+java:S1192"HDefine a constant instead of duplicating this literal "unknown" 3 times.(¨‚Å8ÇÒÚ±ä1J$2047ead9-5efb-4231-bd43-1ecba9d956b0
+w
+java:S1066("/Merge this if statement with the enclosing one.(¨ìñ‚şÿÿÿÿ8ÉÒÚ±ä1J$d58455f8-9f00-4b23-ae99-e2cd99fcbefb
+}
+java:S1141"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8ÊÒÚ±ä1J$b013e6c3-9f11-4110-a758-0583672d4d85
+…
+java:S2259""BA "NullPointerException" could be thrown; "inet" is nullable here.(Òş„€8é×á±ä1J$4d4407a9-1012-4f79-9227-5f54d3c9b3b1
+}
+java:S1118":Add a private constructor to hide the implicit public one.(í´ù×8ÏÒÚ±ä1J$615912b1-2111-42a2-849b-53677b717c62
+š
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ÀãÏ¤ûÿÿÿÿ8ÒÒÚ±ä1J$1163edfb-8448-40e4-8e46-74cf6befdfc4
+y
+java:S2692("10 is a valid index, but is ignored by this check.(¨ìñ‚şÿÿÿÿ8àÒÚ±ä1J$fcd49284-d77a-4dda-8964-9fb32c527056
+~	java:S125/"<This block of commented-out lines of code should be removed.(â—œş8ãÒÚ±ä1J$237aff51-fa30-431d-a409-910556fd6cf8

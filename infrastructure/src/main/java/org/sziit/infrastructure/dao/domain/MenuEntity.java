@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName menu
@@ -29,7 +29,7 @@ public class MenuEntity extends Model<MenuEntity> implements Serializable {
     /**
      *
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      *

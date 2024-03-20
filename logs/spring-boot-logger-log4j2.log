@@ -1,17 +1,34 @@
-2024-03-11 18:41:28,994 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2024-03-11 18:41:29,042 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 14620 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
-2024-03-11 18:41:29,048 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
-2024-03-11 18:41:29,049 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2024-03-11 18:41:31,381 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2024-03-11 18:41:31,383 INFO o.a.j.l.DirectJDKLog [main] Loaded Apache Tomcat Native library [2.0.6] using APR version [1.7.4].
-2024-03-11 18:41:31,404 INFO o.a.j.l.DirectJDKLog [main] OpenSSL successfully initialized [OpenSSL 3.0.11 19 Sep 2023]
-2024-03-11 18:41:31,415 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2024-03-11 18:41:31,416 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2024-03-11 18:41:31,416 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
-2024-03-11 18:41:31,501 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2024-03-11 18:41:31,502 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 2391 ms
-2024-03-11 18:41:33,232 INFO c.f.g.Init [main] Graceful Response:已启动
-2024-03-11 18:41:33,364 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
-2024-03-11 18:41:33,610 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2024-03-11 18:41:33,640 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2024-03-11 18:41:33,649 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 5.146 seconds (process running for 6.524)
+2024-03-20 23:32:31,252 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-03-20 23:32:31,290 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 5864 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
+2024-03-20 23:32:31,296 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
+2024-03-20 23:32:31,298 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-03-20 23:32:32,087 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-03-20 23:32:32,089 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-03-20 23:32:32,115 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2024-03-20 23:32:32,665 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2024-03-20 23:32:32,673 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-03-20 23:32:32,674 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-03-20 23:32:32,674 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-03-20 23:32:32,752 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-03-20 23:32:32,752 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1405 ms
+2024-03-20 23:32:34,054 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-03-20 23:32:34,180 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-03-20 23:32:34,756 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-03-20 23:32:34,774 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-20 23:32:34,782 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 3.966 seconds (process running for 4.95)
+2024-03-20 23:32:34,785 INFO o.s.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
+2024-03-20 23:32:42,101 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-20 23:32:42,102 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-03-20 23:32:42,103 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2024-03-20 23:32:42,853 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.transaction.TransactionController
+2024-03-20 23:32:42,876 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.StorageController
+2024-03-20 23:32:42,884 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.transaction.SettlementAccountController
+2024-03-20 23:32:42,920 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.AuthenticationController
+2024-03-20 23:32:42,928 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.MemberController
+2024-03-20 23:32:42,995 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.NoticeController
+2024-03-20 23:32:43,007 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.UserArtworkController
+2024-03-20 23:32:43,026 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.MemberBalanceChangeLogController
+2024-03-20 23:32:43,051 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.DictController
+2024-03-20 23:32:43,057 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.ComposeActivityController
+2024-03-20 23:32:43,068 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.sziit.presentation.member.CollectionController
+2024-03-20 23:32:43,132 INFO o.s.a.AbstractOpenApiResource [http-nio-8080-exec-2] Init duration for springdoc-openapi is: 382 ms

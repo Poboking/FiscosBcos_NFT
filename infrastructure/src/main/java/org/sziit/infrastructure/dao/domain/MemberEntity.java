@@ -1,12 +1,17 @@
 package org.sziit.infrastructure.dao.domain;
 
+import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Builder;
 import lombok.Data;
+import org.sziit.infrastructure.common.IdUtils;
+import org.sziit.infrastructure.common.NftConstants;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /**
@@ -15,6 +20,7 @@ import java.time.LocalDateTime;
  * @TableName member
  */
 @Data
+@Builder
 @TableName(value = "member")
 public class MemberEntity extends Model<MemberEntity> implements Serializable {
     /**
@@ -36,7 +42,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
     /**
      * 删除时间
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      * 保持登录的持续时间（单位：秒）
@@ -46,7 +52,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
     /**
      * 最近一次登录时间
      */
-    private LocalDateTime latelyLoginTime;
+    private Timestamp latelyLoginTime;
 
     /**
      * 登录密码
@@ -76,7 +82,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
     /**
      * 注册时间
      */
-    private LocalDateTime registeredTime;
+    private Timestamp registeredTime;
 
     /**
      * 成员状态
@@ -106,7 +112,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
     /**
      * 绑定真实姓名的时间
      */
-    private LocalDateTime bindRealNameTime;
+    private Timestamp bindRealNameTime;
 
     /**
      * 成员的身份证号码
@@ -141,13 +147,87 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
     /**
      * 与区块链同步的时间
      */
-    private LocalDateTime syncChainTime;
+    private Timestamp syncChainTime;
 
     /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
+    public static MemberEntity init(Boolean isPresent,
+                                    String nickName,
+                                    String mobile,
+                                    String loginPwd,
+                                    String inviterId){
+        if (Boolean.TRUE.equals(isPresent)){
+            return hasInviterInit(nickName, mobile, loginPwd, inviterId);
+        }else {
+            return defaultInit(nickName, mobile, loginPwd);
+        }
+    }
+    public static MemberEntity defaultInit(String nickName, String mobile, String loginPwd){
+        String uuid = IdUtils.uuid();
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        return MemberEntity.builder()
+                .id(uuid)
+                .nickName(nickName)
+                .mobile(mobile)
+                .loginPwd(loginPwd)
+                .inviteCode(RandomUtil.randomString(7))
+                .balance(0d)
+                .deletedFlag(false)
+                .boughtFlag(false)
+                .state(NftConstants.功能状态_启用)
+                .accountLevel(1)
+                .accountLevelPath(uuid)
+                .keepLoginDuration(12)
+                .latelyLoginTime(now)
+                .registeredTime(now)
+                .build();
+    }
+
+    public static MemberEntity hasInviterInit(String nickName, String mobile, String loginPwd, String inviterId){
+        String uuid = IdUtils.uuid();
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        return MemberEntity.builder()
+                .id(uuid)
+                .nickName(nickName)
+                .mobile(mobile)
+                .loginPwd(loginPwd)
+                .inviteCode(RandomUtil.randomString(7))
+                .balance(0d)
+                .deletedFlag(false)
+                .boughtFlag(false)
+                .state(NftConstants.功能状态_启用)
+                .accountLevel(1)
+                .accountLevelPath(uuid)
+                .keepLoginDuration(12)
+                .latelyLoginTime(now)
+                .registeredTime(now)
+                .inviterId(inviterId)
+                .build();
+    }
+
+    public static MemberEntity quickInit(String nickName, String mobile){
+        String uuid = IdUtils.uuid();
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        return MemberEntity.builder()
+                .id(uuid)
+                .nickName(nickName)
+                .mobile(mobile)
+                .inviteCode(RandomUtil.randomString(7))
+                .balance(0d)
+                .deletedFlag(false)
+                .boughtFlag(false)
+                .state(NftConstants.功能状态_启用)
+                .accountLevel(1)
+                .accountLevelPath(uuid)
+                .keepLoginDuration(12)
+                .latelyLoginTime(now)
+                .registeredTime(now)
+                .build();
+    }
 
     @Override
     public boolean equals(Object that) {

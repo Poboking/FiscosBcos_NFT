@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 空投记录实体类，用于记录空投活动的相关信息。
@@ -26,7 +26,7 @@ public class AirDropRecordEntity extends Model<AirDropRecordEntity> implements S
     /**
      * 空投时间
      */
-    private LocalDateTime airDropTime;
+    private Timestamp airDropTime;
 
     /**
      * 收藏品ID

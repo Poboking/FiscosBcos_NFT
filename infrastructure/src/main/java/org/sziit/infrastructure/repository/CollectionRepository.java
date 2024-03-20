@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.sziit.infrastructure.dao.domain.CollectionEntity;
 
+import java.util.List;
+
 /**
  * @author poboking
  * @description 针对表【collection】的数据库操作Service
@@ -56,4 +58,23 @@ public interface CollectionRepository extends IService<CollectionEntity> {
      * @return IPage<CollectionEntity> pageResult
      */
     IPage<CollectionEntity> getPageListByCommodityType(long current, long pageSize, String commodityType);
+
+    /**
+     * 根据藏品类型 - 获取ID列表
+     *
+     * @param commodityType 商品类型(藏品或盲盒)
+     * @return List<String> id列表
+     */
+    List<String> getIdsByCommodityType(String commodityType);
+
+    /**
+     * 根据藏品类型和创建者ID - 获取分页列表
+     *
+     * @param current       当前页
+     * @param pageSize      页面大小
+     * @param commodityType 商品类型
+     * @param creatorId     创建者ID
+     * @return IPage<CollectionEntity> pageResult
+     */
+    IPage<CollectionEntity> getPageListByCreatorIdAndCommodityType(long current, long pageSize, String creatorId, String commodityType);
 }

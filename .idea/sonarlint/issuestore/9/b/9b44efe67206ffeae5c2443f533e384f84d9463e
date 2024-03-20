@@ -1,0 +1,12 @@
+
+…
+java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8ú„¶âå1J$fd854c3d-1e7f-44b2-b2f1-f26fe8846680
+~	java:S125."<This block of commented-out lines of code should be removed.(ÌÅô8Úˆÿãå1J$acc3cc7a-e486-4e4c-8660-1ab06734f368
+z
+java:S1135+"2Complete the task associated to this TODO comment.(Ø„ÚŸÿÿÿÿÿ8œ±Õãå1J$eafae203-5b84-47a5-86cc-940cf717ccac
+H
+java:S11686"+Return an empty collection instead of null.(¥¹ï8àôÿãå1
+€
+java:S1128"8Remove this unused import 'jakarta.annotation.Resource'.(ÄĞÛûÿÿÿÿ8ëÅÿãå1J$9a9ee28f-5eca-4197-b899-50fe4c707098
+•
+java:S1128"MRemove this unused import 'org.sziit.presentation.annotation.CheckUserLogin'.(¢ÜÙ½şÿÿÿÿ8ëÅÿãå1J$5d6d299c-584e-4ffc-845f-1345823441a0

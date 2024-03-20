@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 创作者实体类，用于存储和管理创作者的信息。
@@ -31,7 +31,7 @@ public class CreatorEntity extends Model<CreatorEntity> implements Serializable 
     /**
      * 创作者信息创建的时间
      */
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     /**
      * 删除标志，用于软删除
@@ -41,12 +41,12 @@ public class CreatorEntity extends Model<CreatorEntity> implements Serializable 
     /**
      * 删除时间
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      * 最后修改时间
      */
-    private LocalDateTime lastModifyTime;
+    private Timestamp lastModifyTime;
 
     /**
      * 创作者的姓名或昵称

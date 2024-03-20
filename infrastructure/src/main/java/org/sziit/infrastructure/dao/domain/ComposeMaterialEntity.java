@@ -9,29 +9,31 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @TableName compose_material
+ * 组合材料实体类，用于定义组成特定活动或产品所需材料的实体
+ *
+ * @TableName compose_material 指定实体类对应的数据库表名为 "compose_material"
  */
 @TableName(value = "compose_material")
 @Data
 public class ComposeMaterialEntity extends Model<ComposeMaterialEntity> implements Serializable {
     /**
-     *
+     * 组合材料记录的唯一标识符ID，用于唯一标识每条材料记录
      */
     @TableId
     private String id;
 
     /**
-     *
+     * 活动ID，标识这条组合材料记录所属的活动
      */
     private String activityId;
 
     /**
-     *
+     * 材料ID，标识组成活动的具体材料
      */
     private String materialId;
 
     /**
-     *
+     * 数量，表示该材料在活动中使用的数量
      */
     private Integer quantity;
 

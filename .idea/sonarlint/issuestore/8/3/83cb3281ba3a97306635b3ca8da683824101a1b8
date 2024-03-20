@@ -1,0 +1,7 @@
+
+’
+java:S1192"JUse already-defined constant 'TYPE' instead of duplicating its value here.(ΐΜε²όÿÿÿÿ8™Δ…²δ1J$2c0cda73-820f-49ef-be62-ddb25a9e36e3
+
+java:S1104"TMake stpLogic a static final constant or non-public and provide accessors if needed.(ΐΜε²όÿÿÿÿ8Δ…²δ1J$9e3657b5-9430-4b5e-8563-29b1f2b49152
+v
+java:S1444".Make this "public static stpLogic" field final(ΐΜε²όÿÿÿÿ8Δ…²δ1J$6873962f-31b4-4f6b-b96b-825869397456

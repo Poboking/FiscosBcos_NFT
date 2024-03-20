@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName oper_log
@@ -44,7 +44,7 @@ public class OperLogEntity extends Model<OperLogEntity> implements Serializable 
     /**
      *
      */
-    private LocalDateTime operTime;
+    private Timestamp operTime;
 
     /**
      *

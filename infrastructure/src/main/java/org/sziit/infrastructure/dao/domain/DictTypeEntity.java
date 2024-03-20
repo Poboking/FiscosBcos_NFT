@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 字典类型实体类，用于定义系统中的字典类型及其相关信息。
@@ -36,7 +36,7 @@ public class DictTypeEntity extends Model<DictTypeEntity> implements Serializabl
     /**
      * 最后修改时间
      */
-    private LocalDateTime lastModifyTime;
+    private Timestamp lastModifyTime;
 
     /**
      * 字典类型的备注信息

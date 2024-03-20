@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 发行收藏品实体类，用于记录发行的收藏品信息。
@@ -41,17 +41,17 @@ public class IssuedCollectionEntity extends Model<IssuedCollectionEntity> implem
     /**
      * 删除时间
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      * 发行时间
      */
-    private LocalDateTime issueTime;
+    private Timestamp issueTime;
 
     /**
      * 与区块链同步的时间
      */
-    private LocalDateTime syncChainTime;
+    private Timestamp syncChainTime;
 
     /**
      * 唯一ID，用于在区块链上的唯一标识

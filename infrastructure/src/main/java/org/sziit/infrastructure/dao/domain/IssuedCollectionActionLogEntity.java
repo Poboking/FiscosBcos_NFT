@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName issued_collection_action_log
@@ -29,7 +29,7 @@ public class IssuedCollectionActionLogEntity extends Model<IssuedCollectionActio
     /**
      *
      */
-    private LocalDateTime actionTime;
+    private Timestamp actionTime;
 
     /**
      *

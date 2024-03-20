@@ -26,4 +26,15 @@ public interface MemberRepository extends IService<MemberEntity> {
      * @return 是否更新成功
      */
     public boolean updateNickName(String memberId, String nickName);
+
+
+    /**
+     * 用户实名认证
+     *
+     * @param realName 真实姓名
+     * @param ssn      身份证号
+     * @param mobile   手机号
+     * @return 是否更新成功
+     */
+    boolean bindReadName(String realName, String ssn, String mobile, String memberId);
 }

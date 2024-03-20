@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DictItemRespDto {
+public class DictItemRespDTo {
 
     private String dictItemName;
 

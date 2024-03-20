@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName withdraw_record
@@ -29,7 +29,7 @@ public class WithdrawRecordEntity extends Model<WithdrawRecordEntity> implements
     /**
      *
      */
-    private LocalDateTime dealTime;
+    private Timestamp dealTime;
 
     /**
      *
@@ -64,7 +64,7 @@ public class WithdrawRecordEntity extends Model<WithdrawRecordEntity> implements
     /**
      *
      */
-    private LocalDateTime submitTime;
+    private Timestamp submitTime;
 
     /**
      *

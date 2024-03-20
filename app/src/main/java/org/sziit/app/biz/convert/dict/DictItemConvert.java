@@ -2,7 +2,7 @@ package org.sziit.app.biz.convert.dict;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.sziit.app.biz.dict.dto.DictItemRespDto;
+import org.sziit.app.biz.dict.dto.DictItemRespDTo;
 import org.sziit.infrastructure.dao.domain.DictItemEntity;
 
 /**
@@ -15,5 +15,5 @@ import org.sziit.infrastructure.dao.domain.DictItemEntity;
 public interface DictItemConvert {
     DictItemConvert INSTANCE = Mappers.getMapper(DictItemConvert.class);
 
-    DictItemRespDto convert(DictItemEntity bean);
+    DictItemRespDTo convert(DictItemEntity bean);
 }

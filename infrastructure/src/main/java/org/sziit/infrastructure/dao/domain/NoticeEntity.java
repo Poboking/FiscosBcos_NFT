@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 通知公告实体类，用于存储和管理平台的通知公告信息。
@@ -36,17 +36,17 @@ public class NoticeEntity extends Model<NoticeEntity> implements Serializable {
     /**
      * 删除时间
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      * 最后修改时间
      */
-    private LocalDateTime lastModifyTime;
+    private Timestamp lastModifyTime;
 
     /**
      * 发布时间
      */
-    private LocalDateTime publishTime;
+    private Timestamp publishTime;
 
     /**
      * 通知公告的标题

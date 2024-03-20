@@ -14,8 +14,7 @@ import org.sziit.infrastructure.repository.MemberRepository;
  * @createDate 2024-03-07 17:31:43
  */
 @Service
-public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity>
-        implements MemberRepository {
+public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity> implements MemberRepository {
 
     @Autowired
     private MemberMapper memberMapper;
@@ -41,7 +40,25 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
     @Override
     public boolean updateNickName(String memberId, String nickName) {
         return memberMapper.update(null,
-                new UpdateWrapper<MemberEntity>().eq("id", memberId).set("nick_name", nickName)) > 0;
+                new UpdateWrapper<MemberEntity>().
+                        eq("id", memberId).set("nick_name", nickName)) > 0;
+    }
+
+    /**
+     * 用户实名认证
+     *
+     * @param realName 真实姓名
+     * @param ssn      身份证号
+     * @param mobile   手机号
+     * @return 是否更新成功
+     */
+    @Override
+    public boolean bindReadName(String realName, String ssn, String mobile, String memberId) {
+        return memberMapper.update(new UpdateWrapper<MemberEntity>()
+                .eq(!memberId.isEmpty(), "id", memberId)
+                .eq(!mobile.isEmpty(), "mobile", mobile)
+                .set(!realName.isEmpty(), "real_name", realName)
+                .set(!ssn.isEmpty(), "identity_card", ssn)) > 0;
     }
 }
 

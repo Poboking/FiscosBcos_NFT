@@ -13,13 +13,13 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class CollectionQueryReqDto extends CollectionBaseDto {
+public class CollectionQueryReqDTO extends CollectionBaseDTO {
 
     private Long pageSize;
 
     private Long current;
 
-    private String collectionType;
+    private String commodityType;
 
     private String creatorId;
 

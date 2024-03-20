@@ -2,7 +2,6 @@ package org.sziit.presentation.member;
 
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.sziit.app.biz.artwork.collection.MemberCollectionService;
 import org.sziit.app.biz.artwork.collection.MemberResaleCollectionService;
+import org.sziit.app.biz.artwork.dto.myholdcollection.MyHoldCollectionRespDTO;
 import org.sziit.app.biz.artwork.mysteryBox.MemberMysteryBoxService;
-import org.sziit.app.biz.vo.collection.MyHoldCollectionVo;
 import org.sziit.infrastructure.common.PageResult;
-import org.sziit.infrastructure.dao.domain.MemberHoldCollectionEntity;
 
 /**
  * @project: a20-nft-3_7
  * @author: poboking
  * @date: 2024/3/8 20:31
  */
+//@CheckUserLogin
 @Log4j2
 @RestController
 @AllArgsConstructor
 @RequestMapping("/myArtwork/")
 @Tag(name = "UserArtworkController", description = "USER_ARTWORK_CONTROLLER")
 public class UserArtworkController {
-    @Resource
+    @Autowired
     private MemberCollectionService memberCollectionService;
-    @Resource
+    @Autowired
     private MemberMysteryBoxService memberMysteryBoxService;
-    @Resource
+    @Autowired
     private MemberResaleCollectionService memberResaleCollectionService;
 
 
     @GetMapping("findMyHoldCollectionByPage")
     @ValidationStatusCode(code = "400")
-    public PageResult<MyHoldCollectionVo> findMyHoldCollectionByPage(
+    public PageResult<MyHoldCollectionRespDTO> findMyHoldCollectionByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             @RequestParam(name = "memberId") String memberId) {
@@ -48,7 +47,7 @@ public class UserArtworkController {
 
     @GetMapping("findMyHoldMysteryBoxByPage")
     @ValidationStatusCode(code = "400")
-    public PageResult<MyHoldCollectionVo> findMyHoldMysteryBoxByPage(
+    public PageResult<MyHoldCollectionRespDTO> findMyHoldMysteryBoxByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             String memberId) {
@@ -58,7 +57,7 @@ public class UserArtworkController {
 
     @GetMapping("findMySoldCollectionByPage")
     @ValidationStatusCode(code = "400")
-    public PageResult<MyHoldCollectionVo> findMySoldCollectionByPage(
+    public PageResult<MyHoldCollectionRespDTO> findMySoldCollectionByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             String memberId) {

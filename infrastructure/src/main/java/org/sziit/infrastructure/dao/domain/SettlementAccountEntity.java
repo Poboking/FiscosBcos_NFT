@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName settlement_account
@@ -34,7 +34,7 @@ public class SettlementAccountEntity extends Model<SettlementAccountEntity> impl
     /**
      *
      */
-    private LocalDateTime activatedTime;
+    private Timestamp activatedTime;
 
     /**
      *
@@ -49,7 +49,7 @@ public class SettlementAccountEntity extends Model<SettlementAccountEntity> impl
     /**
      *
      */
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     /**
      *
@@ -59,7 +59,7 @@ public class SettlementAccountEntity extends Model<SettlementAccountEntity> impl
     /**
      *
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      *

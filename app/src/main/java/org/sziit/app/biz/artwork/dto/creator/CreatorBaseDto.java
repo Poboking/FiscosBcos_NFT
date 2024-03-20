@@ -8,5 +8,5 @@ import lombok.Data;
  * @date: 2024/3/10 20:28
  */
 @Data
-public class CreatorBaseDto {
+public class CreatorBaseDTO {
 }

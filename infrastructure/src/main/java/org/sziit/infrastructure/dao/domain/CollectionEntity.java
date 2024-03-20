@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 收藏品实体类，用于存储和管理收藏品的详细信息。
@@ -25,6 +25,18 @@ public class CollectionEntity extends Model<CollectionEntity> implements Seriali
     @TableId
     @Schema(name = "id", type = "String", minimum = "undefined", maximum = "undefined")
     private String id;
+
+    /**
+     * 创建者的姓名
+     */
+    @TableField(exist = false)
+    private String creatorName;
+
+    /**
+     * 创建者的头像
+     */
+    @TableField(exist = false)
+    private String creatorAvatar;
 
     /**
      * 收藏品的哈希值，用于唯一确定一个收藏品
@@ -46,10 +58,10 @@ public class CollectionEntity extends Model<CollectionEntity> implements Seriali
     /**
      * 收藏品的创建时间
      */
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     /**
-     * 创建收藏品的用户ID
+     * 创建收藏品的创作者ID
      */
     private String creatorId;
 
@@ -61,7 +73,7 @@ public class CollectionEntity extends Model<CollectionEntity> implements Seriali
     /**
      * 逻辑删除的时间戳
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      * 是否允许在外部平台销售的标志
@@ -86,7 +98,7 @@ public class CollectionEntity extends Model<CollectionEntity> implements Seriali
     /**
      * 收藏品的销售时间
      */
-    private LocalDateTime saleTime;
+    private Timestamp saleTime;
 
     /**
      * 收藏品的库存数量
@@ -96,7 +108,7 @@ public class CollectionEntity extends Model<CollectionEntity> implements Seriali
     /**
      * 与区块链同步的时间
      */
-    private LocalDateTime syncChainTime;
+    private Timestamp syncChainTime;
 
     /**
      * 版本号，用于数据库的乐观锁机制

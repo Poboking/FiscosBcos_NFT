@@ -7,50 +7,54 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName collection_give_record
+ * 收藏赠送记录实体类，用于记录用户之间收藏品的赠送行为
  */
 @TableName(value = "collection_give_record")
 @Data
 public class CollectionGiveRecordEntity extends Model<CollectionGiveRecordEntity> implements Serializable {
     /**
-     *
+     * 赠送记录的唯一标识符ID
      */
     @TableId
     private String id;
 
     /**
-     *
+     * 赠送方的用户ID
      */
     private String giveFromId;
 
     /**
-     *
+     * 赠送行为发生的时间
      */
-    private LocalDateTime giveTime;
+    private Timestamp giveTime;
 
     /**
-     *
+     * 接收方的用户ID
      */
     private String giveToId;
 
     /**
-     *
+     * 被赠送的收藏品ID
      */
     private String holdCollectionId;
 
     /**
-     *
+     * 关联的订单编号，用于追踪赠送行为的具体交易
      */
     private String orderNo;
 
     /**
-     *
+     * 版本号，用于乐观锁机制
      */
     private Long version;
 
+    /**
+     * 序列化版本UID，用于类在序列化和反序列化过程中保持版本兼容性
+     */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 

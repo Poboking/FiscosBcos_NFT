@@ -4,14 +4,18 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDto;
-import org.sziit.app.biz.artwork.dto.creator.CreatorRespDto;
+import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.CollectionIntroRespDTO;
+import org.sziit.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.sziit.app.biz.convert.artwork.CollectionConvert;
 import org.sziit.app.biz.convert.artwork.CreatorConvert;
 import org.sziit.infrastructure.common.PageResult;
 import org.sziit.infrastructure.dao.domain.CollectionEntity;
 import org.sziit.infrastructure.repository.impl.CollectionRepositoryImpl;
 import org.sziit.infrastructure.repository.impl.CreatorRepositoryImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @project: a20-nft-3_7
@@ -38,15 +42,40 @@ public class CollectionService {
         return PageResult.convertFor(pageResult, pageSize);
     }
 
-    public CollectionDetailRespDto getCollectionDetail(String collectionId) {
-        return CollectionConvert.INSTANCE.convert(collectionRepository.getCollectionDetail(collectionId));
+    public CollectionDetailRespDTO getCollectionDetail(String collectionId) {
+        return CollectionConvert.INSTANCE.convertToDetailRespDTO(collectionRepository.getCollectionDetail(collectionId));
     }
 
-    public CreatorRespDto getCreatorById(String collectionId) {
-        return CreatorConvert.INSTANCE.convert(creatorRepository.getById(collectionId));
+
+    public CreatorRespDTO getCreatorById(String creatorId) {
+        return CreatorConvert.INSTANCE.convertToRespDTO(creatorRepository.getById(creatorId));
     }
 
     public PageResult<CollectionEntity> getPageListByCreatorId(long current, long pageSize, String creatorId) {
         return PageResult.convertFor(collectionRepository.getPageListByCreatorId(current, pageSize, creatorId), pageSize);
+    }
+
+    public PageResult<CollectionIntroRespDTO> getIntroPageList(long current, long pageSize) {
+        IPage<CollectionEntity> pageEntity = collectionRepository.getPageList(current, pageSize);
+        List<CollectionIntroRespDTO> resultList = new ArrayList<>();
+        pageEntity.getRecords().forEach(bean -> {
+            CreatorRespDTO creator = getCreatorById(bean.getCreatorId());
+            bean.setCreatorName(creator.getName());
+            bean.setCreatorAvatar(creator.getAvatar());
+            resultList.add(CollectionConvert.INSTANCE.convertToIntroRespDTO(bean));
+        });
+        return PageResult.convertFor(pageEntity, pageSize, resultList);
+    }
+
+    public PageResult<CollectionIntroRespDTO> getIntroPageListByCreatorId(long current, long pageSize, String creatorId) {
+        IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCreatorId(current, pageSize, creatorId);
+        List<CollectionIntroRespDTO> resultList = new ArrayList<>();
+        pageEntity.getRecords().forEach(bean -> {
+            CreatorRespDTO creator = getCreatorById(creatorId);
+            bean.setCreatorName(creator.getName());
+            bean.setCreatorAvatar(creator.getAvatar());
+            resultList.add(CollectionConvert.INSTANCE.convertToIntroRespDTO(bean));
+        });
+        return PageResult.convertFor(pageEntity, pageSize, resultList);
     }
 }

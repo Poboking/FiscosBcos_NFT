@@ -11,7 +11,7 @@ import org.sziit.infrastructure.dao.domain.CollectionEntity;
 import org.sziit.infrastructure.dao.mapper.CollectionMapper;
 import org.sziit.infrastructure.repository.CollectionRepository;
 
-import javax.annotation.Resource;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -94,6 +94,36 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     public IPage<CollectionEntity> getPageListByCommodityType(long current, long pageSize, String commodityType) {
         return collectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<CollectionEntity>()
+                        .eq(Optional.ofNullable(commodityType).isPresent(), "commodity_type", commodityType));
+    }
+
+    /**
+     * 根据藏品类型 - 获取ID列表
+     *
+     * @param commodityType 商品类型(藏品或盲盒)
+     * @return List<String> id列表
+     */
+    @Override
+    public List<String> getIdsByCommodityType(String commodityType) {
+        return collectionMapper.selectObjs(new QueryWrapper<CollectionEntity>()
+                .select("id")
+                .eq("commodity_type", Optional.ofNullable(commodityType).orElse("1")));
+    }
+
+    /**
+     * 根据藏品类型和创建者ID - 获取分页列表
+     *
+     * @param current       当前页
+     * @param pageSize      页面大小
+     * @param creatorId     创建者ID
+     * @param commodityType 商品类型
+     * @return IPage<CollectionEntity> pageResult
+     */
+    @Override
+    public IPage<CollectionEntity> getPageListByCreatorIdAndCommodityType(long current, long pageSize, String creatorId, String commodityType) {
+        return  collectionMapper.selectPage(new Page<>(current, pageSize),
+                new QueryWrapper<CollectionEntity>()
+                        .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
                         .eq(Optional.ofNullable(commodityType).isPresent(), "commodity_type", commodityType));
     }
 }

@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName role
@@ -24,7 +24,7 @@ public class RoleEntity extends Model<RoleEntity> implements Serializable {
     /**
      *
      */
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     /**
      *
@@ -34,7 +34,7 @@ public class RoleEntity extends Model<RoleEntity> implements Serializable {
     /**
      *
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      *

@@ -6,11 +6,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.sziit.infrastructure.dao.domain.MemberHoldCollectionEntity;
 import org.sziit.infrastructure.dao.domain.MemberResaleCollectionEntity;
 import org.sziit.infrastructure.dao.mapper.MemberResaleCollectionMapper;
 import org.sziit.infrastructure.repository.MemberResaleCollectionRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -180,6 +180,50 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
                 new QueryWrapper<MemberResaleCollectionEntity>()
                         .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
                         .eq(Optional.ofNullable(status).isPresent(), "status", status));
+    }
+
+    /**
+     * 获取分页列表 - 按照Param
+     *
+     * @param current       当前页
+     * @param pageSize      每页大小
+     * @param creatorId     创建者id
+     * @param collectionId  收藏品id
+     * @param state         持有藏品状态
+     * @param collectionIds 特定类别的收藏品ids
+     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     */
+    @Override
+    public IPage<MemberResaleCollectionEntity> getPriceOrderDescPageListByParam(Long current, Long pageSize, String creatorId, String collectionId, String state, List<String> collectionIds) {
+        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
+                new QueryWrapper<MemberResaleCollectionEntity>()
+                        .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
+                        .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
+                        .eq(Optional.ofNullable(state).isPresent(), "state", state)
+                        .in(Optional.ofNullable(collectionIds).isPresent(), "collection_id", collectionIds)
+                        .orderByDesc("resale_price"));
+    }
+
+    /**
+     * 获取分页列表 - 按照Param
+     *
+     * @param current       当前页
+     * @param pageSize      每页大小
+     * @param creatorId     创建者id
+     * @param collectionId  收藏品id
+     * @param state         持有藏品状态
+     * @param collectionIds 特定类别的收藏品ids
+     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     */
+    @Override
+    public IPage<MemberResaleCollectionEntity> getPriceOrderAscPageListByParam(Long current, Long pageSize, String creatorId, String collectionId, String state, List<String> collectionIds) {
+        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
+                new QueryWrapper<MemberResaleCollectionEntity>()
+                        .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
+                        .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
+                        .eq(Optional.ofNullable(state).isPresent(), "state", state)
+                        .in(Optional.ofNullable(collectionIds).isPresent(), "collection_id", collectionIds)
+                        .orderByAsc("resale_price"));
     }
 }
 

@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName compose_record
@@ -29,7 +29,7 @@ public class ComposeRecordEntity extends Model<ComposeRecordEntity> implements S
     /**
      *
      */
-    private LocalDateTime composeTime;
+    private Timestamp composeTime;
 
     /**
      *

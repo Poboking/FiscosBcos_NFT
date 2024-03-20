@@ -3,12 +3,11 @@ package org.sziit.infrastructure.dao.domain;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
-import org.sziit.infrastructure.dao.connector.MyHoldCollectionVoParent;
+import org.sziit.infrastructure.dao.connector.MyHoldCollectionRespDTOParent;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 成员转售收藏品实体类，用于记录成员转售收藏品的信息。
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName(value = "member_resale_collection")
-public class MemberResaleCollectionEntity implements Serializable, MyHoldCollectionVoParent {
+public class MemberResaleCollectionEntity implements Serializable, MyHoldCollectionRespDTOParent {
     /**
      * 转售记录的唯一标识ID
      */
@@ -36,10 +35,16 @@ public class MemberResaleCollectionEntity implements Serializable, MyHoldCollect
     @TableField(exist = false)
     private String cover;
 
+//    /**
+//     * 收藏品顺序值，例如 #12/100
+//     */
+//    @TableField(exist = false)
+//    private String collectionSerialNumber;
+
     /**
      * 取消转售的时间
      */
-    private LocalDateTime cancelTime;
+    private Timestamp cancelTime;
 
     /**
      * 转售的收藏品ID
@@ -74,12 +79,12 @@ public class MemberResaleCollectionEntity implements Serializable, MyHoldCollect
     /**
      * 转售时间
      */
-    private LocalDateTime resaleTime;
+    private Timestamp resaleTime;
 
     /**
      * 收藏品售出的时间
      */
-    private LocalDateTime soldTime;
+    private Timestamp soldTime;
 
     /**
      * 转售状态

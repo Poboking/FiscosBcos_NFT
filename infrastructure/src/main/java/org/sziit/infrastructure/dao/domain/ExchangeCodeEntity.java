@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName exchange_code
@@ -34,7 +34,7 @@ public class ExchangeCodeEntity extends Model<ExchangeCodeEntity> implements Ser
     /**
      *
      */
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     /**
      *
@@ -44,12 +44,12 @@ public class ExchangeCodeEntity extends Model<ExchangeCodeEntity> implements Ser
     /**
      *
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
      *
      */
-    private LocalDateTime exchangeTime;
+    private Timestamp exchangeTime;
 
     /**
      *

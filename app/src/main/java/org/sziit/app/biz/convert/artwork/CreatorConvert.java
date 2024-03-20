@@ -2,7 +2,7 @@ package org.sziit.app.biz.convert.artwork;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.sziit.app.biz.artwork.dto.creator.CreatorRespDto;
+import org.sziit.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.sziit.infrastructure.dao.domain.CreatorEntity;
 
 /**
@@ -14,5 +14,5 @@ import org.sziit.infrastructure.dao.domain.CreatorEntity;
 public interface CreatorConvert {
     CreatorConvert INSTANCE = Mappers.getMapper(CreatorConvert.class);
 
-    CreatorRespDto convert(CreatorEntity entity);
+    CreatorRespDTO convertToRespDTO(CreatorEntity entity);
 }

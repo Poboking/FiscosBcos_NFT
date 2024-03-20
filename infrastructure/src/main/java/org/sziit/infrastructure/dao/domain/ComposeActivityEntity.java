@@ -7,70 +7,74 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
+ * 组合活动实体类，用于存储组合活动相关的信息
  * @TableName compose_activity
  */
 @TableName(value = "compose_activity")
 @Data
 public class ComposeActivityEntity extends Model<ComposeActivityEntity> implements Serializable {
     /**
-     *
+     * 活动的唯一标识符ID
      */
     @TableId
     private String id;
 
     /**
-     *
+     * 活动的结束时间
      */
-    private LocalDateTime activityTimeEnd;
+    private Timestamp activityTimeEnd;
 
     /**
-     *
+     * 活动的开始时间
      */
-    private LocalDateTime activityTimeStart;
+    private Timestamp activityTimeStart;
 
     /**
-     *
+     * 活动关联的收藏ID
      */
     private String collectionId;
 
     /**
-     *
+     * 记录创建时间
      */
-    private LocalDateTime createTime;
+    private Timestamp createTime;
 
     /**
-     *
+     * 删除标志，用于软删除功能
      */
     private Boolean deletedFlag;
 
     /**
-     *
+     * 记录删除时间
      */
-    private LocalDateTime deletedTime;
+    private Timestamp deletedTime;
 
     /**
-     *
+     * 活动商品的数量
      */
     private Integer quantity;
 
     /**
-     *
+     * 活动商品的库存
      */
     private Integer stock;
 
     /**
-     *
+     * 活动的标题
      */
     private String title;
 
     /**
-     *
+     * 版本号，用于乐观锁机制
      */
     private Long version;
 
+    /**
+     * 序列化版本UID，用于类在序列化和反序列化过程中保持版本兼容性
+     */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 

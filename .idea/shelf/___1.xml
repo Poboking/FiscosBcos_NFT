@@ -1,0 +1,9 @@
+<changelist name="在变基之前未提交的更改_[更改]1" date="1710173186063" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]1/shelved.patch" />
+  <option name="DESCRIPTION" value="在变基之前未提交的更改 [更改]" />
+  <binary>
+    <option name="BEFORE_PATH" value=".idea/copilot/chatSessions/00000000000.xd" />
+    <option name="AFTER_PATH" value=".idea/copilot/chatSessions/00000000000.xd" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在变基之前未提交的更改_[更改]1/00000000000.xd" />
+  </binary>
+</changelist>

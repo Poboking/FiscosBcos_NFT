@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 登录日志实体类，用于记录用户登录系统的相关日志信息。
@@ -36,7 +36,7 @@ public class LoginLogEntity extends Model<LoginLogEntity> implements Serializabl
     /**
      * 登录时间
      */
-    private LocalDateTime loginTime;
+    private Timestamp loginTime;
 
     /**
      * 登录过程中的相关信息或错误消息

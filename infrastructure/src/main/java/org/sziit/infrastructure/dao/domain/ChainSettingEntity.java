@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * @TableName chain_setting
@@ -29,7 +29,7 @@ public class ChainSettingEntity extends Model<ChainSettingEntity> implements Ser
     /**
      *
      */
-    private LocalDateTime latelyUpdateTime;
+    private Timestamp latelyUpdateTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

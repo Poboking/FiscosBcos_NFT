@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
-import org.sziit.infrastructure.dao.connector.MyHoldCollectionVoParent;
+import org.sziit.infrastructure.dao.connector.MyHoldCollectionRespDTOParent;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 /**
  * 成员持有收藏品实体类，用于记录成员持有的收藏品信息。
@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName(value = "member_hold_collection")
-public class MemberHoldCollectionEntity extends Model<MemberHoldCollectionEntity> implements Serializable, MyHoldCollectionVoParent {
+public class MemberHoldCollectionEntity extends Model<MemberHoldCollectionEntity> implements Serializable, MyHoldCollectionRespDTOParent {
     /**
      * 记录的唯一标识ID
      */
@@ -49,7 +49,7 @@ public class MemberHoldCollectionEntity extends Model<MemberHoldCollectionEntity
     /**
      * 持有时间
      */
-    private LocalDateTime holdTime;
+    private Timestamp holdTime;
 
     /**
      * 发行的收藏品ID
@@ -59,7 +59,7 @@ public class MemberHoldCollectionEntity extends Model<MemberHoldCollectionEntity
     /**
      * 失去时间，如转售、赠送等
      */
-    private LocalDateTime loseTime;
+    private Timestamp loseTime;
 
     /**
      * 成员ID
@@ -84,7 +84,7 @@ public class MemberHoldCollectionEntity extends Model<MemberHoldCollectionEntity
     /**
      * 与区块链同步的时间
      */
-    private LocalDateTime syncChainTime;
+    private Timestamp syncChainTime;
 
     /**
      * 交易哈希，用于记录区块链上的交易信息

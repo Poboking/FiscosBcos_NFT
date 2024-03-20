@@ -1,9 +1,4 @@
 
-I
-java:S1602;",Remove useless curly braces around statement(êÚ‹8ü¯Áæâ1
-u
-java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8¨—ëæâ1
-}
-java:S1128"[Remove this unused import 'org.sziit.infrastructure.dao.domain.MemberHoldCollectionEntity'.(îõÇ£şÿÿÿÿ8¨—ëæâ1
-…
-java:S1128"hRemove this unused import 'org.sziit.infrastructure.repository.impl.MemberHoldCollectionRepositoryImpl'.(ì¯é„8¨—ëæâ1
+“	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ˆÉ8‚û³µå1J$62f552ac-691e-45ee-b821-03e758f0129c
+o
+java:S1602Q",Remove useless curly braces around statement(êÚ‹8”û³µå1J$229a4af2-c751-46d2-b93e-8ead8195976a
