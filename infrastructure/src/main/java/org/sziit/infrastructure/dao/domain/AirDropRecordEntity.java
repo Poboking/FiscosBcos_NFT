@@ -18,46 +18,39 @@ import java.sql.Timestamp;
 @Data
 public class AirDropRecordEntity extends Model<AirDropRecordEntity> implements Serializable {
     /**
-     * 记录的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 空投时间
-     */
-    private Timestamp airDropTime;
-
-    /**
-     * 收藏品ID
-     */
-    private String collectionId;
-
-    /**
-     * 发行的收藏品ID
-     */
-    private String issuedCollectionId;
-
-    /**
-     * 成员ID
-     */
-    private String memberId;
-
-    /**
-     * 订单号
-     */
-    private String orderNo;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 记录的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 空投时间
+     */
+    private Timestamp airDropTime;
+    /**
+     * 收藏品ID
+     */
+    private String collectionId;
+    /**
+     * 发行的收藏品ID
+     */
+    private String issuedCollectionId;
+    /**
+     * 成员ID
+     */
+    private String memberId;
+    /**
+     * 订单号
+     */
+    private String orderNo;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

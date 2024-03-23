@@ -20,106 +20,88 @@ import java.sql.Timestamp;
 public class CollectionEntity extends Model<CollectionEntity> implements Serializable {
 
     /**
+     * 序列化版本UID，用于版本控制
+     */
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+    /**
      * 收藏品的唯一标识ID
      */
     @TableId
     @Schema(name = "id", type = "String", minimum = "undefined", maximum = "undefined")
     private String id;
-
     /**
      * 创建者的姓名
      */
     @TableField(exist = false)
     private String creatorName;
-
     /**
      * 创建者的头像
      */
     @TableField(exist = false)
     private String creatorAvatar;
-
     /**
      * 收藏品的哈希值，用于唯一确定一个收藏品
      */
     private String collectionHash;
-
     /**
      * 收藏品的类型
      * 商品类型_藏品 = "1";
      * 商品类型_盲盒 = "2"
      */
     private String commodityType;
-
     /**
      * 收藏品的封面图片链接或路径
      */
     private String cover;
-
     /**
      * 收藏品的创建时间
      */
     private Timestamp createTime;
-
     /**
      * 创建收藏品的创作者ID
      */
     private String creatorId;
-
     /**
      * 删除标志，表示该记录是否已被逻辑删除
      */
     private Boolean deletedFlag;
-
     /**
      * 逻辑删除的时间戳
      */
     private Timestamp deletedTime;
-
     /**
      * 是否允许在外部平台销售的标志
      */
     private Boolean externalSaleFlag;
-
     /**
      * 收藏品的名称
      */
     private String name;
-
     /**
      * 收藏品的价格
      */
     private Double price;
-
     /**
      * 收藏品的数量
      */
     private Integer quantity;
-
     /**
      * 收藏品的销售时间
      */
     private Timestamp saleTime;
-
     /**
      * 收藏品的库存数量
      */
     private Integer stock;
-
     /**
      * 与区块链同步的时间
      */
     private Timestamp syncChainTime;
-
     /**
      * 版本号，用于数据库的乐观锁机制
      */
     private Long version;
-
-    /**
-     * 序列化版本UID，用于版本控制
-     */
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

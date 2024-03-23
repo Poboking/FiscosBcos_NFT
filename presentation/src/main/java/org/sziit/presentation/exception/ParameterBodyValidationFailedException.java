@@ -9,9 +9,9 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
  * @date: 2024/3/12 21:07
  */
 @ExceptionAliasFor(code = "400", msg = "Bad Request - 参数校验失败", aliasFor = MethodArgumentNotValidException.class)
-public class ParameterBodyValidationFailedException extends RuntimeException{
+public class ParameterBodyValidationFailedException extends RuntimeException {
     /*
-    * 参数校验失败异常, 但是也没什么用.
+     * 参数校验失败异常, 但是也没什么用.
      */
     public ParameterBodyValidationFailedException(String message) {
         super(message);

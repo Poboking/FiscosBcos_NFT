@@ -1,8 +1,6 @@
 
-œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‚‡íÈ8Î–î¶å1J$f5a99109-5e06-424c-9d06-1c138e9c9237
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‚‡íÈ8Î–î¶å1J$b7983d9e-a9a6-487e-b556-e74bb5757d83
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ä“Öå1J$b4e6965d-1025-4f1a-9a15-22fc82cfbc5a
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ä“Öå1J$30e6ef16-d56b-445d-b93c-0f6f0d0b7b76
 …
-java:S6813 "BRemove this field injection and use constructor injection instead.(êæÄŞ8Å“Öå1J$e09b5c36-11b7-44bb-84a8-74b51d420fe0
-y
-java:S1128"6Remove this unused import 'javax.annotation.Resource'.(î¾Ì—8Ó“Öå1J$bba0fa1b-09e7-4a21-a692-6235aef19147
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Å“Öå1J$18f5849c-94d6-4a7d-935b-bc998764e5df

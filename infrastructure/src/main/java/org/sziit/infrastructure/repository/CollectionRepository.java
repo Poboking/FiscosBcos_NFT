@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.sziit.infrastructure.dao.domain.CollectionEntity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -77,4 +78,29 @@ public interface CollectionRepository extends IService<CollectionEntity> {
      * @return IPage<CollectionEntity> pageResult
      */
     IPage<CollectionEntity> getPageListByCreatorIdAndCommodityType(long current, long pageSize, String creatorId, String commodityType);
+
+    /**
+     * 根据时间范围 - 获取升序列表
+     *
+     * @param saleTimeStart 销售时间开始
+     * @param saleTimeEnd   销售时间结束
+     * @return List<CollectionEntity> 指定销售时间范围的CollectionEntity升序列表
+     */
+    List<CollectionEntity> getAscListByDateParam(LocalDateTime saleTimeStart, LocalDateTime saleTimeEnd);
+
+    /**
+     * 根据时间范围 - 获取降序列表
+     *
+     * @param saleTimeStart 销售时间开始
+     * @param saleTimeEnd   销售时间结束
+     * @return List<CollectionEntity> 指定销售时间范围的CollectionEntity降序列表
+     */
+    List<CollectionEntity> getDescListByDateParam(LocalDateTime saleTimeStart, LocalDateTime saleTimeEnd);
+
+    /**
+     * 减少库存
+     * @param collectionId 藏品ID
+     * @return boolean 是否减少成功
+     */
+    Boolean reduceStock(String collectionId);
 }

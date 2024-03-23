@@ -18,89 +18,75 @@ import java.sql.Timestamp;
 @TableName(value = "member_resale_collection")
 public class MemberResaleCollectionEntity implements Serializable, MyHoldCollectionRespDTOParent {
     /**
+     * 序列化版本UID，用于类版本控制
+     */
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+    /**
      * 转售记录的唯一标识ID
      */
     @TableId
     private String id;
-
     /**
      * 收藏品名称
      */
     @TableField(exist = false)
     private String name;
 
-    /**
-     * 收藏品封面
-     */
-    @TableField(exist = false)
-    private String cover;
-
 //    /**
 //     * 收藏品顺序值，例如 #12/100
 //     */
 //    @TableField(exist = false)
 //    private String collectionSerialNumber;
-
+    /**
+     * 收藏品封面
+     */
+    @TableField(exist = false)
+    private String cover;
     /**
      * 取消转售的时间
      */
     private Timestamp cancelTime;
-
     /**
      * 转售的收藏品ID
      */
     private String collectionId;
-
     /**
      * 发行的收藏品ID
      */
     private String issuedCollectionId;
-
     /**
      * 锁定支付的成员ID & 购买藏品的成员ID
      */
     private String lockPayMemberId;
-
     /**
      * 成员持有的收藏品ID
      */
     private String memberHoldCollectionId;
-
     /**
      * 转售的成员ID
      */
     private String memberId;
-
     /**
      * 转售价格
      */
     private Double resalePrice;
-
     /**
      * 转售时间
      */
     private Timestamp resaleTime;
-
     /**
      * 收藏品售出的时间
      */
     private Timestamp soldTime;
-
     /**
      * 转售状态
      */
     private String state;
-
     /**
      * 版本号，用于乐观锁控制
      */
     private Long version;
-
-    /**
-     * 序列化版本UID，用于类版本控制
-     */
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

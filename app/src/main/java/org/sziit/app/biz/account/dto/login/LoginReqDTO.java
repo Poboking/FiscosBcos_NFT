@@ -15,7 +15,7 @@ import javax.validation.constraints.Null;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginReqDTO extends LoginBaseDTO{
+public class LoginReqDTO extends LoginBaseDTO {
 
     @NotNull(message = "手机号不能为空")
     private String mobile;

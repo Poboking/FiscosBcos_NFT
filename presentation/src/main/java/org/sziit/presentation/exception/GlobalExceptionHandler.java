@@ -35,7 +35,7 @@ public class GlobalExceptionHandler {
      */
     //处理请求参数格式错误 @RequestBody上validate失败后抛出的异常是MethodArgumentNotValidException异常。
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public void handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) throws ParameterValidationFailedException{
+    public void handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) throws ParameterValidationFailedException {
         BindingResult bindingResult = ex.getBindingResult();
         StringBuilder sb = new StringBuilder("校验失败:");
         for (FieldError fieldError : bindingResult.getFieldErrors()) {
@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
 
     //处理请求参数格式错误 @RequestParam上validate失败后抛出的异常是javax.validation.ConstraintViolationException
     @ExceptionHandler(ConstraintViolationException.class)
-    public void handleConstraintViolationException(ConstraintViolationException ex) throws ParameterValidationFailedException{
+    public void handleConstraintViolationException(ConstraintViolationException ex) throws ParameterValidationFailedException {
         System.err.println(ex.getMessage());
         throw new ParameterValidationFailedException(ex.getMessage());
     }

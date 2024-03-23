@@ -1,11 +1,8 @@
 
 Š
-java:S1192G"GDefine a constant instead of duplicating this literal "mobile" 3 times.(ä•§Ò8ÄöÙå1J$49aad829-712f-40c6-99a6-0520230cd349
+java:S1192F"GDefine a constant instead of duplicating this literal "mobile" 3 times.(ä•§Ò8ÄöÙå1J$44753e9b-52f3-4ea6-89c3-e6bdcc092fb2
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8 ÄöÙå1J$2428cb88-5a52-4812-83f2-7b30ad39426d
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8 ÄöÙå1J$1e4a137a-6eb6-4273-88f9-d7e1306e795b
 z
-java:S1135<"2Complete the task associated to this TODO comment.(ÜÚ‹Îûÿÿÿÿ8¬ÄöÙå1J$bc8e2569-3369-4a37-8be6-6e3b27d2f641
-•	java:S100T"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( Ü«üıÿÿÿÿ8µÄöÙå1J$d861a0fb-7347-4d35-8f2e-a7744b65d732
-–
-java:S1128
-"NRemove this unused import 'org.sziit.app.biz.account.dto.member.MemberReqDTO'.(«ªÂşÿÿÿÿ8Ê†›İå1J$25a37f91-3f02-482c-9a35-3450e9b3e9e7
+java:S1135;"2Complete the task associated to this TODO comment.(ÜÚ‹Îûÿÿÿÿ8¬ÄöÙå1J$5ea2cae9-8fec-417f-b335-5cdc1fe996d3
+•	java:S100S"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( Ü«üıÿÿÿÿ8µÄöÙå1J$0c7df689-5878-45ac-b387-bb0b3f1e49ee

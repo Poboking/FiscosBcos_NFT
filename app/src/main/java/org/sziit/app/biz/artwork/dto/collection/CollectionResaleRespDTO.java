@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CollectionResaleRespDTO extends CollectionBaseDTO{
+public class CollectionResaleRespDTO extends CollectionBaseDTO {
 
     private String id;
 

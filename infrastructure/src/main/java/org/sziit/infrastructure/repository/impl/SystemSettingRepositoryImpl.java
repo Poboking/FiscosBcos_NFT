@@ -22,6 +22,7 @@ public class SystemSettingRepositoryImpl extends ServiceImpl<SystemSettingMapper
 
     /**
      * 获取最新的系统设置项
+     *
      * @return 最新的系统设置项
      */
     @Override

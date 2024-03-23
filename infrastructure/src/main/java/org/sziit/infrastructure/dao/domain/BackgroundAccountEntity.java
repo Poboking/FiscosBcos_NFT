@@ -18,71 +18,59 @@ import java.sql.Timestamp;
 @Data
 public class BackgroundAccountEntity extends Model<BackgroundAccountEntity> implements Serializable {
     /**
-     * 账户的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 删除标志，用于软删除
-     */
-    private Boolean deletedFlag;
-
-    /**
-     * 账户删除时间
-     */
-    private Timestamp deletedTime;
-
-    /**
-     * Google二次验证绑定时间
-     */
-    private Timestamp googleAuthBindTime;
-
-    /**
-     * Google二次验证密钥
-     */
-    private String googleSecretKey;
-
-    /**
-     * 最近一次登录时间
-     */
-    private Timestamp latelyLoginTime;
-
-    /**
-     * 登录密码
-     */
-    private String loginPwd;
-
-    /**
-     * 账户注册时间
-     */
-    private Timestamp registeredTime;
-
-    /**
-     * 账户状态
-     */
-    private String state;
-
-    /**
-     * 超级管理员标志
-     */
-    private Boolean superAdminFlag;
-
-    /**
-     * 用户名
-     */
-    private String userName;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 账户的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 删除标志，用于软删除
+     */
+    private Boolean deletedFlag;
+    /**
+     * 账户删除时间
+     */
+    private Timestamp deletedTime;
+    /**
+     * Google二次验证绑定时间
+     */
+    private Timestamp googleAuthBindTime;
+    /**
+     * Google二次验证密钥
+     */
+    private String googleSecretKey;
+    /**
+     * 最近一次登录时间
+     */
+    private Timestamp latelyLoginTime;
+    /**
+     * 登录密码
+     */
+    private String loginPwd;
+    /**
+     * 账户注册时间
+     */
+    private Timestamp registeredTime;
+    /**
+     * 账户状态
+     */
+    private String state;
+    /**
+     * 超级管理员标志
+     */
+    private Boolean superAdminFlag;
+    /**
+     * 用户名
+     */
+    private String userName;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

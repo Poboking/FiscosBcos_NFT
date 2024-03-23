@@ -10,69 +10,71 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * @TableName settlement_account
+ * 结算账户实体类，用于记录和管理用户的结算账户信息
+ *
+ * @TableName settlement_account 指定实体类对应的数据库表名为 "settlement_account"
  */
 @TableName(value = "settlement_account")
 @Data
 public class SettlementAccountEntity extends Model<SettlementAccountEntity> implements Serializable {
     /**
-     *
+     * 结算账户的唯一标识符ID
      */
     @TableId
     private String id;
 
     /**
-     *
+     * 账户号码，用户的银行账户或其他类型的结算账户号码
      */
     private String account;
 
     /**
-     *
+     * 账户是否已激活的标志
      */
     private Boolean activated;
 
     /**
-     *
+     * 账户激活的时间
      */
     private Timestamp activatedTime;
 
     /**
-     *
+     * 银行名称，用户结算账户所属的银行
      */
     private String bankName;
 
     /**
-     *
+     * 银行卡号，用户的储蓄卡或信用卡卡号
      */
     private String cardNumber;
 
     /**
-     *
+     * 账户创建的时间
      */
     private Timestamp createTime;
 
     /**
-     *
+     * 删除标志，用于软删除功能
      */
     private Boolean deletedFlag;
 
     /**
-     *
+     * 账户删除的时间
      */
     private Timestamp deletedTime;
 
     /**
-     *
+     * 会员ID，结算账户所属用户的ID
      */
     private String memberId;
 
     /**
-     *
+     * 真实姓名，与结算账户关联的用户的实名信息
      */
     private String realName;
 
     /**
-     *
+     * 账户类型，如银行账户、第三方支付账户等
      */
     private String type;
 

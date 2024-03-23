@@ -35,9 +35,9 @@ public interface CollectionGiveRecordRepository extends IService<CollectionGiveR
     /**
      * 根据赠送方ID或接收方ID获取赠送记录
      *
-     * @param current  当前页
-     * @param pageSize 每页大小
-     * @param memberId 赠送方ID
+     * @param current   当前页
+     * @param pageSize  每页大小
+     * @param memberId  赠送方ID
      * @param memberId1 接收方ID
      * @return 赠送记录分页列表
      */

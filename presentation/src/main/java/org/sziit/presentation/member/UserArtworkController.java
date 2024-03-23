@@ -14,6 +14,7 @@ import org.sziit.app.biz.artwork.collection.MemberResaleCollectionService;
 import org.sziit.app.biz.artwork.dto.myholdcollection.MyHoldCollectionRespDTO;
 import org.sziit.app.biz.artwork.mysteryBox.MemberMysteryBoxService;
 import org.sziit.infrastructure.common.PageResult;
+import org.sziit.presentation.utils.StpUserUtil;
 
 /**
  * @project: a20-nft-3_7
@@ -39,8 +40,8 @@ public class UserArtworkController {
     @ValidationStatusCode(code = "400")
     public PageResult<MyHoldCollectionRespDTO> findMyHoldCollectionByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
-            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
-            @RequestParam(name = "memberId") String memberId) {
+            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize) {
+        String memberId = StpUserUtil.getLoginIdAsString();
         return memberCollectionService.getHoldCollectionPageList(current, pageSize, memberId);
     }
 
@@ -49,8 +50,8 @@ public class UserArtworkController {
     @ValidationStatusCode(code = "400")
     public PageResult<MyHoldCollectionRespDTO> findMyHoldMysteryBoxByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
-            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
-            String memberId) {
+            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize) {
+        String memberId = StpUserUtil.getLoginIdAsString();
         return memberMysteryBoxService.getHoldMysteryBoxPageList(current, pageSize, memberId);
     }
 
@@ -59,8 +60,8 @@ public class UserArtworkController {
     @ValidationStatusCode(code = "400")
     public PageResult<MyHoldCollectionRespDTO> findMySoldCollectionByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
-            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
-            String memberId) {
+            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize) {
+        String memberId = StpUserUtil.getLoginIdAsString();
         return memberResaleCollectionService.getMySoldCollectionPageList(current, pageSize, memberId);
     }
 

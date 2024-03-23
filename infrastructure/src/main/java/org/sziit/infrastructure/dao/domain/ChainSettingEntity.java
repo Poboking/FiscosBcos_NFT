@@ -15,24 +15,21 @@ import java.sql.Timestamp;
 @TableName(value = "chain_setting")
 @Data
 public class ChainSettingEntity extends Model<ChainSettingEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private String currentInUseChain;
-
     /**
      *
      */
     private Timestamp latelyUpdateTime;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

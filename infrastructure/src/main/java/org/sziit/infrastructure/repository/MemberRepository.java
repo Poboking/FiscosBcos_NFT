@@ -37,4 +37,13 @@ public interface MemberRepository extends IService<MemberEntity> {
      * @return 是否更新成功
      */
     boolean bindReadName(String realName, String ssn, String mobile, String memberId);
+
+    /**
+     * 减少用户余额
+     *
+     * @param memberId 用户ID
+     * @param amount   金额
+     * @return 是否更新成功
+     */
+    boolean reduceBalance(String memberId, Double amount);
 }

@@ -1,11 +1,11 @@
 package org.sziit.app.biz.artwork.collection;
 
+import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDTO;
-import org.sziit.app.biz.artwork.dto.collection.CollectionIntroRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.*;
 import org.sziit.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.sziit.app.biz.convert.artwork.CollectionConvert;
 import org.sziit.app.biz.convert.artwork.CreatorConvert;
@@ -14,8 +14,11 @@ import org.sziit.infrastructure.dao.domain.CollectionEntity;
 import org.sziit.infrastructure.repository.impl.CollectionRepositoryImpl;
 import org.sziit.infrastructure.repository.impl.CreatorRepositoryImpl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @project: a20-nft-3_7
@@ -60,6 +63,9 @@ public class CollectionService {
         List<CollectionIntroRespDTO> resultList = new ArrayList<>();
         pageEntity.getRecords().forEach(bean -> {
             CreatorRespDTO creator = getCreatorById(bean.getCreatorId());
+            if (creator == null) {
+                return;
+            }
             bean.setCreatorName(creator.getName());
             bean.setCreatorAvatar(creator.getAvatar());
             resultList.add(CollectionConvert.INSTANCE.convertToIntroRespDTO(bean));
@@ -72,10 +78,57 @@ public class CollectionService {
         List<CollectionIntroRespDTO> resultList = new ArrayList<>();
         pageEntity.getRecords().forEach(bean -> {
             CreatorRespDTO creator = getCreatorById(creatorId);
+            if (creator == null) {
+                return;
+            }
             bean.setCreatorName(creator.getName());
             bean.setCreatorAvatar(creator.getAvatar());
             resultList.add(CollectionConvert.INSTANCE.convertToIntroRespDTO(bean));
         });
         return PageResult.convertFor(pageEntity, pageSize, resultList);
+    }
+
+    public List<CollectionEntity> getAscListByDateParam(CollectionDateQueryReqDTO param) {
+        return collectionRepository.getAscListByDateParam(param.getSaleTimeStart(), param.getSaleTimeEnd());
+    }
+
+    public List<CollectionEntity> getDescListByDateParam(CollectionDateQueryReqDTO param) {
+        return collectionRepository.getDescListByDateParam(param.getSaleTimeStart(), param.getSaleTimeEnd());
+    }
+
+    public List<GroupByDateCollectionRespDTO> findForSaleCollection() {
+        CollectionDateQueryReqDTO param = new CollectionDateQueryReqDTO();
+        param.setSaleTimeStart(LocalDateTime.now());
+        param.setSaleTimeEnd(LocalDateTime.now().plusDays(10));
+        List<CollectionEntity> result = getAscListByDateParam(param);
+        Map<String, List<CollectionEntity>> dateMap = new LinkedHashMap<String, List<CollectionEntity>>();
+        for (CollectionEntity collection : result) {
+            String date = DateUtil.format(collection.getSaleTime(), "MM月dd日");
+            if (dateMap.get(date) == null) {
+                dateMap.put(date, new ArrayList<>());
+            }
+            dateMap.get(date).add(collection);
+        }
+        List<GroupByDateCollectionRespDTO> groupByDateDTOs = new ArrayList<>();
+        for (Map.Entry<String, List<CollectionEntity>> entry : dateMap.entrySet()) {
+            Map<String, List<CollectionEntity>> timeMap = new LinkedHashMap<String, List<CollectionEntity>>();
+            for (CollectionEntity collection : entry.getValue()) {
+                String time = DateUtil.format(collection.getSaleTime(), "HH:mm");
+                if (timeMap.get(time) == null) {
+                    timeMap.put(time, new ArrayList<>());
+                }
+                timeMap.get(time).add(collection);
+            }
+            GroupByDateCollectionRespDTO groupByDateDTO = new GroupByDateCollectionRespDTO();
+            for (Map.Entry<String, List<CollectionEntity>> time : timeMap.entrySet()) {
+                GroupByTimeCollectionRespDTO groupByTimeDTO = new GroupByTimeCollectionRespDTO();
+                groupByTimeDTO.setTime(time.getKey());
+                groupByTimeDTO.setCollections(CollectionConvert.INSTANCE.convertToForSaleRespDTO(time.getValue()));
+                groupByDateDTO.getTimeCollections().add(groupByTimeDTO);
+            }
+            groupByDateDTO.setDate(entry.getKey());
+            groupByDateDTOs.add(groupByDateDTO);
+        }
+        return groupByDateDTOs;
     }
 }

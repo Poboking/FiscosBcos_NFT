@@ -15,34 +15,29 @@ import java.sql.Timestamp;
 @TableName(value = "role")
 @Data
 public class RoleEntity extends Model<RoleEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private Timestamp createTime;
-
     /**
      *
      */
     private Boolean deletedFlag;
-
     /**
      *
      */
     private Timestamp deletedTime;
-
     /**
      *
      */
     private String name;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

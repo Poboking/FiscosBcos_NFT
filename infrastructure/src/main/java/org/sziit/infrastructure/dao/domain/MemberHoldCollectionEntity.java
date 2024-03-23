@@ -19,88 +19,73 @@ import java.sql.Timestamp;
 @TableName(value = "member_hold_collection")
 public class MemberHoldCollectionEntity extends Model<MemberHoldCollectionEntity> implements Serializable, MyHoldCollectionRespDTOParent {
     /**
+     * 序列化版本UID，用于类版本控制
+     */
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+    /**
      * 记录的唯一标识ID
      */
     @TableId
     private String id;
-
     /**
      * 藏品名称
      */
     @TableField(exist = false)
     private String name;
-
     /**
      * 藏品封面
      */
     @TableField(exist = false)
     private String cover;
-
     /**
      * 收藏品ID
      */
     private String collectionId;
-
     /**
      * 获取方式，如购买、赠送等
      */
     private String gainWay;
-
     /**
      * 持有时间
      */
     private Timestamp holdTime;
-
     /**
      * 发行的收藏品ID
      */
     private String issuedCollectionId;
-
     /**
      * 失去时间，如转售、赠送等
      */
     private Timestamp loseTime;
-
     /**
      * 成员ID
      */
     private String memberId;
-
     /**
      * 上一条记录的ID，用于记录变更历史
      */
     private String preId;
-
     /**
      * 价格
      */
     private Double price;
-
     /**
      * 状态，如持有、转售等
      */
     private String state;
-
     /**
      * 与区块链同步的时间
      */
     private Timestamp syncChainTime;
-
     /**
      * 交易哈希，用于记录区块链上的交易信息
      */
     private String transactionHash;
-
     /**
      * 版本号，用于乐观锁控制
      */
     private Long version;
-
-    /**
-     * 序列化版本UID，用于类版本控制
-     */
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

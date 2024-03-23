@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberUpdateNickNameReqDTO extends MemberBaseDTO{
+public class MemberUpdateNickNameReqDTO extends MemberBaseDTO {
 
     @NotNull
     private String nickName;

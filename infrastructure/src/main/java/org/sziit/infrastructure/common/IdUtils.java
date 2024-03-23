@@ -22,7 +22,7 @@ public class IdUtils {
     /**
      * UUID
      */
-    public static String uuid(){
+    public static String uuid() {
         return UUID.randomUUID().toString().replace("-", "");
     }
 }

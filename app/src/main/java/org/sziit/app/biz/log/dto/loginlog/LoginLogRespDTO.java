@@ -34,7 +34,7 @@ public class LoginLogRespDTO extends LoginLogBaseDTO {
     private String subSystemName;
 
     /**
-     * State, example: 1
+     * State, example: 1(启用), 0(禁用)
      */
     private String state;
 

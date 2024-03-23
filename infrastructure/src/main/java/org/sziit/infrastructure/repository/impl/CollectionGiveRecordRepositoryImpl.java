@@ -26,8 +26,8 @@ public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGi
     /**
      * 根据赠送方ID获取赠送记录
      *
-     * @param current  当前页
-     * @param pageSize 每页大小
+     * @param current    当前页
+     * @param pageSize   每页大小
      * @param giveFromId 赠送方ID
      * @return 赠送记录分页列表
      */
@@ -54,17 +54,17 @@ public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGi
     /**
      * 根据赠送方ID或接收方ID获取赠送记录
      *
-     * @param current   当前页
-     * @param pageSize  每页大小
-     * @param giveFromId  赠送方ID
-     * @param giveToId 接收方ID
+     * @param current    当前页
+     * @param pageSize   每页大小
+     * @param giveFromId 赠送方ID
+     * @param giveToId   接收方ID
      * @return 赠送记录分页列表
      */
     @Override
     public IPage<CollectionGiveRecordEntity> getPageListByGiveToIdOrGiveFormId(long current, long pageSize, String giveFromId, String giveToId) {
         return collectionGiveRecordMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<CollectionGiveRecordEntity>()
-                        .or(i -> i.eq(Optional.ofNullable(giveFromId).isPresent(), "give_from_id", giveFromId)
-                                .eq(Optional.ofNullable(giveToId).isPresent(), "give_to_id", giveToId)));
+                .or(i -> i.eq(Optional.ofNullable(giveFromId).isPresent(), "give_from_id", giveFromId)
+                        .eq(Optional.ofNullable(giveToId).isPresent(), "give_to_id", giveToId)));
     }
 }
 

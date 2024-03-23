@@ -13,7 +13,7 @@ import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
  * 由Graceful-Response框架统一处理, 进行异常捕获
  */
 @ExceptionMapper(code = "500", msg = "Service Error")
-public class InternalServerErrorException extends RuntimeException{
+public class InternalServerErrorException extends RuntimeException {
     public InternalServerErrorException(String message) {
         super(message);
     }

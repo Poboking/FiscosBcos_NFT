@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.sziit.infrastructure.dao.domain.MemberBalanceChangeLogEntity;
 import org.sziit.infrastructure.dao.mapper.MemberBalanceChangeLogMapper;
+import org.sziit.infrastructure.dao.mapper.MemberMapper;
 import org.sziit.infrastructure.repository.MemberBalanceChangeLogRepository;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 
 /**
@@ -20,8 +22,14 @@ import java.util.Optional;
 @Service
 public class MemberBalanceChangeLogRepositoryImpl extends ServiceImpl<MemberBalanceChangeLogMapper, MemberBalanceChangeLogEntity>
         implements MemberBalanceChangeLogRepository {
+    private final MemberBalanceChangeLogMapper memberBalanceChangeLogMapper;
+
+    private final MemberMapper memberMapper;
     @Autowired
-    private MemberBalanceChangeLogMapper memberBalanceChangeLogMapper;
+    public MemberBalanceChangeLogRepositoryImpl(MemberBalanceChangeLogMapper memberBalanceChangeLogMapper, MemberMapper memberMapper) {
+        this.memberBalanceChangeLogMapper = memberBalanceChangeLogMapper;
+        this.memberMapper = memberMapper;
+    }
 
     /**
      * 获取会员余额变动日志的分页列表 - 根据变动类型
@@ -33,7 +41,7 @@ public class MemberBalanceChangeLogRepositoryImpl extends ServiceImpl<MemberBala
      */
     @Override
     public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long size, String changeType) {
-        return  memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
+        return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
                 .eq(Optional.ofNullable(changeType).isPresent(), "change_type", changeType));
     }
 
@@ -77,6 +85,31 @@ public class MemberBalanceChangeLogRepositoryImpl extends ServiceImpl<MemberBala
         return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
                 .eq(Optional.ofNullable(changeType).isPresent(), "change_type", changeType)
                 .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId));
+    }
+
+    /**
+     * 创建余额变动日志 - 需在Balance改变之后方可调用
+     * @param memberId      会员ID
+     * @param balanceChange 余额变动
+     * @param changeType    变动类型
+     * @param orderNo       订单号
+     * @param changeTime    变动时间
+     * @return 是否创建成功
+     */
+    @Override
+    public Boolean createLog(String memberId, Double balanceChange, String changeType, String orderNo, Timestamp changeTime) {
+        Double balance = memberMapper.selectById(memberId).getBalance();
+        MemberBalanceChangeLogEntity entity = MemberBalanceChangeLogEntity.builder()
+                .memberId(memberId)
+                .balanceChange(balanceChange)
+                .balanceAfter(balance + balanceChange)
+                .balanceBefore(balance)
+                .changeType(changeType)
+                .bizOrderNo(orderNo)
+                .changeTime(changeTime)
+                .note("余额变动")
+                .build();
+        return memberBalanceChangeLogMapper.insert(entity) > 0;
     }
 }
 

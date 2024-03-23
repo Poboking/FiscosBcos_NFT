@@ -45,9 +45,7 @@ public class LoginLogService {
     public PageResult<LoginLogRespDTO> getLoginLog(long current, long pageSize) {
         IPage<LoginLogEntity> pageList = loginLogRepository.getPageList(current, pageSize);
         List<LoginLogRespDTO> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> {
-            recordList.add(LoginLogConvert.INSTANCE.convertToRespDto(item));
-        });
+        pageList.getRecords().forEach(item -> recordList.add(LoginLogConvert.INSTANCE.convertToRespDto(item)));
         return PageResult.convertFor(pageList, pageSize, recordList);
     }
 
@@ -56,15 +54,13 @@ public class LoginLogService {
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @param userName       Log日志ID
+     * @param userName Log日志ID
      * @return PageResult<LoginLogRespDto> 分页数据
      */
     public PageResult<LoginLogRespDTO> getLoginLog(long current, long pageSize, String userName) {
         IPage<LoginLogEntity> pageList = loginLogRepository.getLoginLogByUserName(current, pageSize, userName);
         List<LoginLogRespDTO> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> {
-            recordList.add(LoginLogConvert.INSTANCE.convertToRespDto(item));
-        });
+        pageList.getRecords().forEach(item -> recordList.add(LoginLogConvert.INSTANCE.convertToRespDto(item)));
         return PageResult.convertFor(pageList, pageSize, recordList);
     }
 

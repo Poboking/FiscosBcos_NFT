@@ -1,7 +1,7 @@
 
 q
-java:S1192b"ODefine a constant instead of duplicating this literal "commodity_type" 3 times.(€äºîıÿÿÿÿ8¿‡ì¶å1
+java:S1192c"ODefine a constant instead of duplicating this literal "commodity_type" 3 times.(€äºîıÿÿÿÿ8’œÚÛæ1
+h
+java:S1192"JDefine a constant instead of duplicating this literal "sale_time" 6 times.(ğÅª8“œÚÛæ1
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ŸıãÖå1
-S
-java:S1128"6Remove this unused import 'javax.annotation.Resource'.(î¾Ì—8®ıãÖå1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ŸœÚÛæ1

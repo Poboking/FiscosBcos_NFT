@@ -130,12 +130,12 @@ public interface MemberResaleCollectionRepository extends IService<MemberResaleC
     /**
      * 获取分页列表 - 按照Param
      *
-     * @param current      当前页
-     * @param pageSize     每页大小
-     * @param creatorId    创建者id
-     * @param collectionId 收藏品id
-     * @param state    持有藏品状态
-     * @param collectionIds          特定类别的收藏品ids
+     * @param current       当前页
+     * @param pageSize      每页大小
+     * @param creatorId     创建者id
+     * @param collectionId  收藏品id
+     * @param state         持有藏品状态
+     * @param collectionIds 特定类别的收藏品ids
      * @return IPage<MemberResaleCollectionEntity> 分页列表
      */
     IPage<MemberResaleCollectionEntity> getPriceOrderAscPageListByParam(Long current, Long pageSize, String creatorId, String collectionId, String state, List<String> collectionIds);

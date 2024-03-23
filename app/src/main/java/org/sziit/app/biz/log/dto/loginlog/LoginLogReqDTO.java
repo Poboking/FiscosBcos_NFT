@@ -1,9 +1,10 @@
 package org.sziit.app.biz.log.dto.loginlog;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import org.sziit.infrastructure.common.IdUtils;
 
 import java.sql.Timestamp;
 
@@ -14,8 +15,8 @@ import java.sql.Timestamp;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class LoginLogReqDTO extends LoginLogBaseDTO {
     /**
      * LoginLog ID, example: 1767787746908176384
@@ -71,5 +72,77 @@ public class LoginLogReqDTO extends LoginLogBaseDTO {
      * userName, example: 11111111111, 一般以手机号作为用户名
      */
     private String userName;
+
+
+    public static LoginLogReqDTO quickSuccessfulBuild(String ipAddr, String browser, String os, String userName) {
+        String subSystem = "member"; // 设置 subsystem
+        String subSystemName = "会员端"; // 设置 subsystemName
+        String state = "1"; // 设置 state
+        String stateName = "成功"; // 设置 stateName
+        Timestamp loginTime = new Timestamp(System.currentTimeMillis()); // 获取当前时间作为登录时间
+        String msg = "登录成功"; // 设置消息
+
+        return LoginLogReqDTO.builder()
+                .id(IdUtils.snowFlakeId())
+                .subSystem(subSystem)
+                .subSystemName(subSystemName)
+                .state(state)
+                .stateName(stateName)
+                .ipAddr(ipAddr)
+                .loginTime(loginTime)
+                .browser(browser)
+                .os(os)
+                .msg(msg)
+                .userName(userName)
+                .build();
+    }
+
+    public static LoginLogReqDTO quickSuccessfulBuild(LoginLogReqParam param) {
+        return quickSuccessfulBuild(param.getIpAddr(), param.getBrowser(), param.getOs(), param.getUserName());
+    }
+
+
+    public static LoginLogReqDTO quickFailureBuild(String ipAddr, String browser, String os, String userName) {
+        String subSystem = "member"; // 设置 subsystem
+        String subSystemName = "会员端"; // 设置 subsystemName
+        String state = "1"; // 设置 state
+        String stateName = "失败"; // 设置 stateName
+        Timestamp loginTime = new Timestamp(System.currentTimeMillis()); // 获取当前时间作为登录时间
+        String msg = "登录失败"; // 设置消息
+
+        return LoginLogReqDTO.builder()
+                .id(IdUtils.snowFlakeId())
+                .subSystem(subSystem)
+                .subSystemName(subSystemName)
+                .state(state)
+                .stateName(stateName)
+                .ipAddr(ipAddr)
+                .loginTime(loginTime)
+                .browser(browser)
+                .os(os)
+                .msg(msg)
+                .userName(userName)
+                .build();
+    }
+
+    public static LoginLogReqDTO quickFailureBuild(LoginLogReqParam param) {
+        return quickFailureBuild(param.getIpAddr(), param.getBrowser(), param.getOs(), param.getUserName());
+    }
+
+    public static LoginLogReqDTO quickBuild(Boolean isSucceed, String ipAddr, String browser, String os, String userName) {
+        if (Boolean.TRUE.equals(isSucceed)) {
+            return quickSuccessfulBuild(ipAddr, browser, os, userName);
+        } else {
+            return quickFailureBuild(ipAddr, browser, os, userName);
+        }
+    }
+
+    public static LoginLogReqDTO quickBuild(Boolean isSucceed, LoginLogReqParam param) {
+        if (Boolean.TRUE.equals(isSucceed)) {
+            return quickSuccessfulBuild(param);
+        } else {
+            return quickFailureBuild(param);
+        }
+    }
 
 }

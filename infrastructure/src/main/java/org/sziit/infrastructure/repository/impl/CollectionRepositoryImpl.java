@@ -1,6 +1,7 @@
 package org.sziit.infrastructure.repository.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -11,6 +12,7 @@ import org.sziit.infrastructure.dao.domain.CollectionEntity;
 import org.sziit.infrastructure.dao.mapper.CollectionMapper;
 import org.sziit.infrastructure.repository.CollectionRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -121,10 +123,58 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      */
     @Override
     public IPage<CollectionEntity> getPageListByCreatorIdAndCommodityType(long current, long pageSize, String creatorId, String commodityType) {
-        return  collectionMapper.selectPage(new Page<>(current, pageSize),
+        return collectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<CollectionEntity>()
                         .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
                         .eq(Optional.ofNullable(commodityType).isPresent(), "commodity_type", commodityType));
+    }
+
+    /**
+     * 根据时间范围 - 获取升序列表
+     *
+     * @param saleTimeStart 销售时间开始
+     * @param saleTimeEnd   销售时间结束
+     * @return List<CollectionEntity> 指定销售时间范围的CollectionEntity升序列表
+     */
+    @Override
+    public List<CollectionEntity> getAscListByDateParam(LocalDateTime saleTimeStart, LocalDateTime saleTimeEnd) {
+        return collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
+                .ge(Optional.ofNullable(saleTimeStart).isPresent(), "sale_time", saleTimeStart)
+                .le(Optional.ofNullable(saleTimeEnd).isPresent(), "sale_time", saleTimeEnd)
+                .orderByAsc("sale_time"));
+    }
+
+    /**
+     * 根据时间范围 - 获取降序列表
+     *
+     * @param saleTimeStart 销售时间开始
+     * @param saleTimeEnd   销售时间结束
+     * @return List<CollectionEntity> 指定销售时间范围的CollectionEntity降序列表
+     */
+    @Override
+    public List<CollectionEntity> getDescListByDateParam(LocalDateTime saleTimeStart, LocalDateTime saleTimeEnd) {
+        return collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
+                .ge(Optional.ofNullable(saleTimeStart).isPresent(), "sale_time", saleTimeStart)
+                .le(Optional.ofNullable(saleTimeEnd).isPresent(), "sale_time", saleTimeEnd)
+                .orderByDesc("sale_time"));
+    }
+
+    /**
+     * 减少库存
+     *
+     * @param collectionId 藏品ID
+     * @return boolean 是否减少成功
+     */
+    @Override
+    public Boolean reduceStock(String collectionId) {
+        if (collectionMapper.selectById(collectionId).getStock() <= 0) {
+            return false;
+        }
+        return collectionMapper.update(null,
+                new UpdateWrapper<CollectionEntity>()
+                        .gt("stock", 0)
+                        .eq("id", collectionId)
+                        .setSql("stock = stock - 1")) > 0;
     }
 }
 

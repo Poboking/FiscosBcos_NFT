@@ -15,64 +15,53 @@ import java.sql.Timestamp;
 @TableName(value = "oper_log")
 @Data
 public class OperLogEntity extends Model<OperLogEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private String ipAddr;
-
     /**
      *
      */
     private String module;
-
     /**
      *
      */
     private String operAccountId;
-
     /**
      *
      */
     private String operName;
-
     /**
      *
      */
     private Timestamp operTime;
-
     /**
      *
      */
     private String operate;
-
     /**
      *
      */
     private String requestMethod;
-
     /**
      *
      */
     private String requestParam;
-
     /**
      *
      */
     private String requestUrl;
-
     /**
      *
      */
     private String subSystem;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

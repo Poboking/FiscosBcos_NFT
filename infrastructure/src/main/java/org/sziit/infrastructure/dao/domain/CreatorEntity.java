@@ -18,51 +18,43 @@ import java.sql.Timestamp;
 @TableName(value = "creator")
 public class CreatorEntity extends Model<CreatorEntity> implements Serializable {
     /**
-     * 创作者的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 创作者的头像链接或文件路径
-     */
-    private String avatar;
-
-    /**
-     * 创作者信息创建的时间
-     */
-    private Timestamp createTime;
-
-    /**
-     * 删除标志，用于软删除
-     */
-    private Boolean deletedFlag;
-
-    /**
-     * 删除时间
-     */
-    private Timestamp deletedTime;
-
-    /**
-     * 最后修改时间
-     */
-    private Timestamp lastModifyTime;
-
-    /**
-     * 创作者的姓名或昵称
-     */
-    private String name;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 创作者的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 创作者的头像链接或文件路径
+     */
+    private String avatar;
+    /**
+     * 创作者信息创建的时间
+     */
+    private Timestamp createTime;
+    /**
+     * 删除标志，用于软删除
+     */
+    private Boolean deletedFlag;
+    /**
+     * 删除时间
+     */
+    private Timestamp deletedTime;
+    /**
+     * 最后修改时间
+     */
+    private Timestamp lastModifyTime;
+    /**
+     * 创作者的姓名或昵称
+     */
+    private String name;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

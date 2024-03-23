@@ -30,7 +30,6 @@ public class SaTokenConfigure implements WebMvcConfigurer {
     }
 
 
-    // TODO: 2024/3/19 这里需要对拦截器进行简化, 避免不必要的拦截鉴权
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // 注册 Sa-Token 校验拦截器，定义详细认证规则
@@ -62,20 +61,20 @@ public class SaTokenConfigure implements WebMvcConfigurer {
 //                            });        // 要执行的校验动作，可以写完整的 lambda 表达式
 
                     SaRouter.match(
-                            "/back/**",
-                            "/myArtwork/**",
-                            "/transaction/**",
-                            "/storage/**",
-                            "/notice/**",
-                            "/member/**",
-                            "/dictconfig/**",
-                            "/collection/**")
+                                    "/back/**",
+                                    "/myArtwork/**",
+                                    "/transaction/**",
+                                    "/storage/**",
+                                    "/notice/**",
+                                    "/member/**",
+                                    "/dictconfig/**",
+                                    "/collection/**")
                             .notMatch(
                                     "/login",
                                     "/quickLogin",
                                     "/back/login",
                                     "/back/logout"
-                                    )
+                            )
                             .check(r -> {
                                 if (Boolean.FALSE.equals(StpUserUtil.isLogin())) {
                                     throw new UnauthorizedException("[UnauthorizedException]: 用户未登录");
@@ -92,13 +91,14 @@ public class SaTokenConfigure implements WebMvcConfigurer {
                     SaRouter.match("/collection/**", r -> StpUserUtil.checkPermission("user.collection"));
                     // 甚至你可以随意的写一个打印语句
                     SaRouter.match("/**", r ->
-                            {
-                                if (StpUserUtil.isLogin()) {
-                                    log.info(CharSequenceUtil.format("[{}]:用户登录", StpUserUtil.getLoginIdDefaultNull()));
-                                }if (StpAdminUtil.isLogin()) {
-                                    log.info(CharSequenceUtil.format("[{}]:管理员登录", StpAdminUtil.getLoginIdDefaultNull()));
-                                }
-                            });
+                    {
+                        if (StpUserUtil.isLogin()) {
+                            log.info(CharSequenceUtil.format("[{}]:用户登录", StpUserUtil.getLoginIdDefaultNull()));
+                        }
+                        if (StpAdminUtil.isLogin()) {
+                            log.info(CharSequenceUtil.format("[{}]:管理员登录", StpAdminUtil.getLoginIdDefaultNull()));
+                        }
+                    });
                 })).addPathPatterns("/**")
                 // "/error"用于给404错误放行
                 .excludePathPatterns("/test/",

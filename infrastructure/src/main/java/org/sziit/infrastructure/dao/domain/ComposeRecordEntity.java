@@ -15,44 +15,37 @@ import java.sql.Timestamp;
 @TableName(value = "compose_record")
 @Data
 public class ComposeRecordEntity extends Model<ComposeRecordEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private String composeActivityId;
-
     /**
      *
      */
     private Timestamp composeTime;
-
     /**
      *
      */
     private String issuedCollectionId;
-
     /**
      *
      */
     private String memberId;
-
     /**
      *
      */
     private String orderNo;
-
     /**
      *
      */
     private Long version;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

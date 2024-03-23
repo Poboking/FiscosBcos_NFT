@@ -5,7 +5,7 @@ package org.sziit.infrastructure.exception;
  * @author: poboking
  * @date: 2024/3/18 22:17
  */
-public class UtilException extends RuntimeException{
+public class UtilException extends RuntimeException {
     public UtilException(String message) {
         super(message);
     }

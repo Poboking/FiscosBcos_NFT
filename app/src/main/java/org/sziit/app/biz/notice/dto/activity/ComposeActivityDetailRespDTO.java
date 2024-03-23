@@ -15,7 +15,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComposeActivityDetailRespDTO extends ComposeActivityBaseDTO{
+public class ComposeActivityDetailRespDTO extends ComposeActivityBaseDTO {
 
     private String id;
 

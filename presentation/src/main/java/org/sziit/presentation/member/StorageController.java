@@ -29,7 +29,7 @@ import java.util.List;
 @RequestMapping("/storage/")
 @AllArgsConstructor
 @Tag(name = "StorageController", description = "STORAGE_CONTROLLER")
-public class StorageController{
+public class StorageController {
 
     @Autowired
     private StorageService storageService;

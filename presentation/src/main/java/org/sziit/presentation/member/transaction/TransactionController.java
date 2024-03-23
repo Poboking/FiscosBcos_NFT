@@ -2,9 +2,8 @@ package org.sziit.presentation.member.transaction;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +14,8 @@ import org.sziit.app.biz.transaction.dto.order.PayOrderRespDTO;
 import org.sziit.infrastructure.common.PageResult;
 import org.sziit.presentation.utils.StpUserUtil;
 
+import java.util.Map;
+
 /**
  * @project: a20-nft-3_7
  * @author: poboking
@@ -23,15 +24,17 @@ import org.sziit.presentation.utils.StpUserUtil;
 //@CheckUserLogin
 @Log4j2
 @RestController
-@AllArgsConstructor
 @RequestMapping("/transaction/")
 @Tag(name = "TransactionController", description = "TRANSACTION_CONTROLLER")
 public class TransactionController {
-    @Autowired
     private TransactionService transactionService;
-    @Autowired
-    private PreSaleTaskService preSaleTaskService;
+    private final PreSaleTaskService preSaleTaskService;
 
+    @Autowired
+    public TransactionController(TransactionService transactionService, PreSaleTaskService preSaleTaskService) {
+        this.transactionService = transactionService;
+        this.preSaleTaskService = preSaleTaskService;
+    }
 
 
     @GetMapping("checkHasPreSale")
@@ -44,14 +47,18 @@ public class TransactionController {
     }
 
 
-    // TODO: 2024/3/18 15:52 以下方法待实现 生成预售订单或订单
     @PostMapping("latestCollectionCreateOrder")
     @ValidationStatusCode(code = "400")
-    @Operation(description = "Api 待实现")
-    public void latestCollectionCreateOrder(
-            @RequestBody String memberId,
-            @RequestParam(name = "collectionId") String collectionId) {
-        log.info(CharSequenceUtil.format("collectionId({}), memberId({}): latestCollectionCreateOrder", collectionId, memberId));
+    public Map<String, String> latestCollectionCreateOrder(@RequestParam(name = "collectionId") @NotNull String collectionId) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        return transactionService.latestCollectionCreateOrder(collectionId, memberId);
+    }
+
+    @PostMapping("confirmPay")
+    @ValidationStatusCode(code = "500")
+    public Map<String, Boolean> confirmPay(@RequestParam(name = "orderId") @NotNull String orderId) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        return transactionService.confirmPay(orderId, memberId);
     }
 
     @GetMapping("findMyPayOrderByPage")

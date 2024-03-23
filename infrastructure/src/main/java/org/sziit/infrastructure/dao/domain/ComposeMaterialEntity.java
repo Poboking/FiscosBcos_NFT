@@ -16,29 +16,25 @@ import java.io.Serializable;
 @TableName(value = "compose_material")
 @Data
 public class ComposeMaterialEntity extends Model<ComposeMaterialEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      * 组合材料记录的唯一标识符ID，用于唯一标识每条材料记录
      */
     @TableId
     private String id;
-
     /**
      * 活动ID，标识这条组合材料记录所属的活动
      */
     private String activityId;
-
     /**
      * 材料ID，标识组成活动的具体材料
      */
     private String materialId;
-
     /**
      * 数量，表示该材料在活动中使用的数量
      */
     private Integer quantity;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

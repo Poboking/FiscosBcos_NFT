@@ -17,7 +17,7 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountRespDTO extends AccountBaseDTO{
+public class AccountRespDTO extends AccountBaseDTO {
 
     private String nickName;
 

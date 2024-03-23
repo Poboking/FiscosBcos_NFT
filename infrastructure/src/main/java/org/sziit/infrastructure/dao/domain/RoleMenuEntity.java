@@ -14,24 +14,21 @@ import java.io.Serializable;
 @TableName(value = "role_menu")
 @Data
 public class RoleMenuEntity extends Model<RoleMenuEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private String menuId;
-
     /**
      *
      */
     private String roleId;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

@@ -12,6 +12,7 @@ public interface SystemSettingRepository extends IService<SystemSettingEntity> {
 
     /**
      * 获取最新的系统设置项
+     *
      * @return 最新的系统设置项
      */
     SystemSettingEntity getLatestByLatestUpdateTime();

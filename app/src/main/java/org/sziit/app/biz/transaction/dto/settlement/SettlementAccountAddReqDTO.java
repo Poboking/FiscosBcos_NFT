@@ -26,4 +26,5 @@ public class SettlementAccountAddReqDTO {
     private String type;
 
     private String account;
+
 }

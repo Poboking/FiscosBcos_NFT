@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuickLoginReqDTO extends LoginBaseDTO{
+public class QuickLoginReqDTO extends LoginBaseDTO {
     @NotNull
     @Length(min = 11, max = 11)
     private String mobile;

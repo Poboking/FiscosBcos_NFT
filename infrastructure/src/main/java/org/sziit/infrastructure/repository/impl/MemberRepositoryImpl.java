@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.sziit.infrastructure.dao.domain.MemberEntity;
 import org.sziit.infrastructure.dao.mapper.MemberMapper;
 import org.sziit.infrastructure.repository.MemberRepository;
@@ -16,8 +17,12 @@ import org.sziit.infrastructure.repository.MemberRepository;
 @Service
 public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity> implements MemberRepository {
 
+    private final MemberMapper memberMapper;
+
     @Autowired
-    private MemberMapper memberMapper;
+    public MemberRepositoryImpl(MemberMapper memberMapper) {
+        this.memberMapper = memberMapper;
+    }
 
     /**
      * 获取用户账户信息
@@ -59,6 +64,28 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
                 .eq(!mobile.isEmpty(), "mobile", mobile)
                 .set(!realName.isEmpty(), "real_name", realName)
                 .set(!ssn.isEmpty(), "identity_card", ssn)) > 0;
+    }
+
+    /**
+     * 减少用户余额
+     *
+     * @param memberId 用户ID
+     * @param amount   金额
+     * @return 是否更新成功
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean reduceBalance(String memberId, Double amount) {
+        if (amount < 0) {
+            return false;
+        }
+        if (memberMapper.selectById(memberId).getBalance() < amount) {
+            return false;
+        }
+        return memberMapper.update(null,
+                new UpdateWrapper<MemberEntity>()
+                        .eq("id", memberId)
+                        .setSql("balance = balance - " + amount)) > 0;
     }
 }
 

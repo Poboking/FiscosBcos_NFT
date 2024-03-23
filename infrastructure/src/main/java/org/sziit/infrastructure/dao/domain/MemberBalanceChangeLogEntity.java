@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,67 +12,59 @@ import java.sql.Timestamp;
 
 /**
  * 会员余额变动日志实体类，用于记录会员余额的变动历史
+ *
  * @TableName member_balance_change_log
  */
 @TableName(value = "member_balance_change_log")
 @Data
+@Builder
 public class MemberBalanceChangeLogEntity extends Model<MemberBalanceChangeLogEntity> implements Serializable {
-    /**
-     * 余额变动日志的唯一标识符ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 变动后的余额
-     */
-    private Double balanceAfter;
-
-    /**
-     * 变动前的余额
-     */
-    private Double balanceBefore;
-
-    /**
-     * 变动的金额，可以是增加或减少的金额
-     */
-    private Double balanceChange;
-
-    /**
-     * 业务订单号，关联具体的业务操作
-     */
-    private String bizOrderNo;
-
-    /**
-     * 变动发生的时间
-     */
-    private Timestamp changeTime;
-
-    /**
-     * 变动类型，如充值、消费、退款等
-     */
-    private String changeType;
-
-    /**
-     * 会员的唯一标识符ID
-     */
-    private String memberId;
-
-    /**
-     * 变动的备注信息，用于说明变动的原因和详情
-     */
-    private String note;
-
-    /**
-     * 版本号，用于乐观锁机制
-     */
-    private Long version;
-
     /**
      * 序列化版本UID，用于类在序列化和反序列化过程中保持版本兼容性
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 余额变动日志的唯一标识符ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 变动后的余额
+     */
+    private Double balanceAfter;
+    /**
+     * 变动前的余额
+     */
+    private Double balanceBefore;
+    /**
+     * 变动的金额，可以是增加或减少的金额
+     */
+    private Double balanceChange;
+    /**
+     * 业务订单号，关联具体的业务操作
+     */
+    private String bizOrderNo;
+    /**
+     * 变动发生的时间
+     */
+    private Timestamp changeTime;
+    /**
+     * 变动类型，如充值、消费、退款等
+     */
+    private String changeType;
+    /**
+     * 会员的唯一标识符ID
+     */
+    private String memberId;
+    /**
+     * 变动的备注信息，用于说明变动的原因和详情
+     */
+    private String note;
+    /**
+     * 版本号，用于乐观锁机制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

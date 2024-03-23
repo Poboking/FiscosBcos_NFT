@@ -18,66 +18,55 @@ import java.sql.Timestamp;
 @TableName(value = "pre_sale_qualify")
 public class PreSaleQualifyEntity extends Model<PreSaleQualifyEntity> implements Serializable {
     /**
-     * 预售资格记录的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 业务类型，如预售、抢购等
-     */
-    private String bizType;
-
-    /**
-     * 收藏品ID
-     */
-    private String collectionId;
-
-    /**
-     * 交易时间
-     */
-    private Timestamp dealTime;
-
-    /**
-     * 资格授予时间
-     */
-    private Timestamp grantTime;
-
-    /**
-     * 发行的收藏品ID
-     */
-    private String issuedCollectionId;
-
-    /**
-     * 用户ID
-     */
-    private String memberId;
-
-    /**
-     * 预售前的分钟数，用于倒计时
-     */
-    private Integer preMinute;
-
-    /**
-     * 预售任务ID
-     */
-    private String preSaleTaskId;
-
-    /**
-     * 状态，如待支付、已支付等
-     */
-    private String state;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 预售资格记录的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 业务类型，如预售、抢购等
+     */
+    private String bizType;
+    /**
+     * 收藏品ID
+     */
+    private String collectionId;
+    /**
+     * 交易时间
+     */
+    private Timestamp dealTime;
+    /**
+     * 资格授予时间
+     */
+    private Timestamp grantTime;
+    /**
+     * 发行的收藏品ID
+     */
+    private String issuedCollectionId;
+    /**
+     * 用户ID
+     */
+    private String memberId;
+    /**
+     * 预售前的分钟数，用于倒计时
+     */
+    private Integer preMinute;
+    /**
+     * 预售任务ID
+     */
+    private String preSaleTaskId;
+    /**
+     * 状态，如待支付、已支付等
+     */
+    private String state;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

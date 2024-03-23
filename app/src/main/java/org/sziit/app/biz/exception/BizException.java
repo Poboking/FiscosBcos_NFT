@@ -8,7 +8,7 @@ import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
  * @date: 2024/3/16 16:42
  */
 @ExceptionMapper(code = "503", msg = "Biz Service Unavailable")
-public class BizException extends RuntimeException{
+public class BizException extends RuntimeException {
     public BizException(String message) {
         super(message);
     }

@@ -15,64 +15,53 @@ import java.sql.Timestamp;
 @TableName(value = "exchange_code")
 @Data
 public class ExchangeCodeEntity extends Model<ExchangeCodeEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private String code;
-
     /**
      *
      */
     private String collectionId;
-
     /**
      *
      */
     private Timestamp createTime;
-
     /**
      *
      */
     private Boolean deletedFlag;
-
     /**
      *
      */
     private Timestamp deletedTime;
-
     /**
      *
      */
     private Timestamp exchangeTime;
-
     /**
      *
      */
     private String issuedCollectionId;
-
     /**
      *
      */
     private String memberId;
-
     /**
      *
      */
     private String state;
-
     /**
      *
      */
     private Long version;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

@@ -15,54 +15,45 @@ import java.sql.Timestamp;
 @TableName(value = "sms_send_record")
 @Data
 public class SmsSendRecordEntity extends Model<SmsSendRecordEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private Timestamp createTime;
-
     /**
      *
      */
     private String errorMsg;
-
     /**
      *
      */
     private String mobile;
-
     /**
      *
      */
     private Timestamp sendTime;
-
     /**
      *
      */
     private String smsType;
-
     /**
      *
      */
     private String state;
-
     /**
      *
      */
     private String verificationCode;
-
     /**
      *
      */
     private Long version;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

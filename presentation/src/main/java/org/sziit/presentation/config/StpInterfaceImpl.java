@@ -13,9 +13,9 @@ import java.util.List;
  */
 // 实现角色权限接口 - 用于角色授权
 @Component
-public class StpInterfaceImpl implements StpInterface{
+public class StpInterfaceImpl implements StpInterface {
     @Override
-    public List<String> getPermissionList(Object loginId, String loginType){
+    public List<String> getPermissionList(Object loginId, String loginType) {
         List<String> authorityList = new ArrayList<>();
         if (loginType.equals("admin")) {
             authorityList.add("admin");

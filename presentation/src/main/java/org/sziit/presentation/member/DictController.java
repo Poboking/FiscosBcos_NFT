@@ -1,9 +1,7 @@
 package org.sziit.presentation.member;
 
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,13 +20,16 @@ import java.util.List;
  */
 //@CheckUserLogin
 @Log4j2
-@AllArgsConstructor
 @RestController
 @RequestMapping("/dictconfig/")
 @Tag(name = "DictController", description = "DICT_CONTROLLER")
 public class DictController {
+    private final DictService dictService;
+
     @Autowired
-    private DictService dictService;
+    public DictController(DictService dictService) {
+        this.dictService = dictService;
+    }
 
     @GetMapping("findDictItemByPage")
     @ValidationStatusCode(code = "400")
@@ -38,17 +39,4 @@ public class DictController {
         return dictService.getDictItemListByDictTypeCode(dictTypeCode);
     }
 
-    // TODO: 2024/3/20 22:41 以下方法待实现
-//    @GetMapping("findDictItemInCache")
-//    @ValidationStatusCode(code = "400")
-//    public List<DictItemRespDTo> findDictItemInCache(@RequestParam(name = "dictTypeCode", required = true) String dictTypeCode){
-//        return dictService.getDictItemListByDictTypeCodeInCache(dictTypeCode);
-//    }
-
-    @GetMapping("findDictItemInCache")
-    @ValidationStatusCode(code = "400")
-    @Operation(description = "Api 待实现")
-    public List<DictItemRespDTo> findDictItemInCache(@RequestParam(name = "dictTypeCode", required = true) String dictTypeCode){
-        return null;
-    }
 }

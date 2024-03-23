@@ -14,29 +14,25 @@ import java.io.Serializable;
 @TableName(value = "collection_story")
 @Data
 public class CollectionStoryEntity extends Model<CollectionStoryEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private String collectionId;
-
     /**
      *
      */
     private Double orderNo;
-
     /**
      *
      */
     private String picLink;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

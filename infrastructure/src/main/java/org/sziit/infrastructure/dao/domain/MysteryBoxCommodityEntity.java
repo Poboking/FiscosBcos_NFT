@@ -17,36 +17,31 @@ import java.io.Serializable;
 @TableName(value = "mystery_box_commodity")
 public class MysteryBoxCommodityEntity extends Model<MysteryBoxCommodityEntity> implements Serializable {
     /**
-     * 商品的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 所属收藏品的ID
-     */
-    private String collectionId;
-
-    /**
-     * 商品的ID
-     */
-    private String commodityId;
-
-    /**
-     * 商品在神秘盒子中出现的概率
-     */
-    private Double probability;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 商品的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 所属收藏品的ID
+     */
+    private String collectionId;
+    /**
+     * 商品的ID
+     */
+    private String commodityId;
+    /**
+     * 商品在神秘盒子中出现的概率
+     */
+    private Double probability;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

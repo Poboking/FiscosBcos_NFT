@@ -1,8 +1,6 @@
 package org.sziit.presentation.member;
 
-import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -15,16 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.sziit.app.biz.artwork.collection.CollectionService;
 import org.sziit.app.biz.artwork.collection.MemberResaleCollectionService;
-import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDTO;
-import org.sziit.app.biz.artwork.dto.collection.CollectionIntroRespDTO;
-import org.sziit.app.biz.artwork.dto.collection.CollectionQueryReqDTO;
-import org.sziit.app.biz.artwork.dto.collection.CollectionResaleRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.*;
 import org.sziit.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.sziit.app.biz.artwork.dto.mysteryBox.MysteryBoxRespDTO;
 import org.sziit.app.biz.artwork.mysteryBox.MysteryBoxService;
 import org.sziit.infrastructure.common.PageResult;
-import org.sziit.infrastructure.common.ToBeRealizedVO;
-import org.sziit.presentation.utils.StpUserUtil;
+
+import java.util.List;
 
 /**
  * @project: a20-nft-3_7
@@ -45,8 +40,6 @@ public class CollectionController {
     private MemberResaleCollectionService memberResaleCollectionService;
     @Autowired
     private MysteryBoxService mysteryBoxService;
-
-
 
 
     @GetMapping("findLatestCollectionByPage")
@@ -118,13 +111,12 @@ public class CollectionController {
         return mysteryBoxService.getPageListByCreatorId(current, pageSize, creatorId);
     }
 
-    // TODO: 2024/3/18 15:52 以下方法待实现 - 查找在售藏品
+    /**
+     * 首页 - 发售日历
+     */
     @GetMapping("findForSaleCollection")
     @ValidationStatusCode(code = "500")
-    @Operation(description = "Api 待实现")
-    public ToBeRealizedVO findForSaleCollection() {
-        String memberId = StpUserUtil.getLoginIdAsString();
-        log.info(CharSequenceUtil.format("User({}): findForSaleCollection", memberId));
-        return ToBeRealizedVO.build();
+    public List<GroupByDateCollectionRespDTO> findForSaleCollection() {
+        return collectionService.findForSaleCollection();
     }
 }

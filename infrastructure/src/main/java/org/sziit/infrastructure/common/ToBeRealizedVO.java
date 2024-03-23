@@ -10,7 +10,8 @@ import lombok.Data;
 @Data
 public class ToBeRealizedVO {
     private static final String API_STATE = "The Method is not realized yet!";
-    public static ToBeRealizedVO build(){
+
+    public static ToBeRealizedVO build() {
         return new ToBeRealizedVO();
     }
 }

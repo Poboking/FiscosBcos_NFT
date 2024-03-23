@@ -49,7 +49,7 @@ public class MemberController {
     @ValidationStatusCode(code = "400")
     public AccountRespDTO getMyPersonalInfo() {
         String loginId = StpUserUtil.getLoginIdAsString();
-        if (loginId.isEmpty()){
+        if (loginId.isEmpty()) {
             throw new UnauthorizedException("getMyPersonalInfo fail as a result of loginId is null");
         }
         return memberService.getAccountInfo(loginId);
@@ -75,9 +75,8 @@ public class MemberController {
     @ValidationStatusCode(code = "400")
     public PageResult<LoginLogRespDTO> findLoginLogByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
-            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize){
-        String userName = "404";
-        log.info(CharSequenceUtil.format("{}: findLoginLogByPage", userName));
+            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize) {
+        String userName = StpUserUtil.getLoginIdAsString();
         return loginLogService.getLoginLog(current, pageSize, userName);
     }
 
@@ -85,7 +84,7 @@ public class MemberController {
     @ValidationStatusCode(code = "400")
     public void bindRealName(@RequestBody MemberBindRealNameReqDTO reqDto) {
         String loginId = StpUserUtil.getLoginIdAsString();
-        if (!loginId.equals(memberService.getIdByMobile(reqDto.getMobile()))){
+        if (!loginId.equals(memberService.getIdByMobile(reqDto.getMobile()))) {
             throw new BadRequestException("bindRealName fail as a result of mobile is not match");
         }
         if (Boolean.FALSE.equals(loginId.isEmpty()) && memberService.bindReadName(reqDto, loginId)) {

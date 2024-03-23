@@ -33,7 +33,7 @@ public class MemberService {
         return MemberConvert.INSTANCE.convert(memberRepository.getAccountInfo(memberId));
     }
 
-    public boolean bindReadName(MemberBindRealNameReqDTO reqDto, String memberId){
+    public boolean bindReadName(MemberBindRealNameReqDTO reqDto, String memberId) {
         return memberRepository.bindReadName(reqDto.getRealName(), reqDto.getSsn(), reqDto.getMobile(), memberId);
     }
 
@@ -44,7 +44,7 @@ public class MemberService {
     public boolean updateAvatar(MemberUpdateAvatarReqDTO reqDto, String memberId) {
         return memberRepository.update(new UpdateWrapper<MemberEntity>()
                 .eq(Optional.ofNullable(memberId).isPresent(), "id", memberId)
-                .set(Optional.ofNullable(reqDto.getAvatar()).isPresent(),"avatar", reqDto.getAvatar()));
+                .set(Optional.ofNullable(reqDto.getAvatar()).isPresent(), "avatar", reqDto.getAvatar()));
     }
 
     public InviteInfoRespDTO getInviteInfo(String memberId) {
@@ -55,9 +55,9 @@ public class MemberService {
     public List<InviteeRecordRespDTO> getInviteeRecord(String memberId) {
         List<InviteeRecordRespDTO> result = new ArrayList<>();
         memberRepository.list(new UpdateWrapper<MemberEntity>()
-                .eq(Optional.ofNullable(memberId).isPresent(), "inviter_id", memberId))
+                        .eq(Optional.ofNullable(memberId).isPresent(), "inviter_id", memberId))
                 // TODO: 2024/3/17 21:39 以下方法待实现: inviteSuccessFlag & boughtFlag的判断逻辑
-                .forEach(item -> result.add(InviteeRecordRespDTO.create(item.getMobile(), false, false )));
+                .forEach(item -> result.add(InviteeRecordRespDTO.create(item.getMobile(), false, false)));
         return result;
     }
 
@@ -67,7 +67,7 @@ public class MemberService {
 
     public boolean checkMobileExist(String mobile) {
         return memberRepository.getOneOpt(new UpdateWrapper<MemberEntity>()
-                .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile))
+                        .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile))
                 .isPresent();
     }
 
@@ -82,14 +82,14 @@ public class MemberService {
 
     public boolean LoginByCheckPwd(String mobile, String password) {
         return memberRepository.getOneOpt(new UpdateWrapper<MemberEntity>()
-                .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile)
-                .eq(Optional.ofNullable(password).isPresent(), "login_pwd", CipherTextUtil.sha256(password)))
+                        .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile)
+                        .eq(Optional.ofNullable(password).isPresent(), "login_pwd", CipherTextUtil.sha256(password)))
                 .isPresent();
     }
 
     public String getIdByMobile(String mobile) {
-return memberRepository.getOneOpt(new UpdateWrapper<MemberEntity>()
-                .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile))
+        return memberRepository.getOneOpt(new UpdateWrapper<MemberEntity>()
+                        .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile))
                 .map(MemberEntity::getId).orElse("-1");
     }
 }

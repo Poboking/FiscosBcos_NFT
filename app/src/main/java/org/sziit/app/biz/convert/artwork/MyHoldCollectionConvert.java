@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class MyHoldCollectionConvert {
 
-    public static MyHoldCollectionRespDTO convertToRespDTO(MemberHoldCollectionEntity mo){
+    public static MyHoldCollectionRespDTO convertToRespDTO(MemberHoldCollectionEntity mo) {
         if (mo == null) {
             return null;
         }
@@ -29,7 +29,7 @@ public class MyHoldCollectionConvert {
         return vo;
     }
 
-    public static MyHoldCollectionRespDTO convertToRespDTO(MemberResaleCollectionEntity mo){
+    public static MyHoldCollectionRespDTO convertToRespDTO(MemberResaleCollectionEntity mo) {
         if (mo == null) {
             return null;
         }
@@ -39,7 +39,7 @@ public class MyHoldCollectionConvert {
         return vo;
     }
 
-    public static MyHoldCollectionRespDTO convertToRespDTO(MyHoldCollectionRespDTOParent mo){
+    public static MyHoldCollectionRespDTO convertToRespDTO(MyHoldCollectionRespDTOParent mo) {
         if (mo == null) {
             return null;
         }
@@ -50,7 +50,7 @@ public class MyHoldCollectionConvert {
     }
 
 
-    public static <T extends MyHoldCollectionRespDTOParent> List<MyHoldCollectionRespDTO> convertToRespDTO(List<T> mo){
+    public static <T extends MyHoldCollectionRespDTOParent> List<MyHoldCollectionRespDTO> convertToRespDTO(List<T> mo) {
         if (mo == null) {
             return null;
         }

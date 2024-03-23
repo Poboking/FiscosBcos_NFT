@@ -18,76 +18,194 @@
   <component name="ChangeListManager">
     <list default="true" id="cb5e3f1b-65dd-4d01-8b2d-bcab56c8cd67" name="更改" comment="feat(master): Simplify pom.xml">
       <changelist_data name="poboking" email="" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/transaction/SettlementAccountConvert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/transaction/WithdrawConvert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/dto/loginlog/LoginLogReqParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/dto/withdraw/WithdrawReqDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/dto/withdraw/WithdrawRespDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/data_gennerator_execute.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/data_plus.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/populate.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/populate_fk.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/CalculateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/OrderNoUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570/storage_v2/_src_/schema/open_nft.R8rw4Q.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570/storage_v2/_src_/schema/open_nft.R8rw4Q.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570/storage_v2/_src_/schema/open_nft.R8rw4Q.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ae200c86-4cd4-4460-859a-e1c0abbbe570/storage_v2/_src_/schema/open_nft.R8rw4Q.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/050708c3b1972760b79443a3094e203997cfc15e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/050708c3b1972760b79443a3094e203997cfc15e" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/064b96f3b6fd0e084633a1fc22d43863f4d8b04b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/6/064b96f3b6fd0e084633a1fc22d43863f4d8b04b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0b717582ee0b9bc4dfbe47f84cfc06c0cbc4abff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/12ca29411ee3877282c0b2a38baf6f0db3ff55ca" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/12ca29411ee3877282c0b2a38baf6f0db3ff55ca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14f7ac5cfd09e9ed3fdad99b2508320024477575" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14f7ac5cfd09e9ed3fdad99b2508320024477575" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b075887a4ef6f16cbc913186b3262e664000ca3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b075887a4ef6f16cbc913186b3262e664000ca3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e57af5f44028609ec86d5ad5f48dd9b880b649a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/239ec7c12ddab9862571f80614e8717b2f7701cf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/239ec7c12ddab9862571f80614e8717b2f7701cf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/281b8dd301b9876601c8cd69af2e0b2f431c07c6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/281b8dd301b9876601c8cd69af2e0b2f431c07c6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0b1013344273466d95f2d06c2f45af61f4f2f695" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0b1013344273466d95f2d06c2f45af61f4f2f695" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c3b5561f27e54a6f818c9b66fc8d8024ad23517" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c3b5561f27e54a6f818c9b66fc8d8024ad23517" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0d28cb3684469dc6c9934c15ffc8f450d92f9e39" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0d28cb3684469dc6c9934c15ffc8f450d92f9e39" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0dcc1ac29d9d740603f6d8121660572cb295a040" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0dcc1ac29d9d740603f6d8121660572cb295a040" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1cd14711aa4d8e3ef2c621c20efcf3f7cea61d64" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f90b7f1a8a47eb6c5c66a65bd2afe4f9a5c126c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1f90b7f1a8a47eb6c5c66a65bd2afe4f9a5c126c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/234ead8f8044ed948dd1e4c5cdc5d17656b15c9b" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29da70d97de34fdcb9bcfdeda10a6f553521f020" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29da70d97de34fdcb9bcfdeda10a6f553521f020" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2bb83dd43ff74bd2017133cd9dea6897cfe43de3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2bb83dd43ff74bd2017133cd9dea6897cfe43de3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/d/2d3577969db7878d3996a7c0e2ff8dc16cd1cb54" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/d/2d3577969db7878d3996a7c0e2ff8dc16cd1cb54" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/32863ec01c143ff5e823a830a47eef3bbb479b59" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393b54a143a2f25876bdfcbd2ae6dc1db9c1672e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393b54a143a2f25876bdfcbd2ae6dc1db9c1672e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/398850ec5d5289d68c2bbbbbec775686ffa5110d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/398850ec5d5289d68c2bbbbbec775686ffa5110d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3e4bc2992535281fc2ebc28644ee82ac10267706" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/e/3e4bc2992535281fc2ebc28644ee82ac10267706" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3fbd1bf7a3badb875cd0357db8613579c9b6a93d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3fbd1bf7a3badb875cd0357db8613579c9b6a93d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41510d936d8b1b1f339243626ad39fe7ddc4063c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/41510d936d8b1b1f339243626ad39fe7ddc4063c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/48140a2cb8c982c801fb872b863e01b66eacafee" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/48140a2cb8c982c801fb872b863e01b66eacafee" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/51dc4f27dfc6acd3b10d1c09d12c785510b80654" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/661a2b402a02b9d26804542f48daeb7d298f85c9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/661a2b402a02b9d26804542f48daeb7d298f85c9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/5/45be8f7661ba52192b74c47376c0733e0da75302" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/5/45be8f7661ba52192b74c47376c0733e0da75302" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/487bb4a94aa64a063a5c78feb82652b0a7b3d916" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/487bb4a94aa64a063a5c78feb82652b0a7b3d916" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/e/4e3334ec4e93d270e002972c3511a7f502ed8431" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/5197c65a3715a64ea3514857321996afbef7c99a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/1/5197c65a3715a64ea3514857321996afbef7c99a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/583627e363b3d78ac98190e23fd83740bcd1848a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/583627e363b3d78ac98190e23fd83740bcd1848a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5baf1be6706a455cb44419122ef0bf3d2b2d1d91" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5baf1be6706a455cb44419122ef0bf3d2b2d1d91" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/6733216ad9f6deb0682e8b3f36dc2931f0c59760" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/7/6733216ad9f6deb0682e8b3f36dc2931f0c59760" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73e2883109e172c96bf624d61e686aa0d5446529" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73e2883109e172c96bf624d61e686aa0d5446529" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76e2d6e8cca2ca180df5140e848c04d70d1c70fd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/796cada7ffecd5d7c5fede08cc70ccdb5414f612" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/796cada7ffecd5d7c5fede08cc70ccdb5414f612" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/79ce1a311ba481b04d6bd00a8be325e079c19dea" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/5/9522a2e8c97858d85a4246c2ccf3b0a25e57bbb4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/83e8091a2132c4d24f320e2130b06c4a09ee0e84" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b44efe67206ffeae5c2443f533e384f84d9463e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b44efe67206ffeae5c2443f533e384f84d9463e" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9e5086ef5fbb872efa76a849663e274b4024dda0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9e52134e0f0b4b766f3b694f808f6e2440f123ef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9edc2eab6d1fce859350c1c65b9dd255e7c25977" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/e/9edc2eab6d1fce859350c1c65b9dd255e7c25977" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6ac4968849e0daa1136a6d29655025efbc8975f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6ac4968849e0daa1136a6d29655025efbc8975f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a7115845108b052392d20cd2d394e614fdbc1d48" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8d6139ea6bdd28a8859e00ec8ac9bbcbd28f03a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/8/a8d6139ea6bdd28a8859e00ec8ac9bbcbd28f03a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7a9f7773721abe27b3d296925e3e4f12744a253" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/2/b20e963d3d4fd1ee45d2ba628426d86e666cefca" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/2/b20e963d3d4fd1ee45d2ba628426d86e666cefca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/2/b29f665116432a5aaf6f9acd0fcb9b4ef746ea90" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/2/b29f665116432a5aaf6f9acd0fcb9b4ef746ea90" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bf867f961813c6e4b4e6871c00e2c48ad6630e85" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bf867f961813c6e4b4e6871c00e2c48ad6630e85" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bfe56e4b3f8c7abd5b41e97d2bb883b8c884f142" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c87a375540f37c99a87c098f7414d02e8fa72555" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/db986c061d33f28d6c8415b748c6d7557c62fe9d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7c4a74b4ffeee4e3bb3ef02a80e737c67012419" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7c4a74b4ffeee4e3bb3ef02a80e737c67012419" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/ee8a74bee134ce0b3ea43b896d37536c858f07ce" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f468984a819abb04d50edfb4527a869f633e9445" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/4/f468984a819abb04d50edfb4527a869f633e9445" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c94858f7bf59f0d453bdf54c79d974fddf872a19" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c9e134ffed0ab527570e368ae4488cbfe0f97b7c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/9/c9e134ffed0ab527570e368ae4488cbfe0f97b7c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7c4a74b4ffeee4e3bb3ef02a80e737c67012419" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f2587ae56804aa8fa40456c0907db5dfc07cbc4d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f2587ae56804aa8fa40456c0907db5dfc07cbc4d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/a/fa16293a327f6b0f9851a9a341c4da30669c7d41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/a/fa16293a327f6b0f9851a9a341c4da30669c7d41" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/b/0b717582ee0b9bc4dfbe47f84cfc06c0cbc4abff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/e/1e57af5f44028609ec86d5ad5f48dd9b880b649a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/2/32863ec01c143ff5e823a830a47eef3bbb479b59" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/1/51dc4f27dfc6acd3b10d1c09d12c785510b80654" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/6/76e2d6e8cca2ca180df5140e848c04d70d1c70fd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/9/79ce1a311ba481b04d6bd00a8be325e079c19dea" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/5/9522a2e8c97858d85a4246c2ccf3b0a25e57bbb4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/e/9e5086ef5fbb872efa76a849663e274b4024dda0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/e/9e52134e0f0b4b766f3b694f808f6e2440f123ef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/7/b7a9f7773721abe27b3d296925e3e4f12744a253" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/f/bfe56e4b3f8c7abd5b41e97d2bb883b8c884f142" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/8/c87a375540f37c99a87c098f7414d02e8fa72555" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/b/db986c061d33f28d6c8415b748c6d7557c62fe9d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/e/ee8a74bee134ce0b3ea43b896d37536c858f07ce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/c/1cd14711aa4d8e3ef2c621c20efcf3f7cea61d64" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/3/234ead8f8044ed948dd1e4c5cdc5d17656b15c9b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/e/4e3334ec4e93d270e002972c3511a7f502ed8431" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/3/83e8091a2132c4d24f320e2130b06c4a09ee0e84" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/7/a7115845108b052392d20cd2d394e614fdbc1d48" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/9/c94858f7bf59f0d453bdf54c79d974fddf872a19" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/7/e7c4a74b4ffeee4e3bb3ef02a80e737c67012419" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-1.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-2.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-3.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-4.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-5.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-6.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-7.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--11-三月-2024-7.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/account/AccountRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/account/AccountRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/login/LoginReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/login/LoginReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/login/QuickLoginReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/login/QuickLoginReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/member/MemberRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/member/MemberRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/member/MemberUpdateNickNameReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/account/dto/member/MemberUpdateNickNameReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/collection/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/collection/CollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/dto/collection/CollectionQueryReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/dto/collection/CollectionQueryReqDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/dto/collection/CollectionResaleRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/dto/collection/CollectionResaleRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/dto/mysteryBox/MysteryBoxRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/dto/mysteryBox/MysteryBoxRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/mysteryBox/MysteryBoxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/artwork/mysteryBox/MysteryBoxService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/artwork/CollectionConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/artwork/CollectionConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/artwork/MyHoldCollectionConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/artwork/MyHoldCollectionConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/artwork/MysteryBoxConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/artwork/MysteryBoxConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/notice/activity/ComposeMaterialConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/convert/notice/activity/ComposeMaterialConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/exception/BizException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/exception/BizException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/LoginLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/LoginLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/MemberBCLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/MemberBCLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/dto/loginlog/LoginLogReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/dto/loginlog/LoginLogReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/dto/loginlog/LoginLogRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/log/dto/loginlog/LoginLogRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/notice/dto/activity/ComposeActivityDetailRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/notice/dto/activity/ComposeActivityDetailRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/storage/StorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/storage/StorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/PreSaleTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/PreSaleTaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/SettlementAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/SettlementAccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/dto/settlement/SettlementAccountAddReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/sziit/app/biz/transaction/dto/settlement/SettlementAccountAddReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/open_nft.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/open_nft.txt" beforeDir="false" afterPath="$PROJECT_DIR$/doc/open_nft.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/CipherTextUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/CipherTextUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/IdUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/IdUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/NftConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/NftConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/NicknameUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/NicknameUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/ToBeRealizedVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/common/ToBeRealizedVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/connector/MyHoldCollectionRespDTOParent.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/connector/MyHoldCollectionRespDTOParent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/AccountRoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/AccountRoleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/AirDropRecordEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/AirDropRecordEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/BackgroundAccountEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/BackgroundAccountEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ChainSettingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ChainSettingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/CollectionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/CollectionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/CollectionGiveRecordEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/CollectionGiveRecordEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/CollectionStoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/CollectionStoryEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ComposeActivityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ComposeActivityEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ComposeMaterialEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ComposeMaterialEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ComposeRecordEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ComposeRecordEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/CreatorEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/CreatorEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/DictItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/DictItemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/DictTypeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/DictTypeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ExchangeCodeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/ExchangeCodeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/IssuedCollectionActionLogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/IssuedCollectionActionLogEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/IssuedCollectionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/IssuedCollectionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/LoginLogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/LoginLogEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MemberBalanceChangeLogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MemberBalanceChangeLogEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MemberEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MemberEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MemberHoldCollectionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MemberHoldCollectionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MemberResaleCollectionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MemberResaleCollectionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MenuEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MenuEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MysteryBoxCommodityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/MysteryBoxCommodityEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/NoticeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/NoticeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/OperLogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/OperLogEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/PayOrderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/PayOrderEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/PreSaleConditionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/PreSaleConditionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/PreSaleQualifyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/PreSaleQualifyEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/PreSaleTaskEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/PreSaleTaskEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/RoleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/RoleMenuEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/RoleMenuEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/SettlementAccountEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/SettlementAccountEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/SmsSendRecordEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/SmsSendRecordEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/StorageEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/StorageEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/SystemSettingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/SystemSettingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/WithdrawRecordEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/dao/domain/WithdrawRecordEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/exception/UtilException.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/exception/UtilException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/CollectionGiveRecordRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/CollectionGiveRecordRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/CollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/CollectionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/MemberBalanceChangeLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/MemberBalanceChangeLogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/MemberResaleCollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/MemberResaleCollectionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/PayOrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/PayOrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/SystemSettingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/SystemSettingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/WithdrawRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/WithdrawRecordRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/CollectionGiveRecordRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/CollectionGiveRecordRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/CollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/CollectionRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/LoginLogRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/LoginLogRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/MemberBalanceChangeLogRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/MemberBalanceChangeLogRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/MemberRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/MemberRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/MemberResaleCollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/MemberResaleCollectionRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/PayOrderRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/PayOrderRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/SystemSettingRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/SystemSettingRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/WithdrawRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/sziit/infrastructure/repository/impl/WithdrawRecordRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-1.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-2.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-3.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-4.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-5.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-6.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-7.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-03/spring-boot-logger-log4j2--20-三月-2024-7.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring-boot-logger-log4j2.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring-boot-logger-log4j2.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/config/MySaTokenListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/config/MySaTokenListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/config/SaTokenConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/config/SaTokenConfigure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/config/StpInterfaceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/config/StpInterfaceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/exception/InternalServerErrorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/exception/InternalServerErrorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/exception/ParameterBodyValidationFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/exception/ParameterBodyValidationFailedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/exception/ParameterValidationFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/exception/ParameterValidationFailedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/CarouselController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/CollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/DictController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/DictController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/StorageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/StorageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/UserArtworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/UserArtworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/transaction/SettlementAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/transaction/SettlementAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/transaction/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/transaction/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/transaction/WithdrawController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/member/transaction/WithdrawController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/utils/IpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/utils/IpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/utils/StpAdminUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/utils/StpAdminUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/utils/StpUserUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/sziit/presentation/utils/StpUserUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +270,7 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -165,58 +283,61 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17.09&quot;,
-    &quot;last.edited.regexp&quot;: &quot;示例文本&quot;,
-    &quot;last_directory_selection&quot;: &quot;D:/CS/IDEA_javacode/a20-nft-3_7/app/src/main/java/org/sziit/app/biz/log/dto&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/CS/IDEA_javacode/a20-nft-3_7/app/src/main/java/org/sziit/app/biz/notice/dto/notice&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15429688&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.45517242&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "17.09",
+    "last.edited.regexp": "示例文本",
+    "last_directory_selection": "D:/CS/IDEA_javacode/a20-nft-3_7/app/src/main/java/org/sziit/app/biz/log/dto",
+    "last_opened_file_path": "D:/CS/IDEA_javacode/a20-nft-3_7/doc",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15429688",
+    "project.structure.side.proportion": "0.45517242",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言&quot;: [
-      &quot;MySQL&quot;
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言": [
+      "MySQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.sziit.app.biz.transaction.dto.withdraw" />
+      <recent name="org.sziit.app.biz.artwork.dto.collection" />
       <recent name="org.sziit.app.biz.artwork.mysteryBox" />
       <recent name="org.sziit.app.biz.dict.dto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\doc" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\app\src\main\java\org\sziit\app\biz\notice\dto\notice" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\presentation\src\main\resources" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\app\src\main\resource" />
-      <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\doc" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\presentation\src\main\java\org\sziit\presentation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\doc" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\infrastructure\src\main\java\org\sziit\infrastructure\common" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\infrastructure" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\app\src\main\java\org\sziit\app\biz\convert\" />
@@ -333,6 +454,13 @@
       <workItem from="1710918547676" duration="9782000" />
       <workItem from="1710934622013" duration="2226000" />
       <workItem from="1710938599372" duration="7214000" />
+      <workItem from="1710950125418" duration="623000" />
+      <workItem from="1710981098207" duration="6668000" />
+      <workItem from="1710990359002" duration="390000" />
+      <workItem from="1710990827617" duration="7569000" />
+      <workItem from="1711018898690" duration="13664000" />
+      <workItem from="1711075043680" duration="4198000" />
+      <workItem from="1711186196841" duration="21844000" />
     </task>
     <servers />
   </component>
@@ -433,6 +561,11 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="CHANGED_ON_SERVER_INTERVAL" value="1440" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/app" />
+      <path value="$PROJECT_DIR$/infrastructure" />
+      <path value="$PROJECT_DIR$/presentation" />
+    </ignored-roots>
     <MESSAGE value="feat(presentation &amp; infrastructure): create module" />
     <MESSAGE value="fect(project): init project" />
     <MESSAGE value="feat(master): Simplify pom.xml" />

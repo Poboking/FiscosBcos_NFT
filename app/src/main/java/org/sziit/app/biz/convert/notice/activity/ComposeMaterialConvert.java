@@ -19,5 +19,5 @@ public interface ComposeMaterialConvert {
 
     ComposeMaterialRespDTO convertToRespDTO(ComposeMaterialEntity bean);
 
-    List<ComposeMaterialRespDTO> convertToRespDTO (List<ComposeMaterialEntity> beans);
+    List<ComposeMaterialRespDTO> convertToRespDTO(List<ComposeMaterialEntity> beans);
 }

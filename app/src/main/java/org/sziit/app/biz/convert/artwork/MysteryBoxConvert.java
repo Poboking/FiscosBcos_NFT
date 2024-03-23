@@ -12,7 +12,7 @@ import org.sziit.infrastructure.dao.domain.CollectionEntity;
  */
 @Mapper
 public interface MysteryBoxConvert {
-    MysteryBoxConvert  INSTANCE = Mappers.getMapper(MysteryBoxConvert.class);
+    MysteryBoxConvert INSTANCE = Mappers.getMapper(MysteryBoxConvert.class);
 
     MysteryBoxRespDTO convertToRespDTO(CollectionEntity bean);
 }

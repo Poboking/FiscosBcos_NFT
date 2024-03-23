@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MysteryBoxRespDTO extends MysteryBoxBaseDTO{
+public class MysteryBoxRespDTO extends MysteryBoxBaseDTO {
 
     private String id;
 

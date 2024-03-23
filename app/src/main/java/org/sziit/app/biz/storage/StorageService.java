@@ -49,7 +49,7 @@ public class StorageService {
         // TODO: 2024/3/18 临时写死存储路径
         String localStoragePath = "D://TEMP_3_18_LocalStoragePath";
         SystemSettingEntity systemSetting = systemSettingRepository.getLatestByLatestUpdateTime();
-        if (systemSetting != null){
+        if (systemSetting != null) {
             localStoragePath = systemSetting.getLocalStoragePath();
         }
         Path targetDirectory = Paths.get(localStoragePath);

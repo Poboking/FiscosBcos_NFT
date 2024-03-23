@@ -18,41 +18,35 @@ import java.sql.Timestamp;
 @TableName(value = "dict_type")
 public class DictTypeEntity extends Model<DictTypeEntity> implements Serializable {
     /**
-     * 字典类型的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 字典类型的编码
-     */
-    private String dictTypeCode;
-
-    /**
-     * 字典类型的名称
-     */
-    private String dictTypeName;
-
-    /**
-     * 最后修改时间
-     */
-    private Timestamp lastModifyTime;
-
-    /**
-     * 字典类型的备注信息
-     */
-    private String note;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 字典类型的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 字典类型的编码
+     */
+    private String dictTypeCode;
+    /**
+     * 字典类型的名称
+     */
+    private String dictTypeName;
+    /**
+     * 最后修改时间
+     */
+    private Timestamp lastModifyTime;
+    /**
+     * 字典类型的备注信息
+     */
+    private String note;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

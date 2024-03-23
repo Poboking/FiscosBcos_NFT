@@ -31,6 +31,4 @@ public class CollectionQueryReqDTO extends CollectionBaseDTO {
     public boolean isOrderDesc() {
         return "desc".equalsIgnoreCase(direction);
     }
-    // this is shit property
-//    private String propertie;
 }

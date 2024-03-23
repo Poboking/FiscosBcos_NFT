@@ -12,9 +12,9 @@ package org.sziit.infrastructure.dao.connector;
 public interface MyHoldCollectionRespDTOParent {
     String getName();
 
-    String getCover();
-
     void setName(String name);
+
+    String getCover();
 
     void setCover(String cover);
 }

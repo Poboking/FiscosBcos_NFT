@@ -36,6 +36,9 @@ public class MysteryBoxService {
         List<MysteryBoxRespDTO> resultList = new ArrayList<>();
         pageEntity.getRecords().forEach(bean -> {
             CreatorEntity creator = creatorRepository.getById(bean.getCreatorId());
+            if (creator == null) {
+                return;
+            }
             bean.setCreatorName(creator.getName());
             bean.setCreatorAvatar(creator.getAvatar());
             resultList.add(MysteryBoxConvert.INSTANCE.convertToRespDTO(bean));
@@ -48,6 +51,9 @@ public class MysteryBoxService {
         List<MysteryBoxRespDTO> resultList = new ArrayList<>();
         pageEntity.getRecords().forEach(bean -> {
             CreatorEntity creator = creatorRepository.getById(creatorId);
+            if (creator == null) {
+                return;
+            }
             bean.setCreatorName(creator.getName());
             bean.setCreatorAvatar(creator.getAvatar());
             resultList.add(MysteryBoxConvert.INSTANCE.convertToRespDTO(bean));

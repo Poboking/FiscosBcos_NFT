@@ -17,26 +17,23 @@ import java.io.Serializable;
 @Data
 public class AccountRoleEntity extends Model<AccountRoleEntity> implements Serializable {
     /**
-     * 唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 关联的账户ID
-     */
-    private String accountId;
-
-    /**
-     * 关联的角色ID
-     */
-    private String roleId;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 关联的账户ID
+     */
+    private String accountId;
+    /**
+     * 关联的角色ID
+     */
+    private String roleId;
 
     @Override
     public boolean equals(Object that) {

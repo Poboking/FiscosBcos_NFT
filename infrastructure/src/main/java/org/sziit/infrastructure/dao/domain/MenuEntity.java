@@ -15,49 +15,41 @@ import java.sql.Timestamp;
 @TableName(value = "menu")
 @Data
 public class MenuEntity extends Model<MenuEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private Boolean deletedFlag;
-
     /**
      *
      */
     private Timestamp deletedTime;
-
     /**
      *
      */
     private String name;
-
     /**
      *
      */
     private Double orderNo;
-
     /**
      *
      */
     private String parentId;
-
     /**
      *
      */
     private String type;
-
     /**
      *
      */
     private String url;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

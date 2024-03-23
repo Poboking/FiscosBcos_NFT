@@ -5,8 +5,11 @@ import org.mapstruct.factory.Mappers;
 import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDTO;
 import org.sziit.app.biz.artwork.dto.collection.CollectionIntroRespDTO;
 import org.sziit.app.biz.artwork.dto.collection.CollectionResaleRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.ForSaleCollectionRespDTO;
 import org.sziit.infrastructure.dao.domain.CollectionEntity;
 import org.sziit.infrastructure.dao.domain.MemberResaleCollectionEntity;
+
+import java.util.List;
 
 /**
  * @project: a20-nft-3_7
@@ -23,4 +26,10 @@ public interface CollectionConvert {
     CollectionIntroRespDTO convertToIntroRespDTO(CollectionEntity bean);
 
     CollectionResaleRespDTO convertToResaleRespDTO(MemberResaleCollectionEntity bean);
+
+    ForSaleCollectionRespDTO convertToForSaleRespDTO(CollectionEntity bean);
+
+    List<ForSaleCollectionRespDTO> convertToForSaleRespDTO(List<CollectionEntity> bean);
+
+
 }

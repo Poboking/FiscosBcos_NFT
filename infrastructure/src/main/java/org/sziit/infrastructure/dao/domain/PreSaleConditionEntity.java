@@ -17,46 +17,39 @@ import java.io.Serializable;
 @TableName(value = "pre_sale_condition")
 public class PreSaleConditionEntity extends Model<PreSaleConditionEntity> implements Serializable {
     /**
-     * 预售条件记录的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 条件表达式
-     */
-    private String cond;
-
-    /**
-     * 字段名称
-     */
-    private String fieldName;
-
-    /**
-     * 字段值
-     */
-    private String fieldValue;
-
-    /**
-     * 逻辑操作符，如AND、OR等
-     */
-    private String logicalOperation;
-
-    /**
-     * 排序号，用于条件的排序
-     */
-    private Double orderNo;
-
-    /**
-     * 预售任务ID，关联的预售任务
-     */
-    private String preSaleTaskId;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 预售条件记录的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 条件表达式
+     */
+    private String cond;
+    /**
+     * 字段名称
+     */
+    private String fieldName;
+    /**
+     * 字段值
+     */
+    private String fieldValue;
+    /**
+     * 逻辑操作符，如AND、OR等
+     */
+    private String logicalOperation;
+    /**
+     * 排序号，用于条件的排序
+     */
+    private Double orderNo;
+    /**
+     * 预售任务ID，关联的预售任务
+     */
+    private String preSaleTaskId;
 
     @Override
     public boolean equals(Object that) {

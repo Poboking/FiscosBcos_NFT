@@ -171,15 +171,15 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param current  当前页
      * @param pageSize 每页大小
      * @param memberId 会员id
-     * @param status   持有藏品状态
+     * @param state   持有藏品状态
      * @return IPage<MemberHoldCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPageListByMemberIdAndStatus(long current, long pageSize, String memberId, String status) {
+    public IPage<MemberResaleCollectionEntity> getPageListByMemberIdAndStatus(long current, long pageSize, String memberId, String state) {
         return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<MemberResaleCollectionEntity>()
                         .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
-                        .eq(Optional.ofNullable(status).isPresent(), "status", status));
+                        .eq(Optional.ofNullable(state).isPresent(), "state", state));
     }
 
     /**

@@ -24,149 +24,125 @@ import java.time.LocalDateTime;
 @TableName(value = "member")
 public class MemberEntity extends Model<MemberEntity> implements Serializable {
     /**
+     * 序列化版本UID，用于类版本控制
+     */
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+    /**
      * 成员的唯一标识ID
      */
     @TableId
     private String id;
-
     /**
      * 成员的余额
      */
     private Double balance;
-
     /**
      * 删除标志，用于软删除
      */
     private Boolean deletedFlag;
-
     /**
      * 删除时间
      */
     private Timestamp deletedTime;
-
     /**
      * 保持登录的持续时间（单位：秒）
      */
     private Integer keepLoginDuration;
-
     /**
      * 最近一次登录时间
      */
     private Timestamp latelyLoginTime;
-
     /**
      * 登录密码
      */
     private String loginPwd;
-
     /**
      * 成员的手机号码
      */
     private String mobile;
-
     /**
      * 成员的昵称
      */
     private String nickName;
-
     /**
      * 支付密码
      */
     private String payPwd;
-
     /**
      * 成员的真实姓名
      */
     private String realName;
-
     /**
      * 注册时间
      */
     private Timestamp registeredTime;
-
     /**
      * 成员状态
      */
     private String state;
-
     /**
      * 版本号，用于乐观锁控制
      */
     private Long version;
-
     /**
      * 推送客户端ID
      */
     private String pushClientId;
-
     /**
      * 区块链地址
      */
     private String blockChainAddr;
-
     /**
      * 成员的头像
      */
     private String avatar;
-
     /**
      * 绑定真实姓名的时间
      */
     private Timestamp bindRealNameTime;
-
     /**
      * 成员的身份证号码
      */
     private String identityCard;
-
     /**
      * 账户等级
      */
     private Integer accountLevel;
-
     /**
      * 账户等级路径
      */
     private String accountLevelPath;
-
     /**
      * 邀请码
      */
     private String inviteCode;
-
     /**
      * 邀请人ID
      */
     private String inviterId;
-
     /**
      * 是否购买过的标志
      */
     private Boolean boughtFlag;
-
     /**
      * 与区块链同步的时间
      */
     private Timestamp syncChainTime;
 
-    /**
-     * 序列化版本UID，用于类版本控制
-     */
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
     public static MemberEntity init(Boolean isPresent,
                                     String nickName,
                                     String mobile,
                                     String loginPwd,
-                                    String inviterId){
-        if (Boolean.TRUE.equals(isPresent)){
+                                    String inviterId) {
+        if (Boolean.TRUE.equals(isPresent)) {
             return hasInviterInit(nickName, mobile, loginPwd, inviterId);
-        }else {
+        } else {
             return defaultInit(nickName, mobile, loginPwd);
         }
     }
-    public static MemberEntity defaultInit(String nickName, String mobile, String loginPwd){
+
+    public static MemberEntity defaultInit(String nickName, String mobile, String loginPwd) {
         String uuid = IdUtils.uuid();
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
         return MemberEntity.builder()
@@ -187,7 +163,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
                 .build();
     }
 
-    public static MemberEntity hasInviterInit(String nickName, String mobile, String loginPwd, String inviterId){
+    public static MemberEntity hasInviterInit(String nickName, String mobile, String loginPwd, String inviterId) {
         String uuid = IdUtils.uuid();
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
         return MemberEntity.builder()
@@ -209,7 +185,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
                 .build();
     }
 
-    public static MemberEntity quickInit(String nickName, String mobile){
+    public static MemberEntity quickInit(String nickName, String mobile) {
         String uuid = IdUtils.uuid();
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
         return MemberEntity.builder()

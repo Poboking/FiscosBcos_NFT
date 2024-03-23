@@ -15,39 +15,33 @@ import java.sql.Timestamp;
 @TableName(value = "issued_collection_action_log")
 @Data
 public class IssuedCollectionActionLogEntity extends Model<IssuedCollectionActionLogEntity> implements Serializable {
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
     /**
      *
      */
     @TableId
     private String id;
-
     /**
      *
      */
     private String actionDesc;
-
     /**
      *
      */
     private Timestamp actionTime;
-
     /**
      *
      */
     private String issuedCollectionId;
-
     /**
      *
      */
     private String memberId;
-
     /**
      *
      */
     private Long version;
-
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

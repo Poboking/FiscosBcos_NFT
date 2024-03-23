@@ -21,8 +21,12 @@ import java.util.Optional;
 public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLogEntity>
         implements LoginLogRepository {
 
+    private final LoginLogMapper loginLogMapper;
+
     @Autowired
-    private LoginLogMapper loginLogMapper;
+    public LoginLogRepositoryImpl(LoginLogMapper loginLogMapper) {
+        this.loginLogMapper = loginLogMapper;
+    }
 
     /**
      * 分页查询
@@ -63,7 +67,8 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
     public IPage<LoginLogEntity> getLoginLogByUserName(long current, long pageSize, String userName) {
         return loginLogMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<LoginLogEntity>()
-                        .eq(Optional.ofNullable(userName).isPresent(), "user_name", userName));
+                        .eq(Optional.ofNullable(userName).isPresent(), "user_name", userName)
+                        .orderByAsc("login_time"));
     }
 
     /**

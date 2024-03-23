@@ -17,41 +17,35 @@ import java.io.Serializable;
 @TableName(value = "dict_item")
 public class DictItemEntity extends Model<DictItemEntity> implements Serializable {
     /**
-     * 字典项的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 字典项的编码
-     */
-    private String dictItemCode;
-
-    /**
-     * 字典项的名称
-     */
-    private String dictItemName;
-
-    /**
-     * 所属字典类型的ID
-     */
-    private String dictTypeId;
-
-    /**
-     * 字典项的排序号
-     */
-    private Double orderNo;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 字典项的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 字典项的编码
+     */
+    private String dictItemCode;
+    /**
+     * 字典项的名称
+     */
+    private String dictItemName;
+    /**
+     * 所属字典类型的ID
+     */
+    private String dictTypeId;
+    /**
+     * 字典项的排序号
+     */
+    private Double orderNo;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

@@ -9,7 +9,7 @@ import java.util.Date;
  * @author: poboking
  * @date: 2024/3/16 15:23
  */
-public class MemberRespDTO extends MemberBaseDTO{
+public class MemberRespDTO extends MemberBaseDTO {
 
     private String id;
 

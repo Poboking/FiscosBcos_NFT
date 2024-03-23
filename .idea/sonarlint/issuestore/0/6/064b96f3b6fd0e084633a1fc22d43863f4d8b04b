@@ -1,13 +1,19 @@
 
 r
-java:S1066R"/Merge this if statement with the enclosing one.(ë³8Áø¨Øå1J$a4b2ab78-f275-4b95-b1dd-52b865e41c58
+java:S1066p"/Merge this if statement with the enclosing one.(ë³8èšÓ¡æ1J$89e02210-dc5c-41fd-85af-da836f1587de
 
-java:S2184C"FCast one of the operands of this multiplication operation to a "long".(³€ˆØÿÿÿÿÿ8Âø¨Øå1J$6a23eb96-c30d-4e02-ba22-2e3281fb1969
+java:S2184X"FCast one of the operands of this multiplication operation to a "long".(³€ˆØÿÿÿÿÿ8éšÓ¡æ1J$adb78fea-a9fc-48d3-a632-1e14be67385d
 
-java:S2184Z"FCast one of the operands of this multiplication operation to a "long".(³€ˆØÿÿÿÿÿ8Âø¨Øå1J$1dc78742-48f0-4c1e-8751-9c4d4a000b9e
-…
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8Îø¨Øå1J$abb02ff1-181c-4461-bd33-36cf31328718
+java:S2184}"FCast one of the operands of this multiplication operation to a "long".(³€ˆØÿÿÿÿÿ8êšÓ¡æ1J$06969f0b-73ef-4805-a25d-04712ed14eb7
+”	java:S116*"RRename this field "BROWSER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“Å†¤8òšÓ¡æ1J$eb976ade-40b0-4330-be1f-f173587dce67
+”	java:S116,"MRename this field "OS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ¥ãíùÿÿÿÿ8òšÓ¡æ1J$119aaea2-ce16-46b0-93e2-cdc34b1d9ba2
+d
+java:S1170*"!Make this final field static too.(“Å†¤8òšÓ¡æ1J$35f61631-5b8e-4db0-bcb1-c89410ad16d2
+i
+java:S1170,"!Make this final field static too.(ˆ¥ãíùÿÿÿÿ8òšÓ¡æ1J$e6d1f055-fef4-4097-9560-cf2a6708c82b
 z
-java:S1135("2Complete the task associated to this TODO comment.(œèáœÿÿÿÿÿ8Ñø¨Øå1J$98a863cc-c16f-4975-acb6-4e28161323cb
+java:S11355"2Complete the task associated to this TODO comment.(œèáœÿÿÿÿÿ8öšÓ¡æ1J$f6ba1d5c-049d-4035-b53b-07e37caecf90
 u
-java:S11350"2Complete the task associated to this TODO comment.(Å‹’ 8Óø¨Øå1J$8efdb9a5-66c5-4663-a032-2e2706c449ac
+java:S1135="2Complete the task associated to this TODO comment.(Å‹’ 8÷šÓ¡æ1J$5a34c5c1-b160-44e3-a211-41ca5b844cad
+u
+java:S1135P"2Complete the task associated to this TODO comment.(´«¾ı8úšÓ¡æ1J$6fa1b16e-371d-4d46-aab2-7b7c80f2b883

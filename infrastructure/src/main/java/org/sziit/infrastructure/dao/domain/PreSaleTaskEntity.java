@@ -18,51 +18,43 @@ import java.sql.Timestamp;
 @TableName(value = "pre_sale_task")
 public class PreSaleTaskEntity extends Model<PreSaleTaskEntity> implements Serializable {
     /**
-     * 预售任务的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 相关联的收藏品ID
-     */
-    private String collectionId;
-
-    /**
-     * 任务创建时间
-     */
-    private Timestamp createTime;
-
-    /**
-     * 任务执行时间
-     */
-    private Timestamp executeTime;
-
-    /**
-     * 预售前的分钟数，用于倒计时
-     */
-    private Integer preMinute;
-
-    /**
-     * 任务状态，如未开始、进行中、已结束等
-     */
-    private String state;
-
-    /**
-     * 任务名称
-     */
-    private String taskName;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 预售任务的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 相关联的收藏品ID
+     */
+    private String collectionId;
+    /**
+     * 任务创建时间
+     */
+    private Timestamp createTime;
+    /**
+     * 任务执行时间
+     */
+    private Timestamp executeTime;
+    /**
+     * 预售前的分钟数，用于倒计时
+     */
+    private Integer preMinute;
+    /**
+     * 任务状态，如未开始、进行中、已结束等
+     */
+    private String state;
+    /**
+     * 任务名称
+     */
+    private String taskName;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

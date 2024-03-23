@@ -18,56 +18,47 @@ import java.sql.Timestamp;
 @TableName(value = "storage")
 public class StorageEntity extends Model<StorageEntity> implements Serializable {
     /**
-     * 存储记录的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 关联业务类型，如用户头像、商品图片等
-     */
-    private String associateBiz;
-
-    /**
-     * 关联业务的唯一标识ID
-     */
-    private String associateId;
-
-    /**
-     * 文件名称
-     */
-    private String fileName;
-
-    /**
-     * 文件大小，单位为字节
-     */
-    private Long fileSize;
-
-    /**
-     * 文件类型，如图片、视频等
-     */
-    private String fileType;
-
-    /**
-     * 文件上传时间
-     */
-    private Timestamp uploadTime;
-
-    /**
-     * 文件访问URL
-     */
-    private String url;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 存储记录的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 关联业务类型，如用户头像、商品图片等
+     */
+    private String associateBiz;
+    /**
+     * 关联业务的唯一标识ID
+     */
+    private String associateId;
+    /**
+     * 文件名称
+     */
+    private String fileName;
+    /**
+     * 文件大小，单位为字节
+     */
+    private Long fileSize;
+    /**
+     * 文件类型，如图片、视频等
+     */
+    private String fileType;
+    /**
+     * 文件上传时间
+     */
+    private Timestamp uploadTime;
+    /**
+     * 文件访问URL
+     */
+    private String url;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

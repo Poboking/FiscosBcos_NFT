@@ -18,56 +18,47 @@ import java.sql.Timestamp;
 @TableName(value = "login_log")
 public class LoginLogEntity extends Model<LoginLogEntity> implements Serializable {
     /**
-     * 登录日志记录的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 登录时使用的浏览器名称
-     */
-    private String browser;
-
-    /**
-     * 登录时用户的IP地址
-     */
-    private String ipAddr;
-
-    /**
-     * 登录时间
-     */
-    private Timestamp loginTime;
-
-    /**
-     * 登录过程中的相关信息或错误消息
-     */
-    private String msg;
-
-    /**
-     * 登录时用户的操作系统
-     */
-    private String os;
-
-    /**
-     * 登录状态，如成功、失败等
-     */
-    private String state;
-
-    /**
-     * 登录日志所属的子系统
-     */
-    private String subSystem;
-
-    /**
-     * 登录用户的用户名
-     */
-    private String userName;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 登录日志记录的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 登录时使用的浏览器名称
+     */
+    private String browser;
+    /**
+     * 登录时用户的IP地址
+     */
+    private String ipAddr;
+    /**
+     * 登录时间
+     */
+    private Timestamp loginTime;
+    /**
+     * 登录过程中的相关信息或错误消息
+     */
+    private String msg;
+    /**
+     * 登录时用户的操作系统
+     */
+    private String os;
+    /**
+     * 登录状态，如成功、失败等
+     */
+    private String state;
+    /**
+     * 登录日志所属的子系统
+     */
+    private String subSystem;
+    /**
+     * 登录用户的用户名
+     */
+    private String userName;
 
     @Override
     public boolean equals(Object that) {

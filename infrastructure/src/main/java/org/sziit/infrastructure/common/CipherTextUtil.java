@@ -53,7 +53,7 @@ public class CipherTextUtil {
             byte[] var8 = md;
             int var9 = md.length;
 
-            for(int var10 = 0; var10 < var9; ++var10) {
+            for (int var10 = 0; var10 < var9; ++var10) {
                 byte byte0 = var8[var10];
                 strA[k++] = hexDigits[byte0 >>> 4 & 15];
                 strA[k++] = hexDigits[byte0 & 15];
@@ -112,7 +112,7 @@ public class CipherTextUtil {
         byte[] var5 = bytes;
         int var6 = bytes.length;
 
-        for(int var7 = 0; var7 < var6; ++var7) {
+        for (int var7 = 0; var7 < var6; ++var7) {
             byte aByte = var5[var7];
             String temp = Integer.toHexString(aByte & 255);
             if (temp.length() == 1) {
@@ -169,8 +169,8 @@ public class CipherTextUtil {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(1024, new SecureRandom(UUID.randomUUID().toString().replaceAll("-", "").getBytes()));
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
-        RSAPublicKey rsaPublicKey = (RSAPublicKey)keyPair.getPublic();
-        RSAPrivateKey rsaPrivateKey = (RSAPrivateKey)keyPair.getPrivate();
+        RSAPublicKey rsaPublicKey = (RSAPublicKey) keyPair.getPublic();
+        RSAPrivateKey rsaPrivateKey = (RSAPrivateKey) keyPair.getPrivate();
         HashMap<String, String> map = new HashMap(16);
         map.put("private", encoder.encodeToString(rsaPrivateKey.getEncoded()));
         map.put("public", encoder.encodeToString(rsaPublicKey.getEncoded()));
@@ -182,13 +182,13 @@ public class CipherTextUtil {
             PublicKey publicKey = getPublicKeyFromString(publicKeyString);
             javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("RSA");
             cipher.init(1, publicKey);
-            int splitLength = ((RSAPublicKey)publicKey).getModulus().bitLength() / 8 - 11;
+            int splitLength = ((RSAPublicKey) publicKey).getModulus().bitLength() / 8 - 11;
             byte[][] arrays = splitBytes(content.getBytes(), splitLength);
             StringBuilder stringBuilder = new StringBuilder();
             byte[][] var7 = arrays;
             int var8 = arrays.length;
 
-            for(int var9 = 0; var9 < var8; ++var9) {
+            for (int var9 = 0; var9 < var8; ++var9) {
                 byte[] array = var7[var9];
                 stringBuilder.append(bytesToHexString(cipher.doFinal(array)));
             }
@@ -204,13 +204,13 @@ public class CipherTextUtil {
             PrivateKey privateKey = getPrivateKeyFromString(privateKeyString);
             javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("RSA");
             cipher.init(1, privateKey);
-            int splitLength = ((RSAPrivateKey)privateKey).getModulus().bitLength() / 8 - 11;
+            int splitLength = ((RSAPrivateKey) privateKey).getModulus().bitLength() / 8 - 11;
             byte[][] arrays = splitBytes(content.getBytes(), splitLength);
             StringBuilder stringBuilder = new StringBuilder();
             byte[][] var7 = arrays;
             int var8 = arrays.length;
 
-            for(int var9 = 0; var9 < var8; ++var9) {
+            for (int var9 = 0; var9 < var8; ++var9) {
                 byte[] array = var7[var9];
                 stringBuilder.append(bytesToHexString(cipher.doFinal(array)));
             }
@@ -226,14 +226,14 @@ public class CipherTextUtil {
             PublicKey publicKey = getPublicKeyFromString(publicKeyString);
             javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("RSA");
             cipher.init(2, publicKey);
-            int splitLength = ((RSAPublicKey)publicKey).getModulus().bitLength() / 8;
+            int splitLength = ((RSAPublicKey) publicKey).getModulus().bitLength() / 8;
             byte[] contentBytes = hexStringToBytes(content);
             byte[][] arrays = splitBytes(contentBytes, splitLength);
             StringBuilder stringBuilder = new StringBuilder();
             byte[][] var8 = arrays;
             int var9 = arrays.length;
 
-            for(int var10 = 0; var10 < var9; ++var10) {
+            for (int var10 = 0; var10 < var9; ++var10) {
                 byte[] array = var8[var10];
                 stringBuilder.append(new String(cipher.doFinal(array)));
             }
@@ -249,14 +249,14 @@ public class CipherTextUtil {
             PrivateKey privateKey = getPrivateKeyFromString(privateKeyString);
             javax.crypto.Cipher cipher = javax.crypto.Cipher.getInstance("RSA");
             cipher.init(2, privateKey);
-            int splitLength = ((RSAPrivateKey)privateKey).getModulus().bitLength() / 8;
+            int splitLength = ((RSAPrivateKey) privateKey).getModulus().bitLength() / 8;
             byte[] contentBytes = hexStringToBytes(content);
             byte[][] arrays = splitBytes(contentBytes, splitLength);
             StringBuilder stringBuilder = new StringBuilder();
             byte[][] var8 = arrays;
             int var9 = arrays.length;
 
-            for(int var10 = 0; var10 < var9; ++var10) {
+            for (int var10 = 0; var10 < var9; ++var10) {
                 byte[] array = var8[var10];
                 stringBuilder.append(new String(cipher.doFinal(array)));
             }
@@ -286,7 +286,7 @@ public class CipherTextUtil {
         int quotient = remainder != 0 ? bytes.length / splitLength + 1 : bytes.length / splitLength;
         byte[][] arrays = new byte[quotient][];
 
-        for(int i = 0; i < quotient; ++i) {
+        for (int i = 0; i < quotient; ++i) {
             byte[] array;
             if (i == quotient - 1 && remainder != 0) {
                 array = new byte[remainder];
@@ -307,7 +307,7 @@ public class CipherTextUtil {
         byte[] var3 = bytes;
         int var4 = bytes.length;
 
-        for(int var5 = 0; var5 < var4; ++var5) {
+        for (int var5 = 0; var5 < var4; ++var5) {
             byte aByte = var3[var5];
             String temp = Integer.toHexString(255 & aByte);
             if (temp.length() < 2) {
@@ -326,15 +326,15 @@ public class CipherTextUtil {
         byte[] result = new byte[len];
         char[] chars = hex.toCharArray();
 
-        for(int i = 0; i < len; ++i) {
+        for (int i = 0; i < len; ++i) {
             int pos = i * 2;
-            result[i] = (byte)(toByte(chars[pos]) << 4 | toByte(chars[pos + 1]));
+            result[i] = (byte) (toByte(chars[pos]) << 4 | toByte(chars[pos + 1]));
         }
 
         return result;
     }
 
     private static byte toByte(char c) {
-        return (byte)"0123456789ABCDEF".indexOf(c);
+        return (byte) "0123456789ABCDEF".indexOf(c);
     }
 }

@@ -18,56 +18,47 @@ import java.sql.Timestamp;
 @TableName(value = "issued_collection")
 public class IssuedCollectionEntity extends Model<IssuedCollectionEntity> implements Serializable {
     /**
-     * 发行收藏品的唯一标识ID
-     */
-    @TableId
-    private String id;
-
-    /**
-     * 收藏品ID
-     */
-    private String collectionId;
-
-    /**
-     * 收藏品序列号
-     */
-    private Integer collectionSerialNumber;
-
-    /**
-     * 删除标志，用于软删除
-     */
-    private Boolean deletedFlag;
-
-    /**
-     * 删除时间
-     */
-    private Timestamp deletedTime;
-
-    /**
-     * 发行时间
-     */
-    private Timestamp issueTime;
-
-    /**
-     * 与区块链同步的时间
-     */
-    private Timestamp syncChainTime;
-
-    /**
-     * 唯一ID，用于在区块链上的唯一标识
-     */
-    private String uniqueId;
-
-    /**
-     * 版本号，用于乐观锁控制
-     */
-    private Long version;
-
-    /**
      * 序列化版本UID，用于类版本控制
      */
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+    /**
+     * 发行收藏品的唯一标识ID
+     */
+    @TableId
+    private String id;
+    /**
+     * 收藏品ID
+     */
+    private String collectionId;
+    /**
+     * 收藏品序列号
+     */
+    private Integer collectionSerialNumber;
+    /**
+     * 删除标志，用于软删除
+     */
+    private Boolean deletedFlag;
+    /**
+     * 删除时间
+     */
+    private Timestamp deletedTime;
+    /**
+     * 发行时间
+     */
+    private Timestamp issueTime;
+    /**
+     * 与区块链同步的时间
+     */
+    private Timestamp syncChainTime;
+    /**
+     * 唯一ID，用于在区块链上的唯一标识
+     */
+    private String uniqueId;
+    /**
+     * 版本号，用于乐观锁控制
+     */
+    private Long version;
 
     @Override
     public boolean equals(Object that) {

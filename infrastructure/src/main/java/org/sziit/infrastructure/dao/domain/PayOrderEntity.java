@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,73 +17,62 @@ import java.sql.Timestamp;
  */
 @TableName(value = "pay_order")
 @Data
+@Builder
 public class PayOrderEntity extends Model<PayOrderEntity> implements Serializable {
+
     /**
      * 支付订单的唯一标识符ID
      */
     @TableId
     private String id;
-
     /**
      * 订单的支付金额
      */
     private Double amount;
-
     /**
      * 业务订单号，用于关联具体的业务操作
      */
     private String bizOrderNo;
-
     /**
      * 业务类型，如购买商品、服务等
      */
     private String bizType;
-
     /**
      * 收藏ID，如果支付订单与某个收藏相关联
      */
     private String collectionId;
-
     /**
      * 订单创建的时间
      */
     private Timestamp createTime;
-
     /**
      * 会员的唯一标识符ID
      */
     private String memberId;
-
     /**
      * 订单的截止时间，即订单的有效期限
      */
     private Timestamp orderDeadline;
-
     /**
      * 订单编号，用于唯一标识一个支付订单
      */
     private String orderNo;
-
     /**
      * 订单的状态，如待支付、已支付、已取消等
      */
     private String state;
-
     /**
      * 版本号，用于乐观锁机制
      */
     private Long version;
-
     /**
      * 订单的支付时间
      */
     private Timestamp paidTime;
-
     /**
      * 订单的取消时间
      */
     private Timestamp cancelTime;
-
     /**
      * 业务模式，如线上支付、线下支付等
      */

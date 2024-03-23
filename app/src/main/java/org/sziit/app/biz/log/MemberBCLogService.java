@@ -28,7 +28,7 @@ public class MemberBCLogService {
         IPage<MemberBalanceChangeLogEntity> pageList = null;
         if (changeType == null) {
             pageList = repository.getMemberBCLogPageList(current, size);
-        }else {
+        } else {
             pageList = repository.getMemberBCLogPageList(current, size, changeType);
         }
         List<MemberBCLogRespDTO> recordList = new ArrayList<>();
@@ -40,7 +40,7 @@ public class MemberBCLogService {
         IPage<MemberBalanceChangeLogEntity> pageList = null;
         if (changeType == null) {
             pageList = repository.getMemberBCLogPageListByMemberId(current, size, memberId);
-        }else {
+        } else {
             pageList = repository.getMemberBCLogPageListByMemberId(current, size, changeType, memberId);
         }
         List<MemberBCLogRespDTO> recordList = new ArrayList<>();
