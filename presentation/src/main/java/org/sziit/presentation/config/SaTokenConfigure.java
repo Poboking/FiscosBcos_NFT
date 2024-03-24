@@ -60,26 +60,43 @@ public class SaTokenConfigure implements WebMvcConfigurer {
 //                                }
 //                            });        // 要执行的校验动作，可以写完整的 lambda 表达式
 
+
+                    /**
+                     * Member路由
+                     */
                     SaRouter.match(
-                                    "/back/**",
                                     "/myArtwork/**",
                                     "/transaction/**",
                                     "/storage/**",
                                     "/notice/**",
                                     "/member/**",
-                                    "/dictconfig/**",
                                     "/collection/**")
                             .notMatch(
                                     "/login",
                                     "/quickLogin",
-                                    "/back/login",
-                                    "/back/logout"
+                                    "/back/login"
                             )
                             .check(r -> {
                                 if (Boolean.FALSE.equals(StpUserUtil.isLogin())) {
                                     throw new UnauthorizedException("[UnauthorizedException]: 用户未登录");
                                 }
                             });
+                    /**
+                     * 共有路由
+                     */
+                    SaRouter.match("/dictconfig/**").check(r -> {
+                        if (Boolean.FALSE.equals(StpUserUtil.isLogin() || StpAdminUtil.isLogin())) {
+                            throw new UnauthorizedException("[UnauthorizedException]: 用户未登录");
+                        }
+                    });
+                    /**
+                     * Admin路由
+                     */
+                    SaRouter.match("/back/**").check(r -> {
+                        if (Boolean.FALSE.equals(StpAdminUtil.isLogin())) {
+                            throw new UnauthorizedException("[UnauthorizedException]: 管理员未登录");
+                        }
+                    });
                     // 根据路由划分模块，不同模块不同鉴权
                     SaRouter.match("/back/**", r -> StpAdminUtil.checkPermission("admin"));
                     SaRouter.match("/myArtwork/**", r -> StpUserUtil.checkPermission("user.myArtwork"));
@@ -93,10 +110,10 @@ public class SaTokenConfigure implements WebMvcConfigurer {
                     SaRouter.match("/**", r ->
                     {
                         if (StpUserUtil.isLogin()) {
-                            log.info(CharSequenceUtil.format("[{}]:用户登录", StpUserUtil.getLoginIdDefaultNull()));
+                            log.info(CharSequenceUtil.format("[{}]:用户访问", StpUserUtil.getLoginIdDefaultNull()));
                         }
                         if (StpAdminUtil.isLogin()) {
-                            log.info(CharSequenceUtil.format("[{}]:管理员登录", StpAdminUtil.getLoginIdDefaultNull()));
+                            log.info(CharSequenceUtil.format("[{}]:管理员访问", StpAdminUtil.getLoginIdDefaultNull()));
                         }
                     });
                 })).addPathPatterns("/**")

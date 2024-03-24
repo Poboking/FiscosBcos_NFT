@@ -10,34 +10,44 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * @TableName role
+ * 角色实体类，用于定义系统中角色的基本信息
+ *
+ * @TableName role 指定实体类对应的数据库表名为 "role"
  */
 @TableName(value = "role")
 @Data
 public class RoleEntity extends Model<RoleEntity> implements Serializable {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
     /**
-     *
+     * 角色的唯一标识符ID，用于唯一标识系统中的一个角色
      */
     @TableId
     private String id;
+
     /**
-     *
+     * 角色创建的时间，记录角色在系统中创建的具体时间点
      */
     private Timestamp createTime;
+
     /**
-     *
+     * 删除标志，用于软删除功能，如果角色被标记为删除，则此字段为true
      */
     private Boolean deletedFlag;
+
     /**
-     *
+     * 角色删除的时间，记录角色被删除的具体时间点
      */
     private Timestamp deletedTime;
+
     /**
-     *
+     * 角色名称，用于标识和展示角色的名称
      */
     private String name;
+
+    /**
+     * 序列化版本UID，用于类在序列化和反序列化过程中保持版本兼容性
+     */
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

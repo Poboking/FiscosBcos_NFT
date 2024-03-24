@@ -10,10 +10,9 @@ import org.sziit.app.biz.convert.transaction.PayOrderConvert;
 import org.sziit.app.biz.exception.BizException;
 import org.sziit.app.biz.transaction.dto.giverecord.CollectionGiveRecordRespDTO;
 import org.sziit.app.biz.transaction.dto.order.PayOrderRespDTO;
-import org.sziit.infrastructure.common.IdUtils;
-import org.sziit.infrastructure.common.NftConstants;
-import org.sziit.infrastructure.common.OrderNoUtil;
-import org.sziit.infrastructure.common.PageResult;
+import org.sziit.app.biz.transaction.dto.trade.TradeStatisticDayRespDTO;
+import org.sziit.app.biz.transaction.dto.trade.TradeStatisticRespDTO;
+import org.sziit.infrastructure.common.*;
 import org.sziit.infrastructure.dao.domain.CollectionEntity;
 import org.sziit.infrastructure.dao.domain.CollectionGiveRecordEntity;
 import org.sziit.infrastructure.dao.domain.PayOrderEntity;
@@ -146,4 +145,28 @@ public class TransactionService {
                 .build();
     }
 
+    public List<TradeStatisticDayRespDTO> getEverydayTradeData(String bizMode, String startDate, String endDate) {
+        List<String> dateRange = DateUtil.generateDateRange(startDate, endDate);
+        List<TradeStatisticDayRespDTO> result = new ArrayList<>();
+        if (dateRange == null) {
+            return result;
+        }
+        dateRange.forEach(date -> {
+            result.add(TradeStatisticDayRespDTO.builder()
+                    .everyday(date)
+                    .successAmount(payOrderRepository.getSuccessAmountByDate(bizMode, date))
+                    .successCount(payOrderRepository.getSuccessCountByDate(bizMode, date))
+                    .build());
+        });
+        return result;
+    }
+
+    public TradeStatisticRespDTO getTradeStatisticData(String bizMode) {
+        return TradeStatisticRespDTO.builder()
+                .totalAmount(payOrderRepository.getSuccessAmountByDate(bizMode, null))
+                .todayAmount(payOrderRepository.getSuccessAmountByDate(bizMode, DateUtil.getToday()))
+                .todayCount(payOrderRepository.getSuccessCountByDate(bizMode, null))
+                .yesterdayAmount(payOrderRepository.getSuccessAmountByDate(bizMode, DateUtil.getYesterday()))
+                .build();
+    }
 }

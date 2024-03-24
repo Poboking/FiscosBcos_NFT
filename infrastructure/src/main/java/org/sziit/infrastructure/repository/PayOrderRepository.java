@@ -61,4 +61,22 @@ public interface PayOrderRepository extends IService<PayOrderEntity> {
      * @return Boolean 是否更新成功
      */
     Boolean updateStateById(String id, String state, Timestamp updateTime);
+
+    /**
+     * 获取成功交易总额 - 根据日期
+     *
+     * @param bizMode 业务模式
+     * @param date    日期
+     * @return double 订单金额
+     */
+    Double getSuccessAmountByDate(String bizMode, String date);
+
+    /**
+     * 获取成功交易总数 - 根据日期
+     *
+     * @param bizMode 业务模式
+     * @param date    日期
+     * @return Integer 订单数量
+     */
+    Long getSuccessCountByDate(String bizMode, String date);
 }

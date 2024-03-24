@@ -1,7 +1,5 @@
 
-q
-java:S1192c"ODefine a constant instead of duplicating this literal "commodity_type" 3 times.(€äºîıÿÿÿÿ8’œÚÛæ1
-h
-java:S1192"JDefine a constant instead of duplicating this literal "sale_time" 6 times.(ğÅª8“œÚÛæ1
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8ŸœÚÛæ1
+—
+java:S1192f"ODefine a constant instead of duplicating this literal "commodity_type" 4 times.(€äºîıÿÿÿÿ8’œÚÛæ1J$15645958-872a-4642-bdeb-9c9dcc9994d2
+
+java:S1192¢"JDefine a constant instead of duplicating this literal "sale_time" 6 times.(ğÅª8“œÚÛæ1J$bdd45d03-4e1d-4aa3-a785-e65b1f452cd0

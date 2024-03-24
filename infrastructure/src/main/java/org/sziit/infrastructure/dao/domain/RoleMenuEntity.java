@@ -9,26 +9,34 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @TableName role_menu
+ * 角色菜单关联实体类，用于定义角色与菜单项之间的关联关系
+ *
+ * @TableName role_menu 指定实体类对应的数据库表名为 "role_menu"
  */
 @TableName(value = "role_menu")
 @Data
 public class RoleMenuEntity extends Model<RoleMenuEntity> implements Serializable {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
     /**
-     *
+     * 角色菜单关联记录的唯一标识符ID
      */
     @TableId
     private String id;
+
     /**
-     *
+     * 菜单项的唯一标识符ID，表示被授权的角色可以访问的菜单项
      */
     private String menuId;
+
     /**
-     *
+     * 角色的唯一标识符ID，表示拥有此菜单访问权限的角色
      */
     private String roleId;
+
+    /**
+     * 序列化版本UID，用于类在序列化和反序列化过程中保持版本兼容性
+     */
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

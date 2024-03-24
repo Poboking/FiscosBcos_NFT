@@ -3,7 +3,6 @@ package org.sziit.presentation.member;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +27,21 @@ import java.util.List;
  */
 //@CheckUserLogin
 @Log4j2
-@AllArgsConstructor
 @NoArgsConstructor
 @RestController
 @RequestMapping("/collection/")
 @Tag(name = "CollectionController", description = "COLLECTION_CONTROLLER")
 public class CollectionController {
-    @Autowired
     private CollectionService collectionService;
-    @Autowired
     private MemberResaleCollectionService memberResaleCollectionService;
-    @Autowired
     private MysteryBoxService mysteryBoxService;
+
+    @Autowired
+    public CollectionController(CollectionService collectionService, MemberResaleCollectionService memberResaleCollectionService, MysteryBoxService mysteryBoxService) {
+        this.collectionService = collectionService;
+        this.memberResaleCollectionService = memberResaleCollectionService;
+        this.mysteryBoxService = mysteryBoxService;
+    }
 
 
     @GetMapping("findLatestCollectionByPage")

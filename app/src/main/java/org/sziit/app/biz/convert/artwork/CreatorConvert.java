@@ -2,8 +2,11 @@ package org.sziit.app.biz.convert.artwork;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.sziit.app.biz.artwork.dto.creator.CreatorAddOrUpdateReqDTO;
 import org.sziit.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.sziit.infrastructure.dao.domain.CreatorEntity;
+
+import java.util.List;
 
 /**
  * @project: a20-nft-3_7
@@ -15,4 +18,8 @@ public interface CreatorConvert {
     CreatorConvert INSTANCE = Mappers.getMapper(CreatorConvert.class);
 
     CreatorRespDTO convertToRespDTO(CreatorEntity entity);
+
+    List<CreatorRespDTO> convertToRespDTO(List<CreatorEntity> entity);
+
+    CreatorEntity convertToEntity(CreatorAddOrUpdateReqDTO reqDTo);
 }

@@ -1,7 +1,9 @@
 
 t
-java:S1602<",Remove useless curly braces around statement(€Ó€Óşÿÿÿÿ8Ä¾©ßæ1J$6d228b39-a702-401a-9003-89b658fa8cbb
+java:S1602;",Remove useless curly braces around statement(€Ó€Óşÿÿÿÿ8ï‹®‚ç1J$79523cc9-acb4-46e2-9a8e-dea2a6bb138f
 „
-java:S1854E"<Remove this useless assignment to local variable "pageList".(¢„Ñşÿÿÿÿ8Æ¾©ßæ1J$8574060c-1e38-4f64-9327-e26fee200f15
+java:S1854D"<Remove this useless assignment to local variable "pageList".(¢„Ñşÿÿÿÿ8ñ‹®‚ç1J$18b4b9fd-f8f3-4988-adc9-02add1a723b2
 t
-java:S1602M",Remove useless curly braces around statement(øöêşÿÿÿÿ8È¾©ßæ1J$6a732e4f-9207-4618-b597-ac7cb73efd0f
+java:S1602L",Remove useless curly braces around statement(øöêşÿÿÿÿ8ó‹®‚ç1J$5b562c36-c65b-4309-b5b3-c2212d132bec
+p
+java:S1602š",Remove useless curly braces around statement(À¨Ù¨8ü‹®‚ç1J$8ab46583-e47d-4da5-b969-02a83e4f592b

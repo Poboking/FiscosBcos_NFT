@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.sziit.infrastructure.dao.domain.CollectionEntity;
@@ -22,12 +21,15 @@ import java.util.Optional;
  * @createDate 2024-03-07 17:31:43
  */
 @Service
-@AllArgsConstructor
 public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, CollectionEntity>
         implements CollectionRepository {
 
+    private final CollectionMapper collectionMapper;
+
     @Autowired
-    private CollectionMapper collectionMapper;
+    public CollectionRepositoryImpl(CollectionMapper collectionMapper) {
+        this.collectionMapper = collectionMapper;
+    }
 
 
     /**
@@ -126,6 +128,23 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
         return collectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<CollectionEntity>()
                         .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
+                        .eq(Optional.ofNullable(commodityType).isPresent(), "commodity_type", commodityType));
+    }
+
+    /**
+     * 根据藏品类型和藏品名称 - 获取分页列表
+     *
+     * @param current       当前页
+     * @param pageSize      页面大小
+     * @param name          藏品名称
+     * @param commodityType 商品类型
+     * @return IPage<CollectionEntity> pageResult
+     */
+    @Override
+    public IPage<CollectionEntity> getPageListByNameAndCommodityType(long current, long pageSize, String name, String commodityType) {
+        return collectionMapper.selectPage(new Page<>(current, pageSize),
+                new QueryWrapper<CollectionEntity>()
+                        .like(Optional.ofNullable(name).isPresent(), "name", name)
                         .eq(Optional.ofNullable(commodityType).isPresent(), "commodity_type", commodityType));
     }
 

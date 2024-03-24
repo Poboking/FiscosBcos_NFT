@@ -4,35 +4,46 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- * @TableName collection_story
+ * 收藏故事实体类，用于记录和管理收藏品相关的故事或描述信息
+ *
+ * @TableName collection_story 指定实体类对应的数据库表名为 "collection_story"
  */
 @TableName(value = "collection_story")
 @Data
+@Builder
 public class CollectionStoryEntity extends Model<CollectionStoryEntity> implements Serializable {
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
     /**
-     *
+     * 收藏故事记录的唯一标识符ID，用于唯一标识每条收藏故事记录
      */
     @TableId
     private String id;
+
     /**
-     *
+     * 收藏品ID，关联的收藏品的唯一标识符
      */
     private String collectionId;
+
     /**
-     *
+     * 顺序编号，用于定义故事在一系列故事中的顺序
      */
     private Double orderNo;
+
     /**
-     *
+     * 图片链接，收藏故事相关的图片资源的网络地址
      */
     private String picLink;
+
+    /**
+     * 序列化版本UID，用于类在序列化和反序列化过程中保持版本兼容性
+     */
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
 
     @Override
     public boolean equals(Object that) {

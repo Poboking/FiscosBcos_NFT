@@ -80,6 +80,17 @@ public interface CollectionRepository extends IService<CollectionEntity> {
     IPage<CollectionEntity> getPageListByCreatorIdAndCommodityType(long current, long pageSize, String creatorId, String commodityType);
 
     /**
+     * 根据藏品类型和藏品名称 - 获取分页列表
+     *
+     * @param current       当前页
+     * @param pageSize      页面大小
+     * @param commodityType 商品类型
+     * @param name          藏品名称
+     * @return IPage<CollectionEntity> pageResult
+     */
+    IPage<CollectionEntity> getPageListByNameAndCommodityType(long current, long pageSize, String name, String commodityType);
+
+    /**
      * 根据时间范围 - 获取升序列表
      *
      * @param saleTimeStart 销售时间开始
@@ -99,6 +110,7 @@ public interface CollectionRepository extends IService<CollectionEntity> {
 
     /**
      * 减少库存
+     *
      * @param collectionId 藏品ID
      * @return boolean 是否减少成功
      */

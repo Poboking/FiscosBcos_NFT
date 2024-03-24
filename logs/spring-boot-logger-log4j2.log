@@ -1,101 +1,23 @@
-2024-03-24 00:06:01,431 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2024-03-24 00:06:01,455 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 20848 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
-2024-03-24 00:06:01,458 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
-2024-03-24 00:06:01,459 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2024-03-24 00:06:02,264 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-03-24 00:06:02,267 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-03-24 00:06:02,292 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
-2024-03-24 00:06:02,898 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2024-03-24 00:06:02,907 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2024-03-24 00:06:02,908 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2024-03-24 00:06:02,908 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
-2024-03-24 00:06:02,982 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2024-03-24 00:06:02,983 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1490 ms
-2024-03-24 00:06:04,204 INFO c.f.g.Init [main] Graceful Response:已启动
-2024-03-24 00:06:04,296 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
-2024-03-24 00:06:04,758 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2024-03-24 00:06:04,776 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2024-03-24 00:06:04,785 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 3.647 seconds (process running for 4.486)
-2024-03-24 00:06:04,787 INFO o.s.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
-2024-03-24 00:06:20,561 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-24 00:06:20,562 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2024-03-24 00:06:20,563 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2024-03-24 00:06:20,953 INFO o.s.p.c.SaTokenConfigure [http-nio-8080-exec-1] [cd44aed6c3574c42bf63fd45c2837d7b]:用户登录
-2024-03-24 00:06:21,047 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-1] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[type不能为空]
-org.sziit.presentation.exception.BadRequestException: type不能为空
-	at org.sziit.presentation.member.transaction.SettlementAccountController.add(SettlementAccountController.java:51) ~[classes/:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.4.jar:6.0.4]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.4.jar:6.0.4]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:731) ~[tomcat-embed-core-10.1.5.jar:6.0]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.4.jar:6.0.4]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.5.jar:6.0]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.4.jar:6.0.4]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at cn.dev33.satoken.filter.SaPathCheckFilterForJakartaServlet.doFilter(SaPathCheckFilterForJakartaServlet.java:55) ~[sa-token-spring-boot3-starter-1.37.0.jar:?]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.4.jar:6.0.4]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.4.jar:6.0.4]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
-	at java.lang.Thread.run(Thread.java:842) ~[?:?]
-2024-03-24 00:06:38,867 INFO o.s.p.c.SaTokenConfigure [http-nio-8080-exec-2] [cd44aed6c3574c42bf63fd45c2837d7b]:用户登录
-2024-03-24 00:06:38,934 INFO c.z.h.HikariDataSource [http-nio-8080-exec-2] HikariPool-1 - Starting...
-2024-03-24 00:06:39,054 INFO c.z.h.p.HikariPool [http-nio-8080-exec-2] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@9f11e0c
-2024-03-24 00:06:39,055 INFO c.z.h.HikariDataSource [http-nio-8080-exec-2] HikariPool-1 - Start completed.
-2024-03-24 00:06:39,062 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==>  Preparing: SELECT id,account,activated,activated_time,bank_name,card_number,create_time,deleted_flag,deleted_time,member_id,real_name,type FROM settlement_account WHERE (member_id = ?)
-2024-03-24 00:06:39,084 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==> Parameters: cd44aed6c3574c42bf63fd45c2837d7b(String)
-2024-03-24 00:06:39,106 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==    Columns: id, account, activated, activated_time, bank_name, card_number, create_time, deleted_flag, deleted_time, member_id, real_name, type
-2024-03-24 00:06:39,107 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==        Row: 1771560317180227586, , null, null, , 0, null, null, null, cd44aed6c3574c42bf63fd45c2837d7b, null, 
-2024-03-24 00:06:39,109 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==        Row: 1771560874632609793, , null, null, , 0, null, null, null, cd44aed6c3574c42bf63fd45c2837d7b, null, 
-2024-03-24 00:06:39,110 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==      Total: 2
-2024-03-24 00:06:39,117 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==>  Preparing: SELECT id,account,activated,activated_time,bank_name,card_number,create_time,deleted_flag,deleted_time,member_id,real_name,type FROM settlement_account WHERE (member_id = ?)
-2024-03-24 00:06:39,117 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==> Parameters: cd44aed6c3574c42bf63fd45c2837d7b(String)
-2024-03-24 00:06:39,119 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==    Columns: id, account, activated, activated_time, bank_name, card_number, create_time, deleted_flag, deleted_time, member_id, real_name, type
-2024-03-24 00:06:39,119 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==        Row: 1771560317180227586, , null, null, , 0, null, null, null, cd44aed6c3574c42bf63fd45c2837d7b, null, 
-2024-03-24 00:06:39,120 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==        Row: 1771560874632609793, , null, null, , 0, null, null, null, cd44aed6c3574c42bf63fd45c2837d7b, null, 
-2024-03-24 00:06:39,120 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==      Total: 2
-2024-03-24 00:06:50,432 INFO o.s.p.c.SaTokenConfigure [http-nio-8080-exec-3] [cd44aed6c3574c42bf63fd45c2837d7b]:用户登录
-2024-03-24 00:06:50,443 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==>  Preparing: UPDATE settlement_account SET activated=? WHERE (member_id = ? AND account = ?)
-2024-03-24 00:06:50,444 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==> Parameters: true(Boolean), cd44aed6c3574c42bf63fd45c2837d7b(String), 111(String)
-2024-03-24 00:06:50,448 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==    Updates: 0
-2024-03-24 00:07:12,976 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2024-03-24 00:07:12,982 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-03-24 22:42:59,661 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-03-24 22:42:59,699 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 22280 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
+2024-03-24 22:42:59,702 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
+2024-03-24 22:42:59,704 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-03-24 22:43:00,502 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-03-24 22:43:00,505 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-03-24 22:43:00,528 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2024-03-24 22:43:01,065 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2024-03-24 22:43:01,073 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-03-24 22:43:01,073 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-03-24 22:43:01,074 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-03-24 22:43:01,144 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-03-24 22:43:01,144 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1382 ms
+2024-03-24 22:43:02,460 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-03-24 22:43:02,568 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-03-24 22:43:03,145 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-03-24 22:43:03,167 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-24 22:43:03,177 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 3.974 seconds (process running for 4.914)
+2024-03-24 22:43:03,181 INFO o.s.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
+2024-03-24 22:43:09,544 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-24 22:43:09,544 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-03-24 22:43:09,545 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2024-03-24 22:43:09,976 INFO o.s.p.c.SaTokenConfigure [http-nio-8080-exec-1] [1]:管理员访问

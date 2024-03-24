@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
  * @TableName creator
  */
 @Data
+@Builder
 @TableName(value = "creator")
 public class CreatorEntity extends Model<CreatorEntity> implements Serializable {
     /**

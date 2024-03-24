@@ -117,6 +117,40 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
         return false;
     }
 
+    /**
+     * 获取成功交易总额 - 根据日期
+     *
+     * @param bizMode 业务模式
+     * @param date    日期
+     * @return 订单数量
+     */
+    @Override
+    public Double getSuccessAmountByDate(String bizMode, String date) {
+        return payOrderMapper.selectList(new QueryWrapper<PayOrderEntity>()
+                .eq("biz_mode", bizMode)
+                .eq("state", NftConstants.支付订单状态_已付款)
+                .like(Optional.ofNullable(date).isPresent(),"paid_time", date))
+                .stream()
+                .map(PayOrderEntity::getAmount)
+                .reduce(Double::sum)
+                .orElse(0.0);
+    }
+
+    /**
+     * 获取成功交易总数 - 根据日期
+     *
+     * @param bizMode 业务模式
+     * @param date    日期
+     * @return Integer 订单数量
+     */
+    @Override
+    public Long getSuccessCountByDate(String bizMode, String date) {
+        return count(new QueryWrapper<PayOrderEntity>()
+                .eq("biz_mode", bizMode)
+                .eq("state", NftConstants.支付订单状态_已付款)
+                .like(Optional.ofNullable(date).isPresent(),"pay_time", date));
+    }
+
 
 }
 

@@ -1,19 +1,19 @@
 
 r
-java:S1066p"/Merge this if statement with the enclosing one.(λ³8θΣ΅ζ1J$89e02210-dc5c-41fd-85af-da836f1587de
+java:S1066p"/Merge this if statement with the enclosing one.(λ³8θΣ΅ζ1J$292d482e-8011-4213-9d49-6bbba18b46fc
 
-java:S2184X"FCast one of the operands of this multiplication operation to a "long".(³€Ψÿÿÿÿÿ8ιΣ΅ζ1J$adb78fea-a9fc-48d3-a632-1e14be67385d
+java:S2184X"FCast one of the operands of this multiplication operation to a "long".(³€Ψÿÿÿÿÿ8ιΣ΅ζ1J$99d36042-fc72-4863-99a7-3ba4eea5d2d5
 
-java:S2184}"FCast one of the operands of this multiplication operation to a "long".(³€Ψÿÿÿÿÿ8κΣ΅ζ1J$06969f0b-73ef-4805-a25d-04712ed14eb7
-”	java:S116*"RRename this field "BROWSER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“Ε†¤8ςΣ΅ζ1J$eb976ade-40b0-4330-be1f-f173587dce67
-”	java:S116,"MRename this field "OS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥γνωÿÿÿÿ8ςΣ΅ζ1J$119aaea2-ce16-46b0-93e2-cdc34b1d9ba2
+java:S2184}"FCast one of the operands of this multiplication operation to a "long".(³€Ψÿÿÿÿÿ8κΣ΅ζ1J$49c395e4-e5c1-4fa8-b600-50cb9f1a113f
+”	java:S116*"RRename this field "BROWSER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“Ε†¤8ςΣ΅ζ1J$3f6a6475-3d83-4718-bc78-2170b47d4ed5
+”	java:S116,"MRename this field "OS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥γνωÿÿÿÿ8ςΣ΅ζ1J$8b95351e-cab4-428f-b27c-4cab66ce0b39
 d
-java:S1170*"!Make this final field static too.(“Ε†¤8ςΣ΅ζ1J$35f61631-5b8e-4db0-bcb1-c89410ad16d2
+java:S1170*"!Make this final field static too.(“Ε†¤8ςΣ΅ζ1J$198f6dbd-1272-4846-bbb6-f98d31a0bea9
 i
-java:S1170,"!Make this final field static too.(¥γνωÿÿÿÿ8ςΣ΅ζ1J$e6d1f055-fef4-4097-9560-cf2a6708c82b
+java:S1170,"!Make this final field static too.(¥γνωÿÿÿÿ8ςΣ΅ζ1J$9f302997-5b5a-4ede-856d-d68507900473
 z
-java:S11355"2Complete the task associated to this TODO comment.(θαÿÿÿÿÿ8φΣ΅ζ1J$f6ba1d5c-049d-4035-b53b-07e37caecf90
+java:S11355"2Complete the task associated to this TODO comment.(θαÿÿÿÿÿ8φΣ΅ζ1J$bf2fe6dd-0ca3-4b34-989e-eb119a1ed21a
 u
-java:S1135="2Complete the task associated to this TODO comment.(Ε‹’ 8χΣ΅ζ1J$5a34c5c1-b160-44e3-a211-41ca5b844cad
+java:S1135="2Complete the task associated to this TODO comment.(Ε‹’ 8χΣ΅ζ1J$882a5e0d-0ed4-47d1-af7c-42401cc42ded
 u
-java:S1135P"2Complete the task associated to this TODO comment.(΄«Ύύ8ϊΣ΅ζ1J$6fa1b16e-371d-4d46-aab2-7b7c80f2b883
+java:S1135P"2Complete the task associated to this TODO comment.(΄«Ύύ8ϊΣ΅ζ1J$f4b32c62-1158-4e49-b830-72f80c041f3c

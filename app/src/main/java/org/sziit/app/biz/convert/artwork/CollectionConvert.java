@@ -2,10 +2,7 @@ package org.sziit.app.biz.convert.artwork;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.sziit.app.biz.artwork.dto.collection.CollectionDetailRespDTO;
-import org.sziit.app.biz.artwork.dto.collection.CollectionIntroRespDTO;
-import org.sziit.app.biz.artwork.dto.collection.CollectionResaleRespDTO;
-import org.sziit.app.biz.artwork.dto.collection.ForSaleCollectionRespDTO;
+import org.sziit.app.biz.artwork.dto.collection.*;
 import org.sziit.infrastructure.dao.domain.CollectionEntity;
 import org.sziit.infrastructure.dao.domain.MemberResaleCollectionEntity;
 
@@ -31,5 +28,7 @@ public interface CollectionConvert {
 
     List<ForSaleCollectionRespDTO> convertToForSaleRespDTO(List<CollectionEntity> bean);
 
+    CollectionRespDTO convertToRespDTO(CollectionEntity bean);
 
+    List<CollectionRespDTO> convertToRespDTO(List<CollectionEntity> bean);
 }
