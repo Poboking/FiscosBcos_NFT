@@ -1,4 +1,4 @@
-package org.sziit.presentation;
+package org.knight.presentation;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.sziit.infrastructure.dao.mapper.CreatorMapper">
+<mapper namespace="org.knight.infrastructure.dao.mapper.CreatorMapper">
 
-    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.CreatorEntity">
+    <resultMap id="BaseResultMap" type="org.knight.infrastructure.dao.domain.CreatorEntity">
         <id property="id" column="id" jdbcType="VARCHAR"/>
         <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>

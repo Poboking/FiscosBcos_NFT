@@ -9,15 +9,23 @@ server:
 mybatis:
   mapper-locations: mappers/*xml
   #指定Mybatis的实体目录
-  type-aliases-package: org.sziit.infrastructure.dao.domain
+  type-aliases-package: org.knight.infrastructure.dao.domain
 
-############ DB 设置  ############
+############ MYSQL DB 设置  ############
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/open_nft?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&autoCommit=true
+#    username: root
+#    password: liya4537
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+############ Mariadb DB 设置  ############
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/open_nft?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&autoCommit=true
+    url: jdbc:mariadb://43.143.86.190:3306/open_nft?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&autoReconnect=true
     username: root
-    password: liya4537
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
 
 
   ############## Graceful Response 配置 ##############
@@ -64,11 +72,15 @@ springdoc:
     - group: user
       display-name: "user接口文档"
       paths-to-match: '/**'
-      packages-to-scan: org.sziit.presentation.member
+      packages-to-scan: org.knight.presentation.member
     - group: admin
       display-name: "admin接口文档"
       paths-to-match: '/**'
-      packages-to-scan: org.sziit.presentation.admin
+      packages-to-scan: org.knight.presentation.admin
+    - group: common
+      display-name: "common接口文档"
+      paths-to-match: '/**'
+      packages-to-scan: org.knight.presentation.common.controller
   default-flat-param-object: true
 knife4j:
   # 开启增强配置

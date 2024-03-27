@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.sziit</groupId>
+    <groupId>org.knight</groupId>
     <artifactId>a20-nft-3_7</artifactId>
     <version>v1.0.0.32.4</version>
 
@@ -51,7 +51,7 @@
     <!--                    <archive>-->
     <!--                        <manifest>-->
     <!--                            &lt;!&ndash; 配置程序运行入口所在的类 &ndash;&gt;-->
-    <!--                            <mainClass>org.sziit.presentation.PresentationApplication</mainClass>-->
+    <!--                            <mainClass>org.knight.presentation.PresentationApplication</mainClass>-->
     <!--                        </manifest>-->
     <!--                    </archive>-->
     <!--                    &lt;!&ndash; 设置 JAR 包输出目录 &ndash;&gt;-->

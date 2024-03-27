@@ -1,4 +1,4 @@
-package org.sziit.infrastructure;
+package org.knight.infrastructure;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

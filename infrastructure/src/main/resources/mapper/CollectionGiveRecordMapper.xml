@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.sziit.infrastructure.dao.mapper.CollectionGiveRecordMapper">
+<mapper namespace="org.knight.infrastructure.dao.mapper.CollectionGiveRecordMapper">
 
-    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.CollectionGiveRecordEntity">
+    <resultMap id="BaseResultMap" type="org.knight.infrastructure.dao.domain.CollectionGiveRecordEntity">
         <id property="id" column="id" jdbcType="VARCHAR"/>
         <result property="giveFromId" column="give_from_id" jdbcType="VARCHAR"/>
         <result property="giveTime" column="give_time" jdbcType="TIMESTAMP"/>

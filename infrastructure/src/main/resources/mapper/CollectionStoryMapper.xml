@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.sziit.infrastructure.dao.mapper.CollectionStoryMapper">
+<mapper namespace="org.knight.infrastructure.dao.mapper.CollectionStoryMapper">
 
-    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.CollectionStoryEntity">
+    <resultMap id="BaseResultMap" type="org.knight.infrastructure.dao.domain.CollectionStoryEntity">
         <id property="id" column="id" jdbcType="VARCHAR"/>
         <result property="collectionId" column="collection_id" jdbcType="VARCHAR"/>
         <result property="orderNo" column="order_no" jdbcType="DOUBLE"/>

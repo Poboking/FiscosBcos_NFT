@@ -29,8 +29,8 @@
             <AppenderRef ref="RollingFile"/>
         </Root>
 
-        <!-- "org.sziit*" 日志级别 -->
-        <Logger name="org.sziit" level="trace"/>
+        <!-- "org.knight*" 日志级别 -->
+        <Logger name="org.knight" level="trace"/>
     </Loggers>
 
 </Configuration>

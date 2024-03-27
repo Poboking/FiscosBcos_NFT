@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.sziit.infrastructure.dao.mapper.StorageMapper">
+<mapper namespace="org.knight.infrastructure.dao.mapper.StorageMapper">
 
-    <resultMap id="BaseResultMap" type="org.sziit.infrastructure.dao.domain.StorageEntity">
+    <resultMap id="BaseResultMap" type="org.knight.infrastructure.dao.domain.StorageEntity">
         <id property="id" column="id" jdbcType="VARCHAR"/>
         <result property="associateBiz" column="associate_biz" jdbcType="VARCHAR"/>
         <result property="associateId" column="associate_id" jdbcType="VARCHAR"/>

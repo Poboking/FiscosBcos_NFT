@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.sziit</groupId>
+        <groupId>org.knight</groupId>
         <artifactId>a20-nft-3_7</artifactId>
         <version>v1.0.0.32.4</version>
     </parent>
@@ -23,12 +23,12 @@
 
         <!-- 业务模块 -->
         <dependency>
-            <groupId>org.sziit</groupId>
+            <groupId>org.knight</groupId>
             <artifactId>infrastructure</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>org.sziit</groupId>
+            <groupId>org.knight</groupId>
             <artifactId>app</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
@@ -191,7 +191,7 @@
             <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
             <!--                <version>${spring-boot.version}</version>-->
             <!--                <configuration>-->
-            <!--                    <mainClass>org.sziit.presentation.PresentationApplication</mainClass>-->
+            <!--                    <mainClass>org.knight.presentation.PresentationApplication</mainClass>-->
             <!--                </configuration>-->
             <!--            </plugin>-->
             <plugin>

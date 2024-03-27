@@ -1,23 +1,52 @@
-2024-03-24 22:42:59,661 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2024-03-24 22:42:59,699 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 22280 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
-2024-03-24 22:42:59,702 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
-2024-03-24 22:42:59,704 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2024-03-24 22:43:00,502 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-03-24 22:43:00,505 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-03-24 22:43:00,528 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
-2024-03-24 22:43:01,065 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2024-03-24 22:43:01,073 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2024-03-24 22:43:01,073 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2024-03-24 22:43:01,074 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
-2024-03-24 22:43:01,144 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2024-03-24 22:43:01,144 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1382 ms
-2024-03-24 22:43:02,460 INFO c.f.g.Init [main] Graceful Response:已启动
-2024-03-24 22:43:02,568 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
-2024-03-24 22:43:03,145 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2024-03-24 22:43:03,167 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2024-03-24 22:43:03,177 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 3.974 seconds (process running for 4.914)
-2024-03-24 22:43:03,181 INFO o.s.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
-2024-03-24 22:43:09,544 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-24 22:43:09,544 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2024-03-24 22:43:09,545 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2024-03-24 22:43:09,976 INFO o.s.p.c.SaTokenConfigure [http-nio-8080-exec-1] [1]:管理员访问
+2024-03-27 22:54:07,809 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-03-27 22:54:07,852 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 16876 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
+2024-03-27 22:54:07,855 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
+2024-03-27 22:54:07,856 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-03-27 22:54:08,729 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-03-27 22:54:08,733 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-03-27 22:54:08,762 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+2024-03-27 22:54:09,436 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2024-03-27 22:54:09,453 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-03-27 22:54:09,455 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-03-27 22:54:09,456 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-03-27 22:54:09,578 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-03-27 22:54:09,578 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1683 ms
+2024-03-27 22:54:10,932 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-03-27 22:54:11,036 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-03-27 22:54:11,581 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-03-27 22:54:11,612 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2024-03-27 22:54:11,623 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 4.162 seconds (process running for 5.369)
+2024-03-27 22:54:11,627 INFO o.k.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
+2024-03-27 22:54:16,147 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-27 22:54:16,147 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-03-27 22:54:16,148 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2024-03-27 22:54:16,365 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.BackAuthenticationController
+2024-03-27 22:54:16,415 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.BackCreatorController
+2024-03-27 22:54:16,426 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.BackCollectionController
+2024-03-27 22:54:16,455 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.TradeStatisticController
+2024-03-27 22:54:16,483 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-2] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.BackMemberHoldCollectionController
+2024-03-27 22:54:16,543 INFO o.s.a.AbstractOpenApiResource [http-nio-8080-exec-2] Init duration for springdoc-openapi is: 280 ms
+2024-03-27 22:54:22,137 INFO c.z.h.HikariDataSource [http-nio-8080-exec-3] HikariPool-1 - Starting...
+2024-03-27 22:54:29,492 INFO c.z.h.p.HikariPool [http-nio-8080-exec-3] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@7f369e3e
+2024-03-27 22:54:29,494 INFO c.z.h.HikariDataSource [http-nio-8080-exec-3] HikariPool-1 - Start completed.
+2024-03-27 22:54:29,505 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==>  Preparing: SELECT COUNT( * ) AS total FROM background_account WHERE (user_name = ?)
+2024-03-27 22:54:29,538 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==> Parameters: admin(String)
+2024-03-27 22:54:29,614 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==    Columns: total
+2024-03-27 22:54:29,614 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==        Row: 1
+2024-03-27 22:54:29,619 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==      Total: 1
+2024-03-27 22:54:29,630 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==>  Preparing: SELECT id,deleted_flag,deleted_time,google_auth_bind_time,google_secret_key,lately_login_time,login_pwd,registered_time,state,super_admin_flag,user_name,version FROM background_account WHERE (user_name = ? AND login_pwd = ?)
+2024-03-27 22:54:29,630 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==> Parameters: admin(String), a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3(String)
+2024-03-27 22:54:29,677 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==    Columns: id, deleted_flag, deleted_time, google_auth_bind_time, google_secret_key, lately_login_time, login_pwd, registered_time, state, super_admin_flag, user_name, version
+2024-03-27 22:54:29,678 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==        Row: 1, b'', null, null, null, 2022-11-14 22:12:03, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 2022-02-16 17:44:03, 1, b'1', admin, 183
+2024-03-27 22:54:29,679 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==      Total: 1
+2024-03-27 22:54:29,680 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==>  Preparing: SELECT id,deleted_flag,deleted_time,google_auth_bind_time,google_secret_key,lately_login_time,login_pwd,registered_time,state,super_admin_flag,user_name,version FROM background_account WHERE (user_name = ?)
+2024-03-27 22:54:29,680 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==> Parameters: admin(String)
+2024-03-27 22:54:29,728 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==    Columns: id, deleted_flag, deleted_time, google_auth_bind_time, google_secret_key, lately_login_time, login_pwd, registered_time, state, super_admin_flag, user_name, version
+2024-03-27 22:54:29,728 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==        Row: 1, b'', null, null, null, 2022-11-14 22:12:03, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 2022-02-16 17:44:03, 1, b'1', admin, 183
+2024-03-27 22:54:29,728 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==      Total: 1
+2024-03-27 22:54:30,151 INFO o.k.p.c.MySaTokenListener [http-nio-8080-exec-3] ---------- doLogin侦听器: admin登录成功，tokenValue: 006f3761-ab81-4e6d-a666-d16b62321781
+2024-03-27 22:54:30,196 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==>  Preparing: INSERT INTO login_log ( id, browser, ip_addr, login_time, msg, state, sub_system, user_name ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )
+2024-03-27 22:54:30,196 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==> Parameters: 1773000649223438336(String), Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0(String), 0:0:0:0:0:0:0:1(String), 2024-03-27 22:54:30.159(Timestamp), 登录失败(String), 1(String), member(String), admin(String)
+2024-03-27 22:54:30,243 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==    Updates: 1
+2024-03-27 22:54:48,531 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-03-27 22:54:53,322 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
