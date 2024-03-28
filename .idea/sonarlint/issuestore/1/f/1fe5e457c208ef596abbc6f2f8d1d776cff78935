@@ -1,0 +1,5 @@
+
+°
+java:S1130-"Remove the declaration of thrown exception 'org.fisco.bcos.sdk.config.exceptions.ConfigException', as it cannot be thrown from method's body.(¥’³Óüÿÿÿÿ8¢¬Ş©è1
+«
+java:S11302"Remove the declaration of thrown exception 'org.fisco.bcos.sdk.config.exceptions.ConfigException', as it cannot be thrown from method's body.(­şÆ8¤¬Ş©è1

@@ -2,6 +2,7 @@ package org.knight.app.biz.artwork.collection;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.AllArgsConstructor;
+import org.knight.app.biz.artwork.dto.holdcollection.MemberHoldCollectionRespDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.knight.app.biz.artwork.dto.holdcollection.MyHoldCollectionRespDTO;
@@ -53,4 +54,8 @@ public class MemberCollectionService {
         return PageResult.convertFor(pageHoldEntity, pageSize, MyHoldCollectionConvert.convertToRespDTO(records));
     }
 
+    // TODO: 2024/3/28 待实现
+    public PageResult<MemberHoldCollectionRespDTO> findMemberHoldCollectionByPage(Long current, Long pageSize, String memberMobile, String collectionName, String state, String gainWay) {
+        return null;
+    }
 }

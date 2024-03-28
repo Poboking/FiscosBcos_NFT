@@ -2,6 +2,11 @@ package org.knight.presentation.admin;
 
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import lombok.extern.log4j.Log4j2;
+import org.knight.app.biz.artwork.collection.IssuedCollectionService;
+import org.knight.app.biz.artwork.collection.MemberCollectionService;
+import org.knight.app.biz.log.IssuedCollectionActLogService;
+import org.knight.infrastructure.repository.impl.IssuedCollectionActionLogRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +27,17 @@ import java.util.List;
 @RequestMapping("/back/memberHoldCollection/")
 public class BackMemberHoldCollectionController {
 
+    private final MemberCollectionService memberCollectionService;
+
+    private final IssuedCollectionActLogService actLogService;
+
+    @Autowired
+    public BackMemberHoldCollectionController(MemberCollectionService memberCollectionService, IssuedCollectionActLogService actLogService) {
+        this.memberCollectionService = memberCollectionService;
+        this.actLogService = actLogService;
+    }
+
+    // TODO: 2024/3/28 待实现 
     @GetMapping("findMemberHoldCollectionByPage")
     @ValidationStatusCode(code = "400")
     public PageResult<MemberHoldCollectionRespDTO> findMemberHoldCollectionByPage(
@@ -32,7 +48,7 @@ public class BackMemberHoldCollectionController {
             @RequestParam(name = "state", defaultValue = "1") String state,
             @RequestParam(name = "gainWay", required = false) String gainWay
     ) {
-        return null;
+        return memberCollectionService.findMemberHoldCollectionByPage(current, pageSize, memberMobile, collectionName, state, gainWay);
     }
 
     @GetMapping("findIssuedCollectionActionLog")
@@ -40,6 +56,6 @@ public class BackMemberHoldCollectionController {
     public List<IssuedCollectionActionLogRespDTO> findIssuedCollectionActionLog(
             @RequestParam(name = "issuedCollectionId") String issuedCollectionId
     ) {
-        return null;
+        return actLogService.findIssuedCollectionActionLog(issuedCollectionId);
     }
 }

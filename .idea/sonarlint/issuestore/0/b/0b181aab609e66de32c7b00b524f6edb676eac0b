@@ -1,31 +1,0 @@
-
-M
-java:S2160"+Override the "equals" method in this class.(ŸÚìıúÿÿÿÿ8™Ÿ¥Ùå1
-C
-java:S1068"&Remove this unused "id" private field.(æ¨ç†8ÏÛ«àä1
-N
-java:S1068",Remove this unused "realName" private field.(ƒ÷Û¤ùÿÿÿÿ8ĞÛ«àä1
-R
-java:S1068"0Remove this unused "identityCard" private field.(¯å şüÿÿÿÿ8ĞÛ«àä1
-G
-java:S1068"*Remove this unused "mobile" private field.(Ë—Æ¿8ĞÛ«àä1
-I
-java:S1068",Remove this unused "nickName" private field.(ë·õ8ĞÛ«àä1
-G
-java:S1068"*Remove this unused "avatar" private field.(á¬Ï†8ĞÛ«àä1
-O
-java:S1068"2Remove this unused "blockChainAddr" private field.(È¯¬‘8ĞÛ«àä1
-K
-java:S1068")Remove this unused "state" private field.(µîŠ©øÿÿÿÿ8ÑÛ«àä1
-J
-java:S1068"-Remove this unused "stateName" private field.(¶³™Û8ÑÛ«àä1
-M
-java:S1068 "+Remove this unused "balance" private field.(÷ÊÇ®şÿÿÿÿ8ÑÛ«àä1
-P
-java:S1068"".Remove this unused "boughtFlag" private field.(¨ğÑÓıÿÿÿÿ8ÑÛ«àä1
-K
-java:S1068$".Remove this unused "inviteCode" private field.(ğäÙ§8ÑÛ«àä1
-M
-java:S1068&"0Remove this unused "notSetPayPwd" private field.(„çÍÙ8ÑÛ«àä1
-N
-java:S10681"1Remove this unused "inviterMobile" private field.(û·–è8ÑÛ«àä1
