@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Builder;
 import lombok.Data;
-import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.IdUtils;
+import org.knight.infrastructure.common.NftConstants;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -148,6 +148,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
         return MemberEntity.builder()
                 .id(uuid)
                 .nickName(nickName)
+                .avatar(NftConstants.默认头像)
                 .mobile(mobile)
                 .loginPwd(loginPwd)
                 .inviteCode(RandomUtil.randomString(7))
@@ -169,6 +170,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
         return MemberEntity.builder()
                 .id(uuid)
                 .nickName(nickName)
+                .avatar(NftConstants.默认头像)
                 .mobile(mobile)
                 .loginPwd(loginPwd)
                 .inviteCode(RandomUtil.randomString(7))
@@ -191,6 +193,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
         return MemberEntity.builder()
                 .id(uuid)
                 .nickName(nickName)
+                .avatar(NftConstants.默认头像)
                 .mobile(mobile)
                 .inviteCode(RandomUtil.randomString(7))
                 .balance(0d)

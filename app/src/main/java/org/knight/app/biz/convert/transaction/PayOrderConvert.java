@@ -1,9 +1,9 @@
 package org.knight.app.biz.convert.transaction;
 
 import org.knight.app.biz.transaction.dto.order.PayOrderRespDTO;
+import org.knight.infrastructure.dao.domain.PayOrderEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.knight.infrastructure.dao.domain.PayOrderEntity;
 
 import java.util.List;
 

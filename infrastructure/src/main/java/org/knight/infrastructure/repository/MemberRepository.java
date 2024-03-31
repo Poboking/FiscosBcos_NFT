@@ -46,4 +46,13 @@ public interface MemberRepository extends IService<MemberEntity> {
      * @return 是否更新成功
      */
     boolean reduceBalance(String memberId, Double amount);
+
+    /**
+     * 更新区块链地址
+     *
+     * @param memberId     用户ID
+     * @param blockAddress 区块链地址
+     * @return 是否更新成功
+     */
+    boolean updateBlockChainAddr(String blockAddress, String memberId);
 }

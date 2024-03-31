@@ -1,9 +1,9 @@
 package org.knight.app.biz.convert.transaction;
 
 import org.knight.app.biz.transaction.dto.withdraw.WithdrawRespDTO;
+import org.knight.infrastructure.dao.domain.WithdrawRecordEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.knight.infrastructure.dao.domain.WithdrawRecordEntity;
 
 import java.util.List;
 

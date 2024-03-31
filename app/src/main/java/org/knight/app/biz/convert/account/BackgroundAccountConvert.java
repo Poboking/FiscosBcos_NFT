@@ -1,9 +1,9 @@
 package org.knight.app.biz.convert.account;
 
 import org.knight.app.biz.account.dto.account.background.BackgroundAccountRespDTO;
+import org.knight.infrastructure.dao.domain.BackgroundAccountEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.knight.infrastructure.dao.domain.BackgroundAccountEntity;
 
 import java.util.List;
 

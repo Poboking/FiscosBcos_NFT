@@ -6,8 +6,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.knight.app.biz.account.MemberService;
 import org.knight.app.biz.account.dto.account.member.AccountRespDTO;
 import org.knight.app.biz.account.dto.invite.InviteInfoRespDTO;
@@ -22,6 +20,8 @@ import org.knight.presentation.exception.BadRequestException;
 import org.knight.presentation.exception.InternalServerErrorException;
 import org.knight.presentation.exception.UnauthorizedException;
 import org.knight.presentation.utils.StpUserUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -84,7 +84,7 @@ public class MemberController {
     @ValidationStatusCode(code = "400")
     public void bindRealName(@RequestBody MemberBindRealNameReqDTO reqDto) {
         String loginId = StpUserUtil.getLoginIdAsString();
-        if (!loginId.equals(memberService.getIdByMobile(reqDto.getMobile()))) {
+        if (Boolean.FALSE.equals(loginId.equals(memberService.getIdByMobile(reqDto.getMobile())))) {
             throw new BadRequestException("bindRealName fail as a result of mobile is not match");
         }
         if (Boolean.FALSE.equals(loginId.isEmpty()) && memberService.bindReadName(reqDto, loginId)) {

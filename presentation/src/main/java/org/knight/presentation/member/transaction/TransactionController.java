@@ -5,14 +5,14 @@ import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.knight.app.biz.transaction.PreSaleTaskService;
 import org.knight.app.biz.transaction.TransactionService;
 import org.knight.app.biz.transaction.dto.giverecord.CollectionGiveRecordRespDTO;
 import org.knight.app.biz.transaction.dto.order.PayOrderRespDTO;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.presentation.utils.StpUserUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -43,6 +43,7 @@ public class TransactionController {
             @RequestParam(name = "collectionId") String collectionId) {
         String memberId = StpUserUtil.getLoginIdAsString();
         log.info(CharSequenceUtil.format("User({}): checkHasPreSale", memberId));
+        // TODO: 2024/3/31 19:58 待实现
         return preSaleTaskService.checkHasPreSale(collectionId);
     }
 
@@ -51,6 +52,7 @@ public class TransactionController {
     @ValidationStatusCode(code = "400")
     public Map<String, String> latestCollectionCreateOrder(@RequestParam(name = "collectionId") @NotNull String collectionId) {
         String memberId = StpUserUtil.getLoginIdAsString();
+        // TODO: 2024/3/31  待检查
         return transactionService.latestCollectionCreateOrder(collectionId, memberId);
     }
 
@@ -82,5 +84,13 @@ public class TransactionController {
         String memberId = StpUserUtil.getLoginIdAsString();
         log.info(CharSequenceUtil.format("User({}): findMyGiveRecordByPage", memberId));
         return transactionService.getMyGiveRecord(current, pageSize, memberId, giveDirection);
+    }
+
+    @PostMapping("resaleCollectionCreateOrder")
+    @ValidationStatusCode(code = "400")
+    public Map<String, String> resaleCollectionCreateOrder(@RequestParam(name = "resaleCollectionId") @NotNull String resaleCollectionId) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder", memberId));
+        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, memberId);
     }
 }

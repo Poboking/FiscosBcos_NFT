@@ -1,14 +1,14 @@
 package org.knight.app.biz.storage;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.knight.app.biz.exception.BizException;
 import org.knight.infrastructure.common.IdUtils;
 import org.knight.infrastructure.dao.domain.StorageEntity;
 import org.knight.infrastructure.dao.domain.SystemSettingEntity;
 import org.knight.infrastructure.repository.impl.StorageRepositoryImpl;
 import org.knight.infrastructure.repository.impl.SystemSettingRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;

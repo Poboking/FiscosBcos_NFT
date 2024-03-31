@@ -1,9 +1,9 @@
 package org.knight.app.biz.convert.dict;
 
 import org.knight.app.biz.dict.dto.DictItemRespDTo;
+import org.knight.infrastructure.dao.domain.DictItemEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.knight.infrastructure.dao.domain.DictItemEntity;
 
 /**
  * @project: a20-nft-3_7

@@ -5,11 +5,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.knight.app.biz.artwork.collection.CollectionService;
 import org.knight.app.biz.artwork.collection.MemberResaleCollectionService;
 import org.knight.app.biz.artwork.dto.collection.*;
@@ -17,6 +12,11 @@ import org.knight.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.knight.app.biz.artwork.dto.mysteryBox.MysteryBoxRespDTO;
 import org.knight.app.biz.artwork.mysteryBox.MysteryBoxService;
 import org.knight.infrastructure.common.PageResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -81,6 +81,13 @@ public class CollectionController {
                 .collectionId(collectionId)
                 .build();
         return memberResaleCollectionService.getPageListByCollectionQueryParam(reqDto);
+    }
+
+    @GetMapping("findResaleCollectionDetail")
+    @ValidationStatusCode(code = "400")
+    public CollectionResaleDetailRespDTO findResaleCollectionDetail(
+            @RequestParam(name = "id", required = true) String collectionId) {
+        return memberResaleCollectionService.getCollectionDetail(collectionId);
     }
 
 

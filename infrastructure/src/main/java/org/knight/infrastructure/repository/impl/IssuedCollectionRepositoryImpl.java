@@ -1,10 +1,10 @@
 package org.knight.infrastructure.repository.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
 import org.knight.infrastructure.dao.mapper.IssuedCollectionMapper;
 import org.knight.infrastructure.repository.IssuedCollectionRepository;
+import org.springframework.stereotype.Service;
 
 /**
  * @author poboking

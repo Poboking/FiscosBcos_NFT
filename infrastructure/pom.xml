@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.knight</groupId>
         <artifactId>a20-nft-3_7</artifactId>
-        <version>v1.0.0.32.4</version>
+        <version>v1.0.0.33.1</version>
     </parent>
 
     <artifactId>infrastructure</artifactId>
@@ -33,17 +33,18 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.5</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.mysql</groupId>-->
-<!--            <artifactId>mysql-connector-j</artifactId>-->
-<!--            <version>8.3.0</version>-->
-<!--        </dependency>-->
-        <!-- MariaDB 依赖 -->
+        <!-- MySQL 依赖 -->
         <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>3.3.3</version>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.3.0</version>
         </dependency>
+        <!-- MariaDB 依赖 -->
+<!--        <dependency>-->
+<!--            <groupId>org.mariadb.jdbc</groupId>-->
+<!--            <artifactId>mariadb-java-client</artifactId>-->
+<!--            <version>3.3.3</version>-->
+<!--        </dependency>-->
 
         <!-- SpringBoot Test -->
         <dependency>

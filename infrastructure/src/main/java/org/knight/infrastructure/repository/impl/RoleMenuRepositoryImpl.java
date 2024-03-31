@@ -1,10 +1,10 @@
 package org.knight.infrastructure.repository.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 import org.knight.infrastructure.dao.domain.RoleMenuEntity;
 import org.knight.infrastructure.dao.mapper.RoleMenuMapper;
 import org.knight.infrastructure.repository.RoleMenuRepository;
+import org.springframework.stereotype.Service;
 
 /**
  * @author poboking

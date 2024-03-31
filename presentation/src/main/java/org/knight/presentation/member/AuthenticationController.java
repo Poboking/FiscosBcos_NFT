@@ -9,10 +9,6 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.log4j.Log4j2;
 import org.hibernate.validator.constraints.Length;
-import org.knight.presentation.exception.UnauthorizedException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
 import org.knight.app.biz.account.MemberService;
 import org.knight.app.biz.account.dto.authentication.AuthenticationRespDTO;
 import org.knight.app.biz.account.dto.login.member.LoginReqDTO;
@@ -20,10 +16,16 @@ import org.knight.app.biz.account.dto.login.member.QuickLoginReqDTO;
 import org.knight.app.biz.log.LoginLogService;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqDTO;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqParam;
+import org.knight.presentation.exception.InternalServerErrorException;
+import org.knight.presentation.exception.UnauthorizedException;
 import org.knight.presentation.utils.StpUserUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * @project: a20-nft-3_7
@@ -64,14 +66,14 @@ public class AuthenticationController {
     public AuthenticationRespDTO login(
             @Valid @RequestBody @NotNull(message = "loginPram cannot be empty") LoginReqDTO loginParam,
             HttpServletRequest request) {
-        LoginLogReqParam param = new LoginLogReqParam(request.getRemoteAddr(), request.getHeader(BROWSER), request.getHeader(OS), loginParam.getMobile());
+        LoginLogReqParam param = new LoginLogReqParam(request.getRemoteAddr(), request.getHeader(BROWSER), Optional.ofNullable(request.getHeader(OS)).orElse("Unknown"), loginParam.getMobile());
         /*
           注册功能
          */
         if (Boolean.FALSE.equals(memberService.checkMobileExist(loginParam.getMobile()))) {
             log.info(CharSequenceUtil.format("Create User({})", loginParam.getMobile()));
             if (Boolean.FALSE.equals(memberService.registerUser(loginParam.getMobile(), loginParam.getPassword(), loginParam.getInviteCode()))) {
-                throw new IndexOutOfBoundsException("register failed as result of registerUser.saved() failed");
+                throw new InternalServerErrorException("register failed as result of registerUser.saved() failed");
             }
         }
         /*
@@ -87,6 +89,7 @@ public class AuthenticationController {
             }
             StpUserUtil.login(loginId, 60 * 60 * 24 * 7);
             SaTokenInfo tokenInfo = StpUserUtil.getTokenInfo();
+            memberService.updateLatelyLoginTime(loginId);
             loginLogService.saveLoginLog(LoginLogReqDTO.quickSuccessfulBuild(param));
             return AuthenticationRespDTO.builder()
                     .tokenName(tokenInfo.getTokenName())
@@ -104,7 +107,7 @@ public class AuthenticationController {
     public AuthenticationRespDTO quickLogin(
             @Valid @RequestBody @NotNull(message = "loginPram cannot be empty") QuickLoginReqDTO loginParam,
             HttpServletRequest request) {
-        LoginLogReqParam param = new LoginLogReqParam(request.getRemoteAddr(), request.getHeader(BROWSER), request.getHeader(OS), loginParam.getMobile());
+        LoginLogReqParam param = new LoginLogReqParam(request.getRemoteAddr(), request.getHeader(BROWSER), Optional.ofNullable(request.getHeader(OS)).orElse("Unknown"), loginParam.getMobile());
         if (Boolean.FALSE.equals(memberService.checkMobileExist(loginParam.getMobile()))) {
             /*
                 注册功能
@@ -124,6 +127,7 @@ public class AuthenticationController {
         }
         StpUserUtil.login(loginId, 60 * 60 * 24 * 7);
         SaTokenInfo tokenInfo = StpUserUtil.getTokenInfo();
+        memberService.updateLatelyLoginTime(loginId);
         loginLogService.saveLoginLog(LoginLogReqDTO.quickSuccessfulBuild(param));
         return AuthenticationRespDTO.builder()
                 .tokenName(tokenInfo.getTokenName())

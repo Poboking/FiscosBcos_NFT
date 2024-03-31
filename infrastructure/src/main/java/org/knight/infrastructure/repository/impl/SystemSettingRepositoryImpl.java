@@ -2,11 +2,11 @@ package org.knight.infrastructure.repository.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.knight.infrastructure.dao.domain.SystemSettingEntity;
 import org.knight.infrastructure.dao.mapper.SystemSettingMapper;
 import org.knight.infrastructure.repository.SystemSettingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author poboking

@@ -1,20 +1,19 @@
 package org.knight.infrastructure.fisco.service;
 
 import cn.hutool.core.lang.UUID;
-
 import org.fisco.bcos.sdk.BcosSDK;
 import org.fisco.bcos.sdk.client.Client;
 import org.fisco.bcos.sdk.crypto.CryptoSuite;
 import org.fisco.bcos.sdk.crypto.keypair.CryptoKeyPair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * @project: a20-nft-3_7
  * @author: poboking
  * @date: 2024/3/25 23:23
  */
-@Service
+@Component
 public class NFTService {
 
     private final BcosSDK bcosSDK;

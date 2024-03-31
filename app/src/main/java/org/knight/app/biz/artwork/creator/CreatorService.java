@@ -3,8 +3,6 @@ package org.knight.app.biz.artwork.creator;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.knight.app.biz.artwork.dto.creator.CreatorAddOrUpdateReqDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.knight.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.knight.app.biz.convert.artwork.CreatorConvert;
 import org.knight.infrastructure.common.IdUtils;
@@ -12,6 +10,8 @@ import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.infrastructure.dao.domain.CreatorEntity;
 import org.knight.infrastructure.repository.impl.CreatorRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -46,7 +46,10 @@ public class CreatorService {
 
     public Boolean addOrUpdateCreator(CreatorAddOrUpdateReqDTO reqDTo) {
         String now = LocalDateTime.now().format(NftConstants.DATE_FORMAT);
-        if (reqDTo.getName() != null && !reqDTo.getName().isEmpty() && reqDTo.getAvatar() != null && !reqDTo.getAvatar().isEmpty() && reqDTo.getId() == null) {
+        /**
+         * 当id为空时，name和avatar不能为空, 新增
+         */
+        if (reqDTo.getName() != null && !reqDTo.getName().isEmpty() && reqDTo.getAvatar() != null && !reqDTo.getAvatar().isEmpty() && (reqDTo.getId() == null || reqDTo.getId().isEmpty())) {
             CreatorEntity entity = CreatorEntity.builder()
                     .id(IdUtils.uuid())
                     .name(reqDTo.getName())
@@ -57,6 +60,9 @@ public class CreatorService {
                     .build();
             return creatorRepository.saveOrUpdate(entity);
         }
+        /**
+         * 当id不为空时，更新
+         */
         if (reqDTo.getId() != null && !reqDTo.getId().isEmpty() && creatorRepository.getById(reqDTo.getId()) != null) {
             return creatorRepository.updateById(CreatorConvert.INSTANCE.convertToEntity(reqDTo));
         }

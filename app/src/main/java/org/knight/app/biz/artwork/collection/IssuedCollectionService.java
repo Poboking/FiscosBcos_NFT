@@ -3,13 +3,15 @@ package org.knight.app.biz.artwork.collection;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.knight.app.biz.artwork.dto.collection.CollectionAddReqDTO;
 import org.knight.app.biz.artwork.dto.issuedcollection.IssuedCollectionRespDTO;
+import org.knight.app.biz.exception.BizException;
+import org.knight.infrastructure.common.NftConstants;
+import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
+import org.knight.infrastructure.repository.impl.IssuedCollectionRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.knight.app.biz.exception.BizException;
-import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
-import org.knight.infrastructure.repository.impl.IssuedCollectionRepositoryImpl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -57,7 +59,7 @@ public class IssuedCollectionService {
             respDTOS.add(IssuedCollectionRespDTO.builder()
                     .id(item.getId())
                     .collectionSerialNumber(item.getCollectionSerialNumber())
-                    .issueTime(item.getIssueTime().toLocalDateTime())
+                    .issueTime(LocalDateTime.parse(item.getIssueTime().toLocalDateTime().format(NftConstants.DATE_FORMAT)))
                     .uniqueId(item.getUniqueId())
                     .syncChainTime(item.getSyncChainTime().toLocalDateTime())
                     .build());

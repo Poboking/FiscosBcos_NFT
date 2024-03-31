@@ -3,16 +3,15 @@ package org.knight.presentation.member;
 import cn.hutool.core.util.ArrayUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.knight.app.biz.exception.BizException;
+import org.knight.app.biz.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.knight.app.biz.exception.BizException;
-import org.knight.app.biz.storage.StorageService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,12 +26,15 @@ import java.util.List;
 @Log4j2
 @RestController
 @RequestMapping("/storage/")
-@AllArgsConstructor
 @Tag(name = "StorageController", description = "STORAGE_CONTROLLER")
 public class StorageController {
 
+    private final StorageService storageService;
+
     @Autowired
-    private StorageService storageService;
+    public StorageController(StorageService storageService) {
+        this.storageService = storageService;
+    }
 
     @PostMapping("/upload")
     @Operation(description = "上传图片保存至本地C:\\home目录, 返回图片的storageId, 暂未完善")

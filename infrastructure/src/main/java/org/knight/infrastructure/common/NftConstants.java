@@ -99,6 +99,8 @@ public class NftConstants {
      */
     public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static final DateTimeFormatter SIMPLE_DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+    public static final String 默认头像 = "https://ydlunacommon-cdn.nosdn.127.net/e5d302ac10bb57dbb7bace5281d5eb6a.png";
     public static final Integer 支付订单有效期 = 30;
     public static final Double 提现单笔最大金额 = 10000.0;
     public static final Double 提现单笔最小金额 = 100.0;

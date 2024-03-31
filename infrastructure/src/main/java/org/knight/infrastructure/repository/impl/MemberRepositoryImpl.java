@@ -2,12 +2,16 @@ package org.knight.infrastructure.repository.impl;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.dao.domain.MemberEntity;
 import org.knight.infrastructure.dao.mapper.MemberMapper;
 import org.knight.infrastructure.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * @author poboking
@@ -86,6 +90,24 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
                 new UpdateWrapper<MemberEntity>()
                         .eq("id", memberId)
                         .setSql("balance = balance - " + amount)) > 0;
+    }
+
+    /**
+     * 更新区块链地址
+     *
+     * @param blockAddress 区块链地址
+     * @param memberId     用户ID
+     * @return 是否更新成功
+     */
+    @Override
+    public boolean updateBlockChainAddr(String blockAddress, String memberId) {
+        String nowString = LocalDateTime.now().format(NftConstants.DATE_FORMAT);
+        Timestamp now = Timestamp.valueOf(nowString);
+        return memberMapper.update(null,
+                new UpdateWrapper<MemberEntity>()
+                        .eq("id", memberId)
+                        .set("block_chain_addr", blockAddress)
+                        .set("sync_chain_time", now)) > 0;
     }
 }
 

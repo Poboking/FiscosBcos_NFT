@@ -1,11 +1,10 @@
 package org.knight.app.biz.convert.artwork;
 
 import org.knight.app.biz.artwork.dto.collection.*;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
-import org.knight.app.biz.artwork.dto.collection.*;
 import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.dao.domain.MemberResaleCollectionEntity;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
@@ -32,4 +31,6 @@ public interface CollectionConvert {
     CollectionRespDTO convertToRespDTO(CollectionEntity bean);
 
     List<CollectionRespDTO> convertToRespDTO(List<CollectionEntity> bean);
+
+    CollectionResaleDetailRespDTO convertToResaleDetailRespDTO(CollectionEntity bean);
 }

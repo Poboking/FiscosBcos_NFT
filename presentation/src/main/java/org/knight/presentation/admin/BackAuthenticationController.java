@@ -5,11 +5,6 @@ import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.knight.app.biz.account.BackgroundAccountService;
 import org.knight.app.biz.account.dto.authentication.AuthenticationRespDTO;
 import org.knight.app.biz.account.dto.login.background.BackLoginReqDTO;
@@ -17,7 +12,16 @@ import org.knight.app.biz.log.LoginLogService;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqDTO;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqParam;
 import org.knight.presentation.exception.BadRequestException;
+import org.knight.presentation.exception.UnauthorizedException;
 import org.knight.presentation.utils.StpAdminUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * @project: a20-nft-3_7
@@ -69,5 +73,15 @@ public class BackAuthenticationController {
                 .tokenName(tokenInfo.getTokenName())
                 .tokenValue(tokenInfo.getTokenValue())
                 .build();
+    }
+
+    @PostMapping("/back/logout")
+    @ValidationStatusCode(code = "400")
+    public Map<String, Boolean> logout() {
+        if (Boolean.FALSE.equals(StpAdminUtil.isLogin())) {
+            throw new UnauthorizedException("logout failed as result of not login");
+        }
+        StpAdminUtil.logout();
+        return Collections.singletonMap("logout", true);
     }
 }

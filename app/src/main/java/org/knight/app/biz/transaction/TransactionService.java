@@ -3,11 +3,11 @@ package org.knight.app.biz.transaction;
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.knight.app.biz.convert.transaction.CollectionGiveRecordConvert;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.knight.app.biz.convert.transaction.PayOrderConvert;
 import org.knight.app.biz.exception.BizException;
+import org.knight.app.biz.exception.collection.CollectionNotFoundException;
+import org.knight.app.biz.exception.log.LogCreationFailedException;
+import org.knight.app.biz.exception.transaction.*;
 import org.knight.app.biz.transaction.dto.giverecord.CollectionGiveRecordRespDTO;
 import org.knight.app.biz.transaction.dto.order.PayOrderRespDTO;
 import org.knight.app.biz.transaction.dto.trade.TradeStatisticDayRespDTO;
@@ -17,6 +17,9 @@ import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.dao.domain.CollectionGiveRecordEntity;
 import org.knight.infrastructure.dao.domain.PayOrderEntity;
 import org.knight.infrastructure.repository.impl.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -83,40 +86,41 @@ public class TransactionService {
     public Map<String, String> latestCollectionCreateOrder(String collectionId, String memberId) {
         CollectionEntity collectionEntity = collectionRepository.getById(collectionId);
         if (Objects.isNull(collectionEntity)) {
-            throw new BizException("不存在ID为" + collectionId + "藏品");
+            throw new CollectionNotFoundException("不存在ID为" + collectionId + "藏品");
         }
         Double amount = collectionEntity.getPrice();
         PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务模式_平台自营, amount, collectionId, memberId);
         if (Boolean.FALSE.equals(payOrderRepository.save(entity))) {
-            throw new BizException("生成订单失败");
+            throw new OrderCreationFailedException("生成订单失败");
         }
         return Map.of("orderId", entity.getId());
     }
 
+
     @Transactional(rollbackFor = Exception.class)
     public Map<String, Boolean> confirmPay(String orderId, String memberId) {
-        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
-        PayOrderEntity entity = payOrderRepository.getById(orderId);
+            Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+            PayOrderEntity entity = payOrderRepository.getById(orderId);
         if (entity == null || !entity.getMemberId().equals(memberId)) {
-            throw new BizException(CharSequenceUtil.format("[{}]订单不存在", orderId));
+            throw new OrderNotFoundException(CharSequenceUtil.format("[{}]订单不存在", orderId));
         }
         if (entity.getState().equals(NftConstants.支付订单状态_已付款)) {
-            throw new BizException(CharSequenceUtil.format("[{}]订单已支付", orderId));
+            throw new OrderAlreadyPaidException(CharSequenceUtil.format("[{}]订单已支付", orderId));
         }
         if (entity.getState().equals(NftConstants.支付订单状态_已取消)) {
-            throw new BizException(CharSequenceUtil.format("[{}]订单取消", orderId));
+            throw new OrderCancelledException(CharSequenceUtil.format("[{}]订单取消", orderId));
         }
         if (entity.getOrderDeadline().before(now)) {
-            throw new BizException(CharSequenceUtil.format("[{}]订单已过期", orderId));
+            throw new OrderExpiredException(CharSequenceUtil.format("[{}]订单已过期", orderId));
         }
         if (Boolean.FALSE.equals(collectionRepository.reduceStock(entity.getCollectionId()))) {
-            throw new BizException(CharSequenceUtil.format("[{}]库存不足", entity.getCollectionId()));
+            throw new InsufficientStockException(CharSequenceUtil.format("[{}]库存不足", entity.getCollectionId()));
         }
         if (Boolean.FALSE.equals(memberRepository.reduceBalance(memberId, entity.getAmount()))) {
-            throw new BizException(CharSequenceUtil.format("[{}]余额不足", memberId));
+            throw new InsufficientBalanceException(CharSequenceUtil.format("[{}]余额不足", memberId));
         }
         if (Boolean.FALSE.equals(payOrderRepository.updateStateById(entity.getId(), NftConstants.支付订单状态_已付款, now))) {
-            throw new BizException(CharSequenceUtil.format("[{}]订单支付失败", orderId));
+            throw new OrderPaymentFailedException(CharSequenceUtil.format("[{}]订单支付失败", orderId));
         }
         if (Boolean.FALSE.equals(memberBCLogRepository.createLog(
                 memberId,
@@ -124,8 +128,9 @@ public class TransactionService {
                 NftConstants.会员余额变动日志类型_购买藏品,
                 entity.getOrderNo(),
                 now))) {
-            throw new BizException(CharSequenceUtil.format("[{}]流水日志记录失败", memberId));
+            throw new LogCreationFailedException(CharSequenceUtil.format("[{}]流水日志记录失败", memberId));
         }
+
         return Map.of("result", true);
     }
 
@@ -168,5 +173,18 @@ public class TransactionService {
                 .todayCount(payOrderRepository.getSuccessCountByDate(bizMode, null))
                 .yesterdayAmount(payOrderRepository.getSuccessAmountByDate(bizMode, DateUtil.getYesterday()))
                 .build();
+    }
+
+    public Map<String, String> resaleCollectionCreateOrder(String resaleCollectionId, String memberId) {
+        CollectionEntity collectionEntity = collectionRepository.getById(resaleCollectionId);
+        if (Objects.isNull(collectionEntity)) {
+            throw new CollectionNotFoundException("不存在ID为" + resaleCollectionId + "藏品");
+        }
+        Double amount = collectionEntity.getPrice();
+        PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务模式_平台自营, amount, resaleCollectionId, memberId);
+        if (Boolean.FALSE.equals(payOrderRepository.save(entity))) {
+            throw new OrderCreationFailedException("生成订单失败");
+        }
+        return Map.of("orderId", entity.getId());
     }
 }

@@ -2,7 +2,6 @@
 server:
   port: 8080
 
-
 ############ Mapper设置  ############
 #下面这些内容是为了让MyBatis映射
 #指定Mybatis的Mapper文件
@@ -18,14 +17,43 @@ mybatis:
 #    username: root
 #    password: liya4537
 #    driver-class-name: com.mysql.cj.jdbc.Driver
+#    # 连接池相关配置
+#    hikari:
+#      maximum-pool-size: 20 # 最大连接数，根据用户量和数据请求量进行调整
+#      minimum-idle: 5 # 最小空闲连接数，保持一定数量的空闲连接以减少创建连接的开销
+#      idle-timeout: 60000 # 连接空闲超时时间，单位为毫秒，超过该时间的空闲连接将被释放
+#      max-lifetime: 1800000 # 连接的最大生存时间，单位为毫秒，超过该时间的连接将被释放
 
-############ Mariadb DB 设置  ############
+############ Mariadb DB 或 Mysql 设置  ############
 spring:
   datasource:
-    url: jdbc:mariadb://43.143.86.190:3306/open_nft?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&autoReconnect=true
+    url: jdbc:mysql://103.108.67.140:3306/open_nft?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&autoReconnect=true
     username: root
     password: root
-    driver-class-name: org.mariadb.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver  # org.mariadb.jdbc.Driver
+    # 连接池相关配置
+    hikari:
+      maximum-pool-size: 20 # 最大连接数，根据用户量和数据请求量进行调整
+      minimum-idle: 5 # 最小空闲连接数，保持一定数量的空闲连接以减少创建连接的开销
+      idle-timeout: 60000 # 连接空闲超时时间，单位为毫秒，超过该时间的空闲连接将被释放
+      max-lifetime: 1800000 # 连接的最大生存时间，单位为毫秒，超过该时间的连接将被释放
+
+  profilers:
+    active: dev
+
+############## 区块链配置 #############
+fisco:
+  certPath: conf
+  #  maxBlockingQueueSize: 102400
+  #  peers:
+  #        - 43.143.86.190:20200
+  #        - 43.143.86.190:20201
+  # 区块链节点地址
+  #  node-url: http://43.143.86.190:8545
+  # 合约调用者地址
+  #  contract-address: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  # 区块链合约ABI
+  #  contract-abi: [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"uint256","name":"x","type":"uint256"}],"name":"set","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"get","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
 
 
   ############## Graceful Response 配置 ##############

@@ -1,8 +1,6 @@
 package org.knight.app.biz.rbac;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.knight.app.biz.convert.rbac.MenuConvert;
 import org.knight.app.biz.rbac.dto.MenuRespDTO;
 import org.knight.infrastructure.dao.domain.AccountRoleEntity;
@@ -11,6 +9,8 @@ import org.knight.infrastructure.dao.domain.RoleMenuEntity;
 import org.knight.infrastructure.repository.impl.AccountRoleRepositoryImpl;
 import org.knight.infrastructure.repository.impl.MenuRepositoryImpl;
 import org.knight.infrastructure.repository.impl.RoleMenuRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;

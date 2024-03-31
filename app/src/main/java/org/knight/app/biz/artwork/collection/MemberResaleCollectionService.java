@@ -1,22 +1,26 @@
 package org.knight.app.biz.artwork.collection;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.AllArgsConstructor;
+import org.knight.app.biz.artwork.dto.collection.CollectionDetailRespDTO;
 import org.knight.app.biz.artwork.dto.collection.CollectionQueryReqDTO;
-import org.knight.app.biz.convert.artwork.CollectionConvert;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.knight.app.biz.artwork.dto.collection.CollectionResaleDetailRespDTO;
 import org.knight.app.biz.artwork.dto.collection.CollectionResaleRespDTO;
 import org.knight.app.biz.artwork.dto.holdcollection.MyHoldCollectionRespDTO;
+import org.knight.app.biz.convert.artwork.CollectionConvert;
 import org.knight.app.biz.convert.artwork.MyHoldCollectionConvert;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.infrastructure.dao.domain.CollectionEntity;
+import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
 import org.knight.infrastructure.dao.domain.MemberResaleCollectionEntity;
 import org.knight.infrastructure.repository.impl.CollectionRepositoryImpl;
 import org.knight.infrastructure.repository.impl.IssuedCollectionRepositoryImpl;
 import org.knight.infrastructure.repository.impl.MemberResaleCollectionRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,5 +91,19 @@ public class MemberResaleCollectionService {
             });
         });
         return PageResult.convertFor(pageSoldEntity, pageSize, MyHoldCollectionConvert.convertToRespDTO(records));
+    }
+
+    public CollectionResaleDetailRespDTO getCollectionDetail(String resaleCollectionId) {
+        MemberResaleCollectionEntity resaleCollection = memberResaleCollectionRepository.getById(resaleCollectionId);
+        CollectionEntity collection = collectionRepository.getById(resaleCollection.getCollectionId());
+        IssuedCollectionEntity issuedCollection = issuedCollectionRepository.getById(resaleCollection.getIssuedCollectionId());
+        return CollectionResaleDetailRespDTO.builder()
+                .issuedCollectionId(resaleCollection.getIssuedCollectionId())
+//                .collectionHash()
+                .collectionName(collection.getName())
+                .collectionCover(collection.getCover())
+                .collectionSerialNumber(issuedCollection.getCollectionSerialNumber())
+                .resalePrice(resaleCollection.getResalePrice())
+                .build();
     }
 }

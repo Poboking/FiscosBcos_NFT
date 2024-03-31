@@ -2,8 +2,6 @@ package org.knight.app.biz.account;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.knight.app.biz.account.dto.account.member.AccountRespDTO;
 import org.knight.app.biz.account.dto.invite.InviteInfoRespDTO;
 import org.knight.app.biz.account.dto.invite.InviteeRecordRespDTO;
@@ -12,12 +10,18 @@ import org.knight.app.biz.account.dto.member.MemberStatisticDataRespDTO;
 import org.knight.app.biz.account.dto.member.MemberUpdateAvatarReqDTO;
 import org.knight.app.biz.account.dto.member.MemberUpdateNickNameReqDTO;
 import org.knight.app.biz.convert.account.MemberConvert;
+import org.knight.app.biz.exception.BizException;
 import org.knight.infrastructure.common.CipherTextUtil;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.NicknameUtils;
 import org.knight.infrastructure.dao.domain.MemberEntity;
+import org.knight.infrastructure.fisco.service.BlockAddressService;
 import org.knight.infrastructure.repository.impl.MemberRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -33,17 +37,41 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepositoryImpl memberRepository;
 
+    private final BlockAddressService blockAddressService;
+
     @Autowired
-    public MemberService(MemberRepositoryImpl memberRepository) {
+    public MemberService(MemberRepositoryImpl memberRepository, BlockAddressService blockAddressService) {
         this.memberRepository = memberRepository;
+        this.blockAddressService = blockAddressService;
     }
 
     public AccountRespDTO getAccountInfo(String memberId) {
-        return MemberConvert.INSTANCE.convert(memberRepository.getAccountInfo(memberId));
+        MemberEntity entity = memberRepository.getAccountInfo(memberId);
+        if (entity == null) {
+            throw new BizException(memberId + ": getAccountInfo fail as a result of entity is null");
+        }
+        if (Boolean.TRUE.equals(entity.getDeletedFlag())) {
+            throw new BizException(memberId + ": getAccountInfo fail as a result of entity is deleted");
+        }
+        if (entity.getAvatar() == null) {
+            entity.setAvatar(NftConstants.默认头像);
+        }
+        return MemberConvert.INSTANCE.convert(entity);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public boolean bindReadName(MemberBindRealNameReqDTO reqDto, String memberId) {
-        return memberRepository.bindReadName(reqDto.getRealName(), reqDto.getSsn(), reqDto.getMobile(), memberId);
+        if (!memberRepository.bindReadName(reqDto.getRealName(), reqDto.getSsn(), reqDto.getMobile(), memberId)) {
+            throw new BizException(memberId + ": bindReadName fail as a result of db update fail");
+        }
+        String blockAddress = blockAddressService.getBlockAddress();
+        if (blockAddress == null || blockAddress.isEmpty()) {
+            throw new BizException(memberId + ": bindReadName fail as a result of blockAddress is null");
+        }
+        if (!memberRepository.updateBlockChainAddr(blockAddress, memberId)) {
+            throw new BizException(memberId + ": bindReadName fail as a result of db update fail");
+        }
+        return true;
     }
 
     public boolean updateNickName(MemberUpdateNickNameReqDTO reqDto, String memberId) {
@@ -117,5 +145,13 @@ public class MemberService {
                         .ge("registered_time", nowTime)
                         .lt("registered_time", nowTime.plusDays(1))))
                 .build();
+    }
+
+    public boolean updateLatelyLoginTime(String loginId) {
+        String nowString = LocalDateTime.now().format(NftConstants.DATE_FORMAT);
+        Timestamp now = Timestamp.valueOf(nowString);
+        return memberRepository.update(new UpdateWrapper<MemberEntity>()
+                .eq(Optional.ofNullable(loginId).isPresent(), "id", loginId)
+                .set("lately_login_time", now));
     }
 }

@@ -2,8 +2,6 @@ package org.knight.app.biz.dict;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.knight.app.biz.convert.dict.DictItemConvert;
 import org.knight.app.biz.dict.dto.DictItemRespDTo;
 import org.knight.infrastructure.common.PageResult;
@@ -11,6 +9,8 @@ import org.knight.infrastructure.dao.domain.DictItemEntity;
 import org.knight.infrastructure.dao.domain.DictTypeEntity;
 import org.knight.infrastructure.repository.impl.DictItemRepositoryImpl;
 import org.knight.infrastructure.repository.impl.DictTypeRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;

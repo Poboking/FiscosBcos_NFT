@@ -1,12 +1,13 @@
 package org.knight.infrastructure.fisco.config;
 
 
-
 import org.fisco.bcos.sdk.BcosSDK;
 import org.fisco.bcos.sdk.client.Client;
 import org.fisco.bcos.sdk.config.ConfigOption;
 import org.fisco.bcos.sdk.config.exceptions.ConfigException;
 import org.fisco.bcos.sdk.config.model.ConfigProperty;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,17 +21,32 @@ import java.util.Map;
  * @date: 2024/3/28 9:48
  */
 @Configuration
+@EnableConfigurationProperties(BcosProperties.class)
 public class BcosConfig {
+    private final BcosProperties bcosProperties;
+
+    @Autowired
+    public BcosConfig(BcosProperties bcosProperties) {
+        this.bcosProperties = bcosProperties;
+    }
 
     @Bean
     public ConfigProperty configProperty() {
         ConfigProperty configProperty = new ConfigProperty();
+        // 节点
         Map<String, Object> network = new HashMap<>();
-        List<String> peersList = List.of("43.143.86.190:20200", "43.143.86.190:20201");
+        List<String> peersList = List.of("43.143.86.190:20200","43.143.86.190:20201");
         Map<String, Object> cryptoMaterial = new HashMap<>();
         network.put("peers", peersList);
-        cryptoMaterial.put("certPath", "conf");
-        cryptoMaterial.put("maxBlockingQueueSize","102400");
+        // 证书路径 Windows 转 Linux 系统下, 需要修改为"/", 或绝对路径"/home/ubuntu/conf"
+        if (!bcosProperties.getCertPath().isEmpty() && bcosProperties.getCertPath()!=null){
+            cryptoMaterial.put("certPath", bcosProperties.getCertPath());
+        }else {
+            // 默认路径
+            cryptoMaterial.put("certPath", "conf");
+        }
+        // 最大阻塞队列大小
+        cryptoMaterial.put("maxBlockingQueueSize","10100");
         configProperty.setNetwork(network);
         configProperty.setCryptoMaterial(cryptoMaterial);
         return configProperty;
