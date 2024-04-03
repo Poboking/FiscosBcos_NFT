@@ -1,15 +1,19 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.dao.domain.MemberResaleCollectionEntity;
 import org.knight.infrastructure.dao.mapper.MemberResaleCollectionMapper;
 import org.knight.infrastructure.repository.MemberResaleCollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -224,6 +228,45 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
                         .eq(Optional.ofNullable(state).isPresent(), "state", state)
                         .in(Optional.ofNullable(collectionIds).isPresent(), "collection_id", collectionIds)
                         .orderByAsc("resale_price"));
+    }
+
+    /**
+     * 更新用户出售藏品状态 - 根据ID
+     *
+     * @param id         订单ID
+     * @param state      订单状态
+     * @param updateTime 更新时间
+     * @return Boolean 是否更新成功
+     */
+    @Override
+    public Boolean updateStateById(String id, String state, Timestamp updateTime) {
+        if (CharSequenceUtil.isBlank(id) || CharSequenceUtil.isBlank(state) || updateTime == null) {
+            return false;
+        }
+        if (state.equals(NftConstants.转售的藏品状态_已卖出)){
+            return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
+                    .eq("id", id)
+                    .set("state", state)
+                    .set("update_time", updateTime)
+                    .set("sold_time",updateTime)) > 0;
+        }
+        if (state.equals(NftConstants.转售的藏品状态_已取消)){
+            return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
+                    .eq("id", id)
+                    .set("state", state)
+                    .set("update_time", updateTime)
+                    .set("cancel_time",updateTime)) > 0;
+        }
+        if (state.equals(NftConstants.转售的藏品状态_已发布)){
+            return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
+                    .eq("id", id)
+                    .set("state", state)
+                    .set("update_time", updateTime)
+                    .set("resale",updateTime)) > 0;
+
+        }
+//        if (state.equals(NftConstants.转售的藏品状态_已下架))
+        return false;
     }
 }
 

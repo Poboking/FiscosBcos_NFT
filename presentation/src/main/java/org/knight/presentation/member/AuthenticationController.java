@@ -16,6 +16,7 @@ import org.knight.app.biz.account.dto.login.member.QuickLoginReqDTO;
 import org.knight.app.biz.log.LoginLogService;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqDTO;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqParam;
+import org.knight.presentation.exception.BadRequestException;
 import org.knight.presentation.exception.InternalServerErrorException;
 import org.knight.presentation.exception.UnauthorizedException;
 import org.knight.presentation.utils.StpUserUtil;
@@ -66,6 +67,9 @@ public class AuthenticationController {
     public AuthenticationRespDTO login(
             @Valid @RequestBody @NotNull(message = "loginPram cannot be empty") LoginReqDTO loginParam,
             HttpServletRequest request) {
+        if (loginParam.getMobile().isEmpty() || loginParam.getPassword().isEmpty()) {
+            throw new BadRequestException("login failed as result of mobile or password is empty");
+        }
         LoginLogReqParam param = new LoginLogReqParam(request.getRemoteAddr(), request.getHeader(BROWSER), Optional.ofNullable(request.getHeader(OS)).orElse("Unknown"), loginParam.getMobile());
         /*
           注册功能

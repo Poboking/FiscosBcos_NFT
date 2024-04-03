@@ -1,6 +1,7 @@
 ############ 服务端口设置  ############
 server:
   port: 8080
+  max-http-header-size: 10MB
 
 ############ Mapper设置  ############
 #下面这些内容是为了让MyBatis映射
@@ -13,7 +14,7 @@ mybatis:
 ############ MYSQL DB 设置  ############
 #spring:
 #  datasource:
-#    url: jdbc:mysql://localhost:3306/open_nft?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&autoCommit=true
+#    url: jdbc:mysql://localhost:3306/open_nft??&characterEncoding=utf-8&autoReconnect=true
 #    username: root
 #    password: liya4537
 #    driver-class-name: com.mysql.cj.jdbc.Driver
@@ -27,9 +28,9 @@ mybatis:
 ############ Mariadb DB 或 Mysql 设置  ############
 spring:
   datasource:
-    url: jdbc:mysql://103.108.67.140:3306/open_nft?useUnicode=true&characterEncoding=utf-8&allowPublicKeyRetrieval=true&autoReconnect=true
+    url: jdbc:mysql://103.108.67.140:3306/open_nft?&characterEncoding=utf-8&autoReconnect=true
     username: root
-    password: root
+    password: pipinstall
     driver-class-name: com.mysql.cj.jdbc.Driver  # org.mariadb.jdbc.Driver
     # 连接池相关配置
     hikari:
@@ -44,6 +45,8 @@ spring:
 ############## 区块链配置 #############
 fisco:
   certPath: /home/ubuntu/conf
+  deployPublicKey: 2136414ec16e49a82adf646e7b7d6a150602b0d3887aa905bdd4430fecfa71014c9f3e49548260baf2b58b1f8dea79663be416caac017983971d7d6f50705f4d
+  deployPrivateKey: 1ffd8dd75f2278dfd9171ac5194720ec9a1a1f76b661d5e37ce5bcabfdf26975
 #  maxBlockingQueueSize: 102400
 #  peers:
 #    - 127.0.0.1:20200

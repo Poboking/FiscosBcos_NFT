@@ -79,4 +79,21 @@ public interface PayOrderRepository extends IService<PayOrderEntity> {
      * @return Integer 订单数量
      */
     Long getSuccessCountByDate(String bizMode, String date);
+
+    /**
+     * 获取订单 - 根据藏品ID 和 用户ID
+     *
+     * @param collectionId 藏品ID
+     * @param memberId     用户ID
+     * @return PayOrderEntity 订单
+     */
+    PayOrderEntity checkExistByCollectionIdAndMemberId(String collectionId, String memberId);
+
+    /**
+     * 获取订单状态 - 根据ID
+     *
+     * @param id 订单ID
+     * @return String 订单状态
+     */
+    String getSateById(String id);
 }

@@ -9,5 +9,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/open_nft</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="淘宝@localhost" uuid="d187285e-0d19-470c-b6bd-9617ad5256d4">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://103.108.67.140:3306/open_nft</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

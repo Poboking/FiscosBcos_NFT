@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.transaction.PreSaleTaskService;
 import org.knight.app.biz.transaction.TransactionService;
 import org.knight.app.biz.transaction.dto.giverecord.CollectionGiveRecordRespDTO;
+import org.knight.app.biz.transaction.dto.member.ReceiverInfoRespDTO;
 import org.knight.app.biz.transaction.dto.order.PayOrderRespDTO;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.presentation.utils.StpUserUtil;
@@ -52,7 +53,6 @@ public class TransactionController {
     @ValidationStatusCode(code = "400")
     public Map<String, String> latestCollectionCreateOrder(@RequestParam(name = "collectionId") @NotNull String collectionId) {
         String memberId = StpUserUtil.getLoginIdAsString();
-        // TODO: 2024/3/31  待检查
         return transactionService.latestCollectionCreateOrder(collectionId, memberId);
     }
 
@@ -93,4 +93,35 @@ public class TransactionController {
         log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder", memberId));
         return transactionService.resaleCollectionCreateOrder(resaleCollectionId, memberId);
     }
+
+    @PostMapping("collectionResale")
+    @ValidationStatusCode(code = "500")
+    public Map<String, Boolean> collectionResale(
+            @RequestParam(name = "resalePrice")long resalePrice,
+            @RequestParam(name = "holdCollectionId")String holdCollectionId){
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): collectionResale", memberId));
+        return Map.of("result",transactionService.collectionResale(memberId, holdCollectionId, resalePrice));
+    }
+
+    @GetMapping("getCollectionReceiverInfo")
+    @ValidationStatusCode(code = "400")
+    public ReceiverInfoRespDTO getCollectionReceiverInfo(
+            @RequestParam(name = "giveToAccount") String giveToAccount) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): getCollectionReceiverInfo", memberId));
+        return transactionService.getCollectionReceiverInfo(giveToAccount);
+    }
+
+    @PostMapping("collectionGive")
+    @ValidationStatusCode(code = "500")
+    public Map<String, Boolean> collectionGive(
+            @RequestParam(name = "collectionId")@NotNull String collectionId,
+            @RequestParam(name = "giveToAccount")@NotNull  String giveToAccount) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): collectionGive", memberId));
+        return Map.of("result", transactionService.collectionGive(memberId, collectionId, giveToAccount));
+    }
+
+
 }

@@ -11,11 +11,12 @@ import org.knight.app.biz.account.dto.member.MemberUpdateAvatarReqDTO;
 import org.knight.app.biz.account.dto.member.MemberUpdateNickNameReqDTO;
 import org.knight.app.biz.convert.account.MemberConvert;
 import org.knight.app.biz.exception.BizException;
+import org.knight.app.biz.exception.member.CheckMobileExistException;
 import org.knight.infrastructure.common.CipherTextUtil;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.NicknameUtils;
 import org.knight.infrastructure.dao.domain.MemberEntity;
-import org.knight.infrastructure.fisco.service.BlockAddressService;
+import org.knight.infrastructure.fisco.service.ChainService;
 import org.knight.infrastructure.repository.impl.MemberRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,12 +38,12 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepositoryImpl memberRepository;
 
-    private final BlockAddressService blockAddressService;
+    private final ChainService chainService;
 
     @Autowired
-    public MemberService(MemberRepositoryImpl memberRepository, BlockAddressService blockAddressService) {
+    public MemberService(MemberRepositoryImpl memberRepository, ChainService chainService) {
         this.memberRepository = memberRepository;
-        this.blockAddressService = blockAddressService;
+        this.chainService = chainService;
     }
 
     public AccountRespDTO getAccountInfo(String memberId) {
@@ -64,7 +65,7 @@ public class MemberService {
         if (!memberRepository.bindReadName(reqDto.getRealName(), reqDto.getSsn(), reqDto.getMobile(), memberId)) {
             throw new BizException(memberId + ": bindReadName fail as a result of db update fail");
         }
-        String blockAddress = blockAddressService.getBlockAddress();
+        String blockAddress = chainService.getBlockRandomAddress();
         if (blockAddress == null || blockAddress.isEmpty()) {
             throw new BizException(memberId + ": bindReadName fail as a result of blockAddress is null");
         }
@@ -103,9 +104,15 @@ public class MemberService {
     }
 
     public boolean checkMobileExist(String mobile) {
-        return memberRepository.getOneOpt(new UpdateWrapper<MemberEntity>()
-                        .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile))
-                .isPresent();
+        List<MemberEntity> entity = memberRepository.list(new UpdateWrapper<MemberEntity>()
+                .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile));
+        if (entity == null || entity.isEmpty()) {
+            return false;
+        }
+        if (entity.size() > 1) {
+            throw new CheckMobileExistException(mobile + ": checkMobileExist fail as a result of entity.size() > 1");
+        }
+        return true;
     }
 
     public boolean registerUser(String mobile) {

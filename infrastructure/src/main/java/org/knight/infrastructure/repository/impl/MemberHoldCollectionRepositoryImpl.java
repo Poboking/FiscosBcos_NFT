@@ -77,6 +77,19 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
         return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<MemberHoldCollectionEntity>().eq("status", status).eq("member_id", memberId));
     }
+
+    /**
+     * 检查藏品是否存在
+     *
+     * @param holdCollectionId 持有收藏品id
+     * @return MemberHoldCollectionEntity
+     */
+    @Override
+    public MemberHoldCollectionEntity checkExist(String holdCollectionId, String memberId) {
+        return memberHoldCollectionMapper.selectOne(new QueryWrapper<MemberHoldCollectionEntity>()
+                .eq("id", holdCollectionId)
+                .eq("member_id", memberId));
+    }
 }
 
 

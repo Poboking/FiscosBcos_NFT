@@ -195,6 +195,21 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
                         .eq("id", collectionId)
                         .setSql("stock = stock - 1")) > 0;
     }
+
+    /**
+     * 检查藏品是否存在
+     *
+     * @param collectionId 藏品ID
+     * @return boolean 是否存在
+     */
+    @Override
+    public Boolean checkExist(String collectionId) {
+        if (collectionId.isEmpty()){
+            return false;
+        }
+        return collectionMapper.exists(new QueryWrapper<CollectionEntity>()
+                .eq("id",collectionId));
+    }
 }
 
 

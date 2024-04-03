@@ -60,7 +60,7 @@ public class MemberResaleCollectionEntity implements Serializable, MyHoldCollect
      */
     private String lockPayMemberId;
     /**
-     * 成员持有的收藏品ID
+     * 成员持有收藏品ID
      */
     private String memberHoldCollectionId;
     /**

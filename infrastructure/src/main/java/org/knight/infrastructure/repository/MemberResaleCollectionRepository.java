@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.knight.infrastructure.dao.domain.MemberResaleCollectionEntity;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -139,4 +140,14 @@ public interface MemberResaleCollectionRepository extends IService<MemberResaleC
      * @return IPage<MemberResaleCollectionEntity> 分页列表
      */
     IPage<MemberResaleCollectionEntity> getPriceOrderAscPageListByParam(Long current, Long pageSize, String creatorId, String collectionId, String state, List<String> collectionIds);
+
+    /**
+     * 更新订单状态 - 根据ID
+     *
+     * @param id         订单ID
+     * @param state      订单状态
+     * @param updateTime 更新时间
+     * @return Boolean 是否更新成功
+     */
+    Boolean updateStateById(String id, String state, Timestamp updateTime);
 }

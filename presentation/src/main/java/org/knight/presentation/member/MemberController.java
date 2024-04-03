@@ -4,7 +4,6 @@ import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.account.MemberService;
 import org.knight.app.biz.account.dto.account.member.AccountRespDTO;
@@ -34,15 +33,18 @@ import java.util.Map;
  */
 //@CheckUserLogin
 @Log4j2
-@AllArgsConstructor
 @RestController
 @RequestMapping("/member/")
 @Tag(name = "MemberController", description = "MEMBER_CONTROLLER")
 public class MemberController {
-    @Autowired
     private MemberService memberService;
+    private final LoginLogService loginLogService;
+
     @Autowired
-    private LoginLogService loginLogService;
+    public MemberController(MemberService memberService, LoginLogService loginLogService) {
+        this.memberService = memberService;
+        this.loginLogService = loginLogService;
+    }
 
 
     @GetMapping("getMyPersonalInfo")

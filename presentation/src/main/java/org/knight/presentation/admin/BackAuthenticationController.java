@@ -67,7 +67,7 @@ public class BackAuthenticationController {
         String loginId = backgroundService.getLoginId(loginParam.getUserName());
         StpAdminUtil.login(loginId);
         SaTokenInfo tokenInfo = StpAdminUtil.getTokenInfo();
-        logService.saveLoginLog(LoginLogReqDTO.quickFailureBuild(param));
+        logService.saveLoginLog(LoginLogReqDTO.quickSuccessfulBuild(param));
         return AuthenticationRespDTO.builder()
                 .accountId(loginId)
                 .tokenName(tokenInfo.getTokenName())

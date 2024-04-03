@@ -115,4 +115,12 @@ public interface CollectionRepository extends IService<CollectionEntity> {
      * @return boolean 是否减少成功
      */
     Boolean reduceStock(String collectionId);
+
+    /**
+     * 检查藏品是否存在
+     *
+     * @param collectionId 藏品ID
+     * @return boolean 是否存在
+     */
+    Boolean checkExist(String collectionId);
 }

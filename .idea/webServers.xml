@@ -2,8 +2,12 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="ed1b1bc4-e9dc-44a8-a68c-4dd412dabbe5" name="a20-nft3_7" url="http://localhost">
-        <fileTransfer mountedRoot="D:\文务\竞赛事项\24年大学生外包创新大赛\Code\v3_7" accessType="MOUNT" port="0" />
+      <webServer id="b9196264-c2cb-4034-abdc-6f6af56db41c" name="43.143.86.190">
+        <fileTransfer rootFolder="/home/ubuntu" accessType="SFTP" host="43.143.86.190" port="22" sshConfigId="bd93b48c-a247-40d4-92b5-9fa5fe5f3cc4" sshConfig="ubuntu@43.143.86.190:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
       </webServer>
     </option>
     <groups>
@@ -13,7 +17,7 @@
       <group>
         <name>A20-NFT_ITEM</name>
         <servers>
-          <name value="a20-nft3_7" />
+          <name value="43.143.86.190" />
         </servers>
       </group>
     </groups>

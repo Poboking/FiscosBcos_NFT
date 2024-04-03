@@ -1,139 +1,131 @@
-2024-03-31 19:07:58,057 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2024-03-31 19:07:58,083 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 18408 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
-2024-03-31 19:07:58,085 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
-2024-03-31 19:07:58,087 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2024-03-31 19:07:58,860 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-03-31 19:07:58,863 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-03-31 19:07:58,891 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-2024-03-31 19:07:59,434 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2024-03-31 19:07:59,442 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2024-03-31 19:07:59,443 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2024-03-31 19:07:59,443 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
-2024-03-31 19:07:59,522 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2024-03-31 19:07:59,523 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1398 ms
-2024-03-31 19:08:00,256 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
-2024-03-31 19:08:00,314 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-03-31 19:08:00,315 INFO o.f.b.s.n.NetworkImp [main] 
+2024-04-03 22:40:30,580 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-04-03 22:40:30,613 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 22672 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
+2024-04-03 22:40:30,617 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
+2024-04-03 22:40:30,619 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-04-03 22:40:31,674 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-04-03 22:40:31,677 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-04-03 22:40:31,704 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2024-04-03 22:40:32,342 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2024-04-03 22:40:32,353 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-03 22:40:32,354 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-04-03 22:40:32,354 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-04-03 22:40:32,440 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-04-03 22:40:32,441 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1775 ms
+2024-04-03 22:40:33,267 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
+2024-04-03 22:40:33,336 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-03 22:40:33,337 INFO o.f.b.s.n.NetworkImp [main] 
 * TRACE INFORMATION:
 ----------------------------
 ====> STEP1: try to connect nodes with ecdsa context...
 
-2024-03-31 19:08:00,315 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
-2024-03-31 19:08:00,354 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
-2024-03-31 19:08:01,942 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-03-31 19:08:01,942 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-03-31 19:08:01,942 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
+2024-04-03 22:40:33,337 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
+2024-04-03 22:40:33,380 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
+2024-04-03 22:40:34,956 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-03-31 19:08:01,942 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
+2024-04-03 22:40:34,956 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-03 22:40:34,957 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 1143981872 
+2024-04-03 22:40:34,958 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-03 22:40:34,958 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-03-31 19:08:01,943 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 2076760555 
-2024-03-31 19:08:01,943 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 1084349022 
-2024-03-31 19:08:01,943 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
+2024-04-03 22:40:34,959 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 1191119274 
+2024-04-03 22:40:34,959 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}, {"code":1, "msg":"ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}] 
-2024-03-31 19:08:01,943 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
+2024-04-03 22:40:34,959 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
 Failed to connect to all the nodes!
 * ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 * ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 
-2024-03-31 19:08:04,025 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
-2024-03-31 19:08:04,025 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
+2024-04-03 22:40:37,041 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
+2024-04-03 22:40:37,041 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
 ====> STEP2: connect nodes with ecdsa context failed, try to connect nodes with sm-context...
-2024-03-31 19:08:04,026 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
-2024-03-31 19:08:04,026 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-03-31 19:08:04,373 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 91920157
-2024-03-31 19:08:04,376 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
-2024-03-31 19:08:04,376 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 1836685397
-2024-03-31 19:08:04,376 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
-2024-03-31 19:08:04,467 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-03 22:40:37,042 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
+2024-04-03 22:40:37,042 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-03 22:40:37,405 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
+2024-04-03 22:40:37,405 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 788309138
+2024-04-03 22:40:37,407 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 381397508
+2024-04-03 22:40:37,407 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
+2024-04-03 22:40:37,497 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-03-31 19:08:04,467 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-03 22:40:37,497 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-03-31 19:08:04,468 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
-2024-03-31 19:08:04,468 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
-2024-03-31 19:08:04,514 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-03-31 19:08:04,515 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-03-31 19:08:04,534 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
-2024-03-31 19:08:04,536 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
-2024-03-31 19:08:04,538 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
-2024-03-31 19:08:04,543 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
-2024-03-31 19:08:04,544 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
-2024-03-31 19:08:04,907 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
-2024-03-31 19:08:05,042 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-03-31 19:08:05,046 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-03-31 19:08:05,046 INFO o.f.b.s.a.AmopImp [main] amop module started
-2024-03-31 19:08:05,046 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-03-31 19:08:05,047 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
-2024-03-31 19:08:05,419 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
-2024-03-31 19:08:05,419 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
-2024-03-31 19:08:06,032 INFO c.f.g.Init [main] Graceful Response:已启动
-2024-03-31 19:08:06,132 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
-2024-03-31 19:08:06,630 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2024-03-31 19:08:06,650 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2024-03-31 19:08:06,658 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 8.885 seconds (process running for 9.811)
-2024-03-31 19:08:06,662 INFO o.k.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
-2024-03-31 19:08:10,213 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-31 19:08:10,214 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2024-03-31 19:08:10,216 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 2 ms
-2024-03-31 19:08:10,367 INFO c.z.h.HikariDataSource [http-nio-8080-exec-2] HikariPool-1 - Starting...
-2024-03-31 19:08:13,677 ERROR c.z.h.p.HikariPool [http-nio-8080-exec-2] HikariPool-1 - Exception during pool initialization.
-java.sql.SQLNonTransientConnectionException: Socket fail to connect to host:address=(host=43.143.86.190)(port=3306)(type=primary). Connection refused: no further information
-	at org.mariadb.jdbc.client.impl.ConnectionHelper.connectSocket(ConnectionHelper.java:136) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.client.impl.StandardClient.<init>(StandardClient.java:103) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:70) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:101) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:27) ~[mariadb-java-client-3.0.10.jar:?]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:?]
-	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:348) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:89) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:64) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:75) ~[mybatis-3.5.14.jar:3.5.14]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at jdk.proxy2.$Proxy94.selectOne(Unknown Source) ~[?:?]
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:87) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
-	at jdk.proxy2.$Proxy95.selectCount(Unknown Source) ~[?:?]
-	at com.baomidou.mybatisplus.core.mapper.BaseMapper.exists(BaseMapper.java:242) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
-	at java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:732) ~[?:?]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$DefaultMethodInvoker.invoke(MybatisMapperProxy.java:166) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
-	at jdk.proxy2.$Proxy95.exists(Unknown Source) ~[?:?]
-	at com.baomidou.mybatisplus.extension.service.IService.exists(IService.java:379) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:699) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.knight.infrastructure.repository.impl.BackgroundAccountRepositoryImpl$$SpringCGLIB$$0.exists(<generated>) ~[classes/:?]
-	at org.knight.app.biz.account.BackgroundAccountService.checkExist(BackgroundAccountService.java:31) ~[classes/:?]
-	at org.knight.presentation.admin.BackAuthenticationController.login(BackAuthenticationController.java:59) ~[classes/:?]
+2024-04-03 22:40:37,498 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
+2024-04-03 22:40:37,498 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
+2024-04-03 22:40:37,542 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-03 22:40:37,542 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-03 22:40:37,543 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
+2024-04-03 22:40:37,543 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
+2024-04-03 22:40:37,548 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
+2024-04-03 22:40:37,554 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
+2024-04-03 22:40:37,555 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
+2024-04-03 22:40:37,902 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
+2024-04-03 22:40:38,030 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-03 22:40:38,033 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-03 22:40:38,034 INFO o.f.b.s.a.AmopImp [main] amop module started
+2024-04-03 22:40:38,034 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-03 22:40:38,034 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
+2024-04-03 22:40:38,406 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
+2024-04-03 22:40:38,406 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
+2024-04-03 22:40:39,104 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-04-03 22:40:39,217 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-04-03 22:40:39,804 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-03 22:40:39,820 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2024-04-03 22:40:39,828 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 9.574 seconds (process running for 10.723)
+2024-04-03 22:40:39,830 INFO o.k.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
+2024-04-03 22:40:47,259 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-03 22:40:47,260 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-04-03 22:40:47,261 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2024-04-03 22:40:48,288 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-5] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.BackAuthenticationController
+2024-04-03 22:40:48,318 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-5] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.BackCreatorController
+2024-04-03 22:40:48,330 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-5] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.BackCollectionController
+2024-04-03 22:40:48,368 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-5] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.TradeStatisticController
+2024-04-03 22:40:48,401 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-5] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.admin.BackMemberHoldCollectionController
+2024-04-03 22:40:48,407 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-4] [78d2a85b4bc04530963ad74fe0fbf712]:用户访问
+2024-04-03 22:40:48,475 INFO o.s.a.AbstractOpenApiResource [http-nio-8080-exec-5] Init duration for springdoc-openapi is: 319 ms
+2024-04-03 22:40:56,103 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.transaction.WithdrawController
+2024-04-03 22:40:56,109 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.transaction.TransactionController
+2024-04-03 22:40:56,118 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.StorageController
+2024-04-03 22:40:56,120 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.transaction.SettlementAccountController
+2024-04-03 22:40:56,126 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.AuthenticationController
+2024-04-03 22:40:56,131 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.MemberController
+2024-04-03 22:40:56,177 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.NoticeController
+2024-04-03 22:40:56,187 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.UserArtworkController
+2024-04-03 22:40:56,215 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.MemberBalanceChangeLogController
+2024-04-03 22:40:56,241 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.ComposeActivityController
+2024-04-03 22:40:56,246 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [http-nio-8080-exec-3] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.presentation.member.CollectionController
+2024-04-03 22:40:56,291 INFO o.s.a.AbstractOpenApiResource [http-nio-8080-exec-3] Init duration for springdoc-openapi is: 225 ms
+2024-04-03 22:41:52,380 INFO c.z.h.HikariDataSource [http-nio-8080-exec-8] HikariPool-1 - Starting...
+2024-04-03 22:41:59,201 INFO c.z.h.p.HikariPool [http-nio-8080-exec-8] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4f7397b3
+2024-04-03 22:41:59,202 INFO c.z.h.HikariDataSource [http-nio-8080-exec-8] HikariPool-1 - Start completed.
+2024-04-03 22:41:59,209 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE (mobile = ?)
+2024-04-03 22:41:59,227 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 22222222222(String)
+2024-04-03 22:41:59,264 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==      Total: 0
+2024-04-03 22:41:59,296 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: INSERT INTO member ( id, balance, deleted_flag, keep_login_duration, lately_login_time, mobile, nick_name, registered_time, state, avatar, account_level, account_level_path, invite_code, bought_flag ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2024-04-03 22:41:59,297 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 683d0c3352474c52bed71a4e192fed68(String), 0.0(Double), false(Boolean), 12(Integer), 2024-04-03 22:41:59.0(Timestamp), 22222222222(String), 藏家_GjcFC9UKD(String), 2024-04-03 22:41:59.0(Timestamp), 1(String), https://ydlunacommon-cdn.nosdn.127.net/e5d302ac10bb57dbb7bace5281d5eb6a.png(String), 1(Integer), 683d0c3352474c52bed71a4e192fed68(String), 1flXsBI(String), false(Boolean)
+2024-04-03 22:41:59,358 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==    Updates: 1
+2024-04-03 22:41:59,361 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE (mobile = ?)
+2024-04-03 22:41:59,362 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 22222222222(String)
+2024-04-03 22:41:59,384 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==    Columns: id, balance, deleted_flag, deleted_time, keep_login_duration, lately_login_time, login_pwd, mobile, nick_name, pay_pwd, real_name, registered_time, state, version, push_client_id, block_chain_addr, avatar, bind_real_name_time, identity_card, account_level, account_level_path, invite_code, inviter_id, bought_flag, sync_chain_time
+2024-04-03 22:41:59,387 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 683d0c3352474c52bed71a4e192fed68, 0.0, 0, null, 12, 2024-04-03 22:41:59, null, 22222222222, 藏家_GjcFC9UKD, null, null, 2024-04-03 22:41:59, 1, null, null, null, https://ydlunacommon-cdn.nosdn.127.net/e5d302ac10bb57dbb7bace5281d5eb6a.png, null, null, 1, 683d0c3352474c52bed71a4e192fed68, 1flXsBI, null, 0, null
+2024-04-03 22:41:59,390 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==      Total: 1
+2024-04-03 22:41:59,394 INFO o.k.p.c.MySaTokenListener [http-nio-8080-exec-8] ---------- doCreateSession侦听器: 创建Session，id: satoken:user:session:683d0c3352474c52bed71a4e192fed68
+2024-04-03 22:41:59,404 INFO o.k.p.c.MySaTokenListener [http-nio-8080-exec-8] ---------- doLogin侦听器: user登录成功，tokenValue: e83eebb9-d6f4-4893-9d2d-a0b1c77d212e
+2024-04-03 22:41:59,418 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: UPDATE member SET lately_login_time=? WHERE (id = ?)
+2024-04-03 22:41:59,418 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 2024-04-03 22:41:59.0(Timestamp), 683d0c3352474c52bed71a4e192fed68(String)
+2024-04-03 22:41:59,470 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==    Updates: 1
+2024-04-03 22:41:59,473 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: INSERT INTO login_log ( id, browser, ip_addr, login_time, msg, os, state, sub_system, user_name ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2024-04-03 22:41:59,474 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 1775534215534739456(String), Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0(String), 0:0:0:0:0:0:0:1(String), 2024-04-03 22:41:59.47(Timestamp), 登录成功(String), Unknown(String), 1(String), member(String), 22222222222(String)
+2024-04-03 22:41:59,521 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==    Updates: 1
+2024-04-03 22:42:15,653 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-9] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:42:37,293 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-10] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:42:37,352 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==>  Preparing: SELECT id,amount,biz_order_no,biz_type,collection_id,create_time,member_id,order_deadline,order_no,state,version,paid_time,cancel_time,biz_mode FROM pay_order WHERE id=?
+2024-04-03 22:42:37,353 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==> Parameters: 1771557054889066496(String)
+2024-04-03 22:42:37,374 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==      Total: 0
+2024-04-03 22:42:37,420 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-10] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[[1771557054889066496]订单不存在]
+org.knight.app.biz.exception.transaction.OrderNotFoundException: [1771557054889066496]订单不存在
+	at org.knight.app.biz.transaction.TransactionService.confirmPay(TransactionService.java:121) ~[classes/:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -142,11 +134,14 @@ java.sql.SQLNonTransientConnectionException: Socket fail to connect to host:addr
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.0.4.jar:6.0.4]
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.0.4.jar:6.0.4]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:752) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:134) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.0.4.jar:6.0.4]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388) ~[spring-tx-6.0.4.jar:6.0.4]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.0.4.jar:6.0.4]
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.4.jar:6.0.4]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:752) ~[spring-aop-6.0.4.jar:6.0.4]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:703) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.knight.presentation.admin.BackAuthenticationController$$SpringCGLIB$$0.login(<generated>) ~[classes/:?]
+	at org.knight.app.biz.transaction.TransactionService$$SpringCGLIB$$0.confirmPay(<generated>) ~[classes/:?]
+	at org.knight.presentation.member.transaction.TransactionController.confirmPay(TransactionController.java:63) ~[classes/:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -200,53 +195,163 @@ java.sql.SQLNonTransientConnectionException: Socket fail to connect to host:addr
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
 	at java.lang.Thread.run(Thread.java:842) ~[?:?]
-Caused by: java.net.ConnectException: Connection refused: no further information
-	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
-	at sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?]
-	at sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:554) ~[?:?]
-	at sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[?:?]
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?]
-	at java.net.Socket.connect(Socket.java:633) ~[?:?]
-	at org.mariadb.jdbc.client.impl.ConnectionHelper.connectSocket(ConnectionHelper.java:130) ~[mariadb-java-client-3.0.10.jar:?]
-	... 119 more
-2024-03-31 19:08:13,685 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-2] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[null]
-org.mybatis.spring.MyBatisSystemException: null
-	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:97) ~[mybatis-spring-3.0.3.jar:3.0.3]
+2024-04-03 22:42:44,259 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-1] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:42:44,260 INFO o.k.p.m.t.TransactionController [http-nio-8080-exec-1] User(683d0c3352474c52bed71a4e192fed68): findMyPayOrderByPage
+2024-04-03 22:42:44,289 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-1] ==>  Preparing: SELECT id,amount,biz_order_no,biz_type,collection_id,create_time,member_id,order_deadline,order_no,state,version,paid_time,cancel_time,biz_mode FROM pay_order WHERE (member_id = ?)
+2024-04-03 22:42:44,289 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-1] ==> Parameters: 683d0c3352474c52bed71a4e192fed68(String)
+2024-04-03 22:42:44,315 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-1] <==      Total: 0
+2024-04-03 22:42:51,074 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-2] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:42:51,076 INFO o.k.p.m.t.TransactionController [http-nio-8080-exec-2] User(683d0c3352474c52bed71a4e192fed68): checkHasPreSale
+2024-04-03 22:42:51,167 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==>  Preparing: SELECT id,collection_id,create_time,execute_time,pre_minute,state,task_name,version FROM pre_sale_task WHERE (collection_id = ?)
+2024-04-03 22:42:51,167 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==> Parameters: 00360188832302192454550566358491(String)
+2024-04-03 22:42:51,444 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-2] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'open_nft.pre_sale_task' doesn't exist
+### The error may exist in org/knight/infrastructure/dao/mapper/PreSaleTaskMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,collection_id,create_time,execute_time,pre_minute,state,task_name,version  FROM pre_sale_task      WHERE  (collection_id = ?)
+### Cause: java.sql.SQLSyntaxErrorException: Table 'open_nft.pre_sale_task' doesn't exist
+; bad SQL grammar []]
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'open_nft.pre_sale_task' doesn't exist
+### The error may exist in org/knight/infrastructure/dao/mapper/PreSaleTaskMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,collection_id,create_time,execute_time,pre_minute,state,task_name,version  FROM pre_sale_task      WHERE  (collection_id = ?)
+### Cause: java.sql.SQLSyntaxErrorException: Table 'open_nft.pre_sale_task' doesn't exist
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:245) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92) ~[mybatis-spring-3.0.3.jar:3.0.3]
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at jdk.proxy2.$Proxy94.selectOne(Unknown Source) ~[?:?]
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:87) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at jdk.proxy2.$Proxy94.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
 	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
 	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
-	at jdk.proxy2.$Proxy95.selectCount(Unknown Source) ~[?:?]
-	at com.baomidou.mybatisplus.core.mapper.BaseMapper.exists(BaseMapper.java:242) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at jdk.proxy2.$Proxy122.selectList(Unknown Source) ~[?:?]
+	at com.baomidou.mybatisplus.core.mapper.BaseMapper.selectOne(BaseMapper.java:222) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
 	at java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:732) ~[?:?]
 	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$DefaultMethodInvoker.invoke(MybatisMapperProxy.java:166) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
 	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
-	at jdk.proxy2.$Proxy95.exists(Unknown Source) ~[?:?]
-	at com.baomidou.mybatisplus.extension.service.IService.exists(IService.java:379) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at jdk.proxy2.$Proxy122.selectOne(Unknown Source) ~[?:?]
+	at com.baomidou.mybatisplus.extension.service.impl.ServiceImpl.getOneOpt(ServiceImpl.java:247) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.service.IService.getOneOpt(IService.java:338) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.4.jar:6.0.4]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:699) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.knight.infrastructure.repository.impl.BackgroundAccountRepositoryImpl$$SpringCGLIB$$0.exists(<generated>) ~[classes/:?]
-	at org.knight.app.biz.account.BackgroundAccountService.checkExist(BackgroundAccountService.java:31) ~[classes/:?]
-	at org.knight.presentation.admin.BackAuthenticationController.login(BackAuthenticationController.java:59) ~[classes/:?]
+	at org.knight.infrastructure.repository.impl.PreSaleTaskRepositoryImpl$$SpringCGLIB$$0.getOneOpt(<generated>) ~[classes/:?]
+	at org.knight.app.biz.transaction.PreSaleTaskService.checkHasPreSale(PreSaleTaskService.java:29) ~[classes/:?]
+	at org.knight.presentation.member.transaction.TransactionController.checkHasPreSale(TransactionController.java:48) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at cn.dev33.satoken.filter.SaPathCheckFilterForJakartaServlet.doFilter(SaPathCheckFilterForJakartaServlet.java:55) ~[sa-token-spring-boot3-starter-1.37.0.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at java.lang.Thread.run(Thread.java:842) ~[?:?]
+Caused by: java.sql.SQLSyntaxErrorException: Table 'open_nft.pre_sale_task' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy3.$Proxy186.execute(Unknown Source) ~[?:?]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	... 76 more
+2024-04-03 22:45:13,261 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-4] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:45:13,262 INFO o.k.p.m.t.TransactionController [http-nio-8080-exec-4] User(683d0c3352474c52bed71a4e192fed68): findMyGiveRecordByPage
+2024-04-03 22:45:13,285 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-4] ==>  Preparing: SELECT id,give_from_id,give_time,give_to_id,hold_collection_id,order_no,version FROM collection_give_record WHERE ((give_from_id = ? AND give_to_id = ?))
+2024-04-03 22:45:13,286 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-4] ==> Parameters: 683d0c3352474c52bed71a4e192fed68(String), 683d0c3352474c52bed71a4e192fed68(String)
+2024-04-03 22:45:13,329 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-4] <==      Total: 0
+2024-04-03 22:45:20,804 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-5] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:45:20,825 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-5] ==>  Preparing: SELECT id,collection_hash,commodity_type,cover,create_time,creator_id,deleted_flag,deleted_time,external_sale_flag,name,price,quantity,sale_time,stock,sync_chain_time,version FROM collection WHERE id=?
+2024-04-03 22:45:20,825 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-5] ==> Parameters: 03583376829978089176708244000098(String)
+2024-04-03 22:45:20,847 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-5] <==      Total: 0
+2024-04-03 22:45:20,849 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-5] ==>  Preparing: SELECT id,amount,biz_order_no,biz_type,collection_id,create_time,member_id,order_deadline,order_no,state,version,paid_time,cancel_time,biz_mode FROM pay_order WHERE (collection_id = ? AND member_id = ? AND state = ?)
+2024-04-03 22:45:20,850 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-5] ==> Parameters: 03583376829978089176708244000098(String), 683d0c3352474c52bed71a4e192fed68(String), 1(String)
+2024-04-03 22:45:20,873 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-5] <==      Total: 0
+2024-04-03 22:45:20,874 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-5] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[不存在ID为03583376829978089176708244000098藏品]
+org.knight.app.biz.exception.collection.CollectionNotFoundException: 不存在ID为03583376829978089176708244000098藏品
+	at org.knight.app.biz.transaction.TransactionService.latestCollectionCreateOrder(TransactionService.java:105) ~[classes/:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:752) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:134) ~[spring-context-6.0.4.jar:6.0.4]
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:752) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:703) ~[spring-aop-6.0.4.jar:6.0.4]
-	at org.knight.presentation.admin.BackAuthenticationController$$SpringCGLIB$$0.login(<generated>) ~[classes/:?]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:699) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.knight.app.biz.transaction.TransactionService$$SpringCGLIB$$0.latestCollectionCreateOrder(<generated>) ~[classes/:?]
+	at org.knight.presentation.member.transaction.TransactionController.latestCollectionCreateOrder(TransactionController.java:56) ~[classes/:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -300,30 +405,191 @@ org.mybatis.spring.MyBatisSystemException: null
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
 	at java.lang.Thread.run(Thread.java:842) ~[?:?]
-Caused by: org.apache.ibatis.exceptions.PersistenceException: 
-### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection
-### The error may exist in org/knight/infrastructure/dao/mapper/BackgroundAccountMapper.java (best guess)
-### The error may involve org.knight.infrastructure.dao.mapper.BackgroundAccountMapper.selectCount
-### The error occurred while executing a query
-### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection
-	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:156) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:75) ~[mybatis-3.5.14.jar:3.5.14]
+2024-04-03 22:45:28,054 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-3] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:45:28,055 INFO o.k.p.m.t.TransactionController [http-nio-8080-exec-3] User(683d0c3352474c52bed71a4e192fed68): resaleCollectionCreateOrder
+2024-04-03 22:45:28,078 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==>  Preparing: SELECT id,collection_hash,commodity_type,cover,create_time,creator_id,deleted_flag,deleted_time,external_sale_flag,name,price,quantity,sale_time,stock,sync_chain_time,version FROM collection WHERE id=?
+2024-04-03 22:45:28,078 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] ==> Parameters: 11111(String)
+2024-04-03 22:45:28,103 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-3] <==      Total: 0
+2024-04-03 22:45:28,104 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-3] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[不存在ID为11111藏品]
+org.knight.app.biz.exception.collection.CollectionNotFoundException: 不存在ID为11111藏品
+	at org.knight.app.biz.transaction.TransactionService.resaleCollectionCreateOrder(TransactionService.java:197) ~[classes/:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	... 87 more
-Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection
-	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:83) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:348) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:89) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:64) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:699) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.knight.app.biz.transaction.TransactionService$$SpringCGLIB$$0.resaleCollectionCreateOrder(<generated>) ~[classes/:?]
+	at org.knight.presentation.member.transaction.TransactionController.resaleCollectionCreateOrder(TransactionController.java:94) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:731) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at cn.dev33.satoken.filter.SaPathCheckFilterForJakartaServlet.doFilter(SaPathCheckFilterForJakartaServlet.java:55) ~[sa-token-spring-boot3-starter-1.37.0.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at java.lang.Thread.run(Thread.java:842) ~[?:?]
+2024-04-03 22:49:24,906 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-8] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:49:24,908 INFO o.k.p.m.t.TransactionController [http-nio-8080-exec-8] User(683d0c3352474c52bed71a4e192fed68): checkHasPreSale
+2024-04-03 22:49:24,944 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: SELECT id,collection_id,create_time,execute_time,pre_minute,state,task_name,version FROM pre_sale_task WHERE (collection_id = ?)
+2024-04-03 22:49:24,945 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 00360188832302192454550566358491(String)
+2024-04-03 22:49:24,970 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-8] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'task_name' in 'field list'
+### The error may exist in org/knight/infrastructure/dao/mapper/PreSaleTaskMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,collection_id,create_time,execute_time,pre_minute,state,task_name,version  FROM pre_sale_task      WHERE  (collection_id = ?)
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'task_name' in 'field list'
+; bad SQL grammar []]
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'task_name' in 'field list'
+### The error may exist in org/knight/infrastructure/dao/mapper/PreSaleTaskMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,collection_id,create_time,execute_time,pre_minute,state,task_name,version  FROM pre_sale_task      WHERE  (collection_id = ?)
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'task_name' in 'field list'
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:245) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2.$Proxy94.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at jdk.proxy2.$Proxy122.selectList(Unknown Source) ~[?:?]
+	at com.baomidou.mybatisplus.core.mapper.BaseMapper.selectOne(BaseMapper.java:222) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:732) ~[?:?]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$DefaultMethodInvoker.invoke(MybatisMapperProxy.java:166) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at jdk.proxy2.$Proxy122.selectOne(Unknown Source) ~[?:?]
+	at com.baomidou.mybatisplus.extension.service.impl.ServiceImpl.getOneOpt(ServiceImpl.java:247) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.service.IService.getOneOpt(IService.java:338) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:699) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.knight.infrastructure.repository.impl.PreSaleTaskRepositoryImpl$$SpringCGLIB$$0.getOneOpt(<generated>) ~[classes/:?]
+	at org.knight.app.biz.transaction.PreSaleTaskService.checkHasPreSale(PreSaleTaskService.java:29) ~[classes/:?]
+	at org.knight.presentation.member.transaction.TransactionController.checkHasPreSale(TransactionController.java:48) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at cn.dev33.satoken.filter.SaPathCheckFilterForJakartaServlet.doFilter(SaPathCheckFilterForJakartaServlet.java:55) ~[sa-token-spring-boot3-starter-1.37.0.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at java.lang.Thread.run(Thread.java:842) ~[?:?]
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'task_name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy3.$Proxy186.execute(Unknown Source) ~[?:?]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.14.jar:3.5.14]
@@ -331,34 +597,128 @@ Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to 
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:75) ~[mybatis-3.5.14.jar:3.5.14]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	... 87 more
-Caused by: java.sql.SQLNonTransientConnectionException: Socket fail to connect to host:address=(host=43.143.86.190)(port=3306)(type=primary). Connection refused: no further information
-	at org.mariadb.jdbc.client.impl.ConnectionHelper.connectSocket(ConnectionHelper.java:136) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.client.impl.StandardClient.<init>(StandardClient.java:103) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:70) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:101) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:27) ~[mariadb-java-client-3.0.10.jar:?]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:?]
-	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:348) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:89) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:64) ~[mybatis-3.5.14.jar:3.5.14]
+	... 76 more
+2024-04-03 22:49:55,079 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-9] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:49:55,080 INFO o.k.p.m.t.TransactionController [http-nio-8080-exec-9] User(683d0c3352474c52bed71a4e192fed68): checkHasPreSale
+2024-04-03 22:49:55,101 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] ==>  Preparing: SELECT id,collection_id,create_time,execute_time,pre_minute,state,task_name,version FROM pre_sale_task WHERE (collection_id = ?)
+2024-04-03 22:49:55,101 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] ==> Parameters: 00360188832302192454550566358491(String)
+2024-04-03 22:49:55,141 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-9] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'version' in 'field list'
+### The error may exist in org/knight/infrastructure/dao/mapper/PreSaleTaskMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,collection_id,create_time,execute_time,pre_minute,state,task_name,version  FROM pre_sale_task      WHERE  (collection_id = ?)
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'version' in 'field list'
+; bad SQL grammar []]
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'version' in 'field list'
+### The error may exist in org/knight/infrastructure/dao/mapper/PreSaleTaskMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,collection_id,create_time,execute_time,pre_minute,state,task_name,version  FROM pre_sale_task      WHERE  (collection_id = ?)
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'version' in 'field list'
+; bad SQL grammar []
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:245) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70) ~[spring-jdbc-6.0.4.jar:6.0.4]
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:92) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:439) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at jdk.proxy2.$Proxy94.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-3.0.3.jar:3.0.3]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:164) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:152) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at jdk.proxy2.$Proxy122.selectList(Unknown Source) ~[?:?]
+	at com.baomidou.mybatisplus.core.mapper.BaseMapper.selectOne(BaseMapper.java:222) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at java.lang.invoke.MethodHandle.invokeWithArguments(MethodHandle.java:732) ~[?:?]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$DefaultMethodInvoker.invoke(MybatisMapperProxy.java:166) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.5.jar:3.5.5]
+	at jdk.proxy2.$Proxy122.selectOne(Unknown Source) ~[?:?]
+	at com.baomidou.mybatisplus.extension.service.impl.ServiceImpl.getOneOpt(ServiceImpl.java:247) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at com.baomidou.mybatisplus.extension.service.IService.getOneOpt(IService.java:338) ~[mybatis-plus-extension-3.5.5.jar:3.5.5]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:699) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.knight.infrastructure.repository.impl.PreSaleTaskRepositoryImpl$$SpringCGLIB$$0.getOneOpt(<generated>) ~[classes/:?]
+	at org.knight.app.biz.transaction.PreSaleTaskService.checkHasPreSale(PreSaleTaskService.java:29) ~[classes/:?]
+	at org.knight.presentation.member.transaction.TransactionController.checkHasPreSale(TransactionController.java:48) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at cn.dev33.satoken.filter.SaPathCheckFilterForJakartaServlet.doFilter(SaPathCheckFilterForJakartaServlet.java:55) ~[sa-token-spring-boot3-starter-1.37.0.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at java.lang.Thread.run(Thread.java:842) ~[?:?]
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'version' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:354) ~[mysql-connector-j-8.0.32.jar:8.0.32]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44) ~[HikariCP-5.0.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java) ~[HikariCP-5.0.1.jar:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:58) ~[mybatis-3.5.14.jar:3.5.14]
+	at jdk.proxy3.$Proxy186.execute(Unknown Source) ~[?:?]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:65) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:80) ~[mybatis-3.5.14.jar:3.5.14]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:65) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.14.jar:3.5.14]
@@ -366,51 +726,16 @@ Caused by: java.sql.SQLNonTransientConnectionException: Socket fail to connect t
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:75) ~[mybatis-3.5.14.jar:3.5.14]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
 	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	... 87 more
-Caused by: java.net.ConnectException: Connection refused: no further information
-	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
-	at sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?]
-	at sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:554) ~[?:?]
-	at sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[?:?]
-	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?]
-	at java.net.Socket.connect(Socket.java:633) ~[?:?]
-	at org.mariadb.jdbc.client.impl.ConnectionHelper.connectSocket(ConnectionHelper.java:130) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.client.impl.StandardClient.<init>(StandardClient.java:103) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:70) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:101) ~[mariadb-java-client-3.0.10.jar:?]
-	at org.mariadb.jdbc.Driver.connect(Driver.java:27) ~[mariadb-java-client-3.0.10.jar:?]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:359) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:470) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:561) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:100) ~[HikariCP-5.0.1.jar:?]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112) ~[HikariCP-5.0.1.jar:?]
-	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-6.0.4.jar:6.0.4]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:348) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:89) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:64) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:336) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:158) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:110) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:90) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:154) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:142) ~[mybatis-3.5.14.jar:3.5.14]
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:75) ~[mybatis-3.5.14.jar:3.5.14]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
-	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
-	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
-	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:425) ~[mybatis-spring-3.0.3.jar:3.0.3]
-	... 87 more
+	... 76 more
+2024-04-03 22:50:22,527 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-10] [683d0c3352474c52bed71a4e192fed68]:用户访问
+2024-04-03 22:50:22,528 INFO o.k.p.m.t.TransactionController [http-nio-8080-exec-10] User(683d0c3352474c52bed71a4e192fed68): checkHasPreSale
+2024-04-03 22:50:22,549 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==>  Preparing: SELECT id,collection_id,create_time,execute_time,pre_minute,state,task_name,version FROM pre_sale_task WHERE (collection_id = ?)
+2024-04-03 22:50:22,549 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==> Parameters: 00360188832302192454550566358491(String)
+2024-04-03 22:50:22,595 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==      Total: 0
+2024-04-03 22:52:33,449 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-04-03 22:52:33,454 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

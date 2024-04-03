@@ -50,4 +50,11 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
     IPage<MemberHoldCollectionEntity> getPageListByMemberIdAndStatus(long current, long pageSize, String status, String memberId);
 
 
+    /**
+     * 检查藏品是否存在
+     *
+     * @param holdCollectionId 持有收藏品id
+     * @return MemberHoldCollectionEntity
+     */
+    public MemberHoldCollectionEntity checkExist(String holdCollectionId, String memberId);
 }

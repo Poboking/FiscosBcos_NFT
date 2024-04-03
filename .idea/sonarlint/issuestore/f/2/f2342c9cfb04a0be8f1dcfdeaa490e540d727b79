@@ -1,9 +1,19 @@
 
+
+java:S1192f"HDefine a constant instead of duplicating this literal "orderId" 3 times.(À‚é“üÿÿÿÿ8Š¬ˆ£ê1J$09b060ac-3006-40c8-b724-1d91ea784d01
+—
+java:S1192ò"SDefine a constant instead of duplicating this literal "æ”¶æ¬¾æ–¹ä¸å­˜åœ¨" 3 times.(’ƒÆ8Š¬ˆ£ê1J$aeb8b900-5ec4-4b01-a9fe-e7504b7c0fc9
+—
+java:S1192è"NDefine a constant instead of duplicating this literal "collection_id" 3 times.(ï•ÎÌøÿÿÿÿ8Š¬ˆ£ê1J$4ce88bef-6d31-4e21-a43a-fcd11f10b437
+“
+java:S1192ç"JDefine a constant instead of duplicating this literal "member_id" 3 times.(õ¸Åàûÿÿÿÿ8Š¬ˆ£ê1J$faad2868-93d2-4115-a1df-4eb8cf0dd676
 t
-java:S1602>",Remove useless curly braces around statement(€Ó€Óşÿÿÿÿ8¨‹ é1J$7216b9cc-1f33-49d6-b9a9-4759b63fc067
+java:S1602J",Remove useless curly braces around statement(€Ó€Óşÿÿÿÿ8¨¬ˆ£ê1J$2e93bc35-dfa6-44bd-b6a3-f3005e769156
 „
-java:S1854G"<Remove this useless assignment to local variable "pageList".(¢„Ñşÿÿÿÿ8‘¨‹ é1J$281107b1-e74c-491b-82bf-adbfe56239f3
+java:S1854S"<Remove this useless assignment to local variable "pageList".(¢„Ñşÿÿÿÿ8ª¬ˆ£ê1J$207b0f19-1538-4fe9-b14d-1643e827eb5d
 t
-java:S1602O",Remove useless curly braces around statement(øöêşÿÿÿÿ8’¨‹ é1J$8228d4de-d4a8-4d59-a3d3-558d257ff94f
+java:S1602[",Remove useless curly braces around statement(øöêşÿÿÿÿ8­¬ˆ£ê1J$447f34ae-8044-489f-83ff-75a04a8c3528
 p
-java:S1602Ÿ",Remove useless curly braces around statement(À¨Ù¨8›¨‹ é1J$249e3906-c2d3-4b2f-a27b-df0ee7b63339
+java:S1602¯",Remove useless curly braces around statement(À¨Ù¨8µ¬ˆ£ê1J$3b230826-83ac-4f2a-9e4c-e98a0f3ccf42
+p
+java:S1602°",Remove useless curly braces around statement(Ä±Ú€8Ã¬ˆ£ê1J$01943058-0fd7-4266-807a-d493feb9e769

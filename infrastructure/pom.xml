@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.knight</groupId>
         <artifactId>a20-nft-3_7</artifactId>
-        <version>v1.0.0.33.1</version>
+        <version>v1.0.0.4.3</version>
     </parent>
 
     <artifactId>infrastructure</artifactId>

@@ -92,6 +92,183 @@ VALUES ('159216151955549280', '57cb96609df74da99161978370b07ec4', '1',
         '2021-09-03 22:30:00', '33333333333333333333', b'0', NULL, b'0', 'Fantastic Collection', 159.99, 150,
         '2021-09-08 08:00:00', 100, '2021-09-03 22:30:00', 8);
 
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1548370670008664068',
+        '弘一法师书法格言屏数字臻品之一',
+        'https://i.postimg.cc/cHRPNq6W/preview1-45e18b.png',
+        118.0,
+        2000,
+        1947,
+        '2024-12-03 14:30:00');
+
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1546882293568634883',
+        '刘松年《秋山仙逸图》',
+        'https://growth-1300522992.cos.ap-guangzhou.myqcloud.com/zz/subjects/004%E5%94%90%E5%AE%8B%E5%A4%A7%E5%AE%B6/%E5%95%86%E5%93%81%E7%B4%A0%E6%9D%90/007%E5%88%98%E6%9D%BE%E5%B9%B4/preview_ce2e55.png',
+        128.0,
+        3000,
+        2928,
+        '2024-12-03 13:00:00');
+-- 为 "山水知音图立轴" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1544943105113849859',
+        '山水知音图立轴',
+        'https://s1.ax1x.com/2022/11/26/ztc30e.png',
+        128.0,
+        3000,
+        2971,
+        '2024-11-28 19:00:00');
+
+-- 为 "「海马飞天」数字铜镜" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1544953568031670275',
+        '「海马飞天」数字铜镜',
+        'https://s1.ax1x.com/2022/11/26/ztgpAH.png',
+        118.0,
+        1000,
+        944,
+        '2024-11-27 16:00:00');
+
+-- 为 "张大千《黄山八景册》西海门" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1544950372735385603',
+        '张大千《黄山八景册》西海门',
+        'https://www.helloimg.com/images/2022/07/07/ZTXVHh.jpg',
+        138.0,
+        4000,
+        3927,
+        '2024-11-26 15:00:00');
+
+-- 为 "董其昌《山水册》第三开「秋色无远近」" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1548370180768268291',
+        '董其昌《山水册》第三开「秋色无远近」',
+        'https://i.ibb.co/FsBtdTn/preview-351dc3.png',
+        108.0,
+        1000,
+        890,
+        '2024-11-25 16:00:00');
+
+-- 为 "弘一法师书法格言屏数字臻品之一" 生成的插入语句（已存在，此处重复）
+-- ...
+
+-- 为 "刘松年《秋山仙逸图》" 生成的插入语句（已存在，此处重复）
+-- ...
+
+-- 为 "敦煌文创-「梵音初闻」" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1548369026005073923',
+        '敦煌文创-「梵音初闻」',
+        'https://growth-1300522992.cos.ap-guangzhou.myqcloud.com/zz%2Fsubjects%2F016%E6%95%A6%E7%85%8C%E5%A3%81%E7%94%BB%2F%E5%95%86%E5%93%81%E7%B4%A0%E6%9D%90%2F001%E6%A2%B5%E9%9F%B3%E5%88%9D%E9%97%BB%2Fdetail0_97011f.png',
+        200.0,
+        900,
+        842,
+        '2024-12-02 15:00:00');
+
+-- 为 "宋徽宗《花鸟看春写意图》" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1544963099243577347',
+        '宋徽宗《花鸟看春写意图》',
+        'https://i.postimg.cc/cLDsVn2h/ZTx9wr.png',
+        128.0,
+        2500,
+        2412,
+        '2024-12-01 12:00:00');
+
+-- 为 "龙门天王" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1544945390820786179',
+        '龙门天王',
+        'https://i.ibb.co/jDg3mkD/ZT3TY5.png',
+        120.0,
+        2000,
+        1949,
+        '2024-11-29 14:00:00');
+-- 为 "相逢何必曾相识" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1546391985126899715',
+        '相逢何必曾相识',
+        'https://t7.baidu.com/it/u=3635362084,1992212334&fm=193&f=GIF',
+        100.0,
+        1000,
+        846,
+        '2024-12-08 16:00:00');
+
+-- 为 "江湖故人" 生成的插入语句
+INSERT INTO `collection` (`id`,
+                          `name`,
+                          `cover`,
+                          `price`,
+                          `quantity`,
+                          `stock`,
+                          `sale_time`)
+VALUES ('1546695201400029187',
+        '江湖故人',
+        'https://t7.baidu.com/it/u=1226886105,1225248639&fm=193&f=GIF',
+        20.0,
+        200,
+        149,
+        '2024-11-30 11:00:00');
 
 -- ----------------------------
 -- Table data for creator

@@ -6,8 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.artwork.collection.MemberCollectionService;
 import org.knight.app.biz.artwork.collection.MemberResaleCollectionService;
+import org.knight.app.biz.artwork.dto.holdcollection.MyHoldCollectionDetailRespDTO;
 import org.knight.app.biz.artwork.dto.holdcollection.MyHoldCollectionRespDTO;
+import org.knight.app.biz.artwork.dto.holdcollection.MyResaleCollectionRespDTO;
+import org.knight.app.biz.artwork.dto.holdcollection.MySaleCollectionRespDTO;
 import org.knight.app.biz.artwork.mysteryBox.MemberMysteryBoxService;
+import org.knight.app.biz.convert.artwork.MyHoldCollectionDetailConvert;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.presentation.utils.StpUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +28,19 @@ import org.springframework.web.bind.annotation.RestController;
 //@CheckUserLogin
 @Log4j2
 @RestController
-@AllArgsConstructor
 @RequestMapping("/myArtwork/")
 @Tag(name = "UserArtworkController", description = "USER_ARTWORK_CONTROLLER")
 public class UserArtworkController {
+    private final MemberCollectionService memberCollectionService;
+    private final MemberMysteryBoxService memberMysteryBoxService;
+    private final MemberResaleCollectionService memberResaleCollectionService;
+
     @Autowired
-    private MemberCollectionService memberCollectionService;
-    @Autowired
-    private MemberMysteryBoxService memberMysteryBoxService;
-    @Autowired
-    private MemberResaleCollectionService memberResaleCollectionService;
+    public UserArtworkController(MemberCollectionService memberCollectionService, MemberMysteryBoxService memberMysteryBoxService, MemberResaleCollectionService memberResaleCollectionService) {
+        this.memberCollectionService = memberCollectionService;
+        this.memberMysteryBoxService = memberMysteryBoxService;
+        this.memberResaleCollectionService = memberResaleCollectionService;
+    }
 
 
     @GetMapping("findMyHoldCollectionByPage")
@@ -58,12 +65,27 @@ public class UserArtworkController {
 
     @GetMapping("findMySoldCollectionByPage")
     @ValidationStatusCode(code = "400")
-    public PageResult<MyHoldCollectionRespDTO> findMySoldCollectionByPage(
+    public PageResult<MySaleCollectionRespDTO> findMySoldCollectionByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize) {
         String memberId = StpUserUtil.getLoginIdAsString();
         return memberResaleCollectionService.getMySoldCollectionPageList(current, pageSize, memberId);
     }
 
+    @GetMapping("findMyResaleCollectionByPage")
+    @ValidationStatusCode(code = "400")
+    public PageResult<MyResaleCollectionRespDTO> findMyResaleCollectionByPage(
+            @RequestParam(name = "current", defaultValue = "1") long current,
+            @RequestParam(name = "pageSize", defaultValue = "10") long pageSize) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        return memberResaleCollectionService.getMyResaleCollectionPageList(current, pageSize, memberId);
+    }
+
+    @GetMapping("findMyHoldCollectionDetail")
+    @ValidationStatusCode(code = "400")
+    public MyHoldCollectionDetailRespDTO findMyHoldCollectionDetail(
+            @RequestParam(name = "id")String collectionId){
+        return MyHoldCollectionDetailConvert.INSTANCE.convertToRespDTOByResp(memberResaleCollectionService.getCollectionDetail(collectionId));
+    }
 
 }

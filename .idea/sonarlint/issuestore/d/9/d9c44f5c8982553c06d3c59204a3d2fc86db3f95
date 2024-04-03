@@ -1,0 +1,14 @@
+
+–
+java:S1192U"NDefine a constant instead of duplicating this literal "collection_id" 8 times.(®äÛûÿÿÿÿ8›º–¢ê1J$ad856c6e-1b9b-45e7-acbe-82c6da05f8f1
+
+java:S1192ú"LDefine a constant instead of duplicating this literal "update_time" 3 times.(¼ôªw8»á–¢ê1J$5f131ac7-a3f0-4793-9a47-84d613740d59
+–
+java:S1192)"NDefine a constant instead of duplicating this literal "resale_price" 10 times.(ƒÇØÿÿÿÿÿ8›º–¢ê1J$96737a88-6075-483a-8a2c-16b605ae19dc
+“
+java:S1192E"KDefine a constant instead of duplicating this literal "creator_id" 6 times.(¬îíîøÿÿÿÿ8›º–¢ê1J$cea888bd-1422-419c-9adb-50248bbc6324
+Š
+java:S1192º"FDefine a constant instead of duplicating this literal "state" 6 times.(Ë8œº–¢ê1J$dd717a60-2025-4cfa-9b70-d7ac30f8d4bb
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8­º–¢ê1J$4d04f745-fe7c-412f-8395-e44137eab110
+~	java:S125Œ"<This block of commented-out lines of code should be removed.(Ÿª˜Q8¼º–¢ê1J$d892a031-7e2d-4fe3-94bf-6ab5d93562a3

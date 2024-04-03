@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -96,11 +97,35 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Boolean updateStateById(String id, String state, Timestamp updateTime) {
-        if (id == null || state == null) {
+        if (CharSequenceUtil.isBlank(id) || CharSequenceUtil.isBlank(state) || updateTime == null) {
             return false;
         }
-        if (updateTime.after(payOrderMapper.selectById(id).getOrderDeadline())) {
+        if (state.equals(NftConstants.支付订单状态_已付款) && getSateById(id).equals(NftConstants.支付订单状态_已付款)) {
+            return true;
+        }
+        if (state.equals(NftConstants.支付订单状态_已取消) && getSateById(id).equals(NftConstants.支付订单状态_已取消)) {
+            return true;
+        }
+        if (state.equals(NftConstants.支付订单超时取消) && getSateById(id).equals(NftConstants.支付订单超时取消)) {
+            return true;
+        }
+        if (state.equals(NftConstants.支付订单状态_已取消) && getSateById(id).equals(NftConstants.支付订单状态_已付款)) {
+            // TODO: 2024/4/3 21:11 退货逻辑待实现
             return false;
+        }
+        if (state.equals(NftConstants.支付订单状态_已付款) && getSateById(id).equals(NftConstants.支付订单状态_已取消)) {
+            return false;
+        }
+        if (state.equals(NftConstants.支付订单状态_已付款) && updateTime.after(payOrderMapper.selectById(id).getOrderDeadline())) {
+            payOrderMapper.update(new UpdateWrapper<PayOrderEntity>()
+                    .eq("id", id)
+                    .set("state", NftConstants.支付订单超时取消));
+            return false;
+        }
+        if (state.equals(NftConstants.支付订单超时取消) && updateTime.after(payOrderMapper.selectById(id).getOrderDeadline())) {
+            return payOrderMapper.update(new UpdateWrapper<PayOrderEntity>()
+                    .eq("id", id)
+                    .set("state", NftConstants.支付订单超时取消)) > 0;
         }
         if (state.equals(NftConstants.支付订单状态_已取消)) {
             return payOrderMapper.update(new UpdateWrapper<PayOrderEntity>()
@@ -111,7 +136,7 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
         if (state.equals(NftConstants.支付订单状态_已付款)) {
             return payOrderMapper.update(new UpdateWrapper<PayOrderEntity>()
                     .eq("id", id)
-                    .set("pay_time", updateTime)
+                    .set("paid_time", updateTime)
                     .set("state", state)) > 0;
         }
         return false;
@@ -149,6 +174,39 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
                 .eq("biz_mode", bizMode)
                 .eq("state", NftConstants.支付订单状态_已付款)
                 .like(Optional.ofNullable(date).isPresent(),"pay_time", date));
+    }
+
+    /**
+     * 获取订单 - 根据藏品ID 和 用户ID
+     *
+     * @param collectionId 藏品ID
+     * @param memberId     用户ID
+     * @return PayOrderEntity 订单
+     */
+    @Override
+    public PayOrderEntity checkExistByCollectionIdAndMemberId(String collectionId, String memberId) {
+        return payOrderMapper.selectList(new QueryWrapper<PayOrderEntity>()
+                .eq("collection_id", collectionId)
+                .eq("member_id", memberId)
+                .eq("state", NftConstants.支付订单状态_待付款)).stream().findFirst().orElse(null);
+    }
+
+    /**
+     * 获取订单状态 - 根据ID
+     *
+     * @param id 订单ID
+     * @return String 订单状态
+     */
+    @Override
+    public String getSateById(String id) {
+        if (CharSequenceUtil.isBlank(id)) {
+            return null;
+        }
+        PayOrderEntity order = payOrderMapper.selectById(id);
+        if (order == null) {
+            return null;
+        }
+        return order.getState();
     }
 
 

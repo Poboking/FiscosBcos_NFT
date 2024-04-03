@@ -1,10 +1,6 @@
 
-“	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ˆÉ8ã—¡é1J$d7ec921c-55c9-4d52-bc57-e1adaf72d482
-…
-java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8ì—¡é1J$30b58f08-f742-43ca-b69e-32a9f029e18e
-…
-java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8í—¡é1J$14572abe-11de-482f-963d-720d8275a119
-…
-java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8í—¡é1J$067e5ccd-3e25-4ab7-a910-72f05622fce8
+“	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°ˆÉ8¼İÏÈé1J$e44f1eba-6581-4cb0-954d-7a4458b3d717
 o
-java:S1602U",Remove useless curly braces around statement(êÚ‹8õ—¡é1J$d9317621-cc99-4f7f-9cfa-7397ef0170a3
+java:S1602\",Remove useless curly braces around statement(êÚ‹8ËİÏÈé1J$1add623c-d0d2-4ed2-bfca-12b4046441dd
+o
+java:S1602k",Remove useless curly braces around statement(êÚ‹8ÌİÏÈé1J$44df1156-6103-42c9-ac3b-11f45a7445d2

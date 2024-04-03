@@ -6,6 +6,7 @@ import org.fisco.bcos.sdk.client.Client;
 import org.fisco.bcos.sdk.config.ConfigOption;
 import org.fisco.bcos.sdk.config.exceptions.ConfigException;
 import org.fisco.bcos.sdk.config.model.ConfigProperty;
+import org.fisco.bcos.sdk.crypto.keypair.CryptoKeyPair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -65,5 +66,17 @@ public class BcosConfig {
     @Bean
     public Client client(BcosSDK bcosSDK) throws ConfigException {
         return bcosSDK.getClient(Integer.valueOf(1));
+    }
+
+    @Bean
+    public CryptoKeyPair cryptoKeyPair(Client client) {
+        String defaultPrivateKey = "1ffd8dd75f2278dfd9171ac5194720ec9a1a1f76b661d5e37ce5bcabfdf26975";
+        if (!bcosProperties.getDeployPrivateKey().isEmpty() && bcosProperties.getDeployPrivateKey()!=null){
+            //配置部署账号
+            return client.getCryptoSuite().getKeyPairFactory().createKeyPair(bcosProperties.getDeployPrivateKey());
+        }else {
+            //默认部署账号
+            return client.getCryptoSuite().getCryptoKeyPair().createKeyPair(defaultPrivateKey);
+        }
     }
 }

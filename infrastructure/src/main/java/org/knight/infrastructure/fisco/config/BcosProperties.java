@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "fisco")
 public class BcosProperties {
     private String certPath;
+    private String deployPublicKey;
+    private String deployPrivateKey;
 
     public String getCertPath() {
         return certPath;
@@ -19,5 +21,21 @@ public class BcosProperties {
 
     public void setCertPath(String certPath) {
         this.certPath = certPath;
+    }
+
+    public String getDeployPublicKey() {
+        return deployPublicKey;
+    }
+
+    public void setDeployPublicKey(String deployPublicKey) {
+        this.deployPublicKey = deployPublicKey;
+    }
+
+    public String getDeployPrivateKey() {
+        return deployPrivateKey;
+    }
+
+    public void setDeployPrivateKey(String deployPrivateKey) {
+        this.deployPrivateKey = deployPrivateKey;
     }
 }

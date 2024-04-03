@@ -2,6 +2,7 @@ package org.knight.app.biz.storage;
 
 import lombok.AllArgsConstructor;
 import org.knight.app.biz.exception.BizException;
+import org.knight.app.biz.exception.storage.ImageTypeIllegalException;
 import org.knight.infrastructure.common.IdUtils;
 import org.knight.infrastructure.dao.domain.StorageEntity;
 import org.knight.infrastructure.dao.domain.SystemSettingEntity;
@@ -26,6 +27,7 @@ import java.time.LocalDateTime;
  */
 @Service
 @AllArgsConstructor
+@SuppressWarnings("all")
 public class StorageService {
     @Autowired
     private StorageRepositoryImpl storageRepository;
@@ -43,7 +45,7 @@ public class StorageService {
      */
     public String upload(InputStream inputStream, long fileSize, String fileType, String fileName) {
         if (!fileType.startsWith("image/")) {
-            throw new BizException("只能上传图片");
+            throw new ImageTypeIllegalException("只能上传图片");
         }
         String id = IdUtils.snowFlakeId();
         // TODO: 2024/3/18 临时写死存储路径
@@ -57,11 +59,21 @@ public class StorageService {
             if (!Files.exists(targetDirectory)) {
                 Files.createDirectories(targetDirectory);
             }
-            Files.copy(inputStream, Paths.get(localStoragePath).resolve(id), StandardCopyOption.REPLACE_EXISTING);
+            Path targetFilePath = targetDirectory.resolve(id + fileName.substring(fileName.lastIndexOf(".")));
+            Files.copy(inputStream, targetFilePath, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException("Failed to store file " + id, e);
+        }finally {
+            try {
+                // 关闭输入流
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                // 处理关闭输入流时的异常
+                e.printStackTrace();
+            }
         }
-
         StorageEntity storage = new StorageEntity();
         storage.setId(id);
         storage.setFileName(fileName);
@@ -69,6 +81,6 @@ public class StorageService {
         storage.setFileSize(fileSize);
         storage.setUploadTime(Timestamp.valueOf(LocalDateTime.now()));
         storageRepository.save(storage);
-        return id;
+        return "/image/" + id + fileName.substring(fileName.lastIndexOf("."));
     }
 }
