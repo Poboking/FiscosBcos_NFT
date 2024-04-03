@@ -25,8 +25,13 @@ mybatis:
 #      idle-timeout: 60000 # 连接空闲超时时间，单位为毫秒，超过该时间的空闲连接将被释放
 #      max-lifetime: 1800000 # 连接的最大生存时间，单位为毫秒，超过该时间的连接将被释放
 
-############ Mariadb DB 或 Mysql 设置  ############
+
 spring:
+############ 定时Task设置  ############
+  task:
+    scheduling:
+      enabled: true
+############ Mariadb DB 或 Mysql 设置  ############
   datasource:
     url: jdbc:mysql://103.108.67.140:3306/open_nft?&characterEncoding=utf-8&autoReconnect=true
     username: root

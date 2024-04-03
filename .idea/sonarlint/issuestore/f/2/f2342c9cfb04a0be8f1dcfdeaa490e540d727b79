@@ -17,3 +17,5 @@ p
 java:S1602¯",Remove useless curly braces around statement(À¨Ù¨8µ¬ˆ£ê1J$3b230826-83ac-4f2a-9e4c-e98a0f3ccf42
 p
 java:S1602°",Remove useless curly braces around statement(Ä±Ú€8Ã¬ˆ£ê1J$01943058-0fd7-4266-807a-d493feb9e769
+S
+java:S1128"7Remove this unused import 'lombok.extern.log4j.Log4j2'.(ÅP8¹¤ë£ê1

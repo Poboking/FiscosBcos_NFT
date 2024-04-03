@@ -255,8 +255,6 @@ pinfrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberRe
 einfrastructure/src/main/java/org/knight/infrastructure/repository/MemberHoldCollectionRepository.java,0\f\0f23aeeb2a868cbbc2b0ffd93dbeff0928b4e042
 ž
 ninfrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberHoldCollectionRepositoryImpl.java,8\1\8158c296345a72d96faec6fd30aadb6950825f00
-„
-Tapp/src/main/java/org/knight/app/biz/exception/transaction/CanGiveSelfException.java,4\8\48f41883b6811cc2c7eb241f9793df1821042499
 …
 Uapp/src/main/java/org/knight/app/biz/exception/transaction/CantGiveSelfException.java,f\9\f9f6fe50408ecb576d1484af80b9a9e8de4d12e6
 x
