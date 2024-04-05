@@ -67,7 +67,7 @@ public class AuthenticationController {
     public AuthenticationRespDTO login(
             @Valid @RequestBody @NotNull(message = "loginPram cannot be empty") LoginReqDTO loginParam,
             HttpServletRequest request) {
-        if (loginParam.getMobile().isEmpty() || loginParam.getPassword().isEmpty()) {
+        if (CharSequenceUtil.isBlank(loginParam.getMobile()) || CharSequenceUtil.isBlank(loginParam.getPassword())) {
             throw new BadRequestException("login failed as result of mobile or password is empty");
         }
         LoginLogReqParam param = new LoginLogReqParam(request.getRemoteAddr(), request.getHeader(BROWSER), Optional.ofNullable(request.getHeader(OS)).orElse("Unknown"), loginParam.getMobile());

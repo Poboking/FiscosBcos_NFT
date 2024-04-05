@@ -7,10 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Log4j2
 @SpringBootApplication
 @EnableConfigurationProperties
+@EnableScheduling
 @EnableGracefulResponse
 @MapperScan(basePackages = {"org.knight.infrastructure.dao.mapper", "org.knight.infrastructure.repository"})
 @ComponentScan(basePackages = {"org.knight.app", "org.knight.infrastructure", "org.knight.presentation"})

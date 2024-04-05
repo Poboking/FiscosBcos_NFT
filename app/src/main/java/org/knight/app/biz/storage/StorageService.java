@@ -1,7 +1,6 @@
 package org.knight.app.biz.storage;
 
 import lombok.AllArgsConstructor;
-import org.knight.app.biz.exception.BizException;
 import org.knight.app.biz.exception.storage.ImageTypeIllegalException;
 import org.knight.infrastructure.common.IdUtils;
 import org.knight.infrastructure.dao.domain.StorageEntity;

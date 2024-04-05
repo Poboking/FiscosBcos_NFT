@@ -58,28 +58,13 @@ public class MemberController {
     }
 
 
-    /**
-     * DTO类得加@NoArgsConstructor注解, 不然会出现JSON parse error!!(╬▔皿▔)╯
-     */
-    @PostMapping("updateNickName")
-    @ValidationStatusCode(code = "400")
-    public void updateNickName(@Valid @RequestBody MemberUpdateNickNameReqDTO reqDto) {
-        String loginId = StpUserUtil.getLoginIdAsString();
-        if (Boolean.FALSE.equals(loginId.isEmpty()) && memberService.updateNickName(reqDto, loginId)) {
-            log.info("updateNickName success");
-        } else {
-            log.info("updateNickName fail");
-            throw new InternalServerErrorException("updateNickName fail");
-        }
-    }
-
     @GetMapping("findLoginLogByPage")
     @ValidationStatusCode(code = "400")
     public PageResult<LoginLogRespDTO> findLoginLogByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize) {
-        String userName = StpUserUtil.getLoginIdAsString();
-        return loginLogService.getLoginLog(current, pageSize, userName);
+        String memberId = StpUserUtil.getLoginIdAsString();
+        return loginLogService.getLoginLog(current, pageSize, memberId);
     }
 
     @PostMapping("bindRealName")
@@ -89,7 +74,7 @@ public class MemberController {
         if (Boolean.FALSE.equals(loginId.equals(memberService.getIdByMobile(reqDto.getMobile())))) {
             throw new BadRequestException("bindRealName fail as a result of mobile is not match");
         }
-        if (Boolean.FALSE.equals(loginId.isEmpty()) && memberService.bindReadName(reqDto, loginId)) {
+        if (Boolean.FALSE.equals(CharSequenceUtil.isBlank(reqDto.getRealName())) && memberService.bindReadName(reqDto, loginId)) {
             log.info(CharSequenceUtil.format("{}: bindRealName success", reqDto.getMobile()));
         } else {
             log.info(CharSequenceUtil.format("{}: bindRealName fail", reqDto.getMobile()));
@@ -102,11 +87,27 @@ public class MemberController {
     public void updateAvatar(@Valid @RequestBody MemberUpdateAvatarReqDTO reqDto) {
         String loginId = StpUserUtil.getLoginIdAsString();
         log.info(CharSequenceUtil.format("{}: updateAvatar", loginId));
-        if (Boolean.FALSE.equals(loginId.isEmpty()) && memberService.updateAvatar(reqDto, loginId)) {
-            log.info(CharSequenceUtil.format("updateAvatar success: {}", loginId));
-        } else {
+        if (CharSequenceUtil.isBlank(reqDto.getAvatar())) {
+            throw new BadRequestException("updateAvatar failed as a result of parameter is null or blank");
+        }
+        if (Boolean.FALSE.equals(memberService.updateAvatar(reqDto, loginId))) {
             log.info(CharSequenceUtil.format("updateAvatar fail: {}", loginId));
             throw new InternalServerErrorException(CharSequenceUtil.format("updateAvatar fail: {}", loginId));
+        }
+    }
+
+    /**
+     * DTO类得加@NoArgsConstructor注解, 不然会出现JSON parse error!!(╬▔皿▔)╯
+     */
+    @PostMapping("updateNickName")
+    @ValidationStatusCode(code = "400")
+    public void updateNickName(@Valid @RequestBody MemberUpdateNickNameReqDTO reqDto) {
+        String loginId = StpUserUtil.getLoginIdAsString();
+        if (Boolean.FALSE.equals(CharSequenceUtil.isBlank(reqDto.getNickName())) && memberService.updateNickName(reqDto, loginId)) {
+            log.info("updateNickName success");
+        } else {
+            log.info("updateNickName fail");
+            throw new InternalServerErrorException("updateNickName fail");
         }
     }
 

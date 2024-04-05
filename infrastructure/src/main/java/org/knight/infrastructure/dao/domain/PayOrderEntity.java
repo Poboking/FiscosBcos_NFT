@@ -38,6 +38,10 @@ public class PayOrderEntity extends Model<PayOrderEntity> implements Serializabl
      */
     private String bizType;
     /**
+     * 发行收藏品ID，如果支付订单与某个发行收藏品相关联
+     */
+    private String issuedCollectionId;
+    /**
      * 收藏ID，如果支付订单与某个收藏相关联
      */
     private String collectionId;
@@ -100,6 +104,7 @@ public class PayOrderEntity extends Model<PayOrderEntity> implements Serializabl
                 && (this.getAmount() == null ? other.getAmount() == null : this.getAmount().equals(other.getAmount()))
                 && (this.getBizOrderNo() == null ? other.getBizOrderNo() == null : this.getBizOrderNo().equals(other.getBizOrderNo()))
                 && (this.getBizType() == null ? other.getBizType() == null : this.getBizType().equals(other.getBizType()))
+                && (this.getIssuedCollectionId() == null ? other.getIssuedCollectionId() == null : this.getIssuedCollectionId().equals(other.getIssuedCollectionId()))
                 && (this.getCollectionId() == null ? other.getCollectionId() == null : this.getCollectionId().equals(other.getCollectionId()))
                 && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
                 && (this.getMemberId() == null ? other.getMemberId() == null : this.getMemberId().equals(other.getMemberId()))
@@ -119,6 +124,7 @@ public class PayOrderEntity extends Model<PayOrderEntity> implements Serializabl
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getAmount() == null) ? 0 : getAmount().hashCode());
         result = prime * result + ((getBizOrderNo() == null) ? 0 : getBizOrderNo().hashCode());
+        result = prime * result + ((getIssuedCollectionId() == null) ? 0 : getIssuedCollectionId().hashCode());
         result = prime * result + ((getBizType() == null) ? 0 : getBizType().hashCode());
         result = prime * result + ((getCollectionId() == null) ? 0 : getCollectionId().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
@@ -143,6 +149,7 @@ public class PayOrderEntity extends Model<PayOrderEntity> implements Serializabl
         sb.append(", amount=").append(amount);
         sb.append(", bizOrderNo=").append(bizOrderNo);
         sb.append(", bizType=").append(bizType);
+        sb.append(", issuedCollectionId=").append(issuedCollectionId);
         sb.append(", collectionId=").append(collectionId);
         sb.append(", createTime=").append(createTime);
         sb.append(", memberId=").append(memberId);

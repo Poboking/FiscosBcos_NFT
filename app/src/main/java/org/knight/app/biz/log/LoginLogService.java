@@ -1,13 +1,13 @@
 package org.knight.app.biz.log;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import lombok.AllArgsConstructor;
 import org.knight.app.biz.convert.log.LoginLogConvert;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqDTO;
 import org.knight.app.biz.log.dto.loginlog.LoginLogRespDTO;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.infrastructure.dao.domain.LoginLogEntity;
 import org.knight.infrastructure.repository.impl.LoginLogRepositoryImpl;
+import org.knight.infrastructure.repository.impl.MemberRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +20,16 @@ import java.util.List;
  * @date: 2024/3/13 14:00
  */
 @Service
-@AllArgsConstructor
 public class LoginLogService {
+    private final LoginLogRepositoryImpl loginLogRepository;
+
+    private final MemberRepositoryImpl memberRepository;
     @Autowired
-    private LoginLogRepositoryImpl loginLogRepository;
+    public LoginLogService(LoginLogRepositoryImpl loginLogRepository, MemberRepositoryImpl memberRepository) {
+        this.loginLogRepository = loginLogRepository;
+        this.memberRepository = memberRepository;
+    }
+
 
     /**
      * 保存登录日志
@@ -50,15 +56,16 @@ public class LoginLogService {
     }
 
     /**
-     * 分页查询 - 根据userName
+     * 分页查询 - 根据memberId
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @param userName Log日志ID
+     * @param memberId 用户ID
      * @return PageResult<LoginLogRespDto> 分页数据
      */
-    public PageResult<LoginLogRespDTO> getLoginLog(long current, long pageSize, String userName) {
-        IPage<LoginLogEntity> pageList = loginLogRepository.getLoginLogByUserName(current, pageSize, userName);
+    public PageResult<LoginLogRespDTO> getLoginLog(long current, long pageSize, String memberId) {
+        String mobile = memberRepository.getMobileByMemberId(memberId);
+        IPage<LoginLogEntity> pageList = loginLogRepository.getLoginLogByMoblie(current, pageSize, mobile);
         List<LoginLogRespDTO> recordList = new ArrayList<>();
         pageList.getRecords().forEach(item -> recordList.add(LoginLogConvert.INSTANCE.convertToRespDto(item)));
         return PageResult.convertFor(pageList, pageSize, recordList);

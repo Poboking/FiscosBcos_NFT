@@ -1,19 +1,13 @@
 
 r
-java:S1066w"/Merge this if statement with the enclosing one.(λ³8ÿσ§ι1J$2f2ad272-70e6-4c4d-aee5-79f968714abf
+java:S1066w"/Merge this if statement with the enclosing one.(λ³8ÿσ§ι1J$4e4702db-5085-4437-a73f-4695a8b44d73
 
-java:S2184^"FCast one of the operands of this multiplication operation to a "long".(³€Ψÿÿÿÿÿ8σ§ι1J$bcd11e14-a17c-4e95-a413-47940dac9157
+java:S2184^"FCast one of the operands of this multiplication operation to a "long".(³€Ψÿÿÿÿÿ8σ§ι1J$fb60ead9-a21d-4331-ac5c-dc0687ecd5f7
 
-java:S2184„"FCast one of the operands of this multiplication operation to a "long".(³€Ψÿÿÿÿÿ8σ§ι1J$ef4b2a8a-0262-4308-8aaf-6e918f36d995
-”	java:S116-"RRename this field "BROWSER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“Ε†¤8“σ§ι1J$ce55d04f-e27b-4a41-a7b2-f829a5076691
-”	java:S116/"MRename this field "OS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥γνωÿÿÿÿ8“σ§ι1J$98425eb9-f709-47f8-a0d0-78985e5b06df
+java:S2184„"FCast one of the operands of this multiplication operation to a "long".(³€Ψÿÿÿÿÿ8σ§ι1J$46beca7d-f6de-4145-8318-617842a30df8
+”	java:S116-"RRename this field "BROWSER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“Ε†¤8“σ§ι1J$99052c61-1522-478f-930a-5ef573c6866f
+”	java:S116/"MRename this field "OS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥γνωÿÿÿÿ8“σ§ι1J$e7056aa9-7a16-4494-85ac-7b724123b182
 d
-java:S1170-"!Make this final field static too.(“Ε†¤8”σ§ι1J$44d853db-db79-4b14-b6cf-6221675080dd
+java:S1170-"!Make this final field static too.(“Ε†¤8”σ§ι1J$bbaae771-0742-4a4a-9c3f-92f4f1d42872
 i
-java:S1170/"!Make this final field static too.(¥γνωÿÿÿÿ8”σ§ι1J$699214d6-1310-4229-b593-4ffc85540c9b
-z
-java:S11358"2Complete the task associated to this TODO comment.(θαÿÿÿÿÿ8σ§ι1J$071452c4-482b-4263-bdd8-0ad52840189f
-u
-java:S1135@"2Complete the task associated to this TODO comment.(Ε‹’ 8σ§ι1J$92dcdf0b-c8ba-42dc-a01d-1f4305af4c4f
-u
-java:S1135V"2Complete the task associated to this TODO comment.(΄«Ύύ8σ§ι1J$ccba8e6a-0762-46d3-ba79-fd6c5dbcbae1
+java:S1170/"!Make this final field static too.(¥γνωÿÿÿÿ8”σ§ι1J$20859903-2d4f-4377-bab0-3855f776735e

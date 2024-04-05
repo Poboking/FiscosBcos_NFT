@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.dao.domain.MemberHoldCollectionEntity;
 import org.knight.infrastructure.dao.mapper.MemberHoldCollectionMapper;
 import org.knight.infrastructure.repository.MemberHoldCollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
 
 /**
  * @author poboking
@@ -89,6 +92,147 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
         return memberHoldCollectionMapper.selectOne(new QueryWrapper<MemberHoldCollectionEntity>()
                 .eq("id", holdCollectionId)
                 .eq("member_id", memberId));
+    }
+
+    /**
+     * 增加持有数量
+     *
+     * @param id                 操作类型
+     * @param collectionId       藏品id
+     * @param gainWay            获取方式
+     * @param issuedCollectionId 发行藏品ID
+     * @param state              状态码
+     * @param memberId           用户id
+     * @param transactionHash    交易hash
+     * @param holdTime           当前时间
+     * @return Boolean
+     */
+    @Override
+    public Boolean increase(String id, String collectionId, String gainWay, String issuedCollectionId, String state, String memberId, Double price, String transactionHash, Timestamp holdTime) {
+        MemberHoldCollectionEntity entity = new MemberHoldCollectionEntity();
+        entity.setId(id);
+        entity.setCollectionId(collectionId);
+        entity.setGainWay(gainWay);
+        entity.setIssuedCollectionId(issuedCollectionId);
+        entity.setState(state);
+        entity.setMemberId(memberId);
+        entity.setPrice(price);
+        entity.setTransactionHash(transactionHash);
+        entity.setHoldTime(holdTime);
+        return entity.insert();
+    }
+
+    /**
+     * 增加持有数量 - 通过购买
+     *
+     * @param id                 操作类型
+     * @param collectionId       藏品id
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户id
+     * @param price              价格
+     * @param transactionHash    交易hash
+     * @param holdTime           当前时间
+     * @return Boolean
+     */
+    @Override
+    public Boolean increaseByPurchase(String id, String collectionId, String issuedCollectionId, String memberId, Double price, String transactionHash, Timestamp holdTime) {
+        return increase(id, collectionId, NftConstants.藏品获取方式_购买, issuedCollectionId, NftConstants.持有藏品状态_持有中, memberId, price, transactionHash, holdTime);
+    }
+
+    /**
+     * 增加持有数量 - 通过赠送
+     *
+     * @param id                 操作类型
+     * @param collectionId       藏品id
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户id
+     * @param transactionHash    交易hash
+     * @param holdTime           当前时间
+     * @return Boolean
+     */
+    @Override
+    public Boolean increaseByGive(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime) {
+        return increase(id, collectionId, NftConstants.藏品获取方式_赠送, issuedCollectionId, NftConstants.持有藏品状态_持有中, memberId, 0.0, transactionHash, holdTime);
+    }
+
+    /**
+     * 增加持有数量 - 通过二级市场
+     *
+     * @param id                 操作类型
+     * @param collectionId       藏品id
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户id
+     * @param transactionHash    交易hash
+     * @param holdTime           当前时间
+     * @return Boolean
+     */
+    @Override
+    public Boolean increaseBySecondaryMarket(String id, String collectionId, String issuedCollectionId, String memberId, Double price, String transactionHash, Timestamp holdTime) {
+        return increase(id, collectionId, NftConstants.藏品获取方式_二级市场, issuedCollectionId, NftConstants.持有藏品状态_持有中, memberId, price, transactionHash, holdTime);
+    }
+
+    /**
+     * 增加持有数量 - 通过盲盒
+     *
+     * @param id                 操作类型
+     * @param collectionId       藏品id
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户id
+     * @param transactionHash    交易hash
+     * @param holdTime           当前时间
+     * @return Boolean
+     */
+    @Override
+    public Boolean increaseByMysteryBox(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime) {
+        return increase(id, collectionId, NftConstants.藏品获取方式_盲盒, issuedCollectionId, NftConstants.持有藏品状态_持有中, memberId, 0.0, transactionHash, holdTime);
+    }
+
+    /**
+     * 增加持有数量 - 通过合成
+     *
+     * @param id                 操作类型
+     * @param collectionId       藏品id
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户id
+     * @param transactionHash    交易hash
+     * @param holdTime           当前时间
+     * @return Boolean 是否成功
+     */
+    @Override
+    public Boolean increaseByCompound(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime) {
+        return increase(id, collectionId, NftConstants.藏品获取方式_合成, issuedCollectionId, NftConstants.持有藏品状态_持有中, memberId, 0.0, transactionHash, holdTime);
+    }
+
+    /**
+     * 增加持有数量 - 通过空投
+     *
+     * @param id                 操作类型
+     * @param collectionId       藏品id
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户id
+     * @param transactionHash    交易hash
+     * @param holdTime           当前时间
+     * @return Boolean
+     */
+    @Override
+    public Boolean increaseByAirDrop(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime) {
+        return increase(id, collectionId, NftConstants.藏品获取方式_空投, issuedCollectionId, NftConstants.持有藏品状态_持有中, memberId, 0.0, transactionHash, holdTime);
+    }
+
+    /**
+     * 增加持有数量 - 通过兑换码
+     *
+     * @param id                 操作类型
+     * @param collectionId       藏品id
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户id
+     * @param transactionHash    交易hash
+     * @param holdTime           当前时间
+     * @return Boolean
+     */
+    @Override
+    public Boolean increaseByRedeemCode(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime) {
+        return increase(id, collectionId, NftConstants.藏品获取方式_兑换码, issuedCollectionId, NftConstants.持有藏品状态_持有中, memberId, 0.0, transactionHash, holdTime);
     }
 }
 

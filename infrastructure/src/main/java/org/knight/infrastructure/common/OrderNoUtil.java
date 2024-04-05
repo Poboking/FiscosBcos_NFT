@@ -1,9 +1,8 @@
 package org.knight.infrastructure.common;
 
-import cn.hutool.core.lang.Snowflake;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 /**
  * @project: a20-nft-3_7
@@ -12,12 +11,20 @@ import java.time.format.DateTimeFormatter;
  */
 public class OrderNoUtil {
 
-    private static Snowflake snowflake = new Snowflake(1, 1);
-
     public static String generateOrderNo() {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
-        String formattedDateTime = now.format(formatter);
-        return String.valueOf(snowflake.nextId()) + formattedDateTime;
+        StringBuilder orderNumber = new StringBuilder();
+
+        // 获取当前时间
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        String currentTime = dateFormat.format(new Date());
+        orderNumber.append(currentTime);
+
+        // 生成随机数
+        Random random = new Random();
+        for (int i = 0; i < 4; i++) {
+            orderNumber.append(random.nextInt(10));
+        }
+
+        return orderNumber.toString();
     }
 }

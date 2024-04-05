@@ -7,8 +7,6 @@ import org.fisco.bcos.sdk.transaction.model.exception.ContractException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.security.KeyPair;
-
 /**
  * @project: a20-nft-3_7
  * @author: poboking

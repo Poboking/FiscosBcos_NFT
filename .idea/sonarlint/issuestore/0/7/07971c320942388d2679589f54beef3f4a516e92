@@ -1,7 +1,13 @@
 
 o
-java:S1172#",Remove this unused method parameter "nftId".(Îœ›8ˆèš¤è1J$61e0898b-2621-4876-b690-d8fc215e8f92
+java:S1172(",Remove this unused method parameter "nftId".(Îœ›8ç½³ìê1J$96a7fb79-4501-469d-87e9-806b40935a05
 t
-java:S1172'",Remove this unused method parameter "nftId".(£ïøÿÿÿÿ8Šèš¤è1J$a999bf97-da98-4371-a904-f6c6dd3d986e
+java:S1172,",Remove this unused method parameter "nftId".(£ïøÿÿÿÿ8ç½³ìê1J$f7f8f802-b330-452a-8521-8565685cecb6
+ƒ
+java:S18546";Remove this useless assignment to local variable "bcosNFT".(Ñ›Ãƒúÿÿÿÿ8é½³ìê1J$76fafead-19f2-4565-86c3-8b86efb3b5ae
+n
+java:S11725",Remove this unused method parameter "nftId".(‘¾™c8ê½³ìê1J$53953aeb-57b9-457a-88db-b0c9bd68a52b
+t
+java:S14816",Remove this unused "bcosNFT" local variable.(Ñ›Ãƒúÿÿÿÿ8ë½³ìê1J$13ce433b-a213-4260-a54b-5c8cf7b33d81
 s
-java:S1068"+Remove this unused "bcosSDK" private field.(ÓÈ‰»ÿÿÿÿÿ8Œèš¤è1J$68b83fa8-6988-4995-9951-5e071bf83527
+java:S1068"+Remove this unused "bcosSDK" private field.(ÓÈ‰»ÿÿÿÿÿ8ì½³ìê1J$7da29be1-97af-4975-b3ed-6a1e04ed0fba

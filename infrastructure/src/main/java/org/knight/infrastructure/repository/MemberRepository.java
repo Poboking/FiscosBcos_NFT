@@ -11,6 +11,14 @@ import org.knight.infrastructure.dao.domain.MemberEntity;
 public interface MemberRepository extends IService<MemberEntity> {
 
     /**
+     * 获取用户手机号
+     *
+     * @param memberId 用户ID
+     * @return 用户手机号
+     */
+    String getMobileByMemberId(String memberId);
+
+    /**
      * 获取用户账户信息
      *
      * @param memberId 用户ID

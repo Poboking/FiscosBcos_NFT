@@ -3,6 +3,7 @@ import org.fisco.bcos.sdk.transaction.model.exception.ContractException;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.knight.infrastructure.fisco.service.BcosTestService;
+import org.knight.infrastructure.fisco.service.DeployService;
 import org.knight.presentation.PresentationApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,9 +20,12 @@ class BcosTest {
 
     private final BcosTestService bcosTestService;
 
+    private final DeployService deployService;
+
     @Autowired
-    BcosTest(BcosTestService bcosTestService) {
+    BcosTest(BcosTestService bcosTestService, DeployService deployService) {
         this.bcosTestService = bcosTestService;
+        this.deployService = deployService;
     }
 
     @Test
@@ -47,4 +51,14 @@ class BcosTest {
     void blockNumber(){
         bcosTestService.getBlockNumber();
     }
+
+    @Test
+    void tetsDeploy() throws ContractException {
+        System.err.println(deployService.deployOwnable());
+        System.err.println(deployService.deployUtils());
+        System.err.println(deployService.deployBcosUserContract());
+        System.err.println(deployService.deployBcosNFTContract());
+    }
+
+
 }

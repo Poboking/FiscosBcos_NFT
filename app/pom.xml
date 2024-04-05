@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.knight</groupId>
         <artifactId>a20-nft-3_7</artifactId>
-        <version>v1.0.0.4.3</version>
+        <version>v1.0.0.4.5</version>
     </parent>
 
     <artifactId>app</artifactId>
@@ -32,6 +32,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <!-- 排除默认的日志依赖 -->
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -88,6 +89,18 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
             <version>1.5.5.Final</version>
+        </dependency>
+        <!-- log4j2日志框架依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <!-- 排除 picocli 相关依赖 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>info.picocli</groupId>
+                    <artifactId>picocli</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <dependencyManagement>

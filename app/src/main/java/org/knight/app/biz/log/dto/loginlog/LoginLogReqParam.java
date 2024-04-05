@@ -22,5 +22,5 @@ public class LoginLogReqParam extends LoginLogBaseDTO {
 
     private String os;
 
-    private String userName;
+    private String mobile;
 }

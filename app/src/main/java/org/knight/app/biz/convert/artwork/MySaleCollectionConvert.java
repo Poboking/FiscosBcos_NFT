@@ -1,6 +1,5 @@
 package org.knight.app.biz.convert.artwork;
 
-import org.knight.app.biz.artwork.dto.holdcollection.MyResaleCollectionRespDTO;
 import org.knight.app.biz.artwork.dto.holdcollection.MySaleCollectionRespDTO;
 import org.knight.infrastructure.dao.domain.MemberResaleCollectionEntity;
 import org.mapstruct.Mapper;

@@ -98,11 +98,11 @@ public class LoginLogReqDTO extends LoginLogBaseDTO {
     }
 
     public static LoginLogReqDTO quickSuccessfulBuild(LoginLogReqParam param) {
-        return quickSuccessfulBuild(param.getIpAddr(), param.getBrowser(), param.getOs(), param.getUserName());
+        return quickSuccessfulBuild(param.getIpAddr(), param.getBrowser(), param.getOs(), param.getMobile());
     }
 
 
-    public static LoginLogReqDTO quickFailureBuild(String ipAddr, String browser, String os, String userName) {
+    public static LoginLogReqDTO quickFailureBuild(String ipAddr, String browser, String os, String moblie) {
         String subSystem = "member"; // 设置 subsystem
         String subSystemName = "会员端"; // 设置 subsystemName
         String state = "1"; // 设置 state
@@ -121,19 +121,19 @@ public class LoginLogReqDTO extends LoginLogBaseDTO {
                 .browser(browser)
                 .os(os)
                 .msg(msg)
-                .userName(userName)
+                .userName(moblie)
                 .build();
     }
 
     public static LoginLogReqDTO quickFailureBuild(LoginLogReqParam param) {
-        return quickFailureBuild(param.getIpAddr(), param.getBrowser(), param.getOs(), param.getUserName());
+        return quickFailureBuild(param.getIpAddr(), param.getBrowser(), param.getOs(), param.getMobile());
     }
 
-    public static LoginLogReqDTO quickBuild(Boolean isSucceed, String ipAddr, String browser, String os, String userName) {
+    public static LoginLogReqDTO quickBuild(Boolean isSucceed, String ipAddr, String browser, String os, String moblie) {
         if (Boolean.TRUE.equals(isSucceed)) {
-            return quickSuccessfulBuild(ipAddr, browser, os, userName);
+            return quickSuccessfulBuild(ipAddr, browser, os, moblie);
         } else {
-            return quickFailureBuild(ipAddr, browser, os, userName);
+            return quickFailureBuild(ipAddr, browser, os, moblie);
         }
     }
 

@@ -1,70 +1,70 @@
-2024-04-02 23:44:53,243 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2024-04-02 23:44:53,285 INFO o.s.b.StartupInfoLogger [main] Starting BcosTest using Java 17.0.9 with PID 9452 (started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7\presentation)
-2024-04-02 23:44:53,291 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2024-04-02 23:44:54,579 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-04-02 23:44:54,583 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-04-02 23:44:54,621 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-2024-04-02 23:44:56,557 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
-2024-04-02 23:44:56,663 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-04-02 23:44:56,664 INFO o.f.b.s.n.NetworkImp [main] 
+2024-04-04 17:23:41,974 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-04-04 17:23:42,014 INFO o.s.b.StartupInfoLogger [main] Starting BcosTest using Java 17.0.9 with PID 3544 (started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7\presentation)
+2024-04-04 17:23:42,020 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-04-04 17:23:43,487 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-04-04 17:23:43,495 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-04-04 17:23:43,544 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
+2024-04-04 17:23:45,658 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
+2024-04-04 17:23:45,791 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-04 17:23:45,792 INFO o.f.b.s.n.NetworkImp [main] 
 * TRACE INFORMATION:
 ----------------------------
 ====> STEP1: try to connect nodes with ecdsa context...
 
-2024-04-02 23:44:56,665 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
-2024-04-02 23:44:56,815 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
-2024-04-02 23:44:58,591 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
+2024-04-04 17:23:45,793 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
+2024-04-04 17:23:45,974 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
+2024-04-04 17:23:47,856 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-04-02 23:44:58,592 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-04-02 23:44:58,592 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
+2024-04-04 17:23:47,858 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-04-02 23:44:58,592 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-04-02 23:44:58,592 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
+2024-04-04 17:23:47,858 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}, {"code":1, "msg":"ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}] 
-2024-04-02 23:44:58,593 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
+2024-04-04 17:23:47,860 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
 Failed to connect to all the nodes!
 * ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 * ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 
-2024-04-02 23:44:58,594 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 1482714203 
-2024-04-02 23:44:58,594 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 992785848 
-2024-04-02 23:45:00,667 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
-2024-04-02 23:45:00,668 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
+2024-04-04 17:23:47,860 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-04 17:23:47,860 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-04 17:23:47,862 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 1832875774 
+2024-04-04 17:23:47,862 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 1160208845 
+2024-04-04 17:23:49,945 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
+2024-04-04 17:23:49,946 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
 ====> STEP2: connect nodes with ecdsa context failed, try to connect nodes with sm-context...
-2024-04-02 23:45:00,669 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
-2024-04-02 23:45:00,669 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-04-02 23:45:01,054 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 108000210
-2024-04-02 23:45:01,071 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
-2024-04-02 23:45:01,071 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 2037983441
-2024-04-02 23:45:01,071 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
-2024-04-02 23:45:01,166 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-04 17:23:49,946 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
+2024-04-04 17:23:49,947 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-04 17:23:50,382 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
+2024-04-04 17:23:50,382 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 1824270263
+2024-04-04 17:23:50,397 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
+2024-04-04 17:23:50,397 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 1232647741
+2024-04-04 17:23:50,508 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-04-02 23:45:01,166 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-04 17:23:50,508 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-04-02 23:45:01,167 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
-2024-04-02 23:45:01,167 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
-2024-04-02 23:45:01,215 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-04-02 23:45:01,217 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-04-02 23:45:01,232 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
-2024-04-02 23:45:01,233 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
-2024-04-02 23:45:01,243 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
-2024-04-02 23:45:01,251 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
-2024-04-02 23:45:01,252 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
-2024-04-02 23:45:01,611 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
-2024-04-02 23:45:01,796 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-02 23:45:01,804 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-02 23:45:01,805 INFO o.f.b.s.a.AmopImp [main] amop module started
-2024-04-02 23:45:01,805 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-02 23:45:01,806 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
-2024-04-02 23:45:02,202 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
-2024-04-02 23:45:02,202 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
-2024-04-02 23:45:03,115 INFO c.f.g.Init [main] Graceful Response:已启动
-2024-04-02 23:45:03,462 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
-2024-04-02 23:45:04,242 INFO o.s.b.StartupInfoLogger [main] Started BcosTest in 11.265 seconds (process running for 13.016)
-2024-04-02 23:45:04,729 INFO o.f.b.s.e.EventSubscribeImp [pool-11-thread-1] Resend waiting filters, size: 0
-2024-04-02 23:45:04,877 INFO o.f.b.s.e.EventSubscribeImp [pool-12-thread-1] Resend waiting filters, size: 0
-2024-04-02 23:45:04,936 INFO o.f.b.s.e.EventSubscribeImp [pool-13-thread-1] Resend waiting filters, size: 0
-2024-04-02 23:45:05,420 INFO o.f.b.s.e.EventSubscribeImp [pool-14-thread-1] Resend waiting filters, size: 0
+2024-04-04 17:23:50,509 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
+2024-04-04 17:23:50,509 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
+2024-04-04 17:23:50,555 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-04 17:23:50,556 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-04 17:23:50,586 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
+2024-04-04 17:23:50,587 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
+2024-04-04 17:23:50,591 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
+2024-04-04 17:23:50,603 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
+2024-04-04 17:23:50,604 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
+2024-04-04 17:23:50,946 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
+2024-04-04 17:23:51,130 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-04 17:23:51,135 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-04 17:23:51,136 INFO o.f.b.s.a.AmopImp [main] amop module started
+2024-04-04 17:23:51,136 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-04 17:23:51,136 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
+2024-04-04 17:23:51,530 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
+2024-04-04 17:23:51,531 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
+2024-04-04 17:23:52,600 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-04-04 17:23:52,979 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-04-04 17:23:53,925 INFO o.s.b.StartupInfoLogger [main] Started BcosTest in 12.295 seconds (process running for 14.054)
+2024-04-04 17:23:54,431 INFO o.f.b.s.e.EventSubscribeImp [pool-11-thread-1] Resend waiting filters, size: 0
+2024-04-04 17:23:54,545 INFO o.f.b.s.e.EventSubscribeImp [pool-12-thread-1] Resend waiting filters, size: 0
+2024-04-04 17:23:55,083 INFO o.f.b.s.e.EventSubscribeImp [pool-13-thread-1] Resend waiting filters, size: 0
+2024-04-04 17:23:55,672 INFO o.f.b.s.e.EventSubscribeImp [pool-14-thread-1] Resend waiting filters, size: 0

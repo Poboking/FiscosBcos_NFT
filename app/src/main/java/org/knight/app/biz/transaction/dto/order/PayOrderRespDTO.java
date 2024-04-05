@@ -17,9 +17,23 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class PayOrderRespDTO extends TransactionBaseDTO {
 
+    private String id;
+
+    private String orderNo;
+
+    private String commodityType;
+
     private Double amount;
 
     private String state;
+
+    private String stateName;
+
+    private String collectionName;
+
+    private String collectionCover;
+
+    private String creatorName;
 
     private LocalDateTime paidTime;
 

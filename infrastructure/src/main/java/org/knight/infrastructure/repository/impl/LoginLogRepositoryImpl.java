@@ -64,7 +64,7 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
      * @return IPage<LoginLogEntity> 分页数据
      */
     @Override
-    public IPage<LoginLogEntity> getLoginLogByUserName(long current, long pageSize, String userName) {
+    public IPage<LoginLogEntity> getLoginLogByMoblie(long current, long pageSize, String userName) {
         return loginLogMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<LoginLogEntity>()
                         .eq(Optional.ofNullable(userName).isPresent(), "user_name", userName)

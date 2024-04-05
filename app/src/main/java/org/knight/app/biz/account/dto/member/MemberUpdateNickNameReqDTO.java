@@ -2,6 +2,7 @@ package org.knight.app.biz.account.dto.member;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -17,5 +18,6 @@ import javax.validation.constraints.NotNull;
 public class MemberUpdateNickNameReqDTO extends MemberBaseDTO {
 
     @NotNull
+    @NotBlank
     private String nickName;
 }

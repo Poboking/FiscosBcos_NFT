@@ -10,4 +10,10 @@ import org.knight.infrastructure.dao.domain.IssuedCollectionActionLogEntity;
  */
 public interface IssuedCollectionActionLogRepository extends IService<IssuedCollectionActionLogEntity> {
 
+    /**
+     * 检查藏品是否被锁定 - 用户购买
+     * @param issuedCollectionId 发行藏品ID
+     * @return boolean
+     */
+    boolean checkCollectionLock(String issuedCollectionId);
 }

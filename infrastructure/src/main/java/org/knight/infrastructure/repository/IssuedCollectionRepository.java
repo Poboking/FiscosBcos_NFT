@@ -10,4 +10,12 @@ import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
  */
 public interface IssuedCollectionRepository extends IService<IssuedCollectionEntity> {
 
+    /**
+     * 根据藏品id和序列号获取发行id
+     *
+     * @param collectionId           藏品id
+     * @param collectionSerialNumber 藏品序列号
+     * @return String
+     */
+    String getIssuedIdByCollectionIdAndSerialNumber(String collectionId, Integer collectionSerialNumber);
 }

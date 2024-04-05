@@ -1,0 +1,11 @@
+
+{
+java:S1118":Add a private constructor to hide the implicit public one.( »— ÿÿÿÿÿJ$ecf88201-6d1d-469d-8aeb-1959d1350c42
+`
+java:S2119"Save and re-use this "Random".(¼İÅf8÷‚ÁÏê1J$5dcc7304-035e-435f-966f-7da85b4d4e56
+‚
+java:S1128":Remove this unused import 'cn.hutool.core.lang.Snowflake'.(µÅ°´úÿÿÿÿ8ÏšÈÏê1J$6e7b5552-ae52-4f29-9e2c-3c07a8b3f099
+|
+java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8Ñ“ÇÏê1J$80968482-260c-4941-bfb0-2d00c15f27b8
+‚
+java:S1128"?Remove this unused import 'java.time.format.DateTimeFormatter'.(‰÷÷ª8Ñ“ÇÏê1J$6971891f-e2b6-4fb9-a323-af40474bd574

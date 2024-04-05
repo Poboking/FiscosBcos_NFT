@@ -37,7 +37,7 @@ public interface LoginLogRepository extends IService<LoginLogEntity> {
      * @param userName 用户名
      * @return IPage<LoginLogEntity> 分页数据
      */
-    IPage<LoginLogEntity> getLoginLogByUserName(long current, long pageSize, String userName);
+    IPage<LoginLogEntity> getLoginLogByMoblie(long current, long pageSize, String userName);
 
     /**
      * 保存登录日志

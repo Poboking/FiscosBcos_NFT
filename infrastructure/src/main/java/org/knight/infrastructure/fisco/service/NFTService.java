@@ -5,7 +5,9 @@ import org.fisco.bcos.sdk.BcosSDK;
 import org.fisco.bcos.sdk.client.Client;
 import org.fisco.bcos.sdk.crypto.CryptoSuite;
 import org.fisco.bcos.sdk.crypto.keypair.CryptoKeyPair;
+import org.knight.infrastructure.fisco.config.ContractAddressContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,10 +22,13 @@ public class NFTService {
 
     private final Client client;
 
+    private final CryptoKeyPair deployKeyPair;
+
     @Autowired
-    public NFTService(BcosSDK bcosSDK, Client client) {
+    public NFTService(BcosSDK bcosSDK, Client client,@Qualifier("deployCryptoKeyPair") CryptoKeyPair keyPair) {
         this.bcosSDK = bcosSDK;
         this.client = client;
+        this.deployKeyPair = keyPair;
     }
 
     public String getNFTHash() {
@@ -38,5 +43,16 @@ public class NFTService {
 
     public static String getNFTUniqueId(String nftId) {
         return UUID.randomUUID().toString();
+    }
+
+    public String deployNFTContract() {
+        return null;
+    }
+
+    // TODO: 2024/4/5 待实现
+    public String createNFT(String nftId) {
+        BcosNFT bcosNFT = BcosNFT.load(ContractAddressContext.getBcosNFTAddress(), client, deployKeyPair);
+//        bcosNFT.createNFT()
+        return null;
     }
 }

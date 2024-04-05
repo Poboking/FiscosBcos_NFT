@@ -63,6 +63,13 @@ public class TransactionController {
         return transactionService.confirmPay(orderId, memberId);
     }
 
+    @PostMapping("cancelOrder")
+    @ValidationStatusCode(code = "500")
+    public Map<String, Boolean> cancelOrder(@RequestParam(name = "orderId") @NotNull String orderId) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        return Map.of("result", transactionService.cancelOrder(orderId, memberId));
+    }
+
     @GetMapping("findMyPayOrderByPage")
     @ValidationStatusCode(code = "400")
     public PageResult<PayOrderRespDTO> findMyPayOrderByPage(
@@ -72,6 +79,14 @@ public class TransactionController {
         String memberId = StpUserUtil.getLoginIdAsString();
         log.info(CharSequenceUtil.format("User({}): findMyPayOrderByPage", memberId));
         return transactionService.getMyPayOrder(current, pageSize, status, memberId);
+    }
+
+    @GetMapping("findMyPayOrderDetail")
+    @ValidationStatusCode(code = "500")
+    public PayOrderRespDTO findMyPayOrderDetail(@RequestParam(name = "orderId") @NotNull String orderId) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): findMyPayOrderDetail", memberId));
+        return transactionService.getMyPayOrderDetail(orderId, memberId);
     }
 
 
@@ -88,20 +103,21 @@ public class TransactionController {
 
     @PostMapping("resaleCollectionCreateOrder")
     @ValidationStatusCode(code = "400")
-    public Map<String, String> resaleCollectionCreateOrder(@RequestParam(name = "resaleCollectionId") @NotNull String resaleCollectionId) {
+    public Map<String, String> resaleCollectionCreateOrder(@RequestParam(name = "resaleCollectionId") @NotNull String resaleCollectionId,
+                                                           @RequestParam(name = "collectionSerialNumber") @NotNull int collectionSerialNumber) {
         String memberId = StpUserUtil.getLoginIdAsString();
-        log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder", memberId));
-        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, memberId);
+        log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder {}", memberId, collectionSerialNumber));
+        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, collectionSerialNumber, memberId);
     }
 
     @PostMapping("collectionResale")
     @ValidationStatusCode(code = "500")
     public Map<String, Boolean> collectionResale(
-            @RequestParam(name = "resalePrice")long resalePrice,
-            @RequestParam(name = "holdCollectionId")String holdCollectionId){
+            @RequestParam(name = "resalePrice") long resalePrice,
+            @RequestParam(name = "holdCollectionId") String holdCollectionId) {
         String memberId = StpUserUtil.getLoginIdAsString();
         log.info(CharSequenceUtil.format("User({}): collectionResale", memberId));
-        return Map.of("result",transactionService.collectionResale(memberId, holdCollectionId, resalePrice));
+        return Map.of("result", transactionService.collectionResale(memberId, holdCollectionId, resalePrice));
     }
 
     @GetMapping("getCollectionReceiverInfo")
@@ -116,8 +132,8 @@ public class TransactionController {
     @PostMapping("collectionGive")
     @ValidationStatusCode(code = "500")
     public Map<String, Boolean> collectionGive(
-            @RequestParam(name = "collectionId")@NotNull String collectionId,
-            @RequestParam(name = "giveToAccount")@NotNull  String giveToAccount) {
+            @RequestParam(name = "collectionId") @NotNull String collectionId,
+            @RequestParam(name = "giveToAccount") @NotNull String giveToAccount) {
         String memberId = StpUserUtil.getLoginIdAsString();
         log.info(CharSequenceUtil.format("User({}): collectionGive", memberId));
         return Map.of("result", transactionService.collectionGive(memberId, collectionId, giveToAccount));

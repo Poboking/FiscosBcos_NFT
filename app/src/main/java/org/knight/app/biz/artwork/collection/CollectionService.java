@@ -54,7 +54,11 @@ public class CollectionService {
     }
 
     public CollectionDetailRespDTO getCollectionDetail(String collectionId) {
-        return CollectionConvert.INSTANCE.convertToDetailRespDTO(collectionRepository.getCollectionDetail(collectionId));
+        CollectionDetailRespDTO respDTO = CollectionConvert.INSTANCE.convertToDetailRespDTO(collectionRepository.getCollectionDetail(collectionId));
+        CreatorEntity creator = creatorRepository.getById(respDTO.getCreatorId());
+        respDTO.setCreatorName(creator.getName());
+        respDTO.setCreatorAvatar(creator.getAvatar());
+        return respDTO;
     }
 
 

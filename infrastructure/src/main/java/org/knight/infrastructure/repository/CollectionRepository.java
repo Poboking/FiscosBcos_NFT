@@ -109,18 +109,51 @@ public interface CollectionRepository extends IService<CollectionEntity> {
     List<CollectionEntity> getDescListByDateParam(LocalDateTime saleTimeStart, LocalDateTime saleTimeEnd);
 
     /**
-     * 减少库存
-     *
-     * @param collectionId 藏品ID
-     * @return boolean 是否减少成功
-     */
-    Boolean reduceStock(String collectionId);
-
-    /**
      * 检查藏品是否存在
      *
      * @param collectionId 藏品ID
      * @return boolean 是否存在
      */
     Boolean checkExist(String collectionId);
+
+    /**
+     * 增加库存
+     *
+     * @param collectionId 藏品ID
+     * @return boolean 是否增加成功
+     */
+    Boolean increaseStock(String collectionId);
+
+    /**
+     * 增加库存
+     *
+     * @param collectionId 藏品ID
+     * @param count        增加数量
+     * @return boolean 是否增加成功
+     */
+    Boolean increaseStock(String collectionId, Integer count);
+
+    /**
+     * 减少库存
+     *
+     * @param collectionId 藏品ID
+     * @return boolean 是否减少成功
+     */
+    Boolean reduceStock(String collectionId);
+    /**
+     * 减少库存
+     *
+     * @param collectionId 藏品ID
+     * @param count        减少数量
+     * @return boolean 是否减少成功
+     */
+    Boolean reduceStock(String collectionId, Integer count);
+
+    /**
+     * 获取库存
+     *
+     * @param collectionId 藏品ID
+     * @return Long 库存
+     */
+    Integer getStock(String collectionId);
 }

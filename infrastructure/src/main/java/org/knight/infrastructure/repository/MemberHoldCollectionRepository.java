@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.knight.infrastructure.dao.domain.MemberHoldCollectionEntity;
 
+import java.sql.Timestamp;
+
 /**
  * @author poboking
  * @description 针对表【member_hold_collection】的数据库操作Service
@@ -57,4 +59,94 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
      * @return MemberHoldCollectionEntity
      */
     public MemberHoldCollectionEntity checkExist(String holdCollectionId, String memberId);
+
+    /**
+     * 增加持有数量
+     *
+     * @param id           操作类型
+     * @param collectionId 藏品id
+     * @param memberId     用户id
+     * @param holdTime     当前时间
+     * @return Boolean
+     */
+    Boolean increase(String id, String collectionId, String gainWay, String issuedCollectionId, String state, String memberId, Double price, String transactionHash, Timestamp holdTime);
+
+    /**
+     * 增加持有数量 - 通过购买
+     *
+     * @param id           操作类型
+     * @param collectionId 藏品id
+     * @param memberId     用户id
+     * @param holdTime     当前时间
+     * @return Boolean
+     */
+    Boolean increaseByPurchase(String id, String collectionId, String issuedCollectionId,String memberId, Double price, String transactionHash, Timestamp holdTime);
+
+    /**
+     * 增加持有数量 - 通过赠送
+     *
+     * @param id           操作类型
+     * @param collectionId 藏品id
+     * @param memberId     用户id
+     * @param holdTime     当前时间
+     * @return Boolean
+     */
+    Boolean increaseByGive(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime);
+
+    /**
+     * 增加持有数量 - 通过二级市场
+     *
+     * @param id           操作类型
+     * @param collectionId 藏品id
+     * @param memberId     用户id
+     * @param holdTime     当前时间
+     * @return Boolean
+     */
+    Boolean increaseBySecondaryMarket(String id, String collectionId, String issuedCollectionId, String memberId, Double price, String transactionHash, Timestamp holdTime);
+
+    /**
+     * 增加持有数量 - 通过盲盒
+     *
+     * @param id           操作类型
+     * @param collectionId 藏品id
+     * @param memberId     用户id
+     * @param holdTime     当前时间
+     * @return Boolean
+     */
+    Boolean increaseByMysteryBox(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime);
+
+    /**
+     * 增加持有数量 - 通过合成
+     *
+     * @param id           操作类型
+     * @param collectionId 藏品id
+     * @param memberId     用户id
+     * @param holdTime     当前时间
+     * @return Boolean
+     */
+    Boolean increaseByCompound(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime);
+
+    /**
+     * 增加持有数量 - 通过空投
+     *
+     * @param id           操作类型
+     * @param collectionId 藏品id
+     * @param memberId     用户id
+     * @param holdTime     当前时间
+     * @return Boolean
+     */
+    Boolean increaseByAirDrop(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime);
+
+    /**
+     * 增加持有数量 - 通过兑换码
+     *
+     * @param id           操作类型
+     * @param collectionId 藏品id
+     * @param memberId     用户id
+     * @param holdTime     当前时间
+     * @return Boolean
+     */
+    Boolean increaseByRedeemCode(String id, String collectionId, String issuedCollectionId,  String memberId, String transactionHash, Timestamp holdTime);
+
+
 }

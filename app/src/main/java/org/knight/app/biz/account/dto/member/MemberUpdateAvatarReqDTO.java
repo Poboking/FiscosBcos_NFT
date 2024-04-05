@@ -2,6 +2,7 @@ package org.knight.app.biz.account.dto.member;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -16,5 +17,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class MemberUpdateAvatarReqDTO extends MemberBaseDTO {
     @NotNull
+    @NotBlank
     private String avatar;
 }

@@ -56,7 +56,7 @@ public class LoginLogEntity extends Model<LoginLogEntity> implements Serializabl
      */
     private String subSystem;
     /**
-     * 登录用户的用户名
+     * 登录用户的用户名 - 这里使用用户手机号来代替
      */
     private String userName;
 

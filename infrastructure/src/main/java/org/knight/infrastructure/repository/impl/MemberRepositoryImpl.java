@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.knight.infrastructure.common.NftConstants;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * @author poboking
@@ -26,6 +28,21 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
     @Autowired
     public MemberRepositoryImpl(MemberMapper memberMapper) {
         this.memberMapper = memberMapper;
+    }
+
+    /**
+     * 获取用户手机号
+     *
+     * @param memberId 用户ID
+     * @return 用户手机号
+     */
+    @Override
+    public String getMobileByMemberId(String memberId) {
+        MemberEntity entity = memberMapper.selectById(memberId);
+        if (Objects.isNull(entity) || CharSequenceUtil.isBlank(entity.getMobile())){
+            return null;
+        }
+        return entity.getMobile();
     }
 
     /**

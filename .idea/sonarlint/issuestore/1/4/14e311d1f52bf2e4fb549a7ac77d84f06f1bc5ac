@@ -1,5 +1,18 @@
 
-u
-java:S1135"2Complete the task associated to this TODO comment.(τ¬ΐ8μ‚°χι1J$0e2b42fe-2091-420f-ab59-89a30f2d1f51
+
+java:S1854F"FRemove this useless assignment to local variable "collectionEntities".(ςΑ¤κϋÿÿÿÿ8…·δηκ1J$7f76689f-3d37-4373-8ce1-79855796fffb
+‰
+java:S1854E"ARemove this useless assignment to local variable "memberEntitys".(»¥›“όÿÿÿÿ8…·δηκ1J$37e8cc61-c2b3-422e-9761-16b3aa92df49
+
+java:S1854D"IRemove this useless assignment to local variable "holdCollectionEntitys".(”Ξ8†·δηκ1J$14ce7c92-9475-417b-9978-3bc3fb5e4840
+}
+java:S1481D":Remove this unused "holdCollectionEntitys" local variable.(”Ξ8·δηκ1J$ecd64f4b-1e3b-406a-8c24-e25274f2d5d0
+z
+java:S1481E"2Remove this unused "memberEntitys" local variable.(»¥›“όÿÿÿÿ8‰·δηκ1J$1aad23f7-c8bb-4d02-8ed4-b9d096a471a9
+
+java:S1481F"7Remove this unused "collectionEntities" local variable.(ςΑ¤κϋÿÿÿÿ8‰·δηκ1J$7a9b5aad-4f68-467d-b0fb-d9f5d8c6e1e4
+p	java:S108G")Either remove or fill this block of code.(΅»Άόωÿÿÿÿ8·δηκ1J$9ce47962-d1a7-4c0f-9342-f76d53d06c9a
+£
+java:S1172P"[Remove these unused method parameters "holdCollectionRepo", "memberRepo", "collectionRepo".(τ©Άύÿÿÿÿ8·δηκ1J$57a1d6e1-ce9f-47c2-9095-48e9e0288759
 s
-java:S1068"+Remove this unused "bcosSDK" private field.(ΣΘ‰»ÿÿÿÿÿ8π‚°χι1J$f7ba4fc8-01ae-4002-9c48-6a3c741c8e31
+java:S1068"+Remove this unused "bcosSDK" private field.(ΣΘ‰»ÿÿÿÿÿ8·δηκ1J$01f683f1-6fbf-48ff-b1ef-0a0037f79499

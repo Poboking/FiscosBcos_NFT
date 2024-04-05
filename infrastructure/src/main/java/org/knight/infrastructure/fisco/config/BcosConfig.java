@@ -12,6 +12,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +69,7 @@ public class BcosConfig {
         return bcosSDK.getClient(Integer.valueOf(1));
     }
 
-    @Bean
+    @Bean(name = "deployCryptoKeyPair")
     public CryptoKeyPair cryptoKeyPair(Client client) {
         String defaultPrivateKey = "1ffd8dd75f2278dfd9171ac5194720ec9a1a1f76b661d5e37ce5bcabfdf26975";
         if (!bcosProperties.getDeployPrivateKey().isEmpty() && bcosProperties.getDeployPrivateKey()!=null){
@@ -78,5 +79,14 @@ public class BcosConfig {
             //默认部署账号
             return client.getCryptoSuite().getCryptoKeyPair().createKeyPair(defaultPrivateKey);
         }
+    }
+
+    @PostConstruct
+    public void contractAddressMap() {
+        // 部署合约地址 - 初始化
+        ContractAddressContext.setOwnableAddress(bcosProperties.getOwnableContractAddress());
+        ContractAddressContext.setUtilsAddress(bcosProperties.getUtilsContractAddress());
+        ContractAddressContext.setBcosUserAddress(bcosProperties.getBcosUserContractAddress());
+        ContractAddressContext.setBcosNFTAddress(bcosProperties.getBcosNFTContractAddress());
     }
 }

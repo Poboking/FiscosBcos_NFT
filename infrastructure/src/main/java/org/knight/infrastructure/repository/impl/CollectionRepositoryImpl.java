@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -197,6 +198,36 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     }
 
     /**
+     * 减少库存
+     *
+     * @param collectionId 藏品ID
+     * @param count        减少数量
+     * @return boolean 是否减少成功
+     */
+    @Override
+    public Boolean reduceStock(String collectionId, Integer count) {
+        return collectionMapper.update(null,
+                new UpdateWrapper<CollectionEntity>()
+                        .ge("stock", count)
+                        .eq("id", collectionId)
+                        .setSql("stock = stock - " + count)) > 0;
+    }
+
+    /**
+     * 获取库存
+     *
+     * @param collectionId 藏品ID
+     * @return Long 库存
+     */
+    @Override
+    public Integer getStock(String collectionId) {
+        if (CharSequenceUtil.isBlank(collectionId)){
+            return null;
+        }
+        return collectionMapper.selectById(collectionId).getStock();
+    }
+
+    /**
      * 检查藏品是否存在
      *
      * @param collectionId 藏品ID
@@ -210,6 +241,37 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
         return collectionMapper.exists(new QueryWrapper<CollectionEntity>()
                 .eq("id",collectionId));
     }
+
+    /**
+     * 增加库存
+     *
+     * @param collectionId 藏品ID
+     * @return boolean 是否增加成功
+     */
+    @Override
+    public Boolean increaseStock(String collectionId) {
+        return collectionMapper.update(null,
+                new UpdateWrapper<CollectionEntity>()
+                        .eq("id", collectionId)
+                        .setSql("stock = stock + 1")) > 0;
+    }
+
+    /**
+     * 增加库存
+     *
+     * @param collectionId 藏品ID
+     * @param count        增加数量
+     * @return boolean 是否增加成功
+     */
+    @Override
+    public Boolean increaseStock(String collectionId, Integer count) {
+        return collectionMapper.update(null,
+                new UpdateWrapper<CollectionEntity>()
+                        .eq("id", collectionId)
+                        .setSql("stock = stock + " + count)) > 0;
+    }
+
+
 }
 
 

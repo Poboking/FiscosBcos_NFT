@@ -1,5 +1,6 @@
 package org.knight.app.biz.account;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.knight.app.biz.account.dto.account.member.AccountRespDTO;
@@ -76,16 +77,25 @@ public class MemberService {
     }
 
     public boolean updateNickName(MemberUpdateNickNameReqDTO reqDto, String memberId) {
+        if (CharSequenceUtil.isBlank(reqDto.getNickName())) {
+            throw new BizException(CharSequenceUtil.format("{}: updateNickName fail as a result of nickName is null", memberId));
+        }
         return memberRepository.updateNickName(memberId, reqDto.getNickName());
     }
 
     public boolean updateAvatar(MemberUpdateAvatarReqDTO reqDto, String memberId) {
+        if (CharSequenceUtil.isBlank(reqDto.getAvatar())) {
+            throw new BizException(CharSequenceUtil.format("{}: updateAvatar fail as a result of avatar is null", memberId));
+        }
         return memberRepository.update(new UpdateWrapper<MemberEntity>()
                 .eq(Optional.ofNullable(memberId).isPresent(), "id", memberId)
                 .set(Optional.ofNullable(reqDto.getAvatar()).isPresent(), "avatar", reqDto.getAvatar()));
     }
 
     public InviteInfoRespDTO getInviteInfo(String memberId) {
+        if (memberId == null) {
+            throw new BizException("getInviteInfo fail as a result of memberId is null");
+        }
         MemberEntity entity = memberRepository.getById(memberId);
         return InviteInfoRespDTO.create(entity.getInviteCode());
     }

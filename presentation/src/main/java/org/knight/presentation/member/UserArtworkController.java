@@ -2,7 +2,6 @@ package org.knight.presentation.member;
 
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.artwork.collection.MemberCollectionService;
 import org.knight.app.biz.artwork.collection.MemberResaleCollectionService;
