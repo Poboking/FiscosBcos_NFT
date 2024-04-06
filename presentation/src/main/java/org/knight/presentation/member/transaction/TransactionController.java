@@ -120,6 +120,14 @@ public class TransactionController {
         return Map.of("result", transactionService.collectionResale(memberId, holdCollectionId, resalePrice));
     }
 
+    @PostMapping("cancelResale")
+    @ValidationStatusCode(code = "500")
+    public Map<String, Boolean> cancelResale(@RequestParam(name = "resaleCollectionId") String resaleCollectionId) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): cancelResale", memberId));
+        return Map.of("result", transactionService.cancelResale(memberId, resaleCollectionId));
+    }
+
     @GetMapping("getCollectionReceiverInfo")
     @ValidationStatusCode(code = "400")
     public ReceiverInfoRespDTO getCollectionReceiverInfo(

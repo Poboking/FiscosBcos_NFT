@@ -18,410 +18,71 @@
   <component name="ChangeListManager">
     <list default="true" id="cb5e3f1b-65dd-4d01-8b2d-bcab56c8cd67" name="更改" comment="feat(master): Simplify pom.xml">
       <changelist_data name="poboking" email="" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/NullParameterException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/collection/HoldCollectionCreationFailedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/collection/IssuedCollectionLockException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/collection/IssuedCollectionNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/transaction/OrderCancellationFailedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/task/config/TaskConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/exception/BlockChainException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/ContractAddressContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/module/BlockChainNFT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/module/BlockChainUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosNFT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/DeployService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/Ownable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/BcosNFT.abi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/BcosUser.abi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/Ownable.abi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/sm/BcosNFT.abi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/sm/BcosUser.abi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/sm/Ownable.abi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/BcosNFT.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/BcosUser.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/Ownable.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/BcosNFT.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/BcosUser.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/Ownable.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/holdcollection/MemberHoldCollectionDetailRespDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/holdcollection/MyResaleCollectionDetailRespDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/mysteryBox/SubCommodityRespDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/MemberHoldCollectionConvert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/MyResaleCollectionDetailConvert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/log/IssuedCollectionActionLogConvert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/collection/HoldCollectionDetailFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/transaction/MemberNotMatchException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/transaction/ResaleCancellationFailedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/blobs/version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/xd.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/05352490b421a4b4aadd5e4442f57733afff6d28" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/05c84119afeaf869da0db551a0d4f3f3235f244b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/05c84119afeaf869da0db551a0d4f3f3235f244b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/7/07971c320942388d2679589f54beef3f4a516e92" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/7/07971c320942388d2679589f54beef3f4a516e92" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/f/0f23aeeb2a868cbbc2b0ffd93dbeff0928b4e042" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/f/0f23aeeb2a868cbbc2b0ffd93dbeff0928b4e042" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14e311d1f52bf2e4fb549a7ac77d84f06f1bc5ac" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14e311d1f52bf2e4fb549a7ac77d84f06f1bc5ac" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a8b8a3a7d02e9900f84f697cb765cd946a62e47" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1a8b8a3a7d02e9900f84f697cb765cd946a62e47" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1d191c0bd634390fae104a2aa418bb362f03c78a" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1d191c0bd634390fae104a2aa418bb362f03c78a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fe5e457c208ef596abbc6f2f8d1d776cff78935" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fe5e457c208ef596abbc6f2f8d1d776cff78935" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/3/2330b2a0baf15a2d2d41cb2e55cb3781eb36feed" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a7b4bb233470a1eabb7b89814b6ab233aa97d81" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30c2d7423531bd8f718fb748f2280f1c064d831e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30c2d7423531bd8f718fb748f2280f1c064d831e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38330f0e6f65ca8a460baa2e63824a212b3bd552" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38330f0e6f65ca8a460baa2e63824a212b3bd552" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393b54a143a2f25876bdfcbd2ae6dc1db9c1672e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393b54a143a2f25876bdfcbd2ae6dc1db9c1672e" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4aa6fb58fa9b14f37b3c4c948af72dd8af6e9ca9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4aa6fb58fa9b14f37b3c4c948af72dd8af6e9ca9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/557c35c445a3461ab4bef68f25e4d7412e1023ba" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/6085f764f2f2da7b7cfdc32db1528c6e4db76091" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/0/7049b60207f943a6c69d067462dc2cc3e048ad43" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73148b7cc313e74b39832ae176c368c9179edead" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73148b7cc313e74b39832ae176c368c9179edead" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/6/76a1ee0c303d403d4c26c6b16ae5a55aab7aca08" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/4242ad2042c5cdc4ac526c29396cceef71bb0170" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/4242ad2042c5cdc4ac526c29396cceef71bb0170" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42c0d48af46380bd908ec188eb569f1bc77b4d5e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/2/42c0d48af46380bd908ec188eb569f1bc77b4d5e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6f3694b095a54b67848a7a52595aef208d80dd38" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6f3694b095a54b67848a7a52595aef208d80dd38" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/78b89141eabfa0e5f96639e8d65cfc171d464f85" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/78b89141eabfa0e5f96639e8d65cfc171d464f85" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/8158c296345a72d96faec6fd30aadb6950825f00" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/8158c296345a72d96faec6fd30aadb6950825f00" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/827af19b2d42d8180ef4f0a15ab05fe9c1ebc86a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/6/96062cfdbaf2578aed5d1bc6b1bca45d413685c7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bf867f961813c6e4b4e6871c00e2c48ad6630e85" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bf867f961813c6e4b4e6871c00e2c48ad6630e85" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c81bad71a35feef4420bbcec282bb21e004e7d6c" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c81bad71a35feef4420bbcec282bb21e004e7d6c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/c/8c0d66aaf29ba1471b47bd7a5ece8f3ba05fdb31" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/d/ad2f63b1cdd8e32997eea6e42f691fe056c49f73" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/d/ad2f63b1cdd8e32997eea6e42f691fe056c49f73" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/0/b08d962767c9e074109ae65eac5bf06f2b1c12ea" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/0/b08d962767c9e074109ae65eac5bf06f2b1c12ea" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9c44f5c8982553c06d3c59204a3d2fc86db3f95" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9c44f5c8982553c06d3c59204a3d2fc86db3f95" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/ddbacac918b180f605ec4767ae2f355d8424dd41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/ddbacac918b180f605ec4767ae2f355d8424dd41" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de0ea91e3fb64ce7c2d5e0a734b866bcc18764ed" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de0ea91e3fb64ce7c2d5e0a734b866bcc18764ed" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/7/e7c81f1fabb381abe8abd6bba52d7eb0218b0e8d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f2342c9cfb04a0be8f1dcfdeaa490e540d727b79" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f2342c9cfb04a0be8f1dcfdeaa490e540d727b79" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f57bf78da62b23197f4fabf74ddeb113465ca306" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/5/05352490b421a4b4aadd5e4442f57733afff6d28" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/3/2330b2a0baf15a2d2d41cb2e55cb3781eb36feed" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/a/2a7b4bb233470a1eabb7b89814b6ab233aa97d81" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/5/557c35c445a3461ab4bef68f25e4d7412e1023ba" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/0/6085f764f2f2da7b7cfdc32db1528c6e4db76091" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/0/7049b60207f943a6c69d067462dc2cc3e048ad43" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/6/76a1ee0c303d403d4c26c6b16ae5a55aab7aca08" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/2/827af19b2d42d8180ef4f0a15ab05fe9c1ebc86a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/6/96062cfdbaf2578aed5d1bc6b1bca45d413685c7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/7/e7c81f1fabb381abe8abd6bba52d7eb0218b0e8d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/c/8c0d66aaf29ba1471b47bd7a5ece8f3ba05fdb31" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/5/f57bf78da62b23197f4fabf74ddeb113465ca306" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/account/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/account/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/account/dto/member/MemberUpdateAvatarReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/account/dto/member/MemberUpdateAvatarReqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/account/dto/member/MemberUpdateNickNameReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/account/dto/member/MemberUpdateNickNameReqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/CollectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/MyResaleCollectionConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/MyResaleCollectionConvert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/MySaleCollectionConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/MySaleCollectionConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/MemberCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/MemberCollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/MemberResaleCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/MemberResaleCollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/collection/CollectionResaleDetailRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/collection/CollectionResaleDetailRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/holdcollection/MyHoldCollectionDetailRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/holdcollection/MyHoldCollectionDetailRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/holdcollection/MyHoldCollectionRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/dto/holdcollection/MyHoldCollectionRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/MyHoldCollectionConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/MyHoldCollectionConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/log/LoginLogConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/log/LoginLogConvert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/member/MemberNoFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/member/MemberNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/IssuedCollectionActLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/IssuedCollectionActLogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/LoginLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/LoginLogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/loginlog/LoginLogReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/loginlog/LoginLogReqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/loginlog/LoginLogReqParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/loginlog/LoginLogReqParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/storage/StorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/storage/StorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/MemberBCLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/MemberBCLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/collectionlog/IssuedCollectionActionLogRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/collectionlog/IssuedCollectionActionLogRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/loginlog/LoginLogRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/loginlog/LoginLogRespDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/transaction/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/transaction/TransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/transaction/dto/order/PayOrderRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/transaction/dto/order/PayOrderRespDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/transaction/task/OrderTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/task/OrderTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/AbstractBean.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/AbstractBean.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/BcosNFT.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/BcosNFT.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/BcosUser.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/BcosUser.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/LibStringUtil.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/LibStringUtil.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/LibStrings.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/LibStrings.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/Ownable.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Ownable.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/Table.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Table.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/Utils.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Utils.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/protogenesis/typeUtils.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/typeUtils.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/NFTManagement.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/NFTMarketplace.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/Utils.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/AccessControl.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/IAccessControl.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/Ownable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/Ownable2Step.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/extensions/AccessControlDefaultAdminRules.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/extensions/IAccessControlDefaultAdminRules.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/extensions/IAccessControlEnumerable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/manager/AccessManaged.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/manager/AccessManager.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/manager/AuthorityUtils.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/manager/IAccessManaged.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/manager/IAccessManager.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/access/manager/IAuthority.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/finance/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/finance/VestingWallet.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/finance/VestingWalletCliff.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/Governor.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/IGovernor.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/TimelockController.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorCountingSimple.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorPreventLateQuorum.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorSettings.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorStorage.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorTimelockAccess.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorTimelockCompound.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorTimelockControl.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorVotes.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/extensions/GovernorVotesQuorumFraction.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/utils/IVotes.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/governance/utils/Votes.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1155.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1155MetadataURI.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1155Receiver.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1271.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1363.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1363Receiver.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1363Spender.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC165.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1820Implementer.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1820Registry.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC1967.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC20.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC20Metadata.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC2309.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC2612.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC2981.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC3156.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC3156FlashBorrower.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC3156FlashLender.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC4626.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC4906.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC5267.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC5313.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC5805.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC6372.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC721.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC721Enumerable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC721Metadata.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC721Receiver.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC777.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC777Recipient.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/IERC777Sender.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/draft-IERC1822.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/interfaces/draft-IERC6093.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/metatx/ERC2771Context.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/metatx/ERC2771Forwarder.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/metatx/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/AccessManagedTarget.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ArraysMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/AuthorityMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/Base64Dirty.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/CallReceiverMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ContextMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/DummyImplementation.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/EIP712Verifier.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ERC1271WalletMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ERC165/ERC165InterfacesSupported.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ERC165/ERC165MaliciousData.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ERC165/ERC165MissingData.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ERC165/ERC165NotSupported.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ERC165/ERC165ReturnBomb.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ERC2771ContextMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ERC3156FlashBorrowerMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/EtherReceiverMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/InitializableMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/MerkleTreeMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/MulticallHelper.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/MultipleInheritanceInitializableMocks.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/PausableMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ReentrancyAttack.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/ReentrancyMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/RegressionImplementation.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/SingleInheritanceInitializableMocks.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/Stateless.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/StorageSlotMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/TimelockReentrant.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/UpgradeableBeaconMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/VotesMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/compound/CompTimelock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/ERC20WithAutoMinerReward.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/ERC4626Fees.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/MyNFT.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/access-control/AccessControlERC20MintBase.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/access-control/AccessControlERC20MintMissing.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/access-control/AccessControlERC20MintOnlyRole.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/access-control/AccessControlModified.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/access-control/AccessControlUnrevokableAdmin.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/access-control/AccessManagedERC20MintBase.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/access-control/MyContractOwnable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/governance/MyGovernor.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/governance/MyToken.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/governance/MyTokenTimestampBased.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/governance/MyTokenWrapped.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/token/ERC1155/GameItems.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/token/ERC1155/MyERC115HolderContract.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/token/ERC20/GLDToken.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/token/ERC721/GameItem.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/utilities/Base64NFT.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/docs/utilities/Multicall.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/governance/GovernorMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/governance/GovernorPreventLateQuorumMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/governance/GovernorStorageMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/governance/GovernorTimelockAccessMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/governance/GovernorTimelockCompoundMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/governance/GovernorTimelockControlMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/governance/GovernorVoteMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/governance/GovernorWithParamsMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/proxy/BadBeacon.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/proxy/ClashingImplementation.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/proxy/UUPSUpgradeableMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC1155ReceiverMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC1363ForceApproveMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC1363NoReturnMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC1363ReceiverMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC1363ReturnFalseMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC1363SpenderMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20ApprovalMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20DecimalsMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20ExcessDecimalsMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20FlashMintMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20ForceApproveMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20Mock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20MulticallMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20NoReturnMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20Reentrant.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20ReturnFalseMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20VotesLegacyMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC20VotesTimestampMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC4626LimitsMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC4626Mock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC4626OffsetMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC4646FeesMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC721ConsecutiveEnumerableMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC721ConsecutiveMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC721ReceiverMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/mocks/token/ERC721URIStorageMock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/Clones.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/ERC1967/ERC1967Utils.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/Proxy.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/beacon/BeaconProxy.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/beacon/IBeacon.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/beacon/UpgradeableBeacon.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/transparent/ProxyAdmin.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/transparent/TransparentUpgradeableProxy.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/utils/Initializable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/proxy/utils/UUPSUpgradeable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/ERC1155.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/IERC1155.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/extensions/ERC1155Pausable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC1155/utils/ERC1155Utils.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/ERC20.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/IERC20.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC1363.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC20FlashMint.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC20Wrapper.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/ERC4626.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/ERC721.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/IERC721.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/IERC721Receiver.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/ERC721Consecutive.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/ERC721Royalty.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/ERC721Votes.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/ERC721Wrapper.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/IERC721Enumerable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/utils/ERC721Holder.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/ERC721/utils/ERC721Utils.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/common/ERC2981.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/token/common/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Address.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Arrays.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Base64.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Context.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Create2.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Errors.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Multicall.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Nonces.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Panic.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Pausable.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/README.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/ReentrancyGuard.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/ShortStrings.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/SlotDerivation.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/StorageSlot.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/Strings.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/cryptography/ECDSA.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/cryptography/EIP712.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/cryptography/Hashes.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/cryptography/MerkleProof.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/cryptography/SignatureChecker.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/introspection/ERC165.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/introspection/ERC165Checker.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/introspection/IERC165.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/math/Math.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/math/SafeCast.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/math/SignedMath.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/structs/BitMaps.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/structs/Checkpoints.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/structs/DoubleEndedQueue.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/structs/EnumerableMap.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/structs/EnumerableSet.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/structs/MerkleTree.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/utils/types/Time.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/vendor/compound/ICompoundTimelock.sol" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/slush/openzeppelin/contracts/vendor/compound/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/NftConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/NftConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/OrderNoUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/OrderNoUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/domain/LoginLogEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/domain/LoginLogEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/domain/PayOrderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/domain/PayOrderEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/mapper/PayOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/mapper/PayOrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/BcosConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/BcosConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/BcosProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/BcosProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosTestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosTestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/ChainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/ChainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/Crypto.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/Crypto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/HelloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/HelloWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/KVTableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/KVTableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/NFTService.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/NFTService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/ShaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/ShaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/TableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/TableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/CollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/CollectionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/IssuedCollectionActionLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/IssuedCollectionActionLogRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/IssuedCollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/IssuedCollectionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/LoginLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/LoginLogRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberHoldCollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberHoldCollectionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberResaleCollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberResaleCollectionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/CollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/CollectionRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/IssuedCollectionActionLogRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/IssuedCollectionActionLogRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/IssuedCollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/IssuedCollectionRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/LoginLogRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/LoginLogRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberHoldCollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberHoldCollectionRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/PayOrderRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/PayOrderRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/KVTableTest.bin" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/KVTableTest.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/Table.bin" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/Table.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/KVTableTest.bin" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/KVTableTest.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/Table.bin" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/Table.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberResaleCollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberResaleCollectionRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring-boot-logger-log4j2.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring-boot-logger-log4j2.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-1.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-2.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-3.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-4.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-5.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-6.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-7.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/2024-04/spring-boot-logger-log4j2--02-四月-2024-7.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/logs/spring-boot-logger-log4j2.log" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/spring-boot-logger-log4j2.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/PresentationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/PresentationApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/admin/BackMemberHoldCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/admin/BackMemberHoldCollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/CollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/MemberBalanceChangeLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/MemberBalanceChangeLogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/UserArtworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/UserArtworkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/transaction/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/transaction/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/resources/application-server.yml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/resources/application-server.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/test/java/BcosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/test/java/BcosTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -434,8 +95,8 @@
         <option value="Kotlin Class" />
         <option value="package-info" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Solidity Contract" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -797,6 +458,10 @@
       <workItem from="1712239649145" duration="7334000" />
       <workItem from="1712250259106" duration="759000" />
       <workItem from="1712298658957" duration="10569000" />
+      <workItem from="1712310555711" duration="714000" />
+      <workItem from="1712318210272" duration="3259000" />
+      <workItem from="1712321673524" duration="4211000" />
+      <workItem from="1712381485102" duration="13850000" />
     </task>
     <servers />
   </component>

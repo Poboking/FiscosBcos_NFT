@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,6 +33,22 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
         this.collectionMapper = collectionMapper;
     }
 
+
+    /**
+     * 获取藏品id
+     *
+     * @param collectionName 藏品名称
+     * @return 藏品id
+     */
+    @Override
+    public String getIdByName(String collectionName) {
+        CollectionEntity collection = collectionMapper.selectOne(new QueryWrapper<CollectionEntity>()
+                .like(Optional.ofNullable(collectionName).isPresent(), "name", collectionName));
+        if (Objects.isNull(collection)){
+            return null;
+        }
+        return collection.getId();
+    }
 
     /**
      * 获取分页列表

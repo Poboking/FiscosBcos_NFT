@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 /**
  * @author poboking
@@ -22,8 +23,12 @@ import java.sql.Timestamp;
 public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCollectionMapper, MemberHoldCollectionEntity>
         implements MemberHoldCollectionRepository {
 
+    private final MemberHoldCollectionMapper memberHoldCollectionMapper;
+
     @Autowired
-    private MemberHoldCollectionMapper memberHoldCollectionMapper;
+    public MemberHoldCollectionRepositoryImpl(MemberHoldCollectionMapper memberHoldCollectionMapper) {
+        this.memberHoldCollectionMapper = memberHoldCollectionMapper;
+    }
 
     /**
      * 分页查询
@@ -233,6 +238,26 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
     @Override
     public Boolean increaseByRedeemCode(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime) {
         return increase(id, collectionId, NftConstants.藏品获取方式_兑换码, issuedCollectionId, NftConstants.持有藏品状态_持有中, memberId, 0.0, transactionHash, holdTime);
+    }
+
+    /**
+     * 获取分页列表 - 根据参数体查询
+     *
+     * @param current      当前页
+     * @param pageSize     每页大小
+     * @param memberId     用户ID
+     * @param collectionId 藏品ID
+     * @param state        藏品状态
+     * @param gainWay      获得方式
+     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     */
+    @Override
+    public IPage<MemberHoldCollectionEntity> getPageListByParam(Long current, Long pageSize, String memberId, String collectionId, String state, String gainWay) {
+        return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<MemberHoldCollectionEntity>()
+                .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
+                .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
+                .eq(Optional.ofNullable(state).isPresent(), "state", state)
+                .eq(Optional.ofNullable(gainWay).isPresent(), "gain_way", gainWay));
     }
 }
 

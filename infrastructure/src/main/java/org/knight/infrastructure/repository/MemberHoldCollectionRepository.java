@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import org.knight.infrastructure.dao.domain.MemberHoldCollectionEntity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * @author poboking
@@ -80,7 +81,7 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
      * @param holdTime     当前时间
      * @return Boolean
      */
-    Boolean increaseByPurchase(String id, String collectionId, String issuedCollectionId,String memberId, Double price, String transactionHash, Timestamp holdTime);
+    Boolean increaseByPurchase(String id, String collectionId, String issuedCollectionId, String memberId, Double price, String transactionHash, Timestamp holdTime);
 
     /**
      * 增加持有数量 - 通过赠送
@@ -146,7 +147,20 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
      * @param holdTime     当前时间
      * @return Boolean
      */
-    Boolean increaseByRedeemCode(String id, String collectionId, String issuedCollectionId,  String memberId, String transactionHash, Timestamp holdTime);
+    Boolean increaseByRedeemCode(String id, String collectionId, String issuedCollectionId, String memberId, String transactionHash, Timestamp holdTime);
 
+
+    /**
+     * 获取分页列表 - 根据参数体查询
+     *
+     * @param current      当前页
+     * @param pageSize     每页大小
+     * @param memberId     用户ID
+     * @param collectionId 藏品ID
+     * @param state        藏品状态
+     * @param gainWay      获得方式
+     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     */
+    IPage<MemberHoldCollectionEntity> getPageListByParam(Long current, Long pageSize, String memberId, String collectionId, String state, String gainWay);
 
 }

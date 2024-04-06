@@ -23,5 +23,5 @@ public class MyHoldCollectionRespDTO implements MyHoldCollectionRespDTOParent {
 
     private String cover;
 
-    private String holdDate;
+    private String holdTime;
 }

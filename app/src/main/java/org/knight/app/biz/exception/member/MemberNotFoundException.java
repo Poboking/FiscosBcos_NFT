@@ -8,8 +8,8 @@ import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
  * @date: 2024/4/1 18:56
  */
 @ExceptionMapper(code = "400", msg = "Member Don't Exist")
-public class MemberNoFoundException extends RuntimeException {
-    public MemberNoFoundException(String message) {
+public class MemberNotFoundException extends RuntimeException {
+    public MemberNotFoundException(String message) {
         super(message);
     }
 }

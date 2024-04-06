@@ -3,7 +3,6 @@ package org.knight.presentation.member;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.artwork.collection.CollectionService;
 import org.knight.app.biz.artwork.collection.MemberResaleCollectionService;
@@ -11,6 +10,8 @@ import org.knight.app.biz.artwork.dto.collection.*;
 import org.knight.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.knight.app.biz.artwork.dto.mysteryBox.MysteryBoxRespDTO;
 import org.knight.app.biz.artwork.mysteryBox.MysteryBoxService;
+import org.knight.app.biz.log.IssuedCollectionActLogService;
+import org.knight.app.biz.log.dto.collectionlog.IssuedCollectionActionLogRespDTO;
 import org.knight.infrastructure.common.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,20 +28,22 @@ import java.util.List;
  */
 //@CheckUserLogin
 @Log4j2
-@NoArgsConstructor
 @RestController
 @RequestMapping("/collection/")
 @Tag(name = "CollectionController", description = "COLLECTION_CONTROLLER")
 public class CollectionController {
-    private CollectionService collectionService;
-    private MemberResaleCollectionService memberResaleCollectionService;
-    private MysteryBoxService mysteryBoxService;
+    private final CollectionService collectionService;
+    private final MemberResaleCollectionService memberResaleCollectionService;
+    private final MysteryBoxService mysteryBoxService;
+
+    private final IssuedCollectionActLogService issuedCollectionActLogService;
 
     @Autowired
-    public CollectionController(CollectionService collectionService, MemberResaleCollectionService memberResaleCollectionService, MysteryBoxService mysteryBoxService) {
+    public CollectionController(CollectionService collectionService, MemberResaleCollectionService memberResaleCollectionService, MysteryBoxService mysteryBoxService, IssuedCollectionActLogService issuedCollectionActLogService) {
         this.collectionService = collectionService;
         this.memberResaleCollectionService = memberResaleCollectionService;
         this.mysteryBoxService = mysteryBoxService;
+        this.issuedCollectionActLogService = issuedCollectionActLogService;
     }
 
 
@@ -118,6 +121,13 @@ public class CollectionController {
             return mysteryBoxService.getPageList(current, pageSize);
         }
         return mysteryBoxService.getPageListByCreatorId(current, pageSize, creatorId);
+    }
+
+    @GetMapping("findIssuedCollectionActionLog")
+    @ValidationStatusCode(code = "500")
+    public List<IssuedCollectionActionLogRespDTO> findIssuedCollectionActionLog(
+            @RequestParam(name = "issuedCollectionId", required = true) String issuedCollectionId) {
+        return issuedCollectionActLogService.findIssuedCollectionActionLog(issuedCollectionId);
     }
 
     /**

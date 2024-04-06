@@ -35,7 +35,7 @@ public class BackMemberHoldCollectionController {
         this.actLogService = actLogService;
     }
 
-    // TODO: 2024/3/28 待实现 
+
     @GetMapping("findMemberHoldCollectionByPage")
     @ValidationStatusCode(code = "400")
     public PageResult<MemberHoldCollectionRespDTO> findMemberHoldCollectionByPage(

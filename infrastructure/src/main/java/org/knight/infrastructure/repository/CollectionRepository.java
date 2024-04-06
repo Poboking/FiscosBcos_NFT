@@ -13,6 +13,15 @@ import java.util.List;
  * @createDate 2024-03-07 17:31:43
  */
 public interface CollectionRepository extends IService<CollectionEntity> {
+
+    /**
+     * 获取藏品id
+     *
+     * @param collectionName 藏品名称
+     * @return 藏品id
+     */
+    String getIdByName(String collectionName);
+
     /**
      * 获取分页列表
      *
@@ -156,4 +165,5 @@ public interface CollectionRepository extends IService<CollectionEntity> {
      * @return Long 库存
      */
     Integer getStock(String collectionId);
+
 }

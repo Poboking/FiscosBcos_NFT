@@ -7,13 +7,16 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.knight.app.biz.artwork.dto.collection.CollectionQueryReqDTO;
 import org.knight.app.biz.artwork.dto.collection.CollectionResaleDetailRespDTO;
 import org.knight.app.biz.artwork.dto.collection.CollectionResaleRespDTO;
+import org.knight.app.biz.artwork.dto.holdcollection.MyResaleCollectionDetailRespDTO;
 import org.knight.app.biz.artwork.dto.holdcollection.MyResaleCollectionRespDTO;
 import org.knight.app.biz.artwork.dto.holdcollection.MySaleCollectionRespDTO;
 import org.knight.app.biz.convert.artwork.CollectionConvert;
 import org.knight.app.biz.convert.artwork.MyResaleCollectionConvert;
+import org.knight.app.biz.convert.artwork.MyResaleCollectionDetailConvert;
 import org.knight.app.biz.convert.artwork.MySaleCollectionConvert;
 import org.knight.app.biz.exception.collection.CollectionNotFoundException;
 import org.knight.app.biz.exception.collection.ResaleCollectionDetailFailedException;
+import org.knight.app.biz.exception.member.MemberNotFoundException;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.infrastructure.dao.domain.*;
@@ -23,6 +26,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -32,19 +36,24 @@ import java.util.Optional;
  */
 @Service
 public class MemberResaleCollectionService {
-    private MemberResaleCollectionRepositoryImpl memberResaleCollectionRepository;
-    private CollectionRepositoryImpl collectionRepository;
-    private IssuedCollectionRepositoryImpl issuedCollectionRepository;
+    private final MemberResaleCollectionRepositoryImpl memberResaleCollectionRepository;
+    private final CollectionRepositoryImpl collectionRepository;
+    private final IssuedCollectionRepositoryImpl issuedCollectionRepository;
 
-    private MemberRepositoryImpl memberRepository;
+    private final MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository;
 
-    private CreatorRepositoryImpl creatorRepository;
+    private final MemberRepositoryImpl memberRepository;
+
+    private final CreatorRepositoryImpl creatorRepository;
 
     @Autowired
-    public MemberResaleCollectionService(MemberResaleCollectionRepositoryImpl memberResaleCollectionRepository, CollectionRepositoryImpl collectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository) {
+    public MemberResaleCollectionService(MemberResaleCollectionRepositoryImpl memberResaleCollectionRepository, CollectionRepositoryImpl collectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository, MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository, MemberRepositoryImpl memberRepository, CreatorRepositoryImpl creatorRepository) {
         this.memberResaleCollectionRepository = memberResaleCollectionRepository;
         this.collectionRepository = collectionRepository;
         this.issuedCollectionRepository = issuedCollectionRepository;
+        this.memberHoldCollectionRepository = memberHoldCollectionRepository;
+        this.memberRepository = memberRepository;
+        this.creatorRepository = creatorRepository;
     }
 
     public PageResult<MemberResaleCollectionEntity> getOrderDescPageList(long current, long pageSize) {
@@ -116,8 +125,9 @@ public class MemberResaleCollectionService {
     }
 
 
+    // TODO: 2024/4/6 此处待重构 CollectionResaleDetail 需继承自CollectionDetail
     public CollectionResaleDetailRespDTO getCollectionDetail(String resaleCollectionId) {
-        if (resaleCollectionId.isEmpty() || Boolean.FALSE.equals(collectionRepository.checkExist(resaleCollectionId))){
+        if (CharSequenceUtil.isBlank(resaleCollectionId)) {
             throw new CollectionNotFoundException(CharSequenceUtil.format("{}:resaleCollectionId is null", resaleCollectionId));
         }
         try {
@@ -130,6 +140,7 @@ public class MemberResaleCollectionService {
             return CollectionResaleDetailRespDTO.builder()
                     .id(resaleCollection.getId())
                     .issuedCollectionId(resaleCollection.getIssuedCollectionId())
+                    // TODO: 2024/4/6 此处的交易Hash需要修改 具体代码待实现
                     .transactionHash("null")
                     .collectionHash(collection.getCollectionHash())
                     .holderBlockChainAddr(String.valueOf(holdMember.getBlockChainAddr()))
@@ -149,5 +160,24 @@ public class MemberResaleCollectionService {
         } catch (Exception e) {
             throw new ResaleCollectionDetailFailedException("获取转售藏品详情失败");
         }
+    }
+
+    public MyResaleCollectionDetailRespDTO getMyResaleCollectionDetail(String resaleCollectionId, String memberId) {
+        MemberResaleCollectionEntity resaleCollection = memberResaleCollectionRepository.getById(resaleCollectionId);
+        MemberHoldCollectionEntity holdCollection = memberHoldCollectionRepository.getOne(new QueryWrapper<MemberHoldCollectionEntity>()
+                .eq("collection_id", resaleCollection.getCollectionId())
+                .eq("member_id", memberId)
+                .eq("status", NftConstants.持有藏品状态_转售中));
+        if (Objects.isNull(holdCollection)) {
+            throw new CollectionNotFoundException(CharSequenceUtil.format("{}:collectionId is null", resaleCollection.getCollectionId()));
+        }
+        if (Boolean.FALSE.equals(collectionRepository.checkExist(holdCollection.getCollectionId()))) {
+            throw new CollectionNotFoundException(CharSequenceUtil.format("{}:collectionId is null", resaleCollection.getCollectionId()));
+        }
+        if (Boolean.FALSE.equals(memberRepository.checkExist(holdCollection.getMemberId()))) {
+            throw new MemberNotFoundException(CharSequenceUtil.format("{}:memberId is null", memberId));
+        }
+        CollectionResaleDetailRespDTO respDTO = getCollectionDetail(resaleCollectionId);
+        return MyResaleCollectionDetailConvert.INSTANCE.convertToRespDTOByResp(respDTO);
     }
 }

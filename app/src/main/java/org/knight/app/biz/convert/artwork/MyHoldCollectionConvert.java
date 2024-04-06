@@ -9,6 +9,7 @@ import org.knight.infrastructure.dao.domain.MemberResaleCollectionEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @project: a20-nft-3_7
@@ -23,7 +24,8 @@ public class MyHoldCollectionConvert {
         }
         MyHoldCollectionRespDTO vo = new MyHoldCollectionRespDTO();
         vo.setId(mo.getId());
-        vo.setHoldDate(DateUtil.format(mo.getHoldTime(), DatePattern.NORM_DATE_PATTERN));
+        vo.setHoldTime(Optional.ofNullable(DateUtil.format(mo.getHoldTime(), DatePattern.NORM_DATE_PATTERN))
+                .orElse(mo.getHoldTime().toString()));
         vo.setName(mo.getName());
         vo.setCover(mo.getCover());
         return vo;
@@ -56,6 +58,28 @@ public class MyHoldCollectionConvert {
         }
         List<MyHoldCollectionRespDTO> vo = new ArrayList<>();
         for (T entity : mo) {
+            vo.add(convertToRespDTO(entity));
+        }
+        return vo;
+    }
+
+    public static List<MyHoldCollectionRespDTO> resaleConvertToRespDTOs(List<MemberResaleCollectionEntity> mo) {
+        if (mo == null) {
+            return null;
+        }
+        List<MyHoldCollectionRespDTO> vo = new ArrayList<>();
+        for (MemberResaleCollectionEntity entity : mo) {
+            vo.add(convertToRespDTO(entity));
+        }
+        return vo;
+    }
+
+    public static List<MyHoldCollectionRespDTO> holdConvertToRespDTOs(List<MemberHoldCollectionEntity> mo) {
+        if (mo == null) {
+            return null;
+        }
+        List<MyHoldCollectionRespDTO> vo = new ArrayList<>();
+        for (MemberHoldCollectionEntity entity : mo) {
             vo.add(convertToRespDTO(entity));
         }
         return vo;

@@ -1,6 +1,9 @@
 package org.knight.app.biz.artwork.dto.collection;
 
 import lombok.*;
+import org.knight.app.biz.artwork.dto.mysteryBox.SubCommodityRespDTO;
+
+import java.util.List;
 
 /**
  * @project: a20-nft-3_7
@@ -50,7 +53,7 @@ public class CollectionResaleDetailRespDTO extends CollectionBaseDTO{
 
     private String holderBlockChainAddr;
 
-    private String[] storyPicLinks;
+    private List<String> storyPicLinks;
 
-    private String[] subCommoditys;
+    private List<SubCommodityRespDTO> subCommoditys;
 }

@@ -1,6 +1,7 @@
 package org.knight.infrastructure.repository.impl;
 
 import cn.hutool.core.text.CharSequenceUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.knight.infrastructure.common.NftConstants;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * @author poboking
@@ -125,6 +127,52 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
                         .eq("id", memberId)
                         .set("block_chain_addr", blockAddress)
                         .set("sync_chain_time", now)) > 0;
+    }
+
+    /**
+     * 获取用户ID - 根据用户手机号
+     *
+     * @param memberMobile 用户手机号
+     * @return 用户ID
+     */
+    @Override
+    public String getIdByMobile(String memberMobile) {
+        MemberEntity entity = memberMapper.selectOne(new QueryWrapper<MemberEntity>()
+                .eq(Optional.ofNullable(memberMobile).isPresent(), "mobile", memberMobile));
+        if (Objects.isNull(entity)){
+            return null;
+        }
+        return entity.getId();
+    }
+
+    /**
+     * 检查用户是否存在
+     *
+     * @param memberId 用户ID
+     * @return 是否存在
+     */
+    @Override
+    public Boolean checkExist(String memberId) {
+        if (CharSequenceUtil.isBlank(memberId)){
+            return false;
+        }
+        return memberMapper.exists(new QueryWrapper<MemberEntity>().eq("id", memberId));
+    }
+
+    /**
+     * 获取用户昵称
+     *
+     * @param memberId 用户ID
+     * @return 用户昵称
+     */
+    @Override
+    public String getNameByMemberId(String memberId) {
+        MemberEntity entity = memberMapper.selectOne(new QueryWrapper<MemberEntity>()
+                .eq("id", memberId));
+        if (Objects.isNull(entity)){
+            return null;
+        }
+        return entity.getNickName();
     }
 }
 

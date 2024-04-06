@@ -22,14 +22,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 //@CheckUserLogin
 @Log4j2
-@AllArgsConstructor
 @NoArgsConstructor
 @RestController
 @RequestMapping("/memberBalanceChangeLog/")
 @Tag(name = "MemberBalanceChangeLogController", description = "MEMBER_BALANCE_CHANGE_LOG_CONTROLLER")
 public class MemberBalanceChangeLogController {
-    @Autowired
     private MemberBCLogService memberBCLogService;
+
+    @Autowired
+    public MemberBalanceChangeLogController(MemberBCLogService memberBCLogService) {
+        this.memberBCLogService = memberBCLogService;
+    }
 
     @GetMapping("findByPage")
     @ValidationStatusCode(code = "400")

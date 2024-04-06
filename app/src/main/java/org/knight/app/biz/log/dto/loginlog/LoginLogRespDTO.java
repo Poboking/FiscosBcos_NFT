@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.jni.Local;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * @project: a20-nft-3_7
@@ -51,7 +53,7 @@ public class LoginLogRespDTO extends LoginLogBaseDTO {
     /**
      * Login Time, example: 2024-03-13 13:40:17
      */
-    private Timestamp loginTime;
+    private String loginTime;
 
     /**
      * Browser, example: MSEdge

@@ -268,6 +268,41 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
 //        if (state.equals(NftConstants.转售的藏品状态_已下架))
         return false;
     }
+
+    /**
+     * 检查是否存在
+     *
+     * @param resaleCollectionId 出售藏品ID
+     * @return boolean 是否存在
+     */
+    @Override
+    public boolean checkExist(String resaleCollectionId) {
+        if (CharSequenceUtil.isBlank(resaleCollectionId)){
+            return false;
+        }
+        return memberResaleCollectionMapper.exists(new QueryWrapper<MemberResaleCollectionEntity>()
+                .eq("id", resaleCollectionId));
+    }
+
+    /**
+     * 检查是否存在
+     *
+     * @param resaleCollectionId 出售藏品ID
+     * @param memberId 会员ID
+     * @return boolean 是否存在
+     */
+    @Override
+    public boolean checkExist(String resaleCollectionId, String memberId){
+        if (CharSequenceUtil.isBlank(resaleCollectionId)){
+            return false;
+        }
+        if (CharSequenceUtil.isBlank(memberId)){
+            return false;
+        }
+        return memberResaleCollectionMapper.exists(new QueryWrapper<MemberResaleCollectionEntity>()
+                .eq("id", resaleCollectionId)
+                .eq("member_id", memberId));
+    }
 }
 
 

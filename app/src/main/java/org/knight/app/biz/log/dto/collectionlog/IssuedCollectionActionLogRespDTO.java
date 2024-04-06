@@ -20,7 +20,7 @@ public class IssuedCollectionActionLogRespDTO {
 
     private String id;
 
-    private LocalDateTime actionTime;
+    private String actionTime;
 
     private String actionDesc;
 

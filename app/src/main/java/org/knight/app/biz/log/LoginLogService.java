@@ -1,9 +1,12 @@
 package org.knight.app.biz.log;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.lang.func.VoidFunc0;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.knight.app.biz.convert.log.LoginLogConvert;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqDTO;
 import org.knight.app.biz.log.dto.loginlog.LoginLogRespDTO;
+import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.infrastructure.dao.domain.LoginLogEntity;
 import org.knight.infrastructure.repository.impl.LoginLogRepositoryImpl;
@@ -67,7 +70,11 @@ public class LoginLogService {
         String mobile = memberRepository.getMobileByMemberId(memberId);
         IPage<LoginLogEntity> pageList = loginLogRepository.getLoginLogByMoblie(current, pageSize, mobile);
         List<LoginLogRespDTO> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> recordList.add(LoginLogConvert.INSTANCE.convertToRespDto(item)));
+        pageList.getRecords().forEach(item -> {
+            LoginLogRespDTO respDTO = LoginLogConvert.INSTANCE.convertToRespDto(item);
+            respDTO.setLoginTime(DateUtil.format(item.getLoginTime(), NftConstants.DATE_FORMAT));
+            recordList.add(respDTO);
+        });
         return PageResult.convertFor(pageList, pageSize, recordList);
     }
 

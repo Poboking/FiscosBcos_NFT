@@ -1,5 +1,6 @@
 package org.knight.app.biz.transaction;
 
+import cn.hutool.core.date.DateTime;
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
@@ -9,7 +10,7 @@ import org.knight.app.biz.convert.transaction.CollectionGiveRecordConvert;
 import org.knight.app.biz.convert.transaction.PayOrderConvert;
 import org.knight.app.biz.exception.collection.*;
 import org.knight.app.biz.exception.log.LogCreationFailedException;
-import org.knight.app.biz.exception.member.MemberNoFoundException;
+import org.knight.app.biz.exception.member.MemberNotFoundException;
 import org.knight.app.biz.exception.member.ReceiverNotFoundException;
 import org.knight.app.biz.exception.transaction.*;
 import org.knight.app.biz.transaction.bo.OrderBO;
@@ -49,9 +50,7 @@ public class TransactionService {
     private final MemberBalanceChangeLogRepositoryImpl memberBCLogRepository;
     private final MemberHoldCollectionRepositoryImpl holdCollectionRepository;
     private final MemberResaleCollectionRepositoryImpl resaleCollectionRepository;
-
     private final IssuedCollectionRepositoryImpl issuedCollectionRepository;
-
     private final IssuedCollectionActionLogRepositoryImpl issuedCollectionActLogRepository;
 
     @Autowired
@@ -107,8 +106,7 @@ public class TransactionService {
         IPage<CollectionGiveRecordEntity> pageList = null;
         if (giveDirection != null && giveDirection.equals("from")) {
             pageList = collectionGiveRecordRepository.getPageListByGiveFromId(current, pageSize, memberId);
-        }
-        if (giveDirection != null && giveDirection.equals("to")) {
+        } else if (giveDirection != null && giveDirection.equals("to")) {
             pageList = collectionGiveRecordRepository.getPageListByGiveToId(current, pageSize, memberId);
         } else {
             pageList = collectionGiveRecordRepository.getPageListByGiveToIdOrGiveFormId(current, pageSize, memberId, memberId);
@@ -205,7 +203,7 @@ public class TransactionService {
             throw new HoldCollectionCreationFailedException(CharSequenceUtil.format("[{}]持有藏品记录创建失败", memberId));
         }
         if (Boolean.FALSE.equals(memberBCLogRepository.createLog(memberId,
-                entity.getAmount(),
+                -entity.getAmount(),
                 NftConstants.会员余额变动日志类型_购买藏品,
                 entity.getOrderNo(),
                 now))) {
@@ -308,7 +306,7 @@ public class TransactionService {
                     .or(item -> item.eq("mobile", giveToAccount)
                             .or().eq("block_chain_addr", giveToAccount)));
             if (member == null) {
-                throw new MemberNoFoundException("收款方不存在");
+                throw new MemberNotFoundException("收款方不存在");
             }
             return ReceiverInfoRespDTO.builder()
                     .mobile(member.getMobile())
@@ -326,7 +324,7 @@ public class TransactionService {
                 .or(item -> item.eq("mobile", giveToAccount)
                         .or().eq("block_chain_addr", giveToAccount)));
         if (member == null) {
-            throw new MemberNoFoundException("收款方不存在");
+            throw new MemberNotFoundException("收款方不存在");
         }
         if (memberId.equals(member.getId())) {
             throw new CantGiveSelfException("无法转赠自己");
@@ -411,4 +409,24 @@ public class TransactionService {
         return true;
     }
 
+    // TODO: 2024/4/6 用户购买转售藏品之后, 出售者余额增加, 购买者余额减少, 出售者藏品状态变为已售出, 购买者藏品状态变为持有中 - 待实现
+    // TODO: 2024/4/6 出售成功需要将持有藏品表中软删除用户持有状态为售出的藏品 - 待实现
+    @Transactional(rollbackFor = Exception.class)
+    public Boolean cancelResale(String memberId, String resaleCollectionId) {
+        String format = LocalDateTime.now().format(NftConstants.DATE_FORMAT);
+        Timestamp now = cn.hutool.core.date.DateUtil.parse(format, NftConstants.DATE_FORMAT).toTimestamp();
+        if (CharSequenceUtil.isBlank(memberId) || Boolean.FALSE.equals(memberRepository.checkExist(memberId))){
+            throw new MemberNotFoundException("用户不存在");
+        }
+        if (CharSequenceUtil.isBlank(resaleCollectionId) || Boolean.FALSE.equals(resaleCollectionRepository.checkExist(resaleCollectionId))){
+            throw new MemberNotMatchException("藏品不存在");
+        }
+        if (Boolean.FALSE.equals(resaleCollectionRepository.checkExist(resaleCollectionId, memberId))){
+            throw new MemberNotMatchException("藏品不属于当前用户");
+        }
+        if (Boolean.FALSE.equals(resaleCollectionRepository.updateStateById(resaleCollectionId, NftConstants.转售的藏品状态_已取消, now))){
+            throw new ResaleCancellationFailedException("藏品取消转售失败");
+        }
+        return true;
+    }
 }
