@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @project: a20-nft-3_7
@@ -73,6 +74,9 @@ public class LoginLogService {
         pageList.getRecords().forEach(item -> {
             LoginLogRespDTO respDTO = LoginLogConvert.INSTANCE.convertToRespDto(item);
             respDTO.setLoginTime(DateUtil.format(item.getLoginTime(), NftConstants.DATE_FORMAT));
+            if (Objects.isNull(item.getLoginTime())){
+                respDTO.setLoginTime("未知");
+            }
             recordList.add(respDTO);
         });
         return PageResult.convertFor(pageList, pageSize, recordList);

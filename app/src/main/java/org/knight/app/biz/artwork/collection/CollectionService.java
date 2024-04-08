@@ -63,10 +63,14 @@ public class CollectionService {
 
 
     public CreatorRespDTO getCreatorById(String creatorId) {
+        if (Objects.isNull(creatorId)){
+            return null;
+        }
         CreatorEntity creator = creatorRepository.getById(creatorId);
         if (Objects.isNull(creator)){
             return null;
         }
+        // TODO: 2024/4/8 需要将响应体的time属性都改为string类型
         return CreatorConvert.INSTANCE.convertToRespDTO(creator);
     }
 
@@ -99,7 +103,9 @@ public class CollectionService {
         pageEntity.getRecords().forEach(bean -> {
             bean.setCreatorName(creator.getName());
             bean.setCreatorAvatar(creator.getAvatar());
-            resultList.add(CollectionConvert.INSTANCE.convertToIntroRespDTO(bean));
+            CollectionIntroRespDTO respDTO = CollectionConvert.INSTANCE.convertToIntroRespDTO(bean);
+            respDTO.setSaleTime(DateUtil.format(bean.getSaleTime(), "yyyy-MM-dd HH:mm:ss"));
+            resultList.add(respDTO);
         });
         return PageResult.convertFor(pageEntity, pageSize, resultList);
     }

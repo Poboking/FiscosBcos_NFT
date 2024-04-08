@@ -105,6 +105,9 @@ public class NftConstants {
     public static final Double 提现单笔最大金额 = 10000.0;
     public static final Double 提现单笔最小金额 = 100.0;
     public static final String 默认时区 = "Asia/Shanghai";
+    public static final String DIRECTION_FROM = "from";
+    public static final String DIRECTION_TO = "to";
+    public static final double 单笔销售最大价格 = 1000000;
     private static final String 通知公告类型_上新藏品 = "1";
     private static final String 通知公告类型_合成活动 = "2";
     private static final String 通知公告类型_空投活动 = "3";

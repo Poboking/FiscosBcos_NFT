@@ -67,7 +67,7 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
         return loginLogMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<LoginLogEntity>()
                         .eq(!CharSequenceUtil.isBlank(userName), "user_name", userName)
-                        .orderByAsc("login_time"));
+                        .orderByDesc("login_time"));
     }
 
     /**

@@ -1,85 +1,269 @@
-2024-04-08 00:26:43,333 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2024-04-08 00:26:43,364 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 15676 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
-2024-04-08 00:26:43,366 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
-2024-04-08 00:26:43,367 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2024-04-08 00:26:44,169 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-04-08 00:26:44,173 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-04-08 00:26:44,196 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
-2024-04-08 00:26:44,817 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
-2024-04-08 00:26:44,825 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
-2024-04-08 00:26:44,826 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
-2024-04-08 00:26:44,826 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
-2024-04-08 00:26:44,903 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
-2024-04-08 00:26:44,904 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1500 ms
-2024-04-08 00:26:45,647 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
-2024-04-08 00:26:45,708 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-04-08 00:26:45,708 INFO o.f.b.s.n.NetworkImp [main] 
+2024-04-08 16:59:20,131 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-04-08 16:59:20,163 INFO o.s.b.StartupInfoLogger [main] Starting PresentationApplication using Java 17.0.9 with PID 3088 (D:\CS\IDEA_javacode\a20-nft-3_7\presentation\target\classes started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7)
+2024-04-08 16:59:20,166 DEBUG o.s.b.StartupInfoLogger [main] Running with Spring Boot v3.0.2, Spring v6.0.4
+2024-04-08 16:59:20,168 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-04-08 16:59:20,989 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-04-08 16:59:20,991 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-04-08 16:59:21,014 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2024-04-08 16:59:21,559 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2024-04-08 16:59:21,567 INFO o.a.j.l.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-08 16:59:21,567 INFO o.a.j.l.DirectJDKLog [main] Starting service [Tomcat]
+2024-04-08 16:59:21,567 INFO o.a.j.l.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/10.1.5]
+2024-04-08 16:59:21,641 INFO o.a.j.l.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-04-08 16:59:21,641 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1429 ms
+2024-04-08 16:59:22,411 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
+2024-04-08 16:59:22,475 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-08 16:59:22,475 INFO o.f.b.s.n.NetworkImp [main] 
 * TRACE INFORMATION:
 ----------------------------
 ====> STEP1: try to connect nodes with ecdsa context...
 
-2024-04-08 00:26:45,708 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
-2024-04-08 00:26:45,748 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
-2024-04-08 00:26:47,239 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-04-08 00:26:47,239 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-04-08 00:26:47,239 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
+2024-04-08 16:59:22,476 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
+2024-04-08 16:59:22,516 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
+2024-04-08 16:59:24,035 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-04-08 00:26:47,242 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
+2024-04-08 16:59:24,036 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-04-08 00:26:47,242 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 2135712913 
-2024-04-08 00:26:47,242 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 1334567453 
-2024-04-08 00:26:47,242 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
+2024-04-08 16:59:24,036 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}, {"code":1, "msg":"ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}] 
-2024-04-08 00:26:47,242 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
+2024-04-08 16:59:24,036 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-08 16:59:24,036 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-08 16:59:24,036 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
 Failed to connect to all the nodes!
 * ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 * ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 
-2024-04-08 00:26:49,321 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
-2024-04-08 00:26:49,321 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
+2024-04-08 16:59:24,037 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 1429309425 
+2024-04-08 16:59:24,037 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 216760595 
+2024-04-08 16:59:26,127 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
+2024-04-08 16:59:26,128 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
 ====> STEP2: connect nodes with ecdsa context failed, try to connect nodes with sm-context...
-2024-04-08 00:26:49,322 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
-2024-04-08 00:26:49,322 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-04-08 00:26:49,655 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 2101820035
-2024-04-08 00:26:49,661 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
-2024-04-08 00:26:49,661 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 1494874934
-2024-04-08 00:26:49,661 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
-2024-04-08 00:26:49,757 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-08 16:59:26,128 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
+2024-04-08 16:59:26,128 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-08 16:59:26,554 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 109695785
+2024-04-08 16:59:26,563 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 59934700
+2024-04-08 16:59:26,563 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
+2024-04-08 16:59:26,563 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
+2024-04-08 16:59:26,669 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-04-08 00:26:49,757 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-08 16:59:26,670 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
+2024-04-08 16:59:26,671 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-04-08 00:26:49,758 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
-2024-04-08 00:26:49,758 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
-2024-04-08 00:26:49,800 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-04-08 00:26:49,801 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-04-08 00:26:49,823 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
-2024-04-08 00:26:49,824 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
-2024-04-08 00:26:49,829 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
-2024-04-08 00:26:49,835 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
-2024-04-08 00:26:49,835 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
-2024-04-08 00:26:50,171 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
-2024-04-08 00:26:50,293 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-08 00:26:50,297 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-08 00:26:50,298 INFO o.f.b.s.a.AmopImp [main] amop module started
-2024-04-08 00:26:50,298 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-08 00:26:50,298 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
-2024-04-08 00:26:50,655 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
-2024-04-08 00:26:50,655 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
-2024-04-08 00:26:51,390 INFO c.f.g.Init [main] Graceful Response:已启动
-2024-04-08 00:26:51,484 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
-2024-04-08 00:26:51,946 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
-2024-04-08 00:26:51,961 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
-2024-04-08 00:26:51,972 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 8.935 seconds (process running for 9.876)
-2024-04-08 00:26:51,975 INFO o.k.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
-2024-04-08 00:26:56,971 INFO o.k.a.b.t.OrderTask [default-task-thread-1] cancelExpiredOrder
-2024-04-08 00:26:57,015 INFO c.z.h.HikariDataSource [default-task-thread-1] HikariPool-1 - Starting...
-2024-04-08 00:27:10,540 INFO c.z.h.p.HikariPool [default-task-thread-1] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b9383be
-2024-04-08 00:27:10,541 INFO c.z.h.HikariDataSource [default-task-thread-1] HikariPool-1 - Start completed.
-2024-04-08 00:27:10,549 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==>  Preparing: SELECT id,amount,biz_order_no,biz_type,issued_collection_id,collection_id,create_time,member_id,order_deadline,order_no,state,version,paid_time,cancel_time,biz_mode FROM pay_order WHERE (state = ? AND order_deadline < ?)
-2024-04-08 00:27:10,565 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==> Parameters: 1(String), 2024-04-08 00:26:56.0(Timestamp)
-2024-04-08 00:27:10,625 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] <==      Total: 0
-2024-04-08 00:27:45,493 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2024-04-08 00:27:45,497 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-04-08 16:59:26,672 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
+2024-04-08 16:59:26,727 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-08 16:59:26,748 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-08 16:59:26,756 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
+2024-04-08 16:59:26,757 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
+2024-04-08 16:59:26,759 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
+2024-04-08 16:59:26,765 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
+2024-04-08 16:59:26,766 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
+2024-04-08 16:59:27,351 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
+2024-04-08 16:59:27,478 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-08 16:59:27,482 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-08 16:59:27,482 INFO o.f.b.s.a.AmopImp [main] amop module started
+2024-04-08 16:59:27,482 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-08 16:59:27,483 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
+2024-04-08 16:59:27,941 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
+2024-04-08 16:59:27,941 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
+2024-04-08 16:59:28,749 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-04-08 16:59:28,849 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-04-08 16:59:29,348 INFO o.a.j.l.DirectJDKLog [main] Starting ProtocolHandler ["http-nio-8080"]
+2024-04-08 16:59:29,362 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2024-04-08 16:59:29,374 INFO o.s.b.StartupInfoLogger [main] Started PresentationApplication in 9.534 seconds (process running for 10.467)
+2024-04-08 16:59:29,377 INFO o.k.p.PresentationApplication [main] [Knife4j文档地址]: http://localhost:8080/doc.html
+2024-04-08 16:59:34,372 INFO o.k.a.b.t.OrderTask [default-task-thread-1] cancelExpiredOrder
+2024-04-08 16:59:34,418 INFO c.z.h.HikariDataSource [default-task-thread-1] HikariPool-1 - Starting...
+2024-04-08 16:59:41,416 INFO c.z.h.p.HikariPool [default-task-thread-1] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e7dc36a
+2024-04-08 16:59:41,433 INFO c.z.h.HikariDataSource [default-task-thread-1] HikariPool-1 - Start completed.
+2024-04-08 16:59:41,440 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==>  Preparing: SELECT id,amount,biz_order_no,biz_type,issued_collection_id,collection_id,create_time,member_id,order_deadline,order_no,state,version,paid_time,cancel_time,biz_mode FROM pay_order WHERE (state = ? AND order_deadline < ?)
+2024-04-08 16:59:41,491 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==> Parameters: 1(String), 2024-04-08 16:59:34.0(Timestamp)
+2024-04-08 16:59:41,584 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] <==      Total: 0
+2024-04-08 16:59:43,004 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-08 16:59:43,004 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-04-08 16:59:43,016 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 12 ms
+2024-04-08 16:59:43,335 INFO o.k.p.c.MySaTokenListener [http-nio-8080-exec-1] ---------- doLogout侦听器: user注销成功，tokenValue: e9d5b66a-3242-4e49-996f-a2b8222ad23e
+2024-04-08 16:59:46,155 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE (mobile = ?)
+2024-04-08 16:59:46,155 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==> Parameters: 13533333333(String)
+2024-04-08 16:59:46,186 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==    Columns: id, balance, deleted_flag, deleted_time, keep_login_duration, lately_login_time, login_pwd, mobile, nick_name, pay_pwd, real_name, registered_time, state, version, push_client_id, block_chain_addr, avatar, bind_real_name_time, identity_card, account_level, account_level_path, invite_code, inviter_id, bought_flag, sync_chain_time
+2024-04-08 16:59:46,186 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==        Row: 159216107584, 11711.01, 0, null, 12, 2024-04-08 16:53:53, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 13533333333, 成功人士, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 张三, 2022-04-17 00:07:50, 1, 252, 982f02f06cb1965acbabcdc03049768d, iaa15s2259ke9rgcv4v2ukjr8kz0nc768k8ld0uw4q, http://43.143.86.190/image/1775395409624039424.jpg, 2022-08-09 21:41:30, 44544793492893728493, 1, 1592161297795907584, ih50g53, null, 1, 2022-08-09 21:41:32
+2024-04-08 16:59:46,202 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==      Total: 1
+2024-04-08 16:59:46,203 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE (mobile = ?)
+2024-04-08 16:59:46,203 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==> Parameters: 13533333333(String)
+2024-04-08 16:59:46,252 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==    Columns: id, balance, deleted_flag, deleted_time, keep_login_duration, lately_login_time, login_pwd, mobile, nick_name, pay_pwd, real_name, registered_time, state, version, push_client_id, block_chain_addr, avatar, bind_real_name_time, identity_card, account_level, account_level_path, invite_code, inviter_id, bought_flag, sync_chain_time
+2024-04-08 16:59:46,252 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==        Row: 159216107584, 11711.01, 0, null, 12, 2024-04-08 16:53:53, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 13533333333, 成功人士, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 张三, 2022-04-17 00:07:50, 1, 252, 982f02f06cb1965acbabcdc03049768d, iaa15s2259ke9rgcv4v2ukjr8kz0nc768k8ld0uw4q, http://43.143.86.190/image/1775395409624039424.jpg, 2022-08-09 21:41:30, 44544793492893728493, 1, 1592161297795907584, ih50g53, null, 1, 2022-08-09 21:41:32
+2024-04-08 16:59:46,254 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==      Total: 1
+2024-04-08 16:59:46,255 INFO o.k.p.c.MySaTokenListener [http-nio-8080-exec-2] ---------- doLogin侦听器: user登录成功，tokenValue: 2e2db777-57a9-463e-9d78-c034e1ee6e3b
+2024-04-08 16:59:46,267 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==>  Preparing: UPDATE member SET lately_login_time=? WHERE (id = ?)
+2024-04-08 16:59:46,268 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==> Parameters: 2024-04-08 16:59:46.0(Timestamp), 159216107584(String)
+2024-04-08 16:59:46,337 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==    Updates: 1
+2024-04-08 16:59:46,371 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==>  Preparing: INSERT INTO login_log ( id, browser, ip_addr, msg, os, state, sub_system, user_name ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )
+2024-04-08 16:59:46,371 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] ==> Parameters: 1777260032786694144(String), Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0(String), 0:0:0:0:0:0:0:1(String), 登录成功(String), Unknown(String), 1(String), member(String), 13533333333(String)
+2024-04-08 16:59:46,471 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-2] <==    Updates: 1
+2024-04-08 17:04:34,383 INFO o.k.a.b.t.OrderTask [default-task-thread-1] cancelExpiredOrder
+2024-04-08 17:04:38,996 INFO o.k.p.c.MySaTokenListener [http-nio-8080-exec-4] ---------- doLogout侦听器: user注销成功，tokenValue: 2e2db777-57a9-463e-9d78-c034e1ee6e3b
+2024-04-08 17:04:39,402 WARN c.z.h.p.PoolBase [default-task-thread-1] HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2e7dc36a (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2024-04-08 17:04:40,378 ERROR c.f.g.a.GlobalExceptionAdvice [http-nio-8080-exec-5] Graceful Response:GlobalExceptionAdvice捕获到异常,message=[logout failed as result of not login]
+org.knight.presentation.exception.UnauthorizedException: logout failed as result of not login
+	at org.knight.presentation.member.AuthenticationController.logout(AuthenticationController.java:147) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:752) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.validation.beanvalidation.MethodValidationInterceptor.invoke(MethodValidationInterceptor.java:134) ~[spring-context-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:752) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:703) ~[spring-aop-6.0.4.jar:6.0.4]
+	at org.knight.presentation.member.AuthenticationController$$SpringCGLIB$$0.logout(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:207) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:152) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:731) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.0.4.jar:6.0.4]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814) ~[tomcat-embed-core-10.1.5.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at cn.dev33.satoken.filter.SaPathCheckFilterForJakartaServlet.doFilter(SaPathCheckFilterForJakartaServlet.java:55) ~[sa-token-spring-boot3-starter-1.37.0.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.0.4.jar:6.0.4]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.5.jar:10.1.5]
+	at java.lang.Thread.run(Thread.java:842) ~[?:?]
+2024-04-08 17:04:44,417 WARN c.z.h.p.PoolBase [default-task-thread-1] HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@754bb53b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2024-04-08 17:04:47,922 WARN c.z.h.p.PoolBase [http-nio-8080-exec-6] HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@36a4e3f5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2024-04-08 17:04:49,421 WARN c.z.h.p.PoolBase [default-task-thread-1] HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@c19c975 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2024-04-08 17:04:49,454 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==>  Preparing: SELECT id,amount,biz_order_no,biz_type,issued_collection_id,collection_id,create_time,member_id,order_deadline,order_no,state,version,paid_time,cancel_time,biz_mode FROM pay_order WHERE (state = ? AND order_deadline < ?)
+2024-04-08 17:04:49,454 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==> Parameters: 1(String), 2024-04-08 17:04:34.0(Timestamp)
+2024-04-08 17:04:49,502 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] <==      Total: 0
+2024-04-08 17:04:52,935 WARN c.z.h.p.PoolBase [http-nio-8080-exec-6] HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@10ae4323 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2024-04-08 17:04:52,972 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE (mobile = ?)
+2024-04-08 17:04:52,973 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] ==> Parameters: 13533333333(String)
+2024-04-08 17:04:53,018 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] <==    Columns: id, balance, deleted_flag, deleted_time, keep_login_duration, lately_login_time, login_pwd, mobile, nick_name, pay_pwd, real_name, registered_time, state, version, push_client_id, block_chain_addr, avatar, bind_real_name_time, identity_card, account_level, account_level_path, invite_code, inviter_id, bought_flag, sync_chain_time
+2024-04-08 17:04:53,019 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] <==        Row: 159216107584, 11711.01, 0, null, 12, 2024-04-08 16:59:46, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 13533333333, 成功人士, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 张三, 2022-04-17 00:07:50, 1, 252, 982f02f06cb1965acbabcdc03049768d, iaa15s2259ke9rgcv4v2ukjr8kz0nc768k8ld0uw4q, http://43.143.86.190/image/1775395409624039424.jpg, 2022-08-09 21:41:30, 44544793492893728493, 1, 1592161297795907584, ih50g53, null, 1, 2022-08-09 21:41:32
+2024-04-08 17:04:53,020 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] <==      Total: 1
+2024-04-08 17:04:53,021 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE (mobile = ?)
+2024-04-08 17:04:53,021 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] ==> Parameters: 13533333333(String)
+2024-04-08 17:04:53,057 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] <==    Columns: id, balance, deleted_flag, deleted_time, keep_login_duration, lately_login_time, login_pwd, mobile, nick_name, pay_pwd, real_name, registered_time, state, version, push_client_id, block_chain_addr, avatar, bind_real_name_time, identity_card, account_level, account_level_path, invite_code, inviter_id, bought_flag, sync_chain_time
+2024-04-08 17:04:53,058 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] <==        Row: 159216107584, 11711.01, 0, null, 12, 2024-04-08 16:59:46, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 13533333333, 成功人士, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 张三, 2022-04-17 00:07:50, 1, 252, 982f02f06cb1965acbabcdc03049768d, iaa15s2259ke9rgcv4v2ukjr8kz0nc768k8ld0uw4q, http://43.143.86.190/image/1775395409624039424.jpg, 2022-08-09 21:41:30, 44544793492893728493, 1, 1592161297795907584, ih50g53, null, 1, 2022-08-09 21:41:32
+2024-04-08 17:04:53,060 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] <==      Total: 1
+2024-04-08 17:04:53,064 INFO o.k.p.c.MySaTokenListener [http-nio-8080-exec-6] ---------- doLogin侦听器: user登录成功，tokenValue: a65a12bb-56aa-4bf4-aa49-32278d6c5fde
+2024-04-08 17:04:53,068 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] ==>  Preparing: UPDATE member SET lately_login_time=? WHERE (id = ?)
+2024-04-08 17:04:53,068 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] ==> Parameters: 2024-04-08 17:04:53.0(Timestamp), 159216107584(String)
+2024-04-08 17:04:53,145 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] <==    Updates: 1
+2024-04-08 17:04:53,146 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] ==>  Preparing: INSERT INTO login_log ( id, browser, ip_addr, msg, os, state, sub_system, user_name ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )
+2024-04-08 17:04:53,146 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] ==> Parameters: 1777261319502692352(String), Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0(String), 0:0:0:0:0:0:0:1(String), 登录成功(String), Unknown(String), 1(String), member(String), 13533333333(String)
+2024-04-08 17:04:53,221 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-6] <==    Updates: 1
+2024-04-08 17:05:05,470 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-8] [159216107584]:用户访问
+2024-04-08 17:05:05,504 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE id=?
+2024-04-08 17:05:05,504 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 159216107584(String)
+2024-04-08 17:05:05,537 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==    Columns: id, balance, deleted_flag, deleted_time, keep_login_duration, lately_login_time, login_pwd, mobile, nick_name, pay_pwd, real_name, registered_time, state, version, push_client_id, block_chain_addr, avatar, bind_real_name_time, identity_card, account_level, account_level_path, invite_code, inviter_id, bought_flag, sync_chain_time
+2024-04-08 17:05:05,537 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 159216107584, 11711.01, 0, null, 12, 2024-04-08 17:04:53, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 13533333333, 成功人士, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 张三, 2022-04-17 00:07:50, 1, 252, 982f02f06cb1965acbabcdc03049768d, iaa15s2259ke9rgcv4v2ukjr8kz0nc768k8ld0uw4q, http://43.143.86.190/image/1775395409624039424.jpg, 2022-08-09 21:41:30, 44544793492893728493, 1, 1592161297795907584, ih50g53, null, 1, 2022-08-09 21:41:32
+2024-04-08 17:05:05,537 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==      Total: 1
+2024-04-08 17:05:05,604 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: SELECT COUNT(*) AS total FROM login_log WHERE (user_name = ?)
+2024-04-08 17:05:05,604 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 13533333333(String)
+2024-04-08 17:05:05,652 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==    Columns: total
+2024-04-08 17:05:05,653 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 42
+2024-04-08 17:05:05,654 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==      Total: 1
+2024-04-08 17:05:05,654 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==>  Preparing: SELECT id,browser,ip_addr,login_time,msg,os,state,sub_system,user_name FROM login_log WHERE (user_name = ?) ORDER BY login_time DESC LIMIT ?
+2024-04-08 17:05:05,654 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] ==> Parameters: 13533333333(String), 10(Long)
+2024-04-08 17:05:05,719 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==    Columns: id, browser, ip_addr, login_time, msg, os, state, sub_system, user_name
+2024-04-08 17:05:05,719 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776531552994328576, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 wechatdevtools/1.06.2402040 MicroMessenger/8.0.5 Language/zh_CN webview/, 58.250.175.146, 2024-04-06 16:45:03, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776531090178048000, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 HBuilderX, 58.250.175.146, 2024-04-06 16:43:13, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776523710946082816, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36, 58.250.175.146, 2024-04-06 16:13:54, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776274804597325824, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 HBuilderX, 58.250.175.146, 2024-04-05 23:44:50, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776213943094607872, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 HBuilderX, 58.250.175.146, 2024-04-05 19:42:59, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776211609778126848, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 wechatdevtools/1.06.2402040 MicroMessenger/8.0.5 Language/zh_CN webview/, 58.250.175.146, 2024-04-05 19:33:43, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776147253300297728, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 HBuilderX, 58.250.175.146, 2024-04-05 15:17:59, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776147055241068544, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 HBuilderX, 58.250.175.146, 2024-04-05 15:17:12, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776146954925899776, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 HBuilderX, 58.250.175.146, 2024-04-05 15:16:48, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==        Row: 1776145433949634560, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36, 58.250.175.146, 2024-04-05 15:10:45, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:05,720 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-8] <==      Total: 10
+2024-04-08 17:05:14,903 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-9] [159216107584]:用户访问
+2024-04-08 17:05:14,938 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE id=?
+2024-04-08 17:05:14,938 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] ==> Parameters: 159216107584(String)
+2024-04-08 17:05:14,984 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==    Columns: id, balance, deleted_flag, deleted_time, keep_login_duration, lately_login_time, login_pwd, mobile, nick_name, pay_pwd, real_name, registered_time, state, version, push_client_id, block_chain_addr, avatar, bind_real_name_time, identity_card, account_level, account_level_path, invite_code, inviter_id, bought_flag, sync_chain_time
+2024-04-08 17:05:14,985 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==        Row: 159216107584, 11711.01, 0, null, 12, 2024-04-08 17:04:53, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 13533333333, 成功人士, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 张三, 2022-04-17 00:07:50, 1, 252, 982f02f06cb1965acbabcdc03049768d, iaa15s2259ke9rgcv4v2ukjr8kz0nc768k8ld0uw4q, http://43.143.86.190/image/1775395409624039424.jpg, 2022-08-09 21:41:30, 44544793492893728493, 1, 1592161297795907584, ih50g53, null, 1, 2022-08-09 21:41:32
+2024-04-08 17:05:14,987 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==      Total: 1
+2024-04-08 17:05:14,988 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] ==>  Preparing: SELECT COUNT(*) AS total FROM login_log WHERE (user_name = ?)
+2024-04-08 17:05:14,988 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] ==> Parameters: 13533333333(String)
+2024-04-08 17:05:15,037 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==    Columns: total
+2024-04-08 17:05:15,037 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==        Row: 42
+2024-04-08 17:05:15,038 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==      Total: 1
+2024-04-08 17:05:15,039 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] ==>  Preparing: SELECT id,browser,ip_addr,login_time,msg,os,state,sub_system,user_name FROM login_log WHERE (user_name = ?) ORDER BY login_time DESC LIMIT ?,?
+2024-04-08 17:05:15,039 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] ==> Parameters: 13533333333(String), 40(Long), 10(Long)
+2024-04-08 17:05:15,072 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==    Columns: id, browser, ip_addr, login_time, msg, os, state, sub_system, user_name
+2024-04-08 17:05:15,072 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==        Row: 1777260032786694144, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, 0:0:0:0:0:0:0:1, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:15,072 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==        Row: 1777261319502692352, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, 0:0:0:0:0:0:0:1, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:15,072 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-9] <==      Total: 2
+2024-04-08 17:05:26,275 INFO o.k.p.c.SaTokenConfigure [http-nio-8080-exec-10] [159216107584]:用户访问
+2024-04-08 17:05:26,304 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==>  Preparing: SELECT id,balance,deleted_flag,deleted_time,keep_login_duration,lately_login_time,login_pwd,mobile,nick_name,pay_pwd,real_name,registered_time,state,version,push_client_id,block_chain_addr,avatar,bind_real_name_time,identity_card,account_level,account_level_path,invite_code,inviter_id,bought_flag,sync_chain_time FROM member WHERE id=?
+2024-04-08 17:05:26,304 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==> Parameters: 159216107584(String)
+2024-04-08 17:05:26,353 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==    Columns: id, balance, deleted_flag, deleted_time, keep_login_duration, lately_login_time, login_pwd, mobile, nick_name, pay_pwd, real_name, registered_time, state, version, push_client_id, block_chain_addr, avatar, bind_real_name_time, identity_card, account_level, account_level_path, invite_code, inviter_id, bought_flag, sync_chain_time
+2024-04-08 17:05:26,354 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 159216107584, 11711.01, 0, null, 12, 2024-04-08 17:04:53, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 13533333333, 成功人士, a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3, 张三, 2022-04-17 00:07:50, 1, 252, 982f02f06cb1965acbabcdc03049768d, iaa15s2259ke9rgcv4v2ukjr8kz0nc768k8ld0uw4q, http://43.143.86.190/image/1775395409624039424.jpg, 2022-08-09 21:41:30, 44544793492893728493, 1, 1592161297795907584, ih50g53, null, 1, 2022-08-09 21:41:32
+2024-04-08 17:05:26,354 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==      Total: 1
+2024-04-08 17:05:26,354 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==>  Preparing: SELECT COUNT(*) AS total FROM login_log WHERE (user_name = ?)
+2024-04-08 17:05:26,354 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==> Parameters: 13533333333(String)
+2024-04-08 17:05:26,403 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==    Columns: total
+2024-04-08 17:05:26,403 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 42
+2024-04-08 17:05:26,403 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==      Total: 1
+2024-04-08 17:05:26,403 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==>  Preparing: SELECT id,browser,ip_addr,login_time,msg,os,state,sub_system,user_name FROM login_log WHERE (user_name = ?) ORDER BY login_time DESC LIMIT ?,?
+2024-04-08 17:05:26,403 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] ==> Parameters: 13533333333(String), 30(Long), 10(Long)
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==    Columns: id, browser, ip_addr, login_time, msg, os, state, sub_system, user_name
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1776849018677100544, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 HBuilderX, 58.250.175.146, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1776970025949724672, Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1 wechatdevtools/1.06.2402040 MicroMessenger/8.0.5 Language/zh_CN webview/, 58.250.175.146, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1777169116793143296, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, 223.73.207.169, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1777176246300442624, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36, 58.250.175.143, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1777205086351523840, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, 0:0:0:0:0:0:0:1, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1777231305499475968, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36, 58.250.175.143, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1777249184789823488, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, 0:0:0:0:0:0:0:1, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1777252738736848896, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36, 58.250.175.143, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1777257881498812416, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, 0:0:0:0:0:0:0:1, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 TRACE o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==        Row: 1777258552100913152, Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, 0:0:0:0:0:0:0:1, null, 登录成功, Unknown, 1, member, 13533333333
+2024-04-08 17:05:26,438 DEBUG o.a.i.l.j.BaseJdbcLogger [http-nio-8080-exec-10] <==      Total: 10
+2024-04-08 17:05:52,559 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-04-08 17:05:52,562 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

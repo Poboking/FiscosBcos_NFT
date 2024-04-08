@@ -174,6 +174,24 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
         }
         return entity.getNickName();
     }
+
+    /**
+     * 检查用户是否实名认证
+     *
+     * @param memberId 用户ID
+     * @return boolean
+     */
+    @Override
+    public boolean checkRealName(String memberId) {
+        if (CharSequenceUtil.isBlank(memberId)){
+            return false;
+        }
+        MemberEntity entity = memberMapper.selectOne(new QueryWrapper<MemberEntity>()
+                .eq("id", memberId)
+                .isNotNull("real_name")
+                .isNotNull("identity_card"));
+        return Optional.ofNullable(entity).isPresent();
+    }
 }
 
 

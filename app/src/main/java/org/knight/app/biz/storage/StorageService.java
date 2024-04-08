@@ -3,6 +3,7 @@ package org.knight.app.biz.storage;
 import lombok.AllArgsConstructor;
 import org.knight.app.biz.exception.storage.ImageTypeIllegalException;
 import org.knight.infrastructure.common.IdUtils;
+import org.knight.infrastructure.common.ImageUtil;
 import org.knight.infrastructure.dao.domain.StorageEntity;
 import org.knight.infrastructure.dao.domain.SystemSettingEntity;
 import org.knight.infrastructure.repository.impl.StorageRepositoryImpl;
@@ -48,7 +49,7 @@ public class StorageService {
         }
         String id = IdUtils.snowFlakeId();
         // TODO: 2024/3/18 临时写死存储路径
-        String localStoragePath = "D://TEMP_3_18_LocalStoragePath";
+        String localStoragePath = "D://TEMP_LocalStoragePath";
         SystemSettingEntity systemSetting = systemSettingRepository.getLatestByLatestUpdateTime();
         if (systemSetting != null) {
             localStoragePath = systemSetting.getLocalStoragePath();
@@ -80,6 +81,26 @@ public class StorageService {
         storage.setFileSize(fileSize);
         storage.setUploadTime(Timestamp.valueOf(LocalDateTime.now()));
         storageRepository.save(storage);
-        return "/image/" + id + fileName.substring(fileName.lastIndexOf("."));
+        return "/storage/image/" + id + fileName.substring(fileName.lastIndexOf("."));
+    }
+
+    public String getImage(String storageId) {
+        String localStoragePath = "D://TEMP_LocalStoragePath";
+        SystemSettingEntity systemSetting = systemSettingRepository.getLatestByLatestUpdateTime();
+        if (systemSetting != null) {
+            localStoragePath = systemSetting.getLocalStoragePath();
+        }
+        Path targetDirectory = Paths.get(localStoragePath);
+        //读取 storageId 对应的文件
+        Path targetFilePath = targetDirectory.resolve(storageId);
+        try {
+            if (Files.exists(targetFilePath)) {
+                //读取targetFilePath文件转换为byte[] 再转换为base64字符串返回
+                return ImageUtil.convertImageToBase64Str(targetFilePath.toString());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to read file " + storageId, e);
+        }
+        return "Badquest: image not found";
     }
 }

@@ -14,6 +14,7 @@ import org.knight.app.biz.artwork.mysteryBox.MysteryBoxService;
 import org.knight.app.biz.log.IssuedCollectionActLogService;
 import org.knight.app.biz.log.dto.collectionlog.IssuedCollectionActionLogRespDTO;
 import org.knight.infrastructure.common.PageResult;
+import org.knight.presentation.exception.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -105,8 +106,11 @@ public class CollectionController {
     @GetMapping("findCreatorById")
     @ValidationStatusCode(code = "400")
     public CreatorRespDTO findCreatorById(
-            @RequestParam(name = "id", required = true) String collectionId) {
-        return collectionService.getCreatorById(collectionId);
+            @RequestParam(name = "id", required = true) String createId) {
+        if (CharSequenceUtil.isBlank(createId)){
+            throw new BadRequestException("creatorId不能为空");
+        }
+        return collectionService.getCreatorById(createId);
     }
 
 

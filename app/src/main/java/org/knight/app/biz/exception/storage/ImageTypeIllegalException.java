@@ -7,7 +7,7 @@ import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
  * @author: poboking
  * @date: 2024/4/2 22:59
  */
-@ExceptionMapper(code = "400", msg = "Bad Request: Image Type Illegal")
+@ExceptionMapper(code = "400", msg = "Bad Request: Image Type Illegal(Only .jpg .jpeg .png)")
 public class ImageTypeIllegalException extends RuntimeException{
     public ImageTypeIllegalException(String message) {
         super(message);

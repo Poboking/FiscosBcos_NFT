@@ -1,11 +1,16 @@
 
-~	java:S125`"<This block of commented-out lines of code should be removed.(ôÅ°©8¯­û³ë1J$70a15893-40ad-4658-890c-e3c7feae2351
+
+java:S2259ã"GA "NullPointerException" could be thrown; "nftEntity" is nullable here.(‰±×›ıÿÿÿÿ8Íªåë1J$979a887c-25f2-4c2e-949f-8f682e9369db
+~	java:S125h"<This block of commented-out lines of code should be removed.(ôÅ°©8Şªåë1J$3ffa7c0a-c1cc-4246-ad9a-99bbac0366ac
 t
-java:S1602r",Remove useless curly braces around statement(øöêşÿÿÿÿ8²­û³ë1J$a720a4d2-d5c8-465a-a482-fd588463f926
-	java:S125¸"<This block of commented-out lines of code should be removed.(·äö¾8·­û³ë1J$77b5296d-ee83-4f3f-8d83-e08bc73dfcd1
+java:S1602z",Remove useless curly braces around statement(øöêşÿÿÿÿ8áªåë1J$6f74f2ac-271b-4ee8-9313-14e8e0e31b56
+–
+java:S6809«"MCall async methods via an injected dependency instead of directly via 'this'.(ÌÕÂ¤şÿÿÿÿ8èªåë1J$67e3af8b-1e5a-4d67-8071-0be58421a478
+„	java:S125¨"<This block of commented-out lines of code should be removed.(‡Ãòßûÿÿÿÿ8èªåë1J$241387d0-0277-453d-a6d0-d0c36084b4e8
+	java:S125Ì"<This block of commented-out lines of code should be removed.(·äö¾8íªåë1J$bb67f688-d524-4baf-b339-729a4d1c21aa
 p
-java:S1602‹",Remove useless curly braces around statement(À¨Ù¨8¿­û³ë1J$8f6bce1c-501b-4bfe-ae58-4ce8569b274f
+java:S1602Ÿ",Remove useless curly braces around statement(À¨Ù¨8÷ªåë1J$124ce6e8-0973-4312-92c1-88774a5c09ec
 p
-java:S1602„",Remove useless curly braces around statement(Ä±Ú€8Ì­û³ë1J$5b2959ef-e310-4b77-ac16-8231fe1a0f55
-
-java:S1128"9Remove this unused import 'cn.hutool.core.date.DateTime'.(»õ‰úÿÿÿÿ8Ò­û³ë1J$13284850-f69a-476d-9620-b08135247b2c
+java:S1602˜",Remove useless curly braces around statement(Ä±Ú€8ˆ«åë1J$04165fb2-849b-445f-a7c3-2ffc9f3acc85
+z
+java:S6810×"6Async methods should return 'void' or a 'Future' type.(ñâÅ—8«åë1J$3d77b602-d1eb-4ad6-80c8-e0825124f091

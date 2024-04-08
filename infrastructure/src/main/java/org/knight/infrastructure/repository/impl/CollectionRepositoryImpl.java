@@ -4,6 +4,7 @@ import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.knight.infrastructure.dao.domain.CollectionEntity;
@@ -43,9 +44,9 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     @Override
     public String getIdByName(String collectionName) {
         CollectionEntity collection = collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
-                .like(!CharSequenceUtil.isBlank(collectionName), "name", collectionName))
+                        .like(!CharSequenceUtil.isBlank(collectionName), "name", collectionName))
                 .stream().findFirst().orElse(null);
-        if (Objects.isNull(collection)){
+        if (Objects.isNull(collection)) {
             return null;
         }
         return collection.getId();
@@ -99,8 +100,9 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      */
     @Override
     public IPage<CollectionEntity> getPageListByCreatorId(long current, long pageSize, String creatorId) {
-        return collectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<CollectionEntity>().eq( "creator_id", creatorId));
+        return collectionMapper.selectPage(new Page<CollectionEntity>(current, pageSize),
+                new QueryWrapper<CollectionEntity>().
+                        eq("creator_id", creatorId));
     }
 
     /**
@@ -237,7 +239,7 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      */
     @Override
     public Integer getStock(String collectionId) {
-        if (CharSequenceUtil.isBlank(collectionId)){
+        if (CharSequenceUtil.isBlank(collectionId)) {
             return null;
         }
         return collectionMapper.selectById(collectionId).getStock();
@@ -252,7 +254,7 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     @Override
     public Integer getQuantityById(String collectionId) {
         CollectionEntity entity = collectionMapper.selectById(collectionId);
-        if (Objects.isNull(entity)){
+        if (Objects.isNull(entity)) {
             return null;
         }
         return entity.getQuantity();
@@ -266,11 +268,11 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      */
     @Override
     public Boolean checkExist(String collectionId) {
-        if (collectionId.isEmpty()){
+        if (collectionId.isEmpty()) {
             return false;
         }
         return collectionMapper.exists(new QueryWrapper<CollectionEntity>()
-                .eq("id",collectionId));
+                .eq("id", collectionId));
     }
 
     /**

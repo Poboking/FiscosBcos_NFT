@@ -87,4 +87,12 @@ public interface MemberRepository extends IService<MemberEntity> {
      * @return 用户昵称
      */
     String getNameByMemberId(String memberId);
+
+    /**
+     * 检查用户是否实名认证
+     *
+     * @param memberId 用户ID
+     * @return boolean
+     */
+    boolean checkRealName(String memberId);
 }

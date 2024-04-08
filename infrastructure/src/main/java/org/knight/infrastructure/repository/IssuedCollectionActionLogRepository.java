@@ -12,8 +12,19 @@ public interface IssuedCollectionActionLogRepository extends IService<IssuedColl
 
     /**
      * 检查藏品是否被锁定 - 用户购买
+     *
      * @param issuedCollectionId 发行藏品ID
      * @return boolean
      */
     boolean checkCollectionLock(String issuedCollectionId);
+
+    /**
+     * 锁定藏品 - 用户购买或转赠等
+     *
+     * @param desc               描述
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户ID
+     * @return boolean
+     */
+    Boolean lockCollection(String desc, String issuedCollectionId, String memberId);
 }

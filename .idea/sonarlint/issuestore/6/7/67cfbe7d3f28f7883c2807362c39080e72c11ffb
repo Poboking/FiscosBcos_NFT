@@ -1,0 +1,9 @@
+
+…
+java:S1488M"cImmediately return this expression instead of assigning it to the temporary variable "base64Image".(·ÚĞ…üÿÿÿÿ8¢ô¸æë1
+W
+java:S1118":Add a private constructor to hide the implicit public one.(Æë…8Æô¸æë1
+L
+java:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8Ìô¸æë1
+L
+java:S2093U"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ8Îô¸æë1
