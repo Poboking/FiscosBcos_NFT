@@ -12,12 +12,14 @@ import org.knight.app.biz.account.dto.member.MemberUpdateAvatarReqDTO;
 import org.knight.app.biz.account.dto.member.MemberUpdateNickNameReqDTO;
 import org.knight.app.biz.convert.account.MemberConvert;
 import org.knight.app.biz.exception.BizException;
+import org.knight.app.biz.exception.block.GainBlockAddressFailedException;
 import org.knight.app.biz.exception.member.CheckMobileExistException;
+import org.knight.app.biz.exception.member.MemberUpdateOrAddException;
 import org.knight.infrastructure.common.CipherTextUtil;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.NicknameUtils;
 import org.knight.infrastructure.dao.domain.MemberEntity;
-import org.knight.infrastructure.fisco.service.ChainService;
+import org.knight.infrastructure.fisco.service.biz.ChainService;
 import org.knight.infrastructure.repository.impl.MemberRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,12 +68,12 @@ public class MemberService {
         if (!memberRepository.bindReadName(reqDto.getRealName(), reqDto.getSsn(), reqDto.getMobile(), memberId)) {
             throw new BizException(memberId + ": bindReadName fail as a result of db update fail");
         }
-        String blockAddress = chainService.getBlockRandomAddress();
-        if (blockAddress == null || blockAddress.isEmpty()) {
-            throw new BizException(memberId + ": bindReadName fail as a result of blockAddress is null");
+        String blockAddress = chainService.initRealNameUser();
+        if (CharSequenceUtil.isBlank(blockAddress)) {
+            throw new GainBlockAddressFailedException(memberId + ": bindReadName fail as a result of blockAddress is null");
         }
         if (!memberRepository.updateBlockChainAddr(blockAddress, memberId)) {
-            throw new BizException(memberId + ": bindReadName fail as a result of db update fail");
+            throw new MemberUpdateOrAddException(memberId + ": bindReadName fail as a result of db update fail");
         }
         return true;
     }

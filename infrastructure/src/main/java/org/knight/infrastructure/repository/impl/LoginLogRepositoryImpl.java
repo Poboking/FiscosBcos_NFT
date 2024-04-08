@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -9,8 +10,6 @@ import org.knight.infrastructure.dao.mapper.LoginLogMapper;
 import org.knight.infrastructure.repository.LoginLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @author poboking
@@ -52,7 +51,7 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
     public IPage<LoginLogEntity> getPageListById(long current, long pageSize, String id) {
         return loginLogMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<LoginLogEntity>()
-                        .eq(Optional.ofNullable(id).isPresent(), "id", id));
+                        .eq(!CharSequenceUtil.isBlank(id), "id", id));
     }
 
     /**
@@ -67,7 +66,7 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
     public IPage<LoginLogEntity> getLoginLogByMoblie(long current, long pageSize, String userName) {
         return loginLogMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<LoginLogEntity>()
-                        .eq(Optional.ofNullable(userName).isPresent(), "user_name", userName)
+                        .eq(!CharSequenceUtil.isBlank(userName), "user_name", userName)
                         .orderByAsc("login_time"));
     }
 
@@ -91,7 +90,7 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
     @Override
     public boolean deleteLoginLogByUserName(String userName) {
         return remove(new QueryWrapper<LoginLogEntity>()
-                .eq(Optional.ofNullable(userName).isPresent(), "user_name", userName));
+                .eq(!CharSequenceUtil.isBlank(userName), "user_name", userName));
     }
 
     /**
@@ -103,7 +102,7 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
     @Override
     public boolean updateLoginLogByUserName(LoginLogEntity loginLogEntity) {
         return update(loginLogEntity, new QueryWrapper<LoginLogEntity>()
-                .eq(Optional.ofNullable(loginLogEntity.getUserName()).isPresent(),
+                .eq(!CharSequenceUtil.isBlank(loginLogEntity.getUserName()),
                         "user_name", loginLogEntity.getUserName()));
     }
 
@@ -116,7 +115,7 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
     @Override
     public boolean updateLoginLogById(LoginLogEntity loginLogEntity) {
         return update(loginLogEntity, new QueryWrapper<LoginLogEntity>()
-                .eq(Optional.ofNullable(loginLogEntity.getId()).isPresent(),
+                .eq(!CharSequenceUtil.isBlank(loginLogEntity.getUserName()),
                         "id", loginLogEntity.getId()));
     }
 }

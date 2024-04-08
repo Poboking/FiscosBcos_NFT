@@ -1,5 +1,6 @@
 package org.knight.presentation.member;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -55,7 +56,7 @@ public class CollectionController {
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             @RequestParam(name = "creatorId", required = false) String creatorId) {
-        if (creatorId == null) {
+        if (CharSequenceUtil.isBlank(creatorId)) {
             return collectionService.getIntroPageList(current, pageSize);
         }
         return collectionService.getIntroPageListByCreatorId(current, pageSize, creatorId);
@@ -117,7 +118,7 @@ public class CollectionController {
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             @RequestParam(name = "creatorId", required = false) String creatorId) {
-        if (creatorId == null) {
+        if (CharSequenceUtil.isBlank(creatorId)) {
             return mysteryBoxService.getPageList(current, pageSize);
         }
         return mysteryBoxService.getPageListByCreatorId(current, pageSize, creatorId);

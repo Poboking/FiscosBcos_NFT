@@ -1,7 +1,3 @@
 
 Š
-java:S1192<"GDefine a constant instead of duplicating this literal "result" 5 times.(§±æ8ÔÉû±ç1J$afa46f61-d61b-442c-9ca8-f905c49f8453
-Š
-java:S1126Y"BReplace this if-then-else statement by a single method invocation.(şƒƒæúÿÿÿÿ8‹§­²ç1J$c7ba22fa-1601-44d0-a98a-a0fa652067e0
-Œ
-java:S1128"DRemove this unused import 'io.swagger.v3.oas.annotations.Operation'.(şÏæšşÿÿÿÿ8‚¯õØç1J$e8ed56e3-8980-40c6-81fa-4f287015474f
+java:S1126X"BReplace this if-then-else statement by a single method invocation.(şƒƒæúÿÿÿÿ8‹§­²ç1J$c7ba22fa-1601-44d0-a98a-a0fa652067e0

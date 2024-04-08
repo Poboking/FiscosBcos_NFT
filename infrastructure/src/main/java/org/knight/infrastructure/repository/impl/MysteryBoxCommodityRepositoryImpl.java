@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -9,8 +10,6 @@ import org.knight.infrastructure.dao.mapper.MysteryBoxCommodityMapper;
 import org.knight.infrastructure.repository.MysteryBoxCommodityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @author poboking
@@ -95,7 +94,7 @@ public class MysteryBoxCommodityRepositoryImpl extends ServiceImpl<MysteryBoxCom
     public IPage<MysteryBoxCommodityEntity> getPriceOrderDescPageListByCollectionId(long current, long pageSize, String collectionId) {
         return mysteryBoxCommodityMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<MysteryBoxCommodityEntity>()
-                        .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
+                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
                         .orderByDesc("price"));
     }
 
@@ -112,8 +111,8 @@ public class MysteryBoxCommodityRepositoryImpl extends ServiceImpl<MysteryBoxCom
     public IPage<MysteryBoxCommodityEntity> getPriceOrderDescPageListByCreatorIdAndCollectionId(long current, long pageSize, String creatorId, String collectionId) {
         return mysteryBoxCommodityMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<MysteryBoxCommodityEntity>()
-                        .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
-                        .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
+                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
                         .orderByDesc("price"));
     }
 
@@ -142,7 +141,7 @@ public class MysteryBoxCommodityRepositoryImpl extends ServiceImpl<MysteryBoxCom
     public IPage<MysteryBoxCommodityEntity> getPriceOrderAscPageListByCreatorId(long current, long pageSize, String creatorId) {
         return mysteryBoxCommodityMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<MysteryBoxCommodityEntity>()
-                        .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
+                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
                         .orderByAsc("price"));
     }
 
@@ -158,7 +157,7 @@ public class MysteryBoxCommodityRepositoryImpl extends ServiceImpl<MysteryBoxCom
     public IPage<MysteryBoxCommodityEntity> getPriceOrderAscPageListByCollectionId(long current, long pageSize, String collectionId) {
         return mysteryBoxCommodityMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<MysteryBoxCommodityEntity>()
-                        .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
+                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
                         .orderByAsc("price"));
     }
 
@@ -175,8 +174,8 @@ public class MysteryBoxCommodityRepositoryImpl extends ServiceImpl<MysteryBoxCom
     public IPage<MysteryBoxCommodityEntity> getPriceOrderAscPageListByCreatorIdAndCollectionId(long current, long pageSize, String creatorId, String collectionId) {
         return mysteryBoxCommodityMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<MysteryBoxCommodityEntity>()
-                        .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
-                        .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
+                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
                         .orderByAsc("price"));
     }
 

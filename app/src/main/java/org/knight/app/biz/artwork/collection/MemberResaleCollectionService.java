@@ -70,6 +70,7 @@ public class MemberResaleCollectionService {
         List<CollectionResaleRespDTO> resultList = new ArrayList<>();
         List<String> Ids = collectionRepository.getIdsByCommodityType(reqDto.getCommodityType());
         if (reqDto.isOrderDesc()) {
+
             IPage<MemberResaleCollectionEntity> entityIPage = memberResaleCollectionRepository.getPriceOrderDescPageListByParam(
                     reqDto.getCurrent(), reqDto.getPageSize(), reqDto.getCreatorId(), reqDto.getCollectionId(), NftConstants.持有藏品状态_转售中, Ids);
             entityIPage.getRecords().forEach(bean -> {
@@ -80,7 +81,9 @@ public class MemberResaleCollectionService {
                 resultList.add(resultBean);
             });
             return PageResult.convertFor(entityIPage, reqDto.getPageSize(), resultList);
+
         } else {
+
             IPage<MemberResaleCollectionEntity> entityIPage = memberResaleCollectionRepository.getPriceOrderAscPageListByParam(
                     reqDto.getCurrent(), reqDto.getPageSize(), reqDto.getCreatorId(), reqDto.getCollectionId(), NftConstants.持有藏品状态_转售中, Ids);
             entityIPage.getRecords().forEach(bean -> {
@@ -92,6 +95,7 @@ public class MemberResaleCollectionService {
             });
             return PageResult.convertFor(entityIPage, reqDto.getPageSize(), resultList);
         }
+
     }
 
     public PageResult<MyResaleCollectionRespDTO> getMyResaleCollectionPageList(long current, long pageSize, String memberId) {
@@ -120,6 +124,12 @@ public class MemberResaleCollectionService {
                     e.setCover(c.getCover());
                 }
             });
+            if (CharSequenceUtil.isBlank(e.getName())){
+                e.setName("DataError: Unknown Collection Name");
+            }
+            if (CharSequenceUtil.isBlank(e.getCover())){
+                e.setCover("DataError: Unknown Collection Cover");
+            }
         });
         return PageResult.convertFor(pageSoldEntity, pageSize, MySaleCollectionConvert.INSTANCE.convertToRespDTO(records));
     }

@@ -1,33 +1,33 @@
 
 J
-java:S3740>"/Provide the parametrized type for this generic.(ÀÖ¥ñıÿÿÿÿ
+java:S3740;"/Provide the parametrized type for this generic.(ÀÖ¥ñıÿÿÿÿ
 J
-java:S3740h"/Provide the parametrized type for this generic.(ì“Íÿÿÿÿÿ
+java:S3740e"/Provide the parametrized type for this generic.(ì“Íÿÿÿÿÿ
 J
-java:S3740v"/Provide the parametrized type for this generic.(ì“Íÿÿÿÿÿ
+java:S3740s"/Provide the parametrized type for this generic.(ì“Íÿÿÿÿÿ
 o
-java:S2293?"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŠÂí’
+java:S2293<"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŠÂí’
 t
-java:S2293i"YReplace the type specification in this constructor call with the diamond operator ("<>").(üşíøÿÿÿÿÿ
+java:S2293f"YReplace the type specification in this constructor call with the diamond operator ("<>").(üşíøÿÿÿÿÿ
 t
-java:S2293w"YReplace the type specification in this constructor call with the diamond operator ("<>").(©³®şÿÿÿÿ
+java:S2293t"YReplace the type specification in this constructor call with the diamond operator ("<>").(©³®şÿÿÿÿ
 t
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¬©ı—úÿÿÿÿ
-e	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÍŞ"
-e	java:S117E"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÍŞ"
-k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Ùó—ûÿÿÿÿ
-k	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Ùó—ûÿÿÿÿ
-k	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùúø×ÿÿÿÿÿ
-k	java:S117Y"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùúø×ÿÿÿÿÿ
+java:S2293|"YReplace the type specification in this constructor call with the diamond operator ("<>").(¬©ı—úÿÿÿÿ
+e	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÍŞ"
+e	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªÍŞ"
+k	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Ùó—ûÿÿÿÿ
+k	java:S117L"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿Ùó—ûÿÿÿÿ
+k	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùúø×ÿÿÿÿÿ
+k	java:S117V"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùúø×ÿÿÿÿÿ
 k
-java:S1104œ"OMake log a static final constant or non-public and provide accessors if needed.(İœ¸âûÿÿÿÿ
+java:S1104™"OMake log a static final constant or non-public and provide accessors if needed.(İœ¸âûÿÿÿÿ
 m
-java:S1104"QMake count a static final constant or non-public and provide accessors if needed.(ğÉ±¤ùÿÿÿÿ
+java:S1104›"QMake count a static final constant or non-public and provide accessors if needed.(ğÉ±¤ùÿÿÿÿ
 8
-java:S2386"Make this member "protected".(í‹¤ùÿÿÿÿ
+java:S2386"Make this member "protected".(í‹¤ùÿÿÿÿ
 3
-java:S2386""Make this member "protected".(ç«—Ì
+java:S2386"Make this member "protected".(ç«—Ì
 3
-java:S2386&"Make this member "protected".(Ì³¤ğ
+java:S2386#"Make this member "protected".(Ì³¤ğ
 7
-java:S11160"Remove this empty statement.(Åñ­õşÿÿÿÿ
+java:S1116-"Remove this empty statement.(Åñ­õşÿÿÿÿ

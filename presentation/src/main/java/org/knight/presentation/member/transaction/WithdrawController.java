@@ -1,5 +1,6 @@
 package org.knight.presentation.member.transaction;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
@@ -52,10 +53,11 @@ public class WithdrawController {
             @RequestParam(name = "state", required = false) String state,
             @RequestParam(name = "settlementAccountType", required = false) String settlementAccountType) {
 
-        Page<WithdrawRecordEntity> page = withdrawRepository.page(new Page<>(current, pageSize), new QueryWrapper<WithdrawRecordEntity>()
+        Page<WithdrawRecordEntity> page = withdrawRepository.page(new Page<>(current, pageSize),
+                new QueryWrapper<WithdrawRecordEntity>()
                 .eq("member_id", StpUserUtil.getLoginIdAsString())
-                .eq(Optional.ofNullable(state).isPresent(), "state", state)
-                .eq(Optional.ofNullable(settlementAccountType).isPresent(), "settlement_account_type", settlementAccountType));
+                .eq(!CharSequenceUtil.isBlank(state), "state", state)
+                .eq(!CharSequenceUtil.isBlank(settlementAccountType), "settlement_account_type", settlementAccountType));
 
         List<WithdrawRespDTO> resultList = new ArrayList<>();
         page.getRecords().forEach(item -> {

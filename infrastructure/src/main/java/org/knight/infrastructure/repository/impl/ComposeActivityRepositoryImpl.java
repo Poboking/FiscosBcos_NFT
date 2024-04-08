@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.knight.infrastructure.dao.domain.ComposeActivityEntity;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author poboking
@@ -53,7 +53,7 @@ public class ComposeActivityRepositoryImpl extends ServiceImpl<ComposeActivityMa
     @Override
     public ComposeActivityEntity getComposeActivityByTitle(String title) {
         return composeActivityMapper.selectOne(new QueryWrapper<ComposeActivityEntity>()
-                .eq(Optional.ofNullable(title).isPresent(), "title", title));
+                .eq(!CharSequenceUtil.isBlank(title), "title", title));
     }
 }
 

@@ -1,0 +1,15 @@
+
+€
+java:S1854("=Remove this useless assignment to local variable "publicKey".(¿ƒ‹ä8–Æ¦òé1J$15f644a6-253c-4c0c-bd5a-7a4b24ef5f3e
+q
+java:S1481(".Remove this unused "publicKey" local variable.(¿ƒ‹ä8—Æ¦òé1J$6b4e7f19-2763-4911-a110-be152a0de130
+m	java:S106."+Replace this use of System.err by a logger.(È‰í‚8™Æ¦òé1J$d9debef1-6527-48f4-a592-552782834c26
+m	java:S1064"+Replace this use of System.err by a logger.(È‰í‚8šÆ¦òé1J$f6e9a6d2-1740-4704-b10d-3eb18ab05708
+r	java:S106:"+Replace this use of System.err by a logger.(ÁÀşõùÿÿÿÿ8›Æ¦òé1J$8493ed47-4483-4d3c-ad52-818c84ab9d31
+r	java:S106@"+Replace this use of System.err by a logger.(á‡šüÿÿÿÿ8›Æ¦òé1J$c77292b7-a606-45ad-aa9e-5691f228b295
+r	java:S106E"+Replace this use of System.err by a logger.(ÁÀşõùÿÿÿÿ8œÆ¦òé1J$66907d8b-f37c-451d-bdc4-24c8341d7cc6
+İ
+java:S1130H"™Remove the declaration of thrown exception 'org.fisco.bcos.sdk.transaction.model.exception.ContractException', as it cannot be thrown from method's body.(ë§³8Æ¦òé1J$6aadef42-196b-4bcb-9659-8a13781feb5f
+m	java:S106M"+Replace this use of System.err by a logger.(í•8Æ¦òé1J$f6a6451a-ac5f-4ca8-b92a-1c6c914d78a8
+s
+java:S1068"+Remove this unused "bcosSDK" private field.(ÓÈ‰»ÿÿÿÿÿ8Æ¦òé1J$0a72912f-df3e-4c47-adc5-34b31685ead3

@@ -42,8 +42,9 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      */
     @Override
     public String getIdByName(String collectionName) {
-        CollectionEntity collection = collectionMapper.selectOne(new QueryWrapper<CollectionEntity>()
-                .like(Optional.ofNullable(collectionName).isPresent(), "name", collectionName));
+        CollectionEntity collection = collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
+                .like(!CharSequenceUtil.isBlank(collectionName), "name", collectionName))
+                .stream().findFirst().orElse(null);
         if (Objects.isNull(collection)){
             return null;
         }
@@ -74,8 +75,7 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     @Override
     public IPage<CollectionEntity> getPageListByName(long current, long pageSize, String name) {
         return collectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<CollectionEntity>()
-                        .like(Optional.ofNullable(name).isPresent(), "name", name));
+                new QueryWrapper<CollectionEntity>().like(!CharSequenceUtil.isBlank(name), "name", name));
     }
 
     /**
@@ -100,8 +100,7 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     @Override
     public IPage<CollectionEntity> getPageListByCreatorId(long current, long pageSize, String creatorId) {
         return collectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<CollectionEntity>()
-                        .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId));
+                new QueryWrapper<CollectionEntity>().eq( "creator_id", creatorId));
     }
 
     /**
@@ -116,7 +115,7 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     public IPage<CollectionEntity> getPageListByCommodityType(long current, long pageSize, String commodityType) {
         return collectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<CollectionEntity>()
-                        .eq(Optional.ofNullable(commodityType).isPresent(), "commodity_type", commodityType));
+                        .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
     }
 
     /**
@@ -145,8 +144,8 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     public IPage<CollectionEntity> getPageListByCreatorIdAndCommodityType(long current, long pageSize, String creatorId, String commodityType) {
         return collectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<CollectionEntity>()
-                        .eq(Optional.ofNullable(creatorId).isPresent(), "creator_id", creatorId)
-                        .eq(Optional.ofNullable(commodityType).isPresent(), "commodity_type", commodityType));
+                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                        .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
     }
 
     /**
@@ -162,8 +161,8 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
     public IPage<CollectionEntity> getPageListByNameAndCommodityType(long current, long pageSize, String name, String commodityType) {
         return collectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<CollectionEntity>()
-                        .like(Optional.ofNullable(name).isPresent(), "name", name)
-                        .eq(Optional.ofNullable(commodityType).isPresent(), "commodity_type", commodityType));
+                        .like(!CharSequenceUtil.isBlank(name), "name", name)
+                        .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
     }
 
     /**
@@ -242,6 +241,21 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
             return null;
         }
         return collectionMapper.selectById(collectionId).getStock();
+    }
+
+    /**
+     * 获取指定ID藏品的数量 - 根据藏品ID
+     *
+     * @param collectionId 藏品ID
+     * @return Integer 藏品发行数量
+     */
+    @Override
+    public Integer getQuantityById(String collectionId) {
+        CollectionEntity entity = collectionMapper.selectById(collectionId);
+        if (Objects.isNull(entity)){
+            return null;
+        }
+        return entity.getQuantity();
     }
 
     /**

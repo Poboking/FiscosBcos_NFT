@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -9,8 +10,6 @@ import org.knight.infrastructure.dao.mapper.NoticeMapper;
 import org.knight.infrastructure.repository.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 /**
  * @author poboking
@@ -47,7 +46,7 @@ public class NoticeRepositoryImpl extends ServiceImpl<NoticeMapper, NoticeEntity
     @Override
     public IPage<NoticeEntity> getPageListByTitle(long current, long pageSize, String title) {
         return noticeMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<NoticeEntity>()
-                .eq(Optional.ofNullable(title).isPresent(), "title", title));
+                .eq(!CharSequenceUtil.isBlank(title), "title", title));
     }
 
     /**
@@ -61,7 +60,7 @@ public class NoticeRepositoryImpl extends ServiceImpl<NoticeMapper, NoticeEntity
     @Override
     public IPage<NoticeEntity> getPageListByType(long current, long pageSize, String type) {
         return noticeMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<NoticeEntity>()
-                .eq(Optional.ofNullable(type).isPresent(), "type", type));
+                .eq(!CharSequenceUtil.isBlank(type), "type", type));
     }
 
     /**
@@ -73,7 +72,7 @@ public class NoticeRepositoryImpl extends ServiceImpl<NoticeMapper, NoticeEntity
     @Override
     public NoticeEntity getNoticeDetail(String noticeId) {
         return noticeMapper.selectOne(new QueryWrapper<NoticeEntity>()
-                .eq(Optional.ofNullable(noticeId).isPresent(), "id", noticeId));
+                .eq(!CharSequenceUtil.isBlank(noticeId), "id", noticeId));
     }
 }
 

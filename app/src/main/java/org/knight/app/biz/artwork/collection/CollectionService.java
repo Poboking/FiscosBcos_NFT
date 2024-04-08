@@ -63,7 +63,11 @@ public class CollectionService {
 
 
     public CreatorRespDTO getCreatorById(String creatorId) {
-        return CreatorConvert.INSTANCE.convertToRespDTO(creatorRepository.getById(creatorId));
+        CreatorEntity creator = creatorRepository.getById(creatorId);
+        if (Objects.isNull(creator)){
+            return null;
+        }
+        return CreatorConvert.INSTANCE.convertToRespDTO(creator);
     }
 
     public PageResult<CollectionEntity> getPageListByCreatorId(long current, long pageSize, String creatorId) {
@@ -86,13 +90,13 @@ public class CollectionService {
     }
 
     public PageResult<CollectionIntroRespDTO> getIntroPageListByCreatorId(long current, long pageSize, String creatorId) {
+        CreatorRespDTO creator = getCreatorById(creatorId);
+        if (creator == null) {
+            return new PageResult<>();
+        }
         IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCreatorId(current, pageSize, creatorId);
         List<CollectionIntroRespDTO> resultList = new ArrayList<>();
         pageEntity.getRecords().forEach(bean -> {
-            CreatorRespDTO creator = getCreatorById(creatorId);
-            if (creator == null) {
-                return;
-            }
             bean.setCreatorName(creator.getName());
             bean.setCreatorAvatar(creator.getAvatar());
             resultList.add(CollectionConvert.INSTANCE.convertToIntroRespDTO(bean));

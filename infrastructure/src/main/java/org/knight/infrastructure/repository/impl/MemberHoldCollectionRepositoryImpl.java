@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,7 +44,7 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
     }
 
     /**
-     * 分页查询
+     * 分页查询 - 根据用户id
      *
      * @param current  当前页
      * @param pageSize 每页大小
@@ -54,6 +55,23 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
     public IPage<MemberHoldCollectionEntity> getPageListByMemberId(long current, long pageSize, String memberId) {
         return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize),
                 new QueryWrapper<MemberHoldCollectionEntity>().eq("member_id", memberId));
+    }
+
+    /**
+     * 分页查询 - 根据用户id和作品id
+     *
+     * @param current        当前页
+     * @param pageSize       每页大小
+     * @param collectionIds 作品id
+     * @param memberId       用户id
+     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     */
+    @Override
+    public IPage<MemberHoldCollectionEntity> getPageListByIdsAndMemberId(long current, long pageSize, List<String> collectionIds, String memberId) {
+        return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<MemberHoldCollectionEntity>()
+                .eq("member_id", memberId)
+                .in("collection_id", collectionIds)
+                .orderByDesc("hold_time"));
     }
 
     /**

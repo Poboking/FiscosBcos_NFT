@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -53,13 +54,13 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @param status   订单状态
+     * @param state   订单状态
      * @return 分页列表
      */
     @Override
-    public IPage<PayOrderEntity> getPayOrderPageList(long current, long pageSize, String status) {
+    public IPage<PayOrderEntity> getPayOrderPageList(long current, long pageSize, String state) {
         return payOrderMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<PayOrderEntity>()
-                .eq(Optional.ofNullable(status).isPresent(), "status", status)
+                .eq(!CharSequenceUtil.isBlank(state), "state", state)
                 .orderByDesc("create_time"));
     }
 
@@ -73,7 +74,7 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
     @Override
     public IPage<PayOrderEntity> getPayOrderPageListByMemberId(long current, long pageSize, String memberId) {
         return payOrderMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<PayOrderEntity>()
-                .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
+                .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
                 .orderByDesc("create_time"));
     }
 
@@ -88,8 +89,8 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
     @Override
     public IPage<PayOrderEntity> getPayOrderPageListByMemberIdAndStatus(long current, long pageSize, String memberId, String status) {
         return payOrderMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<PayOrderEntity>()
-                .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
-                .eq(Optional.ofNullable(status).isPresent(), "state", status)
+                .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
+                .eq(!CharSequenceUtil.isBlank(memberId), "state", status)
                 .orderByDesc("create_time"));
     }
 
@@ -158,14 +159,27 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
      */
     @Override
     public Double getSuccessAmountByDate(String bizMode, String date) {
-        return payOrderMapper.selectList(new QueryWrapper<PayOrderEntity>()
-                        .eq("biz_mode", bizMode)
-                        .eq("state", NftConstants.支付订单状态_已付款)
-                        .like(Optional.ofNullable(date).isPresent(), "paid_time", date))
-                .stream()
-                .map(PayOrderEntity::getAmount)
-                .reduce(Double::sum)
-                .orElse(0.0);
+//        return payOrderMapper.selectList(new QueryWrapper<PayOrderEntity>()
+//                        .eq("biz_mode", bizMode)
+//                        .eq("state", NftConstants.支付订单状态_已付款)
+//                        .like(Optional.ofNullable(date).isPresent(), "paid_time", date))
+//                .stream()
+//                .map(PayOrderEntity::getAmount)
+//                .reduce(Double::sum)
+//                .orElse(0.0);
+        QueryWrapper<PayOrderEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("biz_mode", bizMode)
+                .eq("state", NftConstants.支付订单状态_已付款);
+        // 如果日期参数不为空，则添加日期条件
+        if (date != null && !date.isEmpty()) {
+            queryWrapper.apply("DATE_FORMAT(paid_time, '%Y-%m-%d') LIKE {0}", date + "%");
+            //queryWrapper.apply("DATE_FORMAT(paid_time, '%Y-%m-%d') = DATE_FORMAT({0}, '%Y-%m-%d')", date);
+        }
+        List<PayOrderEntity> orderList = payOrderMapper.selectList(queryWrapper);
+        // 计算成功交易总额
+        return orderList.stream()
+                .mapToDouble(PayOrderEntity::getAmount)
+                .sum();
     }
 
     /**

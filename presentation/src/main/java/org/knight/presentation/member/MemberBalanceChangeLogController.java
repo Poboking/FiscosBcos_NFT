@@ -40,7 +40,7 @@ public class MemberBalanceChangeLogController {
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             @RequestParam(name = "changeType", required = false) String changeType) {
-        String memberId = StpUserUtil.getLoginId("-1");
+        String memberId = StpUserUtil.getLoginIdAsString();
         return memberBCLogService.getMemberBCLog(current, pageSize, changeType, memberId);
     }
 

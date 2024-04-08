@@ -1,7 +1,7 @@
 
 d
-java:S1116("Remove this empty statement.(ë“Ìüÿÿÿÿÿ8ìúùé1J$79548343-5171-4002-8071-22c90d835581
-o
-java:S1602)",Remove useless curly braces around statement(„è½•8îúùé1J$4f0d74ec-f4fe-43c5-a20e-92e32ad461c9
+java:S1116)"Remove this empty statement.(ë“Ìüÿÿÿÿÿ8ìúùé1J$276b7a63-6a22-49fe-b042-d5a059a274c9
 •
-java:S6204S"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(İ·˜à8ùúùé1J$6c76402a-48f2-4e0f-85ed-fa1c44aff893
+java:S6204R"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(İ·˜à8ùúùé1J$40e02ef0-0a49-4c78-8f44-d05723e868a0
+w
+java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8Ù’³Ÿë1J$97f01661-ac2f-4166-a720-2af8f375238a

@@ -71,13 +71,16 @@ public class MemberController {
     @ValidationStatusCode(code = "400")
     public void bindRealName(@RequestBody MemberBindRealNameReqDTO reqDto) {
         String loginId = StpUserUtil.getLoginIdAsString();
+        if (CharSequenceUtil.isBlank(reqDto.getRealName()) || CharSequenceUtil.isBlank(reqDto.getSsn()) || CharSequenceUtil.isBlank(reqDto.getMobile())){
+            throw new BadRequestException("bindRealName failed as a result of parameter is null or blank");
+        }
         if (Boolean.FALSE.equals(loginId.equals(memberService.getIdByMobile(reqDto.getMobile())))) {
             throw new BadRequestException("bindRealName fail as a result of mobile is not match");
         }
-        if (Boolean.FALSE.equals(CharSequenceUtil.isBlank(reqDto.getRealName())) && memberService.bindReadName(reqDto, loginId)) {
-            log.info(CharSequenceUtil.format("{}: bindRealName success", reqDto.getMobile()));
+        if (memberService.bindReadName(reqDto, loginId)) {
+            log.info(CharSequenceUtil.format("[{}][{}]: bindRealName success",loginId, reqDto.getMobile()));
         } else {
-            log.info(CharSequenceUtil.format("{}: bindRealName fail", reqDto.getMobile()));
+            log.info(CharSequenceUtil.format("[{}][{}]: bindRealName fail",loginId, reqDto.getMobile()));
             throw new InternalServerErrorException("bindRealName fail");
         }
     }

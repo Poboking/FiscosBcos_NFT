@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author poboking
@@ -49,7 +49,7 @@ public class DictItemRepositoryImpl extends ServiceImpl<DictItemMapper, DictItem
     public IPage<DictItemEntity> getPageListByDictTypeCode(long current, long pageSize, String dictTypeCode) {
         return dictItemMapper.selectPage(new com.baomidou.mybatisplus.extension.plugins.pagination.Page<>(current, pageSize)
                 , new QueryWrapper<DictItemEntity>()
-                        .eq(Optional.ofNullable(dictTypeCode).isPresent(), "dict_type_code", dictTypeCode));
+                        .eq(!CharSequenceUtil.isBlank(dictTypeCode), "dict_type_code", dictTypeCode));
     }
 
     /**
@@ -61,7 +61,7 @@ public class DictItemRepositoryImpl extends ServiceImpl<DictItemMapper, DictItem
     @Override
     public List<DictItemEntity> getListByDictTypeId(String dictTypeId) {
         return dictItemMapper.selectList(new QueryWrapper<DictItemEntity>()
-                .eq(Optional.ofNullable(dictTypeId).isPresent(), "dict_type_id", dictTypeId));
+                .eq(!CharSequenceUtil.isBlank(dictTypeId), "dict_type_id", dictTypeId));
     }
 }
 

@@ -149,6 +149,7 @@ public interface CollectionRepository extends IService<CollectionEntity> {
      * @return boolean 是否减少成功
      */
     Boolean reduceStock(String collectionId);
+
     /**
      * 减少库存
      *
@@ -166,4 +167,11 @@ public interface CollectionRepository extends IService<CollectionEntity> {
      */
     Integer getStock(String collectionId);
 
+    /**
+     * 获取指定ID藏品的数量 - 根据藏品ID
+     *
+     * @param collectionId 藏品ID
+     * @return Integer 藏品发行数量
+     */
+    Integer getQuantityById(String collectionId);
 }

@@ -7,7 +7,7 @@ import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
  * @author: poboking
  * @date: 2024/4/5 16:43
  */
-@ExceptionMapper(code = "400", msg = "Issued Collection Not Found")
+@ExceptionMapper(code = "400", msg = "IssuedCollection Not Found")
 public class IssuedCollectionNotFoundException extends RuntimeException{
     public IssuedCollectionNotFoundException(String message) {
         super(message);

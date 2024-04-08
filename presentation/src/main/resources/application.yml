@@ -3,6 +3,10 @@ server:
   port: 8080
   max-http-header-size: 10MB
 
+############ Tomcat设置  ############
+  tomcat:
+    connection-timeout: 60000
+
 ############ Mapper设置  ############
 #下面这些内容是为了让MyBatis映射
 #指定Mybatis的Mapper文件
@@ -52,10 +56,10 @@ fisco:
   certPath: conf
   deployPublicKey: 2136414ec16e49a82adf646e7b7d6a150602b0d3887aa905bdd4430fecfa71014c9f3e49548260baf2b58b1f8dea79663be416caac017983971d7d6f50705f4d
   deployPrivateKey: 1ffd8dd75f2278dfd9171ac5194720ec9a1a1f76b661d5e37ce5bcabfdf26975
-  ownableContractAddress: 0xef6fae3b7b82a950c048e3d40ed0bbaa76445b8e
-  utilsContractAddress: 0xf49a08ce951c91d646f64906815df655ada5a433
-  bcosUserContractAddress: 0xfadd46d5b4907ebe2d8940de3340478a14736d54
-  bcosNFTContractAddress: 0xd8991cad446de38c6a97b8c9f4572255aa61b6b9
+  ownableContractAddress: 0xafa6cc537ee2b13c9fd81b6a344aeed54f7ed935
+  utilsContractAddress: 0x7ff0c577d7c5767630d5022cf872518b86022bab
+  bcosUserContractAddress: 0xbe6cac57ebbc0a44fde75f552e80f4647eecc653
+  bcosNFTContractAddress: 0x02875436a64c665ca2fc941a49f7d3248fef15b9
   #  maxBlockingQueueSize: 102400
   #  peers:
   #        - 43.143.86.190:20200

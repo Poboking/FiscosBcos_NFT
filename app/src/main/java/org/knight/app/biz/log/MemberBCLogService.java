@@ -1,5 +1,6 @@
 package org.knight.app.biz.log;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.knight.app.biz.convert.log.MemberBCLogConvert;
 import org.knight.app.biz.log.dto.balance.MemberBCLogRespDTO;
@@ -41,7 +42,7 @@ public class MemberBCLogService {
 
     public PageResult<MemberBCLogRespDTO> getMemberBCLog(long current, long size, String changeType, String memberId) {
         IPage<MemberBalanceChangeLogEntity> pageList = null;
-        if (changeType == null) {
+        if (CharSequenceUtil.isBlank(changeType)) {
             pageList = repository.getMemberBCLogPageListByMemberId(current, size, memberId);
         } else {
             pageList = repository.getMemberBCLogPageListByMemberId(current, size, changeType, memberId);

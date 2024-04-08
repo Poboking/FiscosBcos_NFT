@@ -8,6 +8,11 @@ import "./Ownable.sol";
  * @dev: a20-nft-3_7 by poboking in 2024/4/2 22:11
  */
 contract BcosUser is Utils, Ownable {
+    address public _contractOwner;
+
+    constructor() {
+        _contractOwner = msg.sender; // 将合约部署者设置为合约拥有者
+    }
 
     struct User {
         address userAddress;  // User 地址
@@ -41,11 +46,11 @@ contract BcosUser is Utils, Ownable {
         return userCount;
     }
 
-    function getUserAddress(uint256 _userId)  public view returns (address) {
+    function getUserAddress(uint256 _userId) public view returns (address) {
         return users[_userId].userAddress;
     }
 
-    function getUserByAddress(address _userAddress)  public view returns (uint256) {
+    function getUserByAddress(address _userAddress) public view returns (uint256) {
         return userAddressToUserId[_userAddress];
     }
 
@@ -58,16 +63,16 @@ contract BcosUser is Utils, Ownable {
         emit UserCreated(_userAddress, userId);
     }
 
-    function addToken(uint256 _userId, uint256  _tokenId) public {
-        require(users[_userId].userAddress == msg.sender, "You are not the owner of this token");
+    function addToken(uint256 _userId, uint256 _tokenId) public {
+        require(users[_userId].userAddress == msg.sender , "You are not the owner of this token");
         //from 1 to x the nft number
         users[_userId].tokenCount++;
         users[_userId].holdTokens[users[_userId].tokenCount] = _tokenId;
         emit TokenAdded(_userId, _tokenId);
     }
 
-    function delToken(uint256 _userId, uint256  _tokenId) public {
-        require(users[_userId].userAddress == msg.sender, "You are not the owner of this token");
+    function delToken(uint256 _userId, uint256 _tokenId) public {
+        require(users[_userId].userAddress == msg.sender || _contractOwner == msg.sender, "You are not the owner of this token");
         for (uint256 i = 1; i <= users[_userId].tokenCount; i++) {
             if (users[_userId].holdTokens[i] == _tokenId) {
                 users[_userId].holdTokens[i] = 0;
@@ -78,7 +83,7 @@ contract BcosUser is Utils, Ownable {
         }
     }
 
-    function transferToken(address  _from, address  _to, uint256  _tokenId) public{
+    function transferToken(address _from, address _to, uint256 _tokenId) public {
         uint256 fromUserId = 0;
         uint256 toUserId = 0;
         fromUserId = getUserByAddress(_from);
@@ -88,6 +93,14 @@ contract BcosUser is Utils, Ownable {
         delToken(fromUserId, _tokenId);
         addToken(toUserId, _tokenId);
         emit TokenTransferred(_from, _to, _tokenId);
+    }
+
+    function initToken(address _to, uint256 _tokenId) public {
+        uint256 toUserId = 0;
+        toUserId = getUserByAddress(_to);
+        require(toUserId != 0, "To user does not exist");
+        addToken(toUserId, _tokenId);
+        emit TokenTransferred(address(0), _to, _tokenId);
     }
 }
 

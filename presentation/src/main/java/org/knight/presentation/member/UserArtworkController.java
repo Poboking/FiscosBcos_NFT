@@ -84,17 +84,24 @@ public class UserArtworkController {
     @GetMapping("findMyHoldCollectionDetail")
     @ValidationStatusCode(code = "400")
     public MyHoldCollectionDetailRespDTO findMyHoldCollectionDetail(
-            @RequestParam(name = "id")String collectionId){
+            @RequestParam(name = "holdCollectionId")String holdCollectionId){
         String memberId = StpUserUtil.getLoginIdAsString();
-        return memberCollectionService.getMyHoldCollectionDetail(collectionId, memberId);
+        return memberCollectionService.getMyHoldCollectionDetail(holdCollectionId, memberId);
     }
 
     @GetMapping("findMyResaleCollectionDetail")
     @ValidationStatusCode(code = "400")
     public MyResaleCollectionDetailRespDTO findMyResaleCollectionDetail(
-            @RequestParam(name = "id")String collectionId){
+            @RequestParam(name = "resaleCollectionId")String resaleCollectionId){
         String memberId = StpUserUtil.getLoginIdAsString();
-        return memberResaleCollectionService.getMyResaleCollectionDetail(collectionId, memberId);
+        return memberResaleCollectionService.getMyResaleCollectionDetail(resaleCollectionId, memberId);
     }
+
+//    @GetMapping("findMySoldCollectionDetail")
+//    @ValidationStatusCode(code = "400")
+//    public MySaleCollectionDetailRespDTO findMySoldCollectionDetail(
+//            @RequestParam(name = "id")String saleCollectionId){
+//        return null;
+//    }
 
 }

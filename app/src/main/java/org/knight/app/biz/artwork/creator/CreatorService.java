@@ -1,5 +1,6 @@
 package org.knight.app.biz.artwork.creator;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.knight.app.biz.artwork.dto.creator.CreatorAddOrUpdateReqDTO;
@@ -35,12 +36,10 @@ public class CreatorService {
     }
 
     public PageResult<CreatorRespDTO> findCreatorByPage(long current, long pageSize, String name) {
-        Page<CreatorEntity> entityPage = creatorRepository.page(new Page<>(current, pageSize), new QueryWrapper<CreatorEntity>()
-                .eq(Optional.ofNullable(name).isPresent(), "name", name));
+        Page<CreatorEntity> entityPage = creatorRepository.page(new Page<>(current, pageSize),
+                new QueryWrapper<CreatorEntity>().eq(!CharSequenceUtil.isBlank(name), "name", name));
         List<CreatorRespDTO> resultList = new ArrayList<>();;
-        entityPage.getRecords().forEach(creatorEntity -> {
-            resultList.add(CreatorConvert.INSTANCE.convertToRespDTO(creatorEntity));
-        });
+        entityPage.getRecords().forEach(creatorEntity -> resultList.add(CreatorConvert.INSTANCE.convertToRespDTO(creatorEntity)));
         return PageResult.convertFor(entityPage, pageSize, resultList);
     }
 

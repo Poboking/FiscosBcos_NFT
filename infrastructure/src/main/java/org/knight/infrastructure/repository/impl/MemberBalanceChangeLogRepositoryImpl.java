@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -12,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.Optional;
 
 /**
  * @author poboking
@@ -42,7 +42,7 @@ public class MemberBalanceChangeLogRepositoryImpl extends ServiceImpl<MemberBala
     @Override
     public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long size, String changeType) {
         return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
-                .eq(Optional.ofNullable(changeType).isPresent(), "change_type", changeType));
+                .eq(!CharSequenceUtil.isBlank(changeType), "change_type", changeType));
     }
 
     /**
@@ -68,7 +68,7 @@ public class MemberBalanceChangeLogRepositoryImpl extends ServiceImpl<MemberBala
     @Override
     public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long size, String memberId) {
         return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
-                .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId));
+                .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId));
     }
 
     /**
@@ -83,8 +83,8 @@ public class MemberBalanceChangeLogRepositoryImpl extends ServiceImpl<MemberBala
     @Override
     public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long size, String changeType, String memberId) {
         return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
-                .eq(Optional.ofNullable(changeType).isPresent(), "change_type", changeType)
-                .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId));
+                .eq(!CharSequenceUtil.isBlank(changeType), "change_type", changeType)
+                .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId));
     }
 
     /**

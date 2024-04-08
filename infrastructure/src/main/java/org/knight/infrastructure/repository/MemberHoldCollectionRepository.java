@@ -35,6 +35,17 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
     /**
      * 分页查询
      *
+     * @param current        当前页
+     * @param pageSize       每页大小
+     * @param holdCollections 藏品id集合
+     * @param memberId       用户id
+     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     */
+    IPage<MemberHoldCollectionEntity> getPageListByIdsAndMemberId(long current, long pageSize, List<String> holdCollections, String memberId);
+
+    /**
+     * 分页查询
+     *
      * @param current  当前页
      * @param pageSize 每页大小
      * @param name     作品名称

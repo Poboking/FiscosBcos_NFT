@@ -1,5 +1,6 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -10,8 +11,6 @@ import org.knight.infrastructure.repository.CollectionGiveRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 /**
  * @author poboking
  * @description 针对表【collection_give_record】的数据库操作Service实现
@@ -20,8 +19,12 @@ import java.util.Optional;
 @Service
 public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGiveRecordMapper, CollectionGiveRecordEntity>
         implements CollectionGiveRecordRepository {
+    private final CollectionGiveRecordMapper collectionGiveRecordMapper;
+
     @Autowired
-    private CollectionGiveRecordMapper collectionGiveRecordMapper;
+    public CollectionGiveRecordRepositoryImpl(CollectionGiveRecordMapper collectionGiveRecordMapper) {
+        this.collectionGiveRecordMapper = collectionGiveRecordMapper;
+    }
 
     /**
      * 根据赠送方ID获取赠送记录
@@ -34,7 +37,7 @@ public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGi
     @Override
     public IPage<CollectionGiveRecordEntity> getPageListByGiveFromId(long current, long pageSize, String giveFromId) {
         return collectionGiveRecordMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<CollectionGiveRecordEntity>()
-                .eq(Optional.ofNullable(giveFromId).isPresent(), "give_from_id", giveFromId));
+                .eq(!CharSequenceUtil.isBlank(giveFromId), "give_from_id", giveFromId));
     }
 
     /**
@@ -48,7 +51,7 @@ public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGi
     @Override
     public IPage<CollectionGiveRecordEntity> getPageListByGiveToId(long current, long pageSize, String giveToId) {
         return collectionGiveRecordMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<CollectionGiveRecordEntity>()
-                .eq(Optional.ofNullable(giveToId).isPresent(), "give_to_id", giveToId));
+                .eq(!CharSequenceUtil.isBlank(giveToId), "give_to_id", giveToId));
     }
 
     /**
@@ -63,8 +66,7 @@ public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGi
     @Override
     public IPage<CollectionGiveRecordEntity> getPageListByGiveToIdOrGiveFormId(long current, long pageSize, String giveFromId, String giveToId) {
         return collectionGiveRecordMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<CollectionGiveRecordEntity>()
-                .or(i -> i.eq(Optional.ofNullable(giveFromId).isPresent(), "give_from_id", giveFromId)
-                        .eq(Optional.ofNullable(giveToId).isPresent(), "give_to_id", giveToId)));
+                .or(i -> i.eq( "give_from_id", giveFromId).or().eq("give_to_id", giveToId)));
     }
 }
 

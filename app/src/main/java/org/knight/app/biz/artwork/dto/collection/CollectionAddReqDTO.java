@@ -9,7 +9,7 @@ import org.knight.infrastructure.common.IdUtils;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
-import org.knight.infrastructure.fisco.service.NFTService;
+import org.knight.infrastructure.fisco.service.biz.ChainService;
 
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
@@ -64,7 +64,7 @@ public class CollectionAddReqDTO {
         entity.setId(id);
         entity.setCommodityType(dto.getCommodityType());
         // TODO: 2024/3/25 需调用合约
-        entity.setCollectionHash(NFTService.getNFTHash(id));
+        entity.setCollectionHash(ChainService.getNFTHash(id));
         entity.setName(dto.getName());
         entity.setCover(dto.getCover());
         entity.setPrice(dto.getPrice());
@@ -89,7 +89,7 @@ public class CollectionAddReqDTO {
                 .syncChainTime(Timestamp.valueOf(nowDateTime))
                 .issueTime(Timestamp.valueOf(nowDateTime))
                 // TODO: 2024/3/25 需调用合约
-                .uniqueId(NFTService.getNFTUniqueId(id))
+                .uniqueId(ChainService.getNFTUniqueId(id))
                 .build();
     }
 }

@@ -71,7 +71,6 @@ public class TransactionService {
         IPage<PayOrderEntity> pageList = null;
         if (CharSequenceUtil.isBlank(status)) {
             pageList = payOrderRepository.getPayOrderPageListByMemberId(current, pageSize, memberId);
-
         } else {
             pageList = payOrderRepository.getPayOrderPageListByMemberIdAndStatus(current, pageSize, memberId, status);
         }
@@ -289,14 +288,32 @@ public class TransactionService {
         if (entity == null || !entity.getMemberId().equals(memberId)) {
             throw new OrderNotFoundException(CharSequenceUtil.format("[{}]订单不存在", orderId));
         }
-        return PayOrderRespDTO.builder()
+        CollectionEntity collection = collectionRepository.getById(entity.getCollectionId());
+        CreatorEntity creator = creatorRepository.getById(collection.getCreatorId());
+        PayOrderRespDTO respDTO = PayOrderRespDTO.builder()
                 .id(entity.getId())
                 .orderNo(entity.getOrderNo())
                 .amount(entity.getAmount())
                 .state(entity.getState())
+                .collectionCover(collection.getCover())
+                .collectionName(collection.getName())
+                .creatorName(creator.getName())
+                .commodityType(collection.getCommodityType())
                 .createTime(entity.getCreateTime().toLocalDateTime())
-                .paidTime(entity.getPaidTime().toLocalDateTime())
                 .build();
+        if (!Objects.isNull(entity.getPaidTime())){
+            respDTO.setPaidTime(entity.getPaidTime().toLocalDateTime());
+        }
+        if (respDTO.getState().equals(NftConstants.支付订单状态_待付款)){
+            respDTO.setStateName("待付款");
+        } else if (respDTO.getState().equals(NftConstants.支付订单状态_已付款)) {
+            respDTO.setStateName("已付款");
+        } else if (respDTO.getState().equals(NftConstants.支付订单状态_已取消)) {
+            respDTO.setStateName("已取消");
+        }else {
+            respDTO.setStateName("未知");
+        }
+        return respDTO;
     }
 
 
