@@ -84,8 +84,6 @@ public class BcosConfig {
     @PostConstruct
     public void contractAddressMap() {
         // 部署合约地址 - 初始化
-        ContractAddressContext.setOwnableAddress(bcosProperties.getOwnableContractAddress());
-        ContractAddressContext.setUtilsAddress(bcosProperties.getUtilsContractAddress());
         ContractAddressContext.setBcosUserAddress(bcosProperties.getBcosUserContractAddress());
         ContractAddressContext.setBcosNFTAddress(bcosProperties.getBcosNFTContractAddress());
     }

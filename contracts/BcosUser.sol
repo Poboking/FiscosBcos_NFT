@@ -1,16 +1,16 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.4.25;
 
-import "./Utils.sol";
-import "./Ownable.sol";
-
 /*
  * @dev: a20-nft-3_7 by poboking in 2024/4/2 22:11
  */
-contract BcosUser is Utils, Ownable {
+contract BcosUser{
+
+    uint256 private nonce = 0;
+
     address public _contractOwner;
 
-    constructor() {
+    constructor() public {
         _contractOwner = msg.sender; // 将合约部署者设置为合约拥有者
     }
 
@@ -29,6 +29,28 @@ contract BcosUser is Utils, Ownable {
     event TokenAdded(uint256 indexed userId, uint256 indexed tokenId);
     event TokenDeleted(uint256 indexed userId, uint256 indexed tokenId);
     event TokenTransferred(address indexed from, address indexed to, uint256 indexed tokenId);
+
+    function generateID() public returns (uint256) {
+        uint256 id = uint256(keccak256(abi.encodePacked(block.timestamp, nonce)));
+        nonce++;
+        return id;
+    }
+
+    /*
+* @dev Throws if the sender is not the owner.
+     */
+    function _checkOwner() internal view  {
+        require(_contractOwner == msg.sender, "OwnableUnauthorizedAccount");
+    }
+
+    /**
+ * @dev Throws if called by any account other than the owner.
+     */
+    modifier onlyOwner() {
+        _checkOwner();
+        _;
+    }
+
 
     function getUser(uint256 _userId) public view returns (address, uint256, uint256) {
         return (users[_userId].userAddress, users[_userId].userId, users[_userId].tokenCount);

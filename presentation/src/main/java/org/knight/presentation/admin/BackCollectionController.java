@@ -1,5 +1,6 @@
 package org.knight.presentation.admin;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
@@ -11,6 +12,7 @@ import org.knight.app.biz.artwork.dto.collection.CollectionStatisticDataRespDTO;
 import org.knight.app.biz.artwork.dto.collection.CollectionUpdateStoryReqDTO;
 import org.knight.app.biz.artwork.dto.issuedcollection.IssuedCollectionRespDTO;
 import org.knight.infrastructure.common.PageResult;
+import org.knight.presentation.exception.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,11 +83,17 @@ public class BackCollectionController {
     public Map<String, Boolean> addCollection(
             @Valid @RequestBody CollectionAddReqDTO reqDTO
     ){
+        if (reqDTO.getQuantity() == null || reqDTO.getQuantity() <= 0 ){
+            throw new BadRequestException("quantity must be greater than 0");
+        }
         if (Boolean.FALSE.equals(collectionService.addCollection(reqDTO))){
             return Map.of("result", false);
         }
         String collectionId = collectionService.findCollectionId(reqDTO.getName(), reqDTO.getCreatorId());
-        if (Boolean.FALSE.equals(issuedCollectionService.addIssuedCollection(reqDTO, collectionId))){
+        if (Boolean.FALSE.equals(issuedCollectionService.castIssuedCollection(reqDTO, collectionId))){
+            return Map.of("result", false);
+        }
+        if (Boolean.FALSE.equals(collectionService.updateCollectionHash(collectionId, issuedCollectionService.getCollectionHash(collectionId)))){
             return Map.of("result", false);
         }
         return Map.of("result", true);

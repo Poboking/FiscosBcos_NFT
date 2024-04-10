@@ -1,5 +1,6 @@
 package org.knight.app.biz.log.dto.loginlog;
 
+import cn.hutool.core.date.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -79,18 +80,18 @@ public class LoginLogReqDTO extends LoginLogBaseDTO {
 
 
     public static LoginLogReqDTO quickSuccessfulBuild(String ipAddr, String browser, String os, String userName) {
-        // 使用当前时间创建 LocalDateTime 对象
         LocalDateTime localDateTime = LocalDateTime.now();
-
-        // 设置时区为亚洲/上海
         ZoneId zoneId = ZoneId.of("Asia/Shanghai");
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, zoneId);
+        Timestamp timestamp = Timestamp.from(zonedDateTime.toInstant());
+        String strFormat = DateUtil.format(timestamp, NftConstants.DATE_FORMAT);
+        Timestamp resultTimestamp = Timestamp.valueOf(strFormat);
 
         String subSystem = "member"; // 设置 subsystem
         String subSystemName = "会员端"; // 设置 subsystemName
         String state = "1"; // 设置 state
         String stateName = "成功"; // 设置 stateName
-        Timestamp loginTime = Timestamp.from(zonedDateTime.toInstant()); // 获取当前时间作为登录时间
+        Timestamp loginTime = resultTimestamp; // 获取当前时间作为登录时间
         String msg = "登录成功"; // 设置消息
 
         return LoginLogReqDTO.builder()
@@ -114,18 +115,18 @@ public class LoginLogReqDTO extends LoginLogBaseDTO {
 
 
     public static LoginLogReqDTO quickFailureBuild(String ipAddr, String browser, String os, String moblie) {
-        // 使用当前时间创建 LocalDateTime 对象
         LocalDateTime localDateTime = LocalDateTime.now();
-
-        // 设置时区为亚洲/上海
         ZoneId zoneId = ZoneId.of("Asia/Shanghai");
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, zoneId);
+        Timestamp timestamp = Timestamp.from(zonedDateTime.toInstant());
+        String strFormat = DateUtil.format(timestamp, NftConstants.DATE_FORMAT);
+        Timestamp resultTimestamp = Timestamp.valueOf(strFormat);
 
         String subSystem = "member"; // 设置 subsystem
         String subSystemName = "会员端"; // 设置 subsystemName
         String state = "1"; // 设置 state
         String stateName = "失败"; // 设置 stateName
-        Timestamp loginTime = Timestamp.from(zonedDateTime.toInstant()); // 获取当前时间作为登录时间
+        Timestamp loginTime = resultTimestamp; // 获取当前时间作为登录时间
         String msg = "登录失败"; // 设置消息
 
         return LoginLogReqDTO.builder()

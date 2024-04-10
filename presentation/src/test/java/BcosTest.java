@@ -5,6 +5,10 @@ import org.junit.runner.RunWith;
 import org.knight.infrastructure.fisco.service.biz.BcosTestService;
 import org.knight.infrastructure.fisco.service.biz.ChainService;
 import org.knight.infrastructure.fisco.service.biz.DeployService;
+import org.knight.infrastructure.repository.impl.CollectionRepositoryImpl;
+import org.knight.infrastructure.repository.impl.IssuedCollectionRepositoryImpl;
+import org.knight.infrastructure.repository.impl.MemberHoldCollectionRepositoryImpl;
+import org.knight.infrastructure.repository.impl.MemberRepositoryImpl;
 import org.knight.presentation.PresentationApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,14 +26,26 @@ class BcosTest {
     private final BcosTestService bcosTestService;
 
     private final DeployService deployService;
-    
+
     private final ChainService chainService;
 
+    private final MemberRepositoryImpl memberRepositoryImpl;
+
+    private final CollectionRepositoryImpl collectionRepository;
+
+    private final IssuedCollectionRepositoryImpl issuedCollectionRepository;
+
+    private final MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository;
+
     @Autowired
-    BcosTest(BcosTestService bcosTestService, DeployService deployService, ChainService chainService) {
+    BcosTest(BcosTestService bcosTestService, DeployService deployService, ChainService chainService, MemberRepositoryImpl memberRepositoryImpl, CollectionRepositoryImpl collectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository, MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository) {
         this.bcosTestService = bcosTestService;
         this.deployService = deployService;
         this.chainService = chainService;
+        this.memberRepositoryImpl = memberRepositoryImpl;
+        this.collectionRepository = collectionRepository;
+        this.issuedCollectionRepository = issuedCollectionRepository;
+        this.memberHoldCollectionRepository = memberHoldCollectionRepository;
     }
 
     @Test
@@ -52,21 +68,40 @@ class BcosTest {
     }
 
     @Test
-    void blockNumber(){
+    void blockNumber() {
         bcosTestService.getBlockNumber();
     }
 
     @Test
+    void firstInit(){
+
+    }
+
+    @Test
     void testDeploy() throws ContractException {
-        System.err.println(deployService.deployOwnable());
-        System.err.println(deployService.deployUtils());
         System.err.println(deployService.deployBcosUserContract());
         System.err.println(deployService.deployBcosNFTContract());
     }
-    
+
     @Test
-    void testInit(){
-        // TODO: 2024/4/8 待测试 ChainService  
+    void testInit() throws ContractException {
+        // TODO: 2024/4/8 待测试 ChainService
+//        chainService.initCollectionData(collectionRepository,issuedCollectionRepository);
+//        chainService.issuedCollection("test","test","test", 1);
+//        chainService.issuedCollection("test","test","test", 2, 2);
+        chainService.initIssuedCollectionData(issuedCollectionRepository, collectionRepository);
+//        chainService.initUserData(memberRepositoryImpl, memberHoldCollectionRepository, issuedCollectionRepository, collectionRepository);
+//        chainService.initChain(memberHoldCollectionRepository,memberRepositoryImpl,collectionRepository);
+    }
+
+    @Test
+    void getDeployAddress() {
+        System.err.println(chainService.getDeployAddress());
+    }
+
+    @Test
+    void getNewPrivateKey() {
+        System.err.println(chainService.getNewDeployAccount());
     }
 
 

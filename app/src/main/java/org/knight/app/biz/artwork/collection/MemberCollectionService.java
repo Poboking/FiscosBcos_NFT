@@ -90,7 +90,7 @@ public class MemberCollectionService {
 
     public MemberHoldCollectionDetailRespDTO getHoldCollectionDetail(String holdCollectionId) {
         if (CharSequenceUtil.isBlank(holdCollectionId)) {
-            throw new CollectionNotFoundException(CharSequenceUtil.format("{}:获取持有藏品详情失败 as a result of resaleCollectionId is null", holdCollectionId));
+            throw new CollectionNotFoundException(CharSequenceUtil.format("{}:获取持有藏品详情失败 as a result of holdCollectionId is null", holdCollectionId));
         }
         MemberHoldCollectionEntity holdCollection = memberHoldCollectionRepository.getById(holdCollectionId);
         if (Objects.isNull(holdCollection)) {
@@ -100,7 +100,8 @@ public class MemberCollectionService {
         if (Objects.isNull(collection)) {
             throw new CollectionNotFoundException(CharSequenceUtil.format("{}:获取持有藏品详情失败 as a result of collection not found", holdCollection.getCollectionId()));
         }
-        // TODO: 2024/4/7 待实现发行藏品机制 
+        // TODO: 2024/4/7 待实现发行藏品机制
+        // TODO: 2024/4/10 或许得先删除多余的逻辑校验, 以及多余的异常处理
         IssuedCollectionEntity issuedCollection = issuedCollectionRepository.getById(holdCollection.getIssuedCollectionId());
         if (Objects.isNull(issuedCollection)) {
             throw new IssuedCollectionNotFoundException(CharSequenceUtil.format("{}:获取持有藏品详情失败 as a result of issuedCollection not found", holdCollection.getIssuedCollectionId()));

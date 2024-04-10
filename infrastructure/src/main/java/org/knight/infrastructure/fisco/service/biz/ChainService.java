@@ -7,7 +7,9 @@ import org.fisco.bcos.sdk.client.Client;
 import org.fisco.bcos.sdk.crypto.keypair.CryptoKeyPair;
 import org.fisco.bcos.sdk.model.TransactionReceipt;
 import org.fisco.bcos.sdk.transaction.model.exception.ContractException;
+import org.knight.infrastructure.common.IdUtils;
 import org.knight.infrastructure.common.NftConstants;
+import org.knight.infrastructure.common.SolidityAddressGenerator;
 import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
 import org.knight.infrastructure.dao.domain.MemberEntity;
@@ -15,7 +17,7 @@ import org.knight.infrastructure.dao.domain.MemberHoldCollectionEntity;
 import org.knight.infrastructure.exception.BcosInitializationUserException;
 import org.knight.infrastructure.exception.BcosIssuedCollectionException;
 import org.knight.infrastructure.exception.BcosTransactionException;
-import org.knight.infrastructure.exception.BlockChainException;
+import org.knight.infrastructure.exception.initialize.BlockChainInitDataFailedException;
 import org.knight.infrastructure.exception.initialize.IssuedCollectionDataInitializeException;
 import org.knight.infrastructure.exception.initialize.UserDataInitializeException;
 import org.knight.infrastructure.fisco.config.ContractAddressContext;
@@ -33,10 +35,7 @@ import org.springframework.stereotype.Component;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -90,49 +89,109 @@ public class ChainService {
     }
 
     public Map<String, String> initDeploy() throws ContractException {
-        String ownableAddress = deployService.deployOwnable();
-        ContractAddressContext.setOwnableAddress(ownableAddress);
-        String utilsAddress = deployService.deployUtils();
-        ContractAddressContext.setUtilsAddress(utilsAddress);
         String bcosUserAddress = deployService.deployBcosUserContract();
         ContractAddressContext.setBcosUserAddress(bcosUserAddress);
         String bcosNFTAddress = deployService.deployBcosNFTContract();
         ContractAddressContext.setBcosNFTAddress(bcosNFTAddress);
-        return Map.of("ownableAddress", ownableAddress, "utilsAddress", utilsAddress, "bcosUserAddress", bcosUserAddress, "bcosNFTAddress", bcosNFTAddress);
+        return Map.of("bcosUserAddress", bcosUserAddress, "bcosNFTAddress", bcosNFTAddress);
     }
 
 
+    /**
+     * 初始化链上数据 - 用户/藏品/发行藏品
+     *
+     * @param holdCollectionRepo
+     * @param memberRepo
+     * @param collectionRepo
+     * @param issuedCollectionRepo
+     * @return boolean 是否初始化成功
+     */
     // TODO: 2024/4/4  待实现
     public Boolean initData(MemberHoldCollectionRepositoryImpl holdCollectionRepo,
                             MemberRepositoryImpl memberRepo,
                             CollectionRepositoryImpl collectionRepo,
                             IssuedCollectionRepositoryImpl issuedCollectionRepo) {
-        List<MemberEntity> memberEntitys = memberRepo.list(new QueryWrapper<MemberEntity>()
-                .eq("deleted_flag", false)
-                .isNotNull("block_chain_addr")
-                .isNotNull("real_name")
-                .isNotNull("identity_card"));
-        List<String> memberIds = memberEntitys.stream().map(MemberEntity::getId).collect(Collectors.toList());
-        List<String> memberBlockChainAddrs = memberEntitys.stream().map(MemberEntity::getBlockChainAddr).collect(Collectors.toList());
-        List<IssuedCollectionEntity> issuedCollectionEntities = issuedCollectionRepo.list();
-        List<MemberHoldCollectionEntity> holdCollectionEntitys = holdCollectionRepo.list();
-        List<CollectionEntity> collectionEntities = collectionRepo.list();
         try {
-
+            initIssuedCollectionData(issuedCollectionRepo, collectionRepo);
+            initUserData(memberRepo, holdCollectionRepo, issuedCollectionRepo, collectionRepo);
         } catch (Exception e) {
-            throw new BlockChainException("block chain server init data error");
+            throw new BlockChainInitDataFailedException("block chain server init data error");
         }
         return true;
     }
 
+
     /**
-     * 发行数据链上初始化
+     * 发行数据初始化 - 藏品数据
+     *
+     * @param collectionRepo
+     * @param issuedCollectionRepo
+     * @return boolean 是否初始化成功
+     */
+    public Boolean initCollectionData(CollectionRepositoryImpl collectionRepo,
+                                      IssuedCollectionRepositoryImpl issuedCollectionRepo) {
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        List<CollectionEntity> collectionEntities = collectionRepo.list(new QueryWrapper<CollectionEntity>()
+                .or(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
+                .isNull("sync_chain_time"));
+        List<String> collectionIds = collectionEntities.stream().map(CollectionEntity::getId).collect(Collectors.toList());
+
+        try {
+            IntStream.range(0, collectionIds.size()).forEach(i -> {
+                String collectionId = collectionIds.get(i);
+                CollectionEntity collectionEntity = collectionRepo.getById(collectionId);
+                Long realityQuantity = issuedCollectionRepo.checkIssuedCollectionCount(collectionId);
+                List<Integer> realitySerialNumbers = issuedCollectionRepo.getRealitySerialNumber(collectionId);
+                if (realityQuantity == null) {
+                    realityQuantity = 0L;
+                }
+                if (Objects.isNull(realitySerialNumbers)) {
+                    realitySerialNumbers = new ArrayList<>();
+                }
+                if (realityQuantity < collectionEntity.getQuantity()) {
+                    List<Integer> finalRealitySerialNumbers = realitySerialNumbers;
+                    IntStream.range(1, collectionEntity.getQuantity() + 1).mapToObj(serialNumber -> {
+                        if (!finalRealitySerialNumbers.contains(serialNumber)) {
+                            String issuedCollectionId = IdUtils.snowFlakeId();
+                            BlockChainNFT nft = null;
+                            try {
+                                nft = issuedCollection(collectionEntity.getName(),
+                                        collectionEntity.getCreatorId(),
+                                        issuedCollectionId,
+                                        serialNumber,
+                                        collectionEntity.getQuantity());
+                            } catch (Exception e) {
+                                 return null;
+                            }
+                            return IssuedCollectionEntity.builder()
+                                    .id(issuedCollectionId)
+                                    .collectionId(collectionId)
+                                    .deletedFlag(false)
+                                    .collectionSerialNumber(serialNumber)
+                                    .uniqueId(nft.getUniqueId())
+                                    .issueTime(now)
+                                    .syncChainTime(nft.getSyncChainTime())
+                                    .build();
+                        }
+                        return null;
+                    }).filter(Objects::nonNull).forEach(issuedCollectionRepo::save);
+                }
+            });
+        } catch (Exception e) {
+            throw new BlockChainInitDataFailedException("block chain server init data error: " + e.getMessage());
+        }
+        return true;
+    }
+
+
+    /**
+     * 发行数据链上初始化 - 发行藏品数据
      *
      * @param issuedCollectionRepo
      * @return boolean 是否初始化成功
      */
     public Boolean initIssuedCollectionData(IssuedCollectionRepositoryImpl issuedCollectionRepo,
-                                            CollectionRepositoryImpl collectionRepo){
+                                            CollectionRepositoryImpl collectionRepo) {
         List<IssuedCollectionEntity> issuedCollectionEntities = issuedCollectionRepo.list(new QueryWrapper<IssuedCollectionEntity>()
                 .or(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
                 .isNull("unique_id")
@@ -143,7 +202,7 @@ public class ChainService {
                 String issuedCollectionId = issuedCollectionIds.get(i);
                 IssuedCollectionEntity issuedCollectionEntity = issuedCollectionRepo.getById(issuedCollectionId);
                 CollectionEntity collection = collectionRepo.getById(issuedCollectionEntity.getCollectionId());
-                if (issuedCollectionEntity.getCollectionSerialNumber() == null ||  collection == null || collection.getQuantity() == null){
+                if (issuedCollectionEntity.getCollectionSerialNumber() == null || collection == null || collection.getQuantity() == null) {
                     return;
                 }
                 BlockChainNFT result = issuedCollection(collection.getName(),
@@ -151,7 +210,7 @@ public class ChainService {
                         issuedCollectionId,
                         issuedCollectionEntity.getCollectionSerialNumber(),
                         collection.getQuantity());
-                if (result == null){
+                if (result == null) {
                     return;
                 }
                 issuedCollectionEntity.setUniqueId(result.getUniqueId());
@@ -159,7 +218,7 @@ public class ChainService {
                 issuedCollectionRepo.updateById(issuedCollectionEntity);
             });
         } catch (Exception e) {
-            throw new IssuedCollectionDataInitializeException("block chain server init issued collection data error");
+            throw new IssuedCollectionDataInitializeException("block chain server init issued collection data error" + e.getMessage());
         }
         return true;
     }
@@ -172,7 +231,8 @@ public class ChainService {
      */
     public Boolean initUserData(MemberRepositoryImpl memberRepo,
                                 MemberHoldCollectionRepositoryImpl holdCollectionRepo,
-                                IssuedCollectionRepositoryImpl issuedCollectionRepo) {
+                                IssuedCollectionRepositoryImpl issuedCollectionRepo,
+                                CollectionRepositoryImpl collectionRepo) {
         List<String> memberIds = memberRepo.list(new QueryWrapper<MemberEntity>()
                 .or(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
                 .isNull("block_chain_addr")
@@ -182,7 +242,13 @@ public class ChainService {
                 .or(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
                 .isNotNull("unique_id")
                 .isNotNull("sync_chain_time")).stream().map(IssuedCollectionEntity::getId).collect(Collectors.toList());
+        List<String> memberHoldCollectionButNotIssuedCollectionIds = holdCollectionRepo.list(new QueryWrapper<MemberHoldCollectionEntity>()
+                .isNull("lose_time")
+                .isNotNull("member_id")
+                .isNotNull("issued_collection_id")
+                .notIn("issued_collection_id", issuedCollectionIds)).stream().map(MemberHoldCollectionEntity::getMemberId).collect(Collectors.toList());
         try {
+            // 处理已实名但未上链用户
             Map<String, String> memberIdToBlockChainAddrMap = IntStream.range(0, memberIds.size())
                     .boxed()
                     .collect(Collectors.toMap(
@@ -193,6 +259,8 @@ public class ChainService {
                                 return blockChainAddr;
                             }
                     ));
+
+            // 处理用户持有但未上链藏品 - 在issuedCollection表中存在
             IntStream.range(0, memberIds.size()).mapToObj(e -> {
                 return holdCollectionRepo.list(new QueryWrapper<MemberHoldCollectionEntity>()
                         .eq("member_id", memberIds.get(e))
@@ -202,9 +270,35 @@ public class ChainService {
                     initHoldCollection(memberIdToBlockChainAddrMap.get(memberIds.get(e.indexOf(issuedCollectionId))), issuedCollectionId);
                 });
             });
+
+            // 处理用户持有但未上链藏品 - 在issuedCollection表中不存在
+            IntStream.range(0, memberHoldCollectionButNotIssuedCollectionIds.size()).forEach(holdCollectionId -> {
+                Random random = new Random();
+                MemberHoldCollectionEntity holdCollection = holdCollectionRepo.getById(holdCollectionId);
+                CollectionEntity collection = collectionRepo.getById(holdCollection.getCollectionId());
+                Integer quantity = collection.getQuantity();
+                Integer serialNumber = 1;
+                do {
+                    serialNumber = random.nextInt(quantity) + 1;
+                } while (issuedCollectionRepo.isExistSerialNumber(holdCollection.getCollectionId(), serialNumber));
+                BlockChainNFT result = issuedCollection(collection.getName(),
+                        collection.getCreatorId(),
+                        holdCollection.getIssuedCollectionId(),
+                        serialNumber,
+                        quantity);
+                Integer finalSerialNumber = serialNumber;
+                issuedCollectionRepo.saveOrUpdate(IssuedCollectionEntity.builder()
+                        .id(holdCollection.getIssuedCollectionId())
+                        .collectionId(holdCollection.getCollectionId())
+                        .collectionSerialNumber(finalSerialNumber)
+                        .uniqueId(result.getUniqueId())
+                        .issueTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)))
+                        .syncChainTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)))
+                        .build());
+            });
             return true;
         } catch (Exception e) {
-            throw new UserDataInitializeException("block chain server init user data error");
+            throw new UserDataInitializeException("block chain server init user data error" + e.getMessage());
         }
     }
 
@@ -244,7 +338,7 @@ public class ChainService {
             entity.setIssuedCollectionId(issuedCollectionId);
             entity.setSyncChainTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
         } catch (Exception e) {
-            throw new BcosInitializationUserException("block chain server initialization user error");
+            throw new BcosInitializationUserException("block chain server initialization user error" + e.getMessage());
         }
         return entity;
     }
@@ -259,8 +353,9 @@ public class ChainService {
     public Boolean initChain(MemberHoldCollectionRepositoryImpl holdCollectionRepo,
                              MemberRepositoryImpl memberRepo,
                              CollectionRepositoryImpl collectionRepo) throws ContractException {
-        if (ContractAddressContext.getOwnableAddress() == null)
+        if (ContractAddressContext.getBcosNFTAddress() == null || ContractAddressContext.getBcosUserAddress() == null) {
             initDeploy();
+        }
         return true;
     }
 
@@ -273,12 +368,16 @@ public class ChainService {
      * @param issuedAmount       发行数量
      */
     //这里原本需要传入创作者的区块链地址,  此处暂改为传入创作者ID
-    public List<BlockChainNFT> issuedCollection(String collectionName, String createId, String issuedCollectionId, Integer issuedAmount) {
+    public List<BlockChainNFT> issuedCollection(String collectionName, String createId, String
+            issuedCollectionId, Integer issuedAmount) {
         BcosNFT bcosNFT = BcosNFT.load(ContractAddressContext.getBcosNFTAddress(), client, deployCryptoKeyPair);
         List<BlockChainNFT> results = new ArrayList<>();
         IntStream.range(1, issuedAmount + 1).forEach(i -> {
             try {
-                TransactionReceipt receipt = bcosNFT.createNFT(createId, issuedCollectionId, collectionName, BigInteger.valueOf(i), BigInteger.valueOf(issuedAmount));
+                TransactionReceipt receipt = bcosNFT.createNFT(SolidityAddressGenerator.generateAddress(createId), collectionName, issuedCollectionId, BigInteger.valueOf(i), BigInteger.valueOf(issuedAmount));
+                if (!receipt.isStatusOK()){
+                    throw new BcosIssuedCollectionException("block chain server issued collection error");
+                }
                 BlockChainNFT nft = new BlockChainNFT();
                 String tokenId = bcosNFT.getTokenIdByTokenURI(issuedCollectionId).toString();
                 nft.setUniqueId(tokenId);
@@ -287,7 +386,7 @@ public class ChainService {
                 nft.setSyncChainTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
                 results.add(nft);
             } catch (Exception e) {
-                throw new BcosIssuedCollectionException("block chain server issued collection error");
+                throw new BcosIssuedCollectionException("block chain server issued collection error:" + e.getMessage());
             }
         });
         return results;
@@ -306,14 +405,23 @@ public class ChainService {
         BcosNFT bcosNFT = BcosNFT.load(ContractAddressContext.getBcosNFTAddress(), client, deployCryptoKeyPair);
         BlockChainNFT result = new BlockChainNFT();
         try {
-            TransactionReceipt receipt = bcosNFT.createNFT(createId, issuedCollectionId, collectionName, BigInteger.valueOf(serialNumber), BigInteger.valueOf(issuedAmount));
-            String tokenId = bcosNFT.getTokenIdByTokenURI(issuedCollectionId).toString();
+            TransactionReceipt receipt = bcosNFT.createNFT(SolidityAddressGenerator.generateAddress(createId), issuedCollectionId, collectionName, BigInteger.valueOf(serialNumber), BigInteger.valueOf(issuedAmount));
+            System.err.println(receipt.getMessage());
+            System.err.println(receipt.getOutput());
+            System.err.println(receipt.getBlockHash());
+            System.err.println(receipt.getTransactionHash());
+            System.err.println(receipt.getContractAddress());
+            System.err.println(receipt);
+            if (!receipt.isStatusOK()){
+                throw new BcosIssuedCollectionException("block chain server issued collection error:" + receipt.getStatus());
+            }
+            String tokenId = bcosNFT.getTokenIdByNameAndSerialNumber(collectionName, BigInteger.valueOf(serialNumber)).toString();
             result.setUniqueId(tokenId);
             result.setIssuedCollectionId(issuedCollectionId);
-            result.setTransactionHash(receipt.getTransactionHash());
+            result.setTransactionHash(Optional.ofNullable(receipt.getTransactionHash()).orElse(receipt.getBlockHash()).toString());
             result.setSyncChainTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
         } catch (Exception e) {
-            throw new BcosIssuedCollectionException("block chain server issued collection error");
+            throw new BcosIssuedCollectionException("block chain server issued collection error:" + e.getMessage());
         }
         return result;
     }
@@ -333,7 +441,7 @@ public class ChainService {
             entity.setUniqueId(String.valueOf(tokenId));
             entity.setIssuedCollectionId(issuedCollectionId);
         } catch (Exception e) {
-            throw new BcosIssuedCollectionException("block chain server issued collection error");
+            throw new BcosIssuedCollectionException("block chain server issued collection error:" + e.getMessage());
         }
         return entity;
     }
@@ -355,8 +463,22 @@ public class ChainService {
             bcosNFT.transferNFT(tokenId, toAddress);
             return receipt.getTransactionHash();
         } catch (Exception e) {
-            throw new BcosTransactionException("block chain server transaction error");
+            throw new BcosTransactionException("block chain server transaction error:" + e.getMessage());
         }
+    }
+
+    /**
+     * 获取平台区块链账号
+     *
+     * @return
+     */
+    public String getDeployAddress() {
+        return deployCryptoKeyPair.getAddress();
+    }
+
+    public String getNewDeployAccount() {
+        CryptoKeyPair keyPair = client.getCryptoSuite().createKeyPair();
+        return keyPair.getHexPrivateKey() + "|||" + keyPair.getAddress();
     }
 
 }

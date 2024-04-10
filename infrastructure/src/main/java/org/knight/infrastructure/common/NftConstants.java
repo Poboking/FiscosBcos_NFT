@@ -108,6 +108,7 @@ public class NftConstants {
     public static final String DIRECTION_FROM = "from";
     public static final String DIRECTION_TO = "to";
     public static final double 单笔销售最大价格 = 1000000;
+    public static final String 平台账户地址 = "0x363a7697f627ea2a694d467ba90c074bf56cd9e6";
     private static final String 通知公告类型_上新藏品 = "1";
     private static final String 通知公告类型_合成活动 = "2";
     private static final String 通知公告类型_空投活动 = "3";

@@ -1,6 +1,8 @@
 package org.knight.infrastructure.common;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -90,6 +92,96 @@ public class PageResult<T> implements Serializable {
                 .total(pageResult.getTotal())
                 .pages(pageResult.getPages())
                 .size(pageResult.getSize())
+                .data((T) resultList)
+                .pageSize(pageSize)
+                .build();
+    }
+
+    public static <T> PageResult<T> convertFor(PageInfo<T> pageResult) {
+        return PageResult.<T>builder()
+                .current(pageResult.getPageNum())
+                .total(pageResult.getTotal())
+                .pages(pageResult.getPages())
+                .size(pageResult.getPageSize())
+                .data((T) pageResult.getList())
+                .pageSize(pageResult.getPageSize())
+                .build();
+    }
+
+
+    public static <T> PageResult<T> convertFor(PageInfo<T> pageResult, long pageSize) {
+        return PageResult.<T>builder()
+                .current(pageResult.getPageNum())
+                .total(pageResult.getTotal())
+                .pages(pageResult.getPages())
+                .size(pageResult.getPageSize())
+                .data((T) pageResult.getList())
+                .pageSize(pageSize)
+                .build();
+    }
+
+    public static <T> PageResult<T> convertFor(PageInfo<?> pageResult, List<T> resultList) {
+        return PageResult.<T>builder()
+                .current(pageResult.getPageNum())
+                .total(pageResult.getTotal())
+                .pages(pageResult.getPages())
+                .size(pageResult.getSize())
+                .data((T) resultList)
+                .pageSize(pageResult.getSize())
+                .build();
+    }
+
+    public static <T> PageResult<T> convertFor(PageInfo<?> pageResult, long pageSize, List<T> resultList) {
+        return PageResult.<T>builder()
+                .current(pageResult.getPages())
+                .total(pageResult.getTotal())
+                .pages(pageResult.getPages())
+                .size(pageResult.getSize())
+                .data((T) resultList)
+                .pageSize(pageSize)
+                .build();
+    }
+
+    public static <T> PageResult<T> convertFor(Page<T> pageResult) {
+        return PageResult.<T>builder()
+                .current(pageResult.getPageNum())
+                .total(pageResult.getTotal())
+                .pages(pageResult.getPages())
+                .size(pageResult.getPageSize())
+                .data((T) pageResult.getResult())
+                .pageSize(pageResult.getPageSize())
+                .build();
+    }
+
+
+    public static <T> PageResult<T> convertFor(Page<T> pageResult, long pageSize) {
+        return PageResult.<T>builder()
+                .current(pageResult.getPageNum())
+                .total(pageResult.getTotal())
+                .pages(pageResult.getPages())
+                .size(pageResult.getPageSize())
+                .data((T) pageResult.getResult())
+                .pageSize(pageSize)
+                .build();
+    }
+
+    public static <T> PageResult<T> convertFor(Page<?> pageResult, List<T> resultList) {
+        return PageResult.<T>builder()
+                .current(pageResult.getPageNum())
+                .total(pageResult.getTotal())
+                .pages(pageResult.getPages())
+                .size(pageResult.getPageSize())
+                .data((T) resultList)
+                .pageSize(pageResult.getPageSize())
+                .build();
+    }
+
+    public static <T> PageResult<T> convertFor(Page<?> pageResult, long pageSize, List<T> resultList) {
+        return PageResult.<T>builder()
+                .current(pageResult.getPages())
+                .total(pageResult.getTotal())
+                .pages(pageResult.getPages())
+                .size(pageResult.getPageSize())
                 .data((T) resultList)
                 .pageSize(pageSize)
                 .build();

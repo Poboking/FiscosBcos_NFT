@@ -1,16 +1,19 @@
 
-
-java:S2259ã"GA "NullPointerException" could be thrown; "nftEntity" is nullable here.(‰±×›ıÿÿÿÿ8Íªåë1J$979a887c-25f2-4c2e-949f-8f682e9369db
-~	java:S125h"<This block of commented-out lines of code should be removed.(ôÅ°©8Şªåë1J$3ffa7c0a-c1cc-4246-ad9a-99bbac0366ac
-t
-java:S1602z",Remove useless curly braces around statement(øöêşÿÿÿÿ8áªåë1J$6f74f2ac-271b-4ee8-9313-14e8e0e31b56
-–
-java:S6809«"MCall async methods via an injected dependency instead of directly via 'this'.(ÌÕÂ¤şÿÿÿÿ8èªåë1J$67e3af8b-1e5a-4d67-8071-0be58421a478
-„	java:S125¨"<This block of commented-out lines of code should be removed.(‡Ãòßûÿÿÿÿ8èªåë1J$241387d0-0277-453d-a6d0-d0c36084b4e8
-	java:S125Ì"<This block of commented-out lines of code should be removed.(·äö¾8íªåë1J$bb67f688-d524-4baf-b339-729a4d1c21aa
+j
+java:S2259Ö"GA "NullPointerException" could be thrown; "nftEntity" is nullable here.(‰±×›ıÿÿÿÿ8œ¿˜¶ì1
+Y	java:S125¶"<This block of commented-out lines of code should be removed.(ôÅ°©8®¿˜¶ì1
+O
+java:S1602È",Remove useless curly braces around statement(øöêşÿÿÿÿ8±¿˜¶ì1
 p
-java:S1602Ÿ",Remove useless curly braces around statement(À¨Ù¨8÷ªåë1J$124ce6e8-0973-4312-92c1-88774a5c09ec
-p
-java:S1602˜",Remove useless curly braces around statement(Ä±Ú€8ˆ«åë1J$04165fb2-849b-445f-a7c3-2ffc9f3acc85
-z
-java:S6810×"6Async methods should return 'void' or a 'Future' type.(ñâÅ—8«åë1J$3d77b602-d1eb-4ad6-80c8-e0825124f091
+java:S6809…"MCall async methods via an injected dependency instead of directly via 'this'.(ÌÕÂ¤şÿÿÿÿ8¸¿˜¶ì1
+^	java:S125‚"<This block of commented-out lines of code should be removed.(‡Ãòßûÿÿÿÿ8¹¿˜¶ì1
+Y	java:S125£"<This block of commented-out lines of code should be removed.(·äö¾8¼¿˜¶ì1
+^	java:S125Ç"<This block of commented-out lines of code should be removed.(Ì’éÁûÿÿÿÿ8¿¿˜¶ì1
+J
+java:S1602ó",Remove useless curly braces around statement(À¨Ù¨8Ä¿˜¶ì1
+J
+java:S1602ş",Remove useless curly braces around statement(Ä±Ú€8Ô¿˜¶ì1
+T
+java:S6810Ê"6Async methods should return 'void' or a 'Future' type.(ñâÅ—8İ¿˜¶ì1
+V
+java:S10689"9Remove this unused "memberBCLogRepository" private field.(­İÅ8â¿˜¶ì1

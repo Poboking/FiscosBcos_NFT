@@ -303,6 +303,20 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
                 .eq("id", resaleCollectionId)
                 .eq("member_id", memberId));
     }
+
+    /**
+     * 检查状态
+     *
+     * @param resaleCollectionId 出售藏品ID
+     * @param state         状态
+     * @return boolean 是否存在
+     */
+    @Override
+    public Boolean checkState(String resaleCollectionId, String state) {
+        return memberResaleCollectionMapper.exists(new QueryWrapper<MemberResaleCollectionEntity>()
+                .eq("id", resaleCollectionId)
+                .eq("state", state));
+    }
 }
 
 

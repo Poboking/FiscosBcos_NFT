@@ -17,7 +17,6 @@ import java.sql.Timestamp;
  */
 @TableName(value = "pay_order")
 @Data
-@Builder
 public class PayOrderEntity extends Model<PayOrderEntity> implements Serializable {
 
     /**

@@ -14,10 +14,6 @@ public class BcosProperties {
     private String certPath;
     private String deployPublicKey;
     private String deployPrivateKey;
-    private String ownableContractAddress;
-
-    private String utilsContractAddress;
-
     private String bcosUserContractAddress;
 
     private String bcosNFTContractAddress;
@@ -76,41 +72,6 @@ public class BcosProperties {
         this.deployPrivateKey = deployPrivateKey;
     }
 
-    /**
-     * get field
-     *
-     * @return ownableContractAddress
-     */
-    public String getOwnableContractAddress() {
-        return this.ownableContractAddress;
-    }
-
-    /**
-     * set field
-     *
-     * @param ownableContractAddress
-     */
-    public void setOwnableContractAddress(String ownableContractAddress) {
-        this.ownableContractAddress = ownableContractAddress;
-    }
-
-    /**
-     * get field
-     *
-     * @return utilsContractAddress
-     */
-    public String getUtilsContractAddress() {
-        return this.utilsContractAddress;
-    }
-
-    /**
-     * set field
-     *
-     * @param utilsContractAddress
-     */
-    public void setUtilsContractAddress(String utilsContractAddress) {
-        this.utilsContractAddress = utilsContractAddress;
-    }
 
     /**
      * get field

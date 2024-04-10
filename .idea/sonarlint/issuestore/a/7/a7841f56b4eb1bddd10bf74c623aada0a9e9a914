@@ -1,3 +1,7 @@
 
-m
-java:S1602:",Remove useless curly braces around statement(†ö–ûÿÿÿÿJ$5904a150-5b89-4e99-819f-c070015a9f5f
+X
+java:S68101"6Async methods should return 'void' or a 'Future' type.(¢×ııÿÿÿÿ8Ï®Ó˜ì1
+N
+java:S1602H",Remove useless curly braces around statement(†ö–ûÿÿÿÿ8Ô®Ó˜ì1
+c
+java:S1128"ARemove this unused import 'cn.hutool.core.text.CharSequenceUtil'.(ƒóÍğÿÿÿÿÿ8×®Ó˜ì1

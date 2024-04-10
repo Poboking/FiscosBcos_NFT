@@ -3,21 +3,6 @@
   <component name="mavenExecutorSetting">
     <option name="defaultSettings">
       <ExecutionSettings>
-        <option name="projectsToBuild">
-          <list>
-            <ProjectToBuild>
-              <option name="displayName" value="a20-nft-3_7" />
-              <option name="mavenArtifact">
-                <MavenArtifact>
-                  <option name="groupId" value="org.sziit" />
-                  <option name="artifactId" value="a20-nft-3_7" />
-                  <option name="version" value="v1.0.0" />
-                </MavenArtifact>
-              </option>
-              <option name="projectDictionary" value="$PROJECT_DIR$" />
-            </ProjectToBuild>
-          </list>
-        </option>
         <option name="selectedProject">
           <MavenArtifact>
             <option name="groupId" value="org.sziit" />

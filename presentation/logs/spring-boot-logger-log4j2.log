@@ -1,70 +1,500 @@
-2024-04-08 00:23:55,752 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2024-04-08 00:23:55,802 INFO o.s.b.StartupInfoLogger [main] Starting BcosTest using Java 17.0.9 with PID 18232 (started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7\presentation)
-2024-04-08 00:23:55,808 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2024-04-08 00:23:57,080 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-04-08 00:23:57,085 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-04-08 00:23:57,122 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
-2024-04-08 00:23:59,149 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
-2024-04-08 00:23:59,255 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-04-08 00:23:59,255 INFO o.f.b.s.n.NetworkImp [main] 
+2024-04-11 01:15:09,479 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-04-11 01:15:09,514 INFO o.s.b.StartupInfoLogger [main] Starting BcosTest using Java 17.0.9 with PID 21972 (started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7\presentation)
+2024-04-11 01:15:09,519 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-04-11 01:15:10,892 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-04-11 01:15:10,896 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-04-11 01:15:10,945 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 26 ms. Found 0 Redis repository interfaces.
+2024-04-11 01:15:13,064 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
+2024-04-11 01:15:13,202 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-11 01:15:13,202 INFO o.f.b.s.n.NetworkImp [main] 
 * TRACE INFORMATION:
 ----------------------------
 ====> STEP1: try to connect nodes with ecdsa context...
 
-2024-04-08 00:23:59,256 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
-2024-04-08 00:23:59,397 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
-2024-04-08 00:24:01,282 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
+2024-04-11 01:15:13,203 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
+2024-04-11 01:15:13,344 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
+2024-04-11 01:15:15,099 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-04-08 00:24:01,282 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
+2024-04-11 01:15:15,100 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-04-08 00:24:01,283 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-04-08 00:24:01,283 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-04-08 00:24:01,283 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
+2024-04-11 01:15:15,100 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-11 01:15:15,100 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-11 01:15:15,100 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}, {"code":1, "msg":"ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}] 
-2024-04-08 00:24:01,283 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
+2024-04-11 01:15:15,100 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
 Failed to connect to all the nodes!
 * ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 * ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 
-2024-04-08 00:24:01,284 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 1935476108 
-2024-04-08 00:24:01,284 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 1159112152 
-2024-04-08 00:24:03,352 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
-2024-04-08 00:24:03,352 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
+2024-04-11 01:15:15,101 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 107018675 
+2024-04-11 01:15:15,101 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 1972794340 
+2024-04-11 01:15:17,176 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
+2024-04-11 01:15:17,176 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
 ====> STEP2: connect nodes with ecdsa context failed, try to connect nodes with sm-context...
-2024-04-08 00:24:03,353 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
-2024-04-08 00:24:03,353 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-04-08 00:24:03,734 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 1487396772
-2024-04-08 00:24:03,734 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 1276230320
-2024-04-08 00:24:03,734 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
-2024-04-08 00:24:03,734 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
-2024-04-08 00:24:03,844 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-11 01:15:17,177 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
+2024-04-11 01:15:17,177 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-11 01:15:17,683 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 680840270
+2024-04-11 01:15:17,683 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 1006210543
+2024-04-11 01:15:17,683 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
+2024-04-11 01:15:17,683 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
+2024-04-11 01:15:17,807 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-04-08 00:24:03,844 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-11 01:15:17,807 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-04-08 00:24:03,845 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
-2024-04-08 00:24:03,845 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
-2024-04-08 00:24:03,889 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-04-08 00:24:03,889 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-04-08 00:24:03,902 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
-2024-04-08 00:24:03,903 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
-2024-04-08 00:24:03,910 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
-2024-04-08 00:24:03,917 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
-2024-04-08 00:24:03,918 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
-2024-04-08 00:24:04,268 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
-2024-04-08 00:24:04,431 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-08 00:24:04,436 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-08 00:24:04,436 INFO o.f.b.s.a.AmopImp [main] amop module started
-2024-04-08 00:24:04,436 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-08 00:24:04,437 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
-2024-04-08 00:24:04,815 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
-2024-04-08 00:24:04,815 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
-2024-04-08 00:24:05,863 INFO c.f.g.Init [main] Graceful Response:已启动
-2024-04-08 00:24:06,190 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
-2024-04-08 00:24:07,050 INFO o.s.b.StartupInfoLogger [main] Started BcosTest in 11.593 seconds (process running for 13.173)
-2024-04-08 00:24:07,634 INFO o.f.b.s.e.EventSubscribeImp [pool-11-thread-1] Resend waiting filters, size: 0
-2024-04-08 00:24:07,758 INFO o.f.b.s.e.EventSubscribeImp [pool-12-thread-1] Resend waiting filters, size: 0
-2024-04-08 00:24:08,290 INFO o.f.b.s.e.EventSubscribeImp [pool-13-thread-1] Resend waiting filters, size: 0
-2024-04-08 00:24:08,865 INFO o.f.b.s.e.EventSubscribeImp [pool-14-thread-1] Resend waiting filters, size: 0
+2024-04-11 01:15:17,807 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
+2024-04-11 01:15:17,807 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
+2024-04-11 01:15:17,853 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-11 01:15:17,853 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-11 01:15:17,855 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
+2024-04-11 01:15:17,856 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
+2024-04-11 01:15:17,860 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
+2024-04-11 01:15:17,868 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
+2024-04-11 01:15:17,868 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
+2024-04-11 01:15:18,221 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
+2024-04-11 01:15:18,372 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-11 01:15:18,385 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-11 01:15:18,385 INFO o.f.b.s.a.AmopImp [main] amop module started
+2024-04-11 01:15:18,386 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-11 01:15:18,386 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
+2024-04-11 01:15:18,756 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
+2024-04-11 01:15:18,756 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
+2024-04-11 01:15:19,857 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-04-11 01:15:20,232 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-04-11 01:15:21,153 INFO o.s.b.StartupInfoLogger [main] Started BcosTest in 12.022 seconds (process running for 13.628)
+2024-04-11 01:15:21,785 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2024-04-11 01:15:26,150 INFO o.k.a.b.t.OrderTask [default-task-thread-1] cancelExpiredOrder
+2024-04-11 01:15:26,870 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3fc92211
+2024-04-11 01:15:26,871 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-04-11 01:15:26,880 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==>  Preparing: SELECT id,collection_id,collection_serial_number,deleted_flag,deleted_time,issue_time,sync_chain_time,unique_id,version FROM issued_collection WHERE ((deleted_flag = ? OR deleted_flag IS NULL) AND unique_id IS NULL AND sync_chain_time IS NULL)
+2024-04-11 01:15:26,898 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==> Parameters: false(Boolean)
+2024-04-11 01:15:27,051 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==    Columns: id, collection_id, collection_serial_number, deleted_flag, deleted_time, issue_time, sync_chain_time, unique_id, version
+2024-04-11 01:15:27,053 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 09238473745092, 8392745098273495823, 7, 0, null, 2024-01-15 14:00:00, null, null, 1
+2024-04-11 01:15:27,057 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1777586891143512064, 1777586889042165760, 1, 0, null, 2024-04-09 14:38:35, null, null, null
+2024-04-11 01:15:27,060 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094588330770432, 1544943105113849859, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,061 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094589215768576, 1544943105113849859, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,063 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094591350669312, 1544943105113849859, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,065 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094593594621952, 1544943105113849859, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,066 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094595813408768, 1544943105113849859, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,067 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094598048972800, 1544943105113849859, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,069 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094600271953920, 1544943105113849859, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,070 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094602557849600, 1544943105113849859, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,071 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094604629835776, 1544943105113849859, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,073 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094606890565632, 1544943105113849859, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,075 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094609105158144, 1544943105113849859, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,076 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094611344916480, 1544943105113849859, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,077 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094614595502080, 1544943105113849859, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,079 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094615774101504, 1544943105113849859, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,082 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094618018054144, 1544943105113849859, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,084 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094620224258048, 1544943105113849859, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,085 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094622526930944, 1544943105113849859, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,086 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094624674414592, 1544943105113849859, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,087 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094626930950144, 1544943105113849859, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,088 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094629086822400, 1544943105113849859, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,090 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094631360135168, 1544943105113849859, 21, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,092 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094633595699200, 1544943105113849859, 22, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,095 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094635709628416, 1544943105113849859, 23, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,097 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094638020689920, 1544943105113849859, 24, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,098 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094640235282432, 1544943105113849859, 25, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,099 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094642403737600, 1544943105113849859, 26, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,101 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094644630913024, 1544943105113849859, 27, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,103 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094646895837184, 1544943105113849859, 28, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,103 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094649076875264, 1544943105113849859, 29, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,104 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094651337605120, 1544943105113849859, 30, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,106 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094654005182464, 1544945390820786179, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,107 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094655741624320, 1544945390820786179, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,108 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094657931051008, 1544945390820786179, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,109 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094660120477696, 1544945390820786179, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,110 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094662465093632, 1544945390820786179, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,112 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094664566439936, 1544945390820786179, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,113 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094666898472960, 1544945390820786179, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,114 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094669087899648, 1544945390820786179, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,115 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094671340240896, 1544945390820786179, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,116 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094673475141632, 1544945390820786179, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,118 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094675878477824, 1544945390820786179, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,119 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094678017572864, 1544945390820786179, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,120 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094680471240704, 1544945390820786179, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,121 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094682446757888, 1544945390820786179, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,121 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094684686516224, 1544945390820786179, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,122 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094686901108736, 1544945390820786179, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,123 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094689132478464, 1544945390820786179, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,124 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094691389014016, 1544945390820786179, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,125 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094693561663488, 1544945390820786179, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,126 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094695876919296, 1544945390820786179, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,127 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094698481582080, 1544950372735385603, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,127 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094700255772672, 1544950372735385603, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,129 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094702499725312, 1544950372735385603, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,129 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094704659791872, 1544950372735385603, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,131 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094706941493248, 1544950372735385603, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,133 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094709122531328, 1544950372735385603, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,134 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094711416815616, 1544950372735385603, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,135 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094713623019520, 1544950372735385603, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,136 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094715846000640, 1544950372735385603, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,137 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094718001872896, 1544950372735385603, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,138 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094720199688192, 1544950372735385603, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,139 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094722363949056, 1544950372735385603, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,140 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094724616290304, 1544950372735385603, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,142 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094726860242944, 1544950372735385603, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,143 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094729070641152, 1544950372735385603, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,145 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094731364925440, 1544950372735385603, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,147 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094733466271744, 1544950372735385603, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,148 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094735626338304, 1544950372735385603, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,149 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094737912233984, 1544950372735385603, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,149 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094740198129664, 1544950372735385603, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,151 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094742358196224, 1544950372735385603, 21, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,152 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094744576983040, 1544950372735385603, 22, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,153 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094746904821760, 1544950372735385603, 23, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,154 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094749098442752, 1544950372735385603, 24, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,155 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094751359172608, 1544950372735385603, 25, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,155 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094753577959424, 1544950372735385603, 26, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,156 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094755897409536, 1544950372735385603, 27, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,157 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094757965201408, 1544950372735385603, 28, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,158 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094760238514176, 1544950372735385603, 29, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,159 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094762465689600, 1544950372735385603, 30, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,160 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094764655116288, 1544950372735385603, 31, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,160 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094766890680320, 1544950372735385603, 32, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,161 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094769109467136, 1544950372735385603, 33, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,162 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094771378585600, 1544950372735385603, 34, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,163 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094773576400896, 1544950372735385603, 35, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,164 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094775744856064, 1544950372735385603, 36, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,165 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094778009780224, 1544950372735385603, 37, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,165 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094780211789824, 1544950372735385603, 38, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,166 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094782426382336, 1544950372735385603, 39, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,166 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094784678723584, 1544950372735385603, 40, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,167 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094787237249024, 1544953568031670275, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,168 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094789053382656, 1544953568031670275, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,170 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094791267975168, 1544953568031670275, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,171 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094793507733504, 1544953568031670275, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,172 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094795818795008, 1544953568031670275, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,173 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094797999833088, 1544953568031670275, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,174 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094800210231296, 1544953568031670275, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,175 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094802743590912, 1544953568031670275, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,176 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094804685553664, 1544953568031670275, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,177 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094806916923392, 1544953568031670275, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,178 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094810830209024, 1544963099243577347, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,179 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094811597766656, 1544963099243577347, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,179 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094813820747776, 1544963099243577347, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,180 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094816047923200, 1544963099243577347, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,181 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094818195406848, 1544963099243577347, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,182 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094820397416448, 1544963099243577347, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,183 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094822595231744, 1544963099243577347, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,184 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094825149562880, 1544963099243577347, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,185 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094827229937664, 1544963099243577347, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,185 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094829402587136, 1544963099243577347, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,186 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094831604596736, 1544963099243577347, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,186 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094833814994944, 1544963099243577347, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,187 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094836147027968, 1544963099243577347, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,188 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094838298705920, 1544963099243577347, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,189 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094840592990208, 1544963099243577347, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,190 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094842815971328, 1544963099243577347, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,191 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094845038952448, 1544963099243577347, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,193 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094847219990528, 1544963099243577347, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,194 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094849426194432, 1544963099243577347, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,196 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094851712090112, 1544963099243577347, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,196 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094854027345920, 1544963099243577347, 21, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,197 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094856225161216, 1544963099243577347, 22, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,198 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094858448142336, 1544963099243577347, 23, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,199 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094860713066496, 1544963099243577347, 24, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,200 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094862847967232, 1544963099243577347, 25, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,201 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094865498767360, 1546391985126899715, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,201 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094867352649728, 1546391985126899715, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,203 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094869609185280, 1546391985126899715, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,204 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094871920246784, 1546391985126899715, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,205 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094874071924736, 1546391985126899715, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,205 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094876257157120, 1546391985126899715, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,206 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094878408835072, 1546391985126899715, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,206 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094880669564928, 1546391985126899715, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,207 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094882926100480, 1546391985126899715, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,207 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094885161664512, 1546391985126899715, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,208 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094889133670400, 1546695201400029187, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,208 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094889867673600, 1546695201400029187, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,209 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094893055344640, 1546695201400029187, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,210 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094894997307392, 1546695201400029187, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,210 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094897329340416, 1546695201400029187, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,211 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094899590070272, 1546695201400029187, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,211 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094901905326080, 1546695201400029187, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,213 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094904019255296, 1546695201400029187, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,213 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094906338705408, 1546695201400029187, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,214 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094908498771968, 1546695201400029187, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,214 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094910746918912, 1546695201400029187, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,215 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094912999260160, 1546695201400029187, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,216 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094915188686848, 1546695201400029187, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,217 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094917432639488, 1546695201400029187, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,218 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094919672397824, 1546695201400029187, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,218 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094921832464384, 1546695201400029187, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,220 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094924135137280, 1546695201400029187, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,220 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094926320369664, 1546695201400029187, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,221 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094928597876736, 1546695201400029187, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,222 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094930787303424, 1546695201400029187, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,222 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094933379383296, 1546882293568634883, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,222 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094935233265664, 1546882293568634883, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,223 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094937569492992, 1546882293568634883, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,224 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094939716976640, 1546882293568634883, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,224 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094941898014720, 1546882293568634883, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,225 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094944225853440, 1546882293568634883, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,226 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094946440445952, 1546882293568634883, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,227 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094948705370112, 1546882293568634883, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,227 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094950894796800, 1546882293568634883, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,228 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094953193275392, 1546882293568634883, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,228 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094955391090688, 1546882293568634883, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,229 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094957647626240, 1546882293568634883, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,231 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094959774138368, 1546882293568634883, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,232 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094962005508096, 1546882293568634883, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,233 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094964211712000, 1546882293568634883, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,235 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094966455664640, 1546882293568634883, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,236 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094968741560320, 1546882293568634883, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,237 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094970897432576, 1546882293568634883, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,238 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094973120413696, 1546882293568634883, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,239 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094975326617600, 1546882293568634883, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,240 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094977591541760, 1546882293568634883, 21, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,241 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094979726442496, 1546882293568634883, 22, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,242 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094981978783744, 1546882293568634883, 23, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,243 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094984189181952, 1546882293568634883, 24, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,243 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094986420551680, 1546882293568634883, 25, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,244 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094988630949888, 1546882293568634883, 26, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,245 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094990908456960, 1546882293568634883, 27, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,246 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094993144020992, 1546882293568634883, 28, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,247 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094995396362240, 1546882293568634883, 29, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,248 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778094997610954752, 1546882293568634883, 30, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,248 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095000177868800, 1548369026005073923, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,249 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095002094665728, 1548369026005073923, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,250 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095004053405696, 1548369026005073923, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,251 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095006616125440, 1548369026005073923, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,251 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095008667140096, 1548369026005073923, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,252 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095010923675648, 1548369026005073923, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,252 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095013159239680, 1548369026005073923, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,253 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095015289946112, 1548369026005073923, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,254 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095017508732928, 1548369026005073923, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,255 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095019798822912, 1548369026005073923, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,255 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095022449623040, 1548369026005073923, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,256 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095024190259200, 1548369026005073923, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,256 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095026367102976, 1548369026005073923, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,257 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095028652998656, 1548369026005073923, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,258 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095030779510784, 1548369026005073923, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,259 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095033015074816, 1548369026005073923, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,260 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095035242250240, 1548369026005073923, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,260 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095037494591488, 1548369026005073923, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,262 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095039663046656, 1548369026005073923, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,264 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095041906999296, 1548369026005073923, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,265 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095044096425984, 1548369026005073923, 21, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,266 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095046449430528, 1548369026005073923, 22, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,267 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095048643051520, 1548369026005073923, 23, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,268 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095050828283904, 1548369026005073923, 24, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,269 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095053055459328, 1548369026005073923, 25, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,269 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095055240691712, 1548369026005073923, 26, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,270 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095057564336128, 1548369026005073923, 27, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,271 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095059695042560, 1548369026005073923, 28, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,271 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095061855109120, 1548369026005073923, 29, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,272 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095064128421888, 1548369026005073923, 30, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,272 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095066431094784, 1548369026005073923, 31, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,273 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095068679241728, 1548369026005073923, 32, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,273 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095070784782336, 1548369026005073923, 33, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,274 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095072970014720, 1548369026005073923, 34, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,274 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095075251716096, 1548369026005073923, 35, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,276 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095077415976960, 1548369026005073923, 36, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,277 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095079672512512, 1548369026005073923, 37, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,278 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095081920659456, 1548369026005073923, 38, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,280 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095084126863360, 1548369026005073923, 39, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,281 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095086408564736, 1548369026005073923, 40, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,281 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095088530882560, 1548369026005073923, 41, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,282 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095090833555456, 1548369026005073923, 42, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,282 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095093115256832, 1548369026005073923, 43, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,282 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095095325655040, 1548369026005073923, 44, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,283 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095097447972864, 1548369026005073923, 45, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,283 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095099993915392, 1548369026005073923, 46, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,284 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095101982015488, 1548369026005073923, 47, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,284 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095104175636480, 1548369026005073923, 48, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,285 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095107812098048, 1548369026005073923, 49, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,285 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095108659347456, 1548369026005073923, 50, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,285 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095112228700160, 1548369026005073923, 51, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,286 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095112996257792, 1548369026005073923, 52, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,286 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095115227627520, 1548369026005073923, 53, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,287 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095117496745984, 1548369026005073923, 54, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,288 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095119673589760, 1548369026005073923, 55, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,289 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095122001428480, 1548369026005073923, 56, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,290 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095124232798208, 1548369026005073923, 57, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,291 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095126392864768, 1548369026005073923, 58, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,292 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095128661983232, 1548369026005073923, 59, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,293 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095130851409920, 1548369026005073923, 60, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,295 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095133011476480, 1548369026005073923, 61, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,296 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095135230263296, 1548369026005073923, 62, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,296 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095137495187456, 1548369026005073923, 63, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,297 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095139793666048, 1548369026005073923, 64, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,298 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095141983092736, 1548369026005073923, 65, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,299 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095144180908032, 1548369026005073923, 66, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,300 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095146437443584, 1548369026005073923, 67, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,301 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095148673007616, 1548369026005073923, 68, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,302 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095150858240000, 1548369026005073923, 69, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,302 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095153085415424, 1548369026005073923, 70, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,303 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095155262259200, 1548369026005073923, 71, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,304 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095157510406144, 1548369026005073923, 72, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,305 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095159724998656, 1548369026005073923, 73, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,306 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095161952174080, 1548369026005073923, 74, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,308 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095164464562176, 1548369026005073923, 75, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,310 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095166356193280, 1548369026005073923, 76, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,312 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095168621117440, 1548369026005073923, 77, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,313 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095170760212480, 1548369026005073923, 78, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,314 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095173004165120, 1548369026005073923, 79, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,315 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095175269089280, 1548369026005073923, 80, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,315 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095177437544448, 1548369026005073923, 81, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,316 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095179756994560, 1548369026005073923, 82, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,318 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095181967392768, 1548369026005073923, 83, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,319 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095184202956800, 1548369026005073923, 84, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,320 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095186425937920, 1548369026005073923, 85, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,321 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095188615364608, 1548369026005073923, 86, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,322 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095190876094464, 1548369026005073923, 87, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,323 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095193157795840, 1548369026005073923, 88, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,324 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095195334639616, 1548369026005073923, 89, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,325 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095197486317568, 1548369026005073923, 90, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,326 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095200028065792, 1548370180768268291, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,327 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095201928085504, 1548370180768268291, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,327 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095204167843840, 1548370180768268291, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,327 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095206424379392, 1548370180768268291, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,328 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095208689303552, 1548370180768268291, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,328 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095210912284672, 1548370180768268291, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,329 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095213156237312, 1548370180768268291, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,329 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095215358246912, 1548370180768268291, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,329 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095217623171072, 1548370180768268291, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,330 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095219858735104, 1548370180768268291, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,331 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095222173990912, 1548370180768268291, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,331 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095224573132800, 1548370180768268291, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,331 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095226695450624, 1548370180768268291, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,331 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095228910043136, 1548370180768268291, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,332 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095231128829952, 1548370180768268291, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,332 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095233406337024, 1548370180768268291, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,332 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095235633512448, 1548370180768268291, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,333 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095237768413184, 1548370180768268291, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,333 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095240129806336, 1548370180768268291, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,333 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095242268901376, 1548370180768268291, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,334 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095244491882496, 1548370180768268291, 21, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,334 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095246693892096, 1548370180768268291, 22, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,335 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095248904290304, 1548370180768268291, 23, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,335 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095251206963200, 1548370180768268291, 24, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,336 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095253446721536, 1548370180768268291, 25, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,337 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095255631953920, 1548370180768268291, 26, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,338 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095257850740736, 1548370180768268291, 27, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,339 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095260073721856, 1548370180768268291, 28, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,340 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095262363811840, 1548370180768268291, 29, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,342 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095264561627136, 1548370180768268291, 30, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,344 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095266767831040, 1548370180768268291, 31, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,345 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095269003395072, 1548370180768268291, 32, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,346 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095271268319232, 1548370180768268291, 33, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,347 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095273478717440, 1548370180768268291, 34, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,348 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095275773001728, 1548370180768268291, 35, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,349 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095277882736640, 1548370180768268291, 36, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,349 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095280105717760, 1548370180768268291, 37, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,349 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095282320310272, 1548370180768268291, 38, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,350 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095284522319872, 1548370180768268291, 39, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,350 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095286753689600, 1548370180768268291, 40, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,351 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095288980865024, 1548370180768268291, 41, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,351 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095291262566400, 1548370180768268291, 42, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,351 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095293456187392, 1548370180768268291, 43, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,352 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095295712722944, 1548370180768268291, 44, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,354 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095297914732544, 1548370180768268291, 45, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,355 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095300141907968, 1548370180768268291, 46, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,357 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095302335528960, 1548370180768268291, 47, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,358 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095304533344256, 1548370180768268291, 48, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,358 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095306819239936, 1548370180768268291, 49, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,359 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095309004472320, 1548370180768268291, 50, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,359 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095311219064832, 1548370180768268291, 51, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,360 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095313525932032, 1548370180768268291, 52, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,361 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095315610501120, 1548370180768268291, 53, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,361 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095317816705024, 1548370180768268291, 54, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,361 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095320110989312, 1548370180768268291, 55, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,362 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095322287833088, 1548370180768268291, 56, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,363 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095324494036992, 1548370180768268291, 57, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,365 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095328193413120, 1548370180768268291, 58, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,365 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095329032273920, 1548370180768268291, 59, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,365 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095331150397440, 1548370180768268291, 60, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,366 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095333771837440, 1548370180768268291, 61, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,366 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095335906738176, 1548370180768268291, 62, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,366 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095338058416128, 1548370180768268291, 63, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,367 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095340235259904, 1548370180768268291, 64, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,367 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095342512766976, 1548370180768268291, 65, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,367 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095344693805056, 1548370180768268291, 66, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,368 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095346992283648, 1548370180768268291, 67, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,368 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095349135572992, 1548370180768268291, 68, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,368 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095351442440192, 1548370180768268291, 69, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,368 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095353753501696, 1548370180768268291, 70, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,368 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095355892596736, 1548370180768268291, 71, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,368 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095358086217728, 1548370180768268291, 72, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,369 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095360309198848, 1548370180768268291, 73, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,369 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095362578317312, 1548370180768268291, 74, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,370 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095364776132608, 1548370180768268291, 75, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,370 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095366877478912, 1548370180768268291, 76, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,370 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095369171763200, 1548370180768268291, 77, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,370 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095371264720896, 1548370180768268291, 78, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,371 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095373504479232, 1548370180768268291, 79, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,371 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095375807152128, 1548370180768268291, 80, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,371 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095377967218688, 1548370180768268291, 81, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,372 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095380345389056, 1548370180768268291, 82, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,372 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095382375432192, 1548370180768268291, 83, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,372 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095384678105088, 1548370180768268291, 84, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,373 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095386854948864, 1548370180768268291, 85, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,374 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095389124067328, 1548370180768268291, 86, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,374 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095391313494016, 1548370180768268291, 87, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,374 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095393599389696, 1548370180768268291, 88, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,375 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095395927228416, 1548370180768268291, 89, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,376 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095398057934848, 1548370180768268291, 90, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,377 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095400310276096, 1548370180768268291, 91, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,378 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095402529062912, 1548370180768268291, 92, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,379 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095404747849728, 1548370180768268291, 93, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,379 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095406773698560, 1548370180768268291, 94, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,379 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095409093148672, 1548370180768268291, 95, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,380 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095411400015872, 1548370180768268291, 96, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,381 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095413539110912, 1548370180768268291, 97, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,381 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095415787257856, 1548370180768268291, 98, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,382 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095418056376320, 1548370180768268291, 99, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,382 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095420187082752, 1548370180768268291, 100, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,382 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095422884020224, 1548370670008664068, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,383 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095424700153856, 1548370670008664068, 2, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,383 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095426889580544, 1548370670008664068, 3, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,383 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095429116755968, 1548370670008664068, 4, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,384 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095431364902912, 1548370670008664068, 5, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,384 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095433520775168, 1548370670008664068, 6, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,384 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095435898945536, 1548370670008664068, 7, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,385 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095437941571584, 1548370670008664068, 8, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,386 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095440273604608, 1548370670008664068, 9, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,387 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095442463031296, 1548370670008664068, 10, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,389 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095444639875072, 1548370670008664068, 11, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,391 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095446867050496, 1548370670008664068, 12, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,393 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095450591592448, 1548370670008664068, 13, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,395 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095451434647552, 1548370670008664068, 14, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,396 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095453666017280, 1548370670008664068, 15, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,397 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095455968690176, 1548370670008664068, 16, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,398 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095458107785216, 1548370670008664068, 17, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,399 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095460410458112, 1548370670008664068, 18, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,400 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095462574718976, 1548370670008664068, 19, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,400 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095464864808960, 1548370670008664068, 20, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,401 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1778095467867930624, 1777586947493986304, 1, 0, null, 2024-04-11 00:15:52, null, null, null
+2024-04-11 01:15:27,401 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 2348750928450911, 9283475928374598237, 5, 0, null, 2023-11-20 11:00:00, null, null, 1
+2024-04-11 01:15:27,402 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 239487872398472, 2348972394872398475, 9, 0, null, 2024-03-15 12:00:00, null, null, 1
+2024-04-11 01:15:27,402 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 893475982732347, 8734123095743209847, 1, 0, null, 2023-07-15 12:30:00, null, null, 1
+2024-04-11 01:15:27,402 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 9245092834750984, 8293475927349857261, 3, 0, null, 2023-09-15 09:00:00, null, null, 1
+2024-04-11 01:15:27,402 DEBUG o.a.i.l.j.BaseJdbcLogger [main] <==      Total: 402
+2024-04-11 01:15:27,412 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==>  Preparing: SELECT id,amount,biz_order_no,biz_type,issued_collection_id,collection_id,create_time,member_id,order_deadline,order_no,state,version,paid_time,cancel_time,biz_mode FROM pay_order WHERE (state = ? AND order_deadline < ?)
+2024-04-11 01:15:27,413 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==> Parameters: 1(String), 2024-04-11 01:15:26.0(Timestamp)
+2024-04-11 01:15:27,448 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] <==      Total: 0
+2024-04-11 01:15:27,449 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==>  Preparing: SELECT id,collection_id,collection_serial_number,deleted_flag,deleted_time,issue_time,sync_chain_time,unique_id,version FROM issued_collection WHERE id=?
+2024-04-11 01:15:27,450 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==> Parameters: 09238473745092(String)
+2024-04-11 01:15:27,484 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==    Columns: id, collection_id, collection_serial_number, deleted_flag, deleted_time, issue_time, sync_chain_time, unique_id, version
+2024-04-11 01:15:27,485 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 09238473745092, 8392745098273495823, 7, 0, null, 2024-01-15 14:00:00, null, null, 1
+2024-04-11 01:15:27,486 DEBUG o.a.i.l.j.BaseJdbcLogger [main] <==      Total: 1
+2024-04-11 01:15:27,487 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==>  Preparing: SELECT id,collection_hash,commodity_type,cover,create_time,creator_id,deleted_flag,deleted_time,external_sale_flag,name,price,quantity,sale_time,stock,sync_chain_time,version FROM collection WHERE id=?
+2024-04-11 01:15:27,487 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==> Parameters: 8392745098273495823(String)
+2024-04-11 01:15:27,524 DEBUG o.a.i.l.j.BaseJdbcLogger [main] <==      Total: 0
+2024-04-11 01:15:27,525 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==>  Preparing: SELECT id,collection_id,collection_serial_number,deleted_flag,deleted_time,issue_time,sync_chain_time,unique_id,version FROM issued_collection WHERE id=?
+2024-04-11 01:15:27,526 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==> Parameters: 1777586891143512064(String)
+2024-04-11 01:15:27,560 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==    Columns: id, collection_id, collection_serial_number, deleted_flag, deleted_time, issue_time, sync_chain_time, unique_id, version
+2024-04-11 01:15:27,560 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1777586891143512064, 1777586889042165760, 1, 0, null, 2024-04-09 14:38:35, null, null, null
+2024-04-11 01:15:27,561 DEBUG o.a.i.l.j.BaseJdbcLogger [main] <==      Total: 1
+2024-04-11 01:15:27,562 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==>  Preparing: SELECT id,collection_hash,commodity_type,cover,create_time,creator_id,deleted_flag,deleted_time,external_sale_flag,name,price,quantity,sale_time,stock,sync_chain_time,version FROM collection WHERE id=?
+2024-04-11 01:15:27,562 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==> Parameters: 1777586889042165760(String)
+2024-04-11 01:15:27,600 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==    Columns: id, collection_hash, commodity_type, cover, create_time, creator_id, deleted_flag, deleted_time, external_sale_flag, name, price, quantity, sale_time, stock, sync_chain_time, version
+2024-04-11 01:15:27,601 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1777586889042165760, d0fc3ef3-5c20-47bc-a480-8aa90264912a, 1, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2024-04-09 14:38:34, 1592161297795907584, 0, null, 0, 测试藏品, 1.0, 1, 2024-04-09 14:38:23, 1, null, null
+2024-04-11 01:15:27,601 DEBUG o.a.i.l.j.BaseJdbcLogger [main] <==      Total: 1
+2024-04-11 01:15:27,614 INFO o.f.b.s.e.EventSubscribeImp [pool-11-thread-1] Resend waiting filters, size: 0
+2024-04-11 01:15:27,818 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-04-11 01:15:33,437 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

@@ -153,10 +153,27 @@ public interface MemberResaleCollectionRepository extends IService<MemberResaleC
 
     /**
      * 检查是否存在
+     *
      * @param resaleCollectionId 出售藏品ID
      * @return boolean 是否存在
      */
     boolean checkExist(String resaleCollectionId);
 
+    /**
+     * 检查是否存在
+     *
+     * @param resaleCollectionId 出售藏品ID
+     * @param memberId           会员ID
+     * @return boolean 是否存在
+     */
     boolean checkExist(String resaleCollectionId, String memberId);
+
+    /**
+     * 检查状态
+     *
+     * @param resaleCollectionId 出售藏品ID
+     * @param 转售的藏品状态已发布         状态
+     * @return boolean 是否存在
+     */
+    Boolean checkState(String resaleCollectionId, String 转售的藏品状态已发布);
 }

@@ -95,4 +95,12 @@ public interface MemberRepository extends IService<MemberEntity> {
      * @return boolean
      */
     boolean checkRealName(String memberId);
+
+    /**
+     * 获取用户区块链地址
+     *
+     * @param memberId
+     * @return string address
+     */
+    String getAddressById(String memberId);
 }

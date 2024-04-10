@@ -105,8 +105,6 @@ public class DeployService {
      */
     public void deployAll() {
         try {
-            deployOwnable();
-            deployUtils();
             deployBcosUserContract();
             deployBcosNFTContract();
         } catch (ContractException e) {

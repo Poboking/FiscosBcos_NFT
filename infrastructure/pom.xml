@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.knight</groupId>
         <artifactId>a20-nft-3_7</artifactId>
-        <version>v1.0.0.4.8</version>
+        <version>v1.0.0.4.10</version>
     </parent>
 
     <artifactId>infrastructure</artifactId>
@@ -22,6 +22,12 @@
     </properties>
     <dependencies>
 
+        <!--pagehelper分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.6</version>
+        </dependency>
         <!-- Database -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -40,17 +46,31 @@
             <version>8.3.0</version>
         </dependency>
         <!-- MariaDB 依赖 -->
-<!--        <dependency>-->
-<!--            <groupId>org.mariadb.jdbc</groupId>-->
-<!--            <artifactId>mariadb-java-client</artifactId>-->
-<!--            <version>3.3.3</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.mariadb.jdbc</groupId>-->
+        <!--            <artifactId>mariadb-java-client</artifactId>-->
+        <!--            <version>3.3.3</version>-->
+        <!--        </dependency>-->
 
         <!-- SpringBoot Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- 腾讯云对象存储API -->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.6.8</version>
+            <!--排除这个slf4j-log4j12-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Lombok -->
@@ -82,6 +102,14 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
         </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.web3j/core -->
+<!--        <dependency>-->
+<!--            <groupId>org.web3j</groupId>-->
+<!--            <artifactId>core</artifactId>-->
+<!--            <version>5.0.0</version>-->
+<!--        </dependency>-->
 
         <!-- FISCO-BCOS Connection & SDK -->
         <dependency>

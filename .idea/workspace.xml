@@ -9,50 +9,114 @@
   </component>
   <component name="AutomaticModuleUnloader">
     <loaded-modules>
-      <module name="a20-nft-3_7" />
-      <module name="presentation" />
       <module name="infrastructure" />
       <module name="app" />
+      <module name="presentation" />
+      <module name="a20-nft-3_7" />
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb5e3f1b-65dd-4d01-8b2d-bcab56c8cd67" name="更改" comment="feat(master): Simplify pom.xml">
       <changelist_data name="poboking" email="" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/convert/artwork/IssuedCollectionConvert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/collection/IssuedCollectionCastFailedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/member/RealNameNotVerifiedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/transaction/IssuedCollectionActLogUpdateOrAddException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/transaction/dto/issued/CastIssuedCollectionReqDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/ImageUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/conf/MybatisPlusPageConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/block/BlockChainTransactionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/block/ChainTransactionFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/block/GainFromAddressException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/collection/CollectionDeleteFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/collection/HoldCollectionSaveFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/collection/HoldCollectionUpdateFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/transaction/ResaleNotMatchException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/task/BlockChainTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/SolidityAddressGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/exception/initialize/BlockChainInitDataFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation/src/test/java/COSTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation/src/test/java/QuickTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation/src/test/java/TimeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/JavaSceneConfigState.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d187285e-0d19-470c-b6bd-9617ad5256d4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d187285e-0d19-470c-b6bd-9617ad5256d4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d187285e-0d19-470c-b6bd-9617ad5256d4/storage_v2/_src_/schema/open_nft.R8rw4Q.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d187285e-0d19-470c-b6bd-9617ad5256d4/storage_v2/_src_/schema/open_nft.R8rw4Q.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mavenExecutorSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mavenExecutorSetting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/05c84119afeaf869da0db551a0d4f3f3235f244b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/05c84119afeaf869da0db551a0d4f3f3235f244b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c2808859fd9f37909d69b48de4bd4e7bae355fd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0c2808859fd9f37909d69b48de4bd4e7bae355fd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fe5e457c208ef596abbc6f2f8d1d776cff78935" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fe5e457c208ef596abbc6f2f8d1d776cff78935" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27cb2d42ac73288e36ae244555447bc3c41e6052" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27cb2d42ac73288e36ae244555447bc3c41e6052" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2bb83dd43ff74bd2017133cd9dea6897cfe43de3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2bb83dd43ff74bd2017133cd9dea6897cfe43de3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30c2d7423531bd8f718fb748f2280f1c064d831e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/30c2d7423531bd8f718fb748f2280f1c064d831e" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a412a15a9df67d7633b955facbcd50fbd102e99" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a412a15a9df67d7633b955facbcd50fbd102e99" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393b54a143a2f25876bdfcbd2ae6dc1db9c1672e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/393b54a143a2f25876bdfcbd2ae6dc1db9c1672e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3c2b304430c5ddf45c4b69f107b2982a15e4e21e" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3c2b304430c5ddf45c4b69f107b2982a15e4e21e" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/40547d155ca60eb6120cdaf86aacadc3527054b3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/40547d155ca60eb6120cdaf86aacadc3527054b3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f79d9a1d70ee28dedd5c7a2de65ee41cd0a36a4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f79d9a1d70ee28dedd5c7a2de65ee41cd0a36a4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6f3694b095a54b67848a7a52595aef208d80dd38" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/f/6f3694b095a54b67848a7a52595aef208d80dd38" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73148b7cc313e74b39832ae176c368c9179edead" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/3/73148b7cc313e74b39832ae176c368c9179edead" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/7400a6ab6016438c4203a39dab9ea43a0273ad6f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/7400a6ab6016438c4203a39dab9ea43a0273ad6f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/78b89141eabfa0e5f96639e8d65cfc171d464f85" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/8/78b89141eabfa0e5f96639e8d65cfc171d464f85" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a388a46190216329207bedf5eabcc761429d3e75" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/3/a388a46190216329207bedf5eabcc761429d3e75" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6e2d076880088132f9c10c02b283a37f2784d15" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6e2d076880088132f9c10c02b283a37f2784d15" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a7841f56b4eb1bddd10bf74c623aada0a9e9a914" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/7/a7841f56b4eb1bddd10bf74c623aada0a9e9a914" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b32ed674c052f74bf0279ac4e11ae15294fe7dc1" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b32ed674c052f74bf0279ac4e11ae15294fe7dc1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bf867f961813c6e4b4e6871c00e2c48ad6630e85" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bf867f961813c6e4b4e6871c00e2c48ad6630e85" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/5/d5ac1861ae8f06e102d4a528c6cc26d09f8a7c20" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/5/d5ac1861ae8f06e102d4a528c6cc26d09f8a7c20" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9c44f5c8982553c06d3c59204a3d2fc86db3f95" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9c44f5c8982553c06d3c59204a3d2fc86db3f95" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de0ea91e3fb64ce7c2d5e0a734b866bcc18764ed" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/e/de0ea91e3fb64ce7c2d5e0a734b866bcc18764ed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f2342c9cfb04a0be8f1dcfdeaa490e540d727b79" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f2342c9cfb04a0be8f1dcfdeaa490e540d727b79" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/CollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/CollectionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/storage/ImageTypeIllegalException.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/exception/storage/ImageTypeIllegalException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/LoginLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/LoginLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/IssuedCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/IssuedCollectionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/MemberCollectionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/artwork/collection/MemberCollectionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/loginlog/LoginLogReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/log/dto/loginlog/LoginLogReqDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/storage/StorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/storage/StorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/task/OrderTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/task/OrderTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/transaction/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/org/knight/app/biz/transaction/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/BcosNFT.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/BcosNFT.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/BcosUser.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/BcosUser.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/NftConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/NftConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/PageResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/common/PageResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/domain/IssuedCollectionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/domain/IssuedCollectionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/domain/PayOrderEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/dao/domain/PayOrderEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/BcosConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/BcosConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/BcosProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/BcosProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/ContractAddressContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/config/ContractAddressContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosNFT.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosNFT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/biz/ChainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/biz/ChainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/biz/DeployService.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/fisco/service/biz/DeployService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/IssuedCollectionActionLogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/IssuedCollectionActionLogRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/IssuedCollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/IssuedCollectionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberResaleCollectionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/MemberResaleCollectionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/CollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/CollectionRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/IssuedCollectionActionLogRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/IssuedCollectionActionLogRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/LoginLogRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/LoginLogRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/IssuedCollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/IssuedCollectionRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberResaleCollectionRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/java/org/knight/infrastructure/repository/impl/MemberResaleCollectionRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/BcosNFT.abi" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/BcosNFT.abi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/BcosUser.abi" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/BcosUser.abi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/sm/BcosNFT.abi" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/sm/BcosNFT.abi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/sm/BcosUser.abi" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/abi/sm/BcosUser.abi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/BcosNFT.bin" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/BcosNFT.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/BcosUser.bin" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/BcosUser.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/BcosNFT.bin" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/BcosNFT.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/BcosUser.bin" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/src/main/resources/bin/sm/BcosUser.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-1.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-2.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-3.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-4.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-5.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-6.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-7.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2024-04/spring-boot-logger-log4j2--08-四月-2024-7.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring-boot-logger-log4j2.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring-boot-logger-log4j2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/PresentationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/PresentationApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/CollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/StorageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/StorageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/logs/spring-boot-logger-log4j2.log" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/logs/spring-boot-logger-log4j2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/admin/BackCollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/admin/BackCollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/transaction/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/org/knight/presentation/member/transaction/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/resources/application-server.yml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/resources/application-server.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/test/java/BcosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/test/java/BcosTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,10 +171,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="alwaysUpdateSnapshots" value="true" />
         <option name="localRepository" value="D:\CSectype\Maven\repository" />
         <option name="mavenHome" value="$PROJECT_DIR$/../../../CSectype/Maven/apache-maven-3.9.5-bin/apache-maven-3.9.5" />
-        <option name="userSettingsFile" value="D:\CSectype\Maven\apache-maven-3.9.5-bin\apache-maven-3.9.5\conf\settings.xml" />
+        <option name="useMavenConfig" value="false" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -150,7 +213,7 @@
     "jdk.selected.JAVA_MODULE": "17.09",
     "last.edited.regexp": "示例文本",
     "last_directory_selection": "D:/CS/IDEA_javacode/a20-nft-3_7/app/src/main/java/org/sziit/app/biz/log/dto",
-    "last_opened_file_path": "D:/CS/IDEA_javacode/a20-nft-3_7/infrastructure/src/main/resources",
+    "last_opened_file_path": "D:/CS/IDEA_javacode/a20-nft-3_7/infrastructure/src/main/java/org/knight/infrastructure/fisco/service",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -184,8 +247,8 @@
       <recent name="org.sziit.app.biz.dict.dto" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\infrastructure\src\main\resources" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\infrastructure\src\main\java\org\knight\infrastructure\fisco\service" />
+      <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\infrastructure\src\main\resources" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\infrastructure\src\main\java\org\knight\infrastructure\repository" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\contracts\protogenesis" />
       <recent name="D:\CS\IDEA_javacode\a20-nft-3_7\contracts" />
@@ -212,61 +275,57 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.PresentationApplication">
-    <configuration name="BcosTest.helloWorld" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BcosTest.getDeployAddress" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="presentation" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BcosTest" />
-      <option name="METHOD_NAME" value="helloWorld" />
+      <option name="METHOD_NAME" value="getDeployAddress" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BcosTest.testsDeploy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BcosTest.getNewPrivateKey" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="presentation" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BcosTest" />
-      <option name="METHOD_NAME" value="testsDeploy" />
+      <option name="METHOD_NAME" value="getNewPrivateKey" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PresentationApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="presentation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.knight.presentation.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.knight.presentation" />
-      <option name="MAIN_CLASS_NAME" value="org.knight.presentation.PresentationApplicationTests" />
-      <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestService.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BcosTest.testDeploy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="presentation" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestService" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="BcosTest" />
+      <option name="METHOD_NAME" value="testDeploy" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="app" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.sziit.app.biz.AppApplication" />
+    <configuration name="BcosTest.testInit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="presentation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BcosTest" />
+      <option name="METHOD_NAME" value="testInit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="COSTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="presentation" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.sziit.app.biz.*" />
+          <option name="PATTERN" value="com.lvgui.demo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.lvgui.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.lvgui.demo.COSTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -293,22 +352,22 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.BcosTest.helloWorld" />
-      <item itemvalue="JUnit.BcosTest.testsDeploy" />
-      <item itemvalue="JUnit.TestService.test" />
-      <item itemvalue="JUnit.PresentationApplicationTests.contextLoads" />
+      <item itemvalue="JUnit.BcosTest.getNewPrivateKey" />
+      <item itemvalue="JUnit.BcosTest.testDeploy" />
+      <item itemvalue="JUnit.BcosTest.testInit" />
+      <item itemvalue="JUnit.BcosTest.getDeployAddress" />
+      <item itemvalue="JUnit.COSTest" />
       <item itemvalue="Spring Boot.AppApplication" />
       <item itemvalue="Spring Boot.InfrastructureApplication" />
       <item itemvalue="Spring Boot.PresentationApplication" />
-      <item itemvalue="Spring Boot.AppApplication (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BcosTest.testsDeploy" />
-        <item itemvalue="Spring Boot.AppApplication (1)" />
-        <item itemvalue="JUnit.TestService.test" />
-        <item itemvalue="JUnit.PresentationApplicationTests.contextLoads" />
-        <item itemvalue="JUnit.BcosTest.helloWorld" />
+        <item itemvalue="JUnit.BcosTest.testInit" />
+        <item itemvalue="JUnit.BcosTest.testDeploy" />
+        <item itemvalue="JUnit.BcosTest.getNewPrivateKey" />
+        <item itemvalue="JUnit.BcosTest.getDeployAddress" />
+        <item itemvalue="JUnit.COSTest" />
       </list>
     </recent_temporary>
   </component>
@@ -441,6 +500,16 @@
       <workItem from="1712544372340" duration="462000" />
       <workItem from="1712545759828" duration="2496000" />
       <workItem from="1712550172450" duration="15408000" />
+      <workItem from="1712567362124" duration="10072000" />
+      <workItem from="1712587900783" duration="143000" />
+      <workItem from="1712588155176" duration="34000" />
+      <workItem from="1712642584975" duration="1222000" />
+      <workItem from="1712652293300" duration="364000" />
+      <workItem from="1712663773628" duration="18556000" />
+      <workItem from="1712724653847" duration="21487000" />
+      <workItem from="1712753540510" duration="3219000" />
+      <workItem from="1712760585217" duration="1620000" />
+      <workItem from="1712762315460" duration="7293000" />
     </task>
     <servers />
   </component>

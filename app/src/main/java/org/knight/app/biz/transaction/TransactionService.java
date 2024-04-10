@@ -8,8 +8,10 @@ import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.convert.artwork.IssuedCollectionConvert;
 import org.knight.app.biz.convert.transaction.CollectionGiveRecordConvert;
 import org.knight.app.biz.convert.transaction.PayOrderConvert;
+import org.knight.app.biz.exception.block.BlockChainTransactionException;
+import org.knight.app.biz.exception.block.ChainTransactionFailedException;
+import org.knight.app.biz.exception.block.GainFromAddressException;
 import org.knight.app.biz.exception.collection.*;
-import org.knight.app.biz.exception.log.LogCreationFailedException;
 import org.knight.app.biz.exception.member.MemberNotFoundException;
 import org.knight.app.biz.exception.member.RealNameNotVerifiedException;
 import org.knight.app.biz.exception.member.ReceiverNotFoundException;
@@ -75,6 +77,82 @@ public class TransactionService {
         this.chainService = chainService;
     }
 
+    public PayOrderEntity quickBuildPayOrder(String bizMode, Double amount, String collectionId, String issuedCollectionId, String memberId) {
+        LocalDateTime now = LocalDateTime.now();
+        PayOrderEntity payOrderEntity = new PayOrderEntity();
+        payOrderEntity.setId(IdUtils.snowFlakeId());
+        payOrderEntity.setAmount(amount);
+        payOrderEntity.setIssuedCollectionId(issuedCollectionId);
+        payOrderEntity.setCollectionId(collectionId);
+        payOrderEntity.setMemberId(memberId);
+        payOrderEntity.setOrderNo(OrderNoUtil.generateOrderNo());
+        payOrderEntity.setState(NftConstants.支付订单状态_待付款);
+        payOrderEntity.setBizMode(bizMode);
+        payOrderEntity.setBizType(NftConstants.会员余额变动日志类型_购买藏品);
+        payOrderEntity.setCreateTime(Timestamp.valueOf(now.format(NftConstants.DATE_FORMAT)));
+        payOrderEntity.setOrderDeadline(Timestamp.valueOf(now.plusMinutes(NftConstants.支付订单有效期).format(NftConstants.DATE_FORMAT)));
+        return payOrderEntity;
+    }
+
+    /**
+     * 快速构建持有藏品实体类 - 购买藏品 - 平台自营/二级市场
+     *
+     * @param memberId           持有者ID
+     * @param collectionId       藏品ID
+     * @param issuedCollectionId 发行藏品ID
+     * @param payOrderId         支付订单ID
+     * @param gainWay            获取方式
+     * @param transactionHash    交易哈希
+     * @return MemberHoldCollectionEntity
+     */
+    public MemberHoldCollectionEntity quickBuildHoldCollectionByPurchase(String memberId, String collectionId, String issuedCollectionId, String payOrderId, String gainWay, String transactionHash) {
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        MemberHoldCollectionEntity memberHoldCollectionEntity = new MemberHoldCollectionEntity();
+        CollectionEntity collectionEntity = collectionRepository.getById(collectionId);
+        PayOrderEntity payOrderEntity = payOrderRepository.getById(payOrderId);
+        memberHoldCollectionEntity.setId(IdUtils.snowFlakeId());
+        memberHoldCollectionEntity.setName(collectionEntity.getName());
+        memberHoldCollectionEntity.setCover(collectionEntity.getCover());
+        memberHoldCollectionEntity.setCollectionId(collectionId);
+        memberHoldCollectionEntity.setGainWay(gainWay);
+        memberHoldCollectionEntity.setHoldTime(now);
+        memberHoldCollectionEntity.setIssuedCollectionId(issuedCollectionId);
+        memberHoldCollectionEntity.setMemberId(memberId);
+        memberHoldCollectionEntity.setPrice(payOrderEntity.getAmount());
+        memberHoldCollectionEntity.setState(NftConstants.持有藏品状态_持有中);
+        memberHoldCollectionEntity.setSyncChainTime(collectionEntity.getSyncChainTime());
+        memberHoldCollectionEntity.setTransactionHash(transactionHash);
+        return memberHoldCollectionEntity;
+    }
+
+
+    /**
+     * 快速构建持有藏品实体类 - 赠送藏品
+     *
+     * @param memberId           持有者ID
+     * @param collectionId       藏品ID
+     * @param issuedCollectionId 发行藏品ID
+     * @param transactionHash    交易哈希
+     * @return MemberHoldCollectionEntity
+     */
+    public MemberHoldCollectionEntity quickBuildHoldCollectionByGive(String memberId, String collectionId, String issuedCollectionId, String transactionHash) {
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        MemberHoldCollectionEntity memberHoldCollectionEntity = new MemberHoldCollectionEntity();
+        CollectionEntity collectionEntity = collectionRepository.getById(collectionId);
+        memberHoldCollectionEntity.setId(IdUtils.snowFlakeId());
+        memberHoldCollectionEntity.setName(collectionEntity.getName());
+        memberHoldCollectionEntity.setCover(collectionEntity.getCover());
+        memberHoldCollectionEntity.setCollectionId(collectionId);
+        memberHoldCollectionEntity.setGainWay(NftConstants.藏品获取方式_赠送);
+        memberHoldCollectionEntity.setHoldTime(now);
+        memberHoldCollectionEntity.setIssuedCollectionId(issuedCollectionId);
+        memberHoldCollectionEntity.setMemberId(memberId);
+        memberHoldCollectionEntity.setState(NftConstants.持有藏品状态_持有中);
+        memberHoldCollectionEntity.setSyncChainTime(collectionEntity.getSyncChainTime());
+        memberHoldCollectionEntity.setTransactionHash(transactionHash);
+        return memberHoldCollectionEntity;
+    }
+
     public PageResult<PayOrderRespDTO> getMyPayOrder(long current, long pageSize, String status, String memberId) {
         IPage<PayOrderEntity> pageList = null;
         if (CharSequenceUtil.isBlank(status)) {
@@ -127,7 +205,10 @@ public class TransactionService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public Map<String, String> resaleCollectionCreateOrder(String resaleCollectionId, int collectionSerialNumber, String memberId) {
+    public Map<String, String> resaleCollectionCreateOrder(String resaleCollectionId, int collectionSerialNumber, String memberId, Timestamp now) {
+        if (memberRepository.checkRealName(memberId)) {
+            throw new RealNameNotVerifiedException("未实名认证");
+        }
         CollectionEntity collectionEntity = collectionRepository.getById(resaleCollectionId);
         String issuedCollectionId = issuedCollectionRepository.getIssuedIdByCollectionIdAndSerialNumber(resaleCollectionId, collectionSerialNumber);
         if (Objects.isNull(collectionEntity)) {
@@ -136,8 +217,14 @@ public class TransactionService {
         if (CharSequenceUtil.isBlank(issuedCollectionId)) {
             throw new IssuedCollectionNotFoundException("不存在ID为" + issuedCollectionId + "发行藏品");
         }
+        if (issuedCollectionActLogRepository.checkCollectionLock(issuedCollectionId, now)) {
+            throw new IssuedCollectionLockException(CharSequenceUtil.format("多线程异常: [{}] 发行藏品已被锁定", issuedCollectionId));
+        }
         Double amount = collectionEntity.getPrice();
-        PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务模式_平台自营, amount, resaleCollectionId, issuedCollectionId, memberId);
+        if (Boolean.FALSE.equals(issuedCollectionActLogRepository.lockCollection("平台自营", issuedCollectionId, memberId))) {
+            throw new IssuedCollectionActLogUpdateOrAddException("更新或添加发行藏品操作日志失败");
+        }
+        PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务类型_二级市场, amount, resaleCollectionId, issuedCollectionId, memberId);
         if (Boolean.FALSE.equals(payOrderRepository.save(entity))) {
             throw new OrderCreationFailedException("生成订单失败");
         }
@@ -146,7 +233,7 @@ public class TransactionService {
 
 
     @Transactional(rollbackFor = Exception.class)
-    public Map<String, String> latestCollectionCreateOrder(String collectionId, String memberId) {
+    public Map<String, String> latestCollectionCreateOrder(String collectionId, String memberId, Timestamp now) {
         if (memberRepository.checkRealName(memberId)) {
             throw new RealNameNotVerifiedException("未实名认证");
         }
@@ -164,14 +251,14 @@ public class TransactionService {
         }
         Integer collectionSerialNumber = collectionEntity.getQuantity() - (collectionEntity.getStock() - 1);
         String issuedCollectionId = issuedCollectionRepository.getIssuedIdByCollectionIdAndSerialNumber(collectionId, collectionSerialNumber);
+        if (issuedCollectionActLogRepository.checkCollectionLock(issuedCollectionId, now)) {
+            throw new IssuedCollectionLockException(CharSequenceUtil.format("多线程异常: [{}] 发行藏品已被锁定", issuedCollectionId));
+        }
         if (CharSequenceUtil.isBlank(issuedCollectionId)) {
 //            throw new IssuedCollectionNotFoundException(CharSequenceUtil.format("DataError: 不存在ID为[{}]发行藏品", issuedCollectionId));
             // TODO: 2024/4/8 这里简单处理为, 用户购买时, 方才进行发行藏品上链, 但是这样会导致用户购买时, 会有一定的延迟
             //Transaction注解默认本方法中进行事务管理, 而Async注解会通过新建线程来实现异步操作, 会导致事务失效
             castIssuedCollection(collectionId, memberId, collectionSerialNumber, collectionEntity.getQuantity());
-        }
-        if (issuedCollectionActLogRepository.checkCollectionLock(issuedCollectionId)) {
-            throw new IssuedCollectionLockException(CharSequenceUtil.format("多线程异常: [{}] 发行藏品已被锁定", issuedCollectionId));
         }
         Double amount = collectionEntity.getPrice();
         PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务模式_平台自营, amount, collectionId, issuedCollectionId, memberId);
@@ -210,24 +297,37 @@ public class TransactionService {
         if (Boolean.FALSE.equals(payOrderRepository.updateStateById(entity.getId(), NftConstants.支付订单状态_已付款, now))) {
             throw new OrderPaymentFailedException(CharSequenceUtil.format("[{}]订单支付失败", orderId));
         }
+        String fromAddress = null;
+        if (entity.getBizMode().equals(NftConstants.支付订单业务类型_二级市场)) {
+            String fromMemberId = issuedCollectionActLogRepository.getHoldMemberIdByIssuedId(entity.getIssuedCollectionId());
+            fromAddress = memberRepository.getAddressById(fromMemberId);
+        }
+        if (entity.getBizMode().equals(NftConstants.支付订单业务模式_平台自营)) {
+            fromAddress = NftConstants.平台账户地址;
+        }
+        if (CharSequenceUtil.isBlank(fromAddress)) {
+            throw new GainFromAddressException("获取转出地址失败");
+        }
+        String toAddress = memberRepository.getAddressById(memberId);
+        String transcationHash = chainService.transaction(fromAddress, toAddress, memberId);
+        if (CharSequenceUtil.isBlank(transcationHash)) {
+            throw new BlockChainTransactionException("区块链交易异常");
+        }
         if (Boolean.FALSE.equals(holdCollectionRepository.increaseByPurchase(
                 IdUtils.snowFlakeId(),
                 entity.getCollectionId(),
                 entity.getIssuedCollectionId(),
                 memberId,
                 entity.getAmount(),
-                // TODO: 2024/4/5 这里需要获取区块链交易的hash地址 或 唯一hash值 
-                null
+                // 这里需要获取区块链交易的hash地址 或 唯一hash值
+                transcationHash
                 , now))) {
-            throw new HoldCollectionCreationFailedException(CharSequenceUtil.format("[{}]持有藏品记录创建失败", memberId));
+            throw new HoldCollectionCreationFailedException(CharSequenceUtil.format("[{}]持有藏品创建失败", memberId));
         }
-        if (Boolean.FALSE.equals(memberBCLogRepository.createLog(memberId,
-                -entity.getAmount(),
-                NftConstants.会员余额变动日志类型_购买藏品,
-                entity.getOrderNo(),
-                now))) {
-            throw new LogCreationFailedException(CharSequenceUtil.format("[{}]流水日志记录失败", memberId));
-        }
+//        if (Boolean.FALSE.equals(issuedCollectionActLogRepository.lockCollection(entity.getIssuedCollectionId()))) {
+//            throw new IssuedCollectionActLogUpdateOrAddException("更新或添加发行藏品操作日志失败");
+//        }
+
 
         return Map.of("result", true);
     }
@@ -261,22 +361,6 @@ public class TransactionService {
                 .set("state", NftConstants.持有藏品状态_转售中));
     }
 
-    public PayOrderEntity quickBuildPayOrder(String bizMode, Double amount, String collectionId, String issuedCollectionId, String memberId) {
-        LocalDateTime now = LocalDateTime.now();
-        return PayOrderEntity.builder()
-                .id(IdUtils.snowFlakeId())
-                .issuedCollectionId(issuedCollectionId)
-                .collectionId(collectionId)
-                .memberId(memberId)
-                .orderNo(OrderNoUtil.generateOrderNo())
-                .amount(amount)
-                .state(NftConstants.支付订单状态_待付款)
-                .bizMode(bizMode)
-                .bizType(NftConstants.会员余额变动日志类型_购买藏品)
-                .createTime(Timestamp.valueOf(now.format(NftConstants.DATE_FORMAT)))
-                .orderDeadline(Timestamp.valueOf(now.plusMinutes(NftConstants.支付订单有效期).format(NftConstants.DATE_FORMAT)))
-                .build();
-    }
 
     public List<TradeStatisticDayRespDTO> getEverydayTradeData(String bizMode, String startDate, String endDate) {
         List<String> dateRange = DateUtil.generateDateRange(startDate, endDate);
@@ -357,13 +441,14 @@ public class TransactionService {
 
     @Transactional(rollbackFor = Exception.class)
     public Boolean collectionGive(String memberId, String collectionId, String giveToAccount) {
-        MemberEntity member = memberRepository.getOne(new QueryWrapper<MemberEntity>()
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        MemberEntity receiver = memberRepository.getOne(new QueryWrapper<MemberEntity>()
                 .or(item -> item.eq("mobile", giveToAccount)
                         .or().eq("block_chain_addr", giveToAccount)));
-        if (member == null) {
+        if (receiver == null) {
             throw new MemberNotFoundException("收款方不存在");
         }
-        if (memberId.equals(member.getId())) {
+        if (memberId.equals(receiver.getId())) {
             throw new CantGiveSelfException("无法转赠自己");
         }
         MemberHoldCollectionEntity holdCollection = holdCollectionRepository.getOne(new QueryWrapper<MemberHoldCollectionEntity>()
@@ -381,17 +466,34 @@ public class TransactionService {
         if (holdCollection.getState().equals(NftConstants.持有藏品状态_转售中)) {
             throw new CollectionAlreadySoldException("藏品已转售");
         }
+        String transaction = "未知";
+        try {
+            String fromAddress = memberRepository.getAddressById(memberId);
+            String toAddress = memberRepository.getAddressById(receiver.getId());
+            transaction = chainService.transaction(fromAddress, toAddress, holdCollection.getIssuedCollectionId());
+        } catch (Exception e) {
+            throw new ChainTransactionFailedException("链上交易失败");
+        }
         if (Boolean.FALSE.equals(holdCollectionRepository.update(new UpdateWrapper<MemberHoldCollectionEntity>()
                 .eq("member_id", memberId)
                 .eq("collection_id", collectionId)
-                .set("status", NftConstants.持有藏品状态_转售中)))) {
-            throw new CollectionGiveFailedException("藏品转售失败");
+                .set("state", NftConstants.持有藏品状态_已转赠)
+                .set("lose_time", now)))) {
+            throw new HoldCollectionUpdateFailedException("藏品转赠失败");
+        }
+        if (Boolean.FALSE.equals(holdCollectionRepository.save(quickBuildHoldCollectionByGive(
+                receiver.getId(),
+                holdCollection.getCollectionId(),
+                holdCollection.getIssuedCollectionId(),
+                transaction
+        )))) {
+            throw new HoldCollectionSaveFailedException("藏品转赠失败");
         }
         try {
             CollectionGiveRecordEntity entity = new CollectionGiveRecordEntity();
             entity.setId(IdUtils.snowFlakeId());
             entity.setGiveFromId(memberId);
-            entity.setGiveToId(member.getId());
+            entity.setGiveToId(receiver.getId());
             entity.setHoldCollectionId(collectionId);
             entity.setGiveTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
             return collectionGiveRecordRepository.save(entity);
@@ -416,7 +518,10 @@ public class TransactionService {
 
     public void cancelOrder(String orderId) {
         try {
+            PayOrderEntity entity = payOrderRepository.getById(orderId);
             payOrderRepository.updateStateById(orderId, NftConstants.支付订单状态_已取消, Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
+            issuedCollectionActLogRepository.unlockCollection(entity.getIssuedCollectionId(), entity.getMemberId());
+            collectionRepository.increaseStock(entity.getCollectionId());
         } catch (Exception e) {
             throw new OrderCancellationFailedException(CharSequenceUtil.format("{}: 订单取消失败", orderId));
         }
@@ -437,6 +542,9 @@ public class TransactionService {
         if (entity.getState().equals(NftConstants.支付订单状态_已取消)) {
             throw new OrderCancelledException(CharSequenceUtil.format("[{}]订单取消", orderId));
         }
+        if (Boolean.FALSE.equals(issuedCollectionActLogRepository.unlockCollection(entity.getIssuedCollectionId(), memberId))) {
+            throw new OrderCancellationFailedException(CharSequenceUtil.format("[{}]订单取消失败", orderId));
+        }
         if (Boolean.FALSE.equals(payOrderRepository.updateStateById(entity.getId(), NftConstants.支付订单状态_已取消, Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT))))) {
             throw new OrderCancellationFailedException(CharSequenceUtil.format("[{}]订单取消失败", orderId));
         }
@@ -452,6 +560,7 @@ public class TransactionService {
     public Boolean cancelResale(String memberId, String resaleCollectionId) {
         String format = LocalDateTime.now().format(NftConstants.DATE_FORMAT);
         Timestamp now = cn.hutool.core.date.DateUtil.parse(format, NftConstants.DATE_FORMAT).toTimestamp();
+
         if (CharSequenceUtil.isBlank(memberId) || Boolean.FALSE.equals(memberRepository.checkExist(memberId))) {
             throw new MemberNotFoundException("用户不存在");
         }
@@ -460,6 +569,12 @@ public class TransactionService {
         }
         if (Boolean.FALSE.equals(resaleCollectionRepository.checkExist(resaleCollectionId, memberId))) {
             throw new MemberNotMatchException("藏品不属于当前用户");
+        }
+        if (Boolean.FALSE.equals(resaleCollectionRepository.checkState(resaleCollectionId, NftConstants.转售的藏品状态_已发布))) {
+            throw new ResaleNotMatchException("藏品不是转售中状态");
+        }
+        if (Boolean.FALSE.equals(resaleCollectionRepository.checkState(resaleCollectionId, NftConstants.转售的藏品状态_已卖出))) {
+            throw new ResaleNotMatchException("藏品不是转售中状态");
         }
         if (Boolean.FALSE.equals(resaleCollectionRepository.updateStateById(resaleCollectionId, NftConstants.转售的藏品状态_已取消, now))) {
             throw new ResaleCancellationFailedException("藏品取消转售失败");
@@ -484,7 +599,7 @@ public class TransactionService {
                 issuedCollectionRepository.update(new UpdateWrapper<IssuedCollectionEntity>()
                         .eq("id", reqDTO.getId())
                         .set("sync_chain_time", Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)))
-                        .set("unique_id",nftEntity.getUniqueId()));
+                        .set("unique_id", nftEntity.getUniqueId()));
                 return nftEntity.getUniqueId();
             }
         } catch (Exception e) {

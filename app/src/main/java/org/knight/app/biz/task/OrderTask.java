@@ -33,8 +33,9 @@ public class OrderTask {
             log.info("cancelExpiredOrder");
             List<OrderBO> expiredOrders = transactionService.findExpiredOrders();
             for (OrderBO order : expiredOrders) {
-                if (Objects.isNull(order))
+                if (Objects.isNull(order)) {
                     continue;
+                }
                 transactionService.cancelOrder(order.getId());
             }
         }catch (Exception e){

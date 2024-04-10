@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * @author poboking
@@ -34,12 +35,14 @@ public class IssuedCollectionActionLogRepositoryImpl extends ServiceImpl<IssuedC
      * 检查藏品是否被锁定 - 用户购买
      *
      * @param issuedCollectionId 发行藏品ID
+     * @param now                操作时间
      * @return boolean
      */
     @Override
-    public boolean checkCollectionLock(String issuedCollectionId) {
+    public boolean checkCollectionLock(String issuedCollectionId, Timestamp now) {
         return issuedCollectionActionLogMapper.exists(new QueryWrapper<IssuedCollectionActionLogEntity>()
-                .eq("issued_collection_id", issuedCollectionId));
+                .eq("issued_collection_id", issuedCollectionId)
+                .gt("action_time", now));
     }
 
     /**
@@ -62,6 +65,39 @@ public class IssuedCollectionActionLogRepositoryImpl extends ServiceImpl<IssuedC
         entity.setIssuedCollectionId(issuedCollectionId);
         entity.setActionTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
         return issuedCollectionActionLogMapper.insert(entity) > 0;
+    }
+
+    /**
+     * 根据发行藏品ID获取持有用户ID
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @return string 用户ID
+     */
+    @Override
+    public String getHoldMemberIdByIssuedId(String issuedCollectionId) {
+        IssuedCollectionActionLogEntity entity = issuedCollectionActionLogMapper.selectOne(new QueryWrapper<IssuedCollectionActionLogEntity>()
+                .eq("issued_collection_id", issuedCollectionId));
+        if (Objects.isNull(entity)) {
+            throw new RuntimeException("未找到发行藏品ID对应的持有用户ID");
+        }
+        return entity.getMemberId();
+    }
+
+    /**
+     * 解锁藏品 - 用户购买或转赠等
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @return boolean
+     */
+    @Override
+    public Boolean unlockCollection(String issuedCollectionId, String memberId) {
+        if (CharSequenceUtil.isBlank(issuedCollectionId)) {
+            return false;
+        }
+        return issuedCollectionActionLogMapper.delete(new QueryWrapper<IssuedCollectionActionLogEntity>()
+                .eq("issued_collection_id", issuedCollectionId)
+                .eq("member_id", memberId)
+                .lt("action_time", Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)))) > 0;
     }
 }
 

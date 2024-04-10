@@ -3,7 +3,7 @@ server:
   port: 8080
   max-http-header-size: 10MB
 
-############ Tomcat设置  ############
+  ############ Tomcat设置  ############
   tomcat:
     connection-timeout: 60000
 
@@ -14,6 +14,15 @@ mybatis:
   mapper-locations: mappers/*xml
   #指定Mybatis的实体目录
   type-aliases-package: org.knight.infrastructure.dao.domain
+
+########### PageHelper设置  ############
+pagehelper:
+  auto-dialect: true
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+
 
 ############ MYSQL DB 设置  ############
 #spring:
@@ -31,10 +40,21 @@ mybatis:
 
 
 spring:
+  ############ 腾讯云配置 ############
+  tengxun:
+    SecretId: AKIDLjHwWF0fGiEb4B64ro5EEIPYcbSAiAi3
+    SecretKey: DGJCrOo5AEICsqjdQ1LQIGBvVs32obKr
+    url: https://a20-nft-storage-1317973694.cos.ap-guangzhou.myqcloud.com
+    region: ap-guangzhou
+    bucketName: a20-nft-storage-1317973694
+
+
+
   ############ 定时Task设置  ############
   task:
     scheduling:
       enabled: true
+
   ############ Mariadb DB 或 Mysql 设置  ############
   datasource:
     url: jdbc:mysql://103.108.67.140:3306/open_nft?&characterEncoding=utf-8&autoReconnect=true
@@ -54,12 +74,10 @@ spring:
 ############## 区块链配置 #############
 fisco:
   certPath: conf
-  deployPublicKey: 2136414ec16e49a82adf646e7b7d6a150602b0d3887aa905bdd4430fecfa71014c9f3e49548260baf2b58b1f8dea79663be416caac017983971d7d6f50705f4d
-  deployPrivateKey: 1ffd8dd75f2278dfd9171ac5194720ec9a1a1f76b661d5e37ce5bcabfdf26975
-  ownableContractAddress: 0xafa6cc537ee2b13c9fd81b6a344aeed54f7ed935
-  utilsContractAddress: 0x7ff0c577d7c5767630d5022cf872518b86022bab
-  bcosUserContractAddress: 0xbe6cac57ebbc0a44fde75f552e80f4647eecc653
-  bcosNFTContractAddress: 0x02875436a64c665ca2fc941a49f7d3248fef15b9
+  deployPrivateKey: e79e4a1b2059726897f64630e00ee96c653a85ef2d76e4a3f9b5a6bfec5e8131
+  deployAddress: 0x2fcbdb86f960e72febae7955e99b2cf0887d403f
+  bcosUserContractAddress: 0x13c6a6d2b35339f5a7f8247c7f82d094e842337a
+  bcosNFTContractAddress: 0x79475273094a6e2a0e9bfd3fd4ca218130150e07
   #  maxBlockingQueueSize: 102400
   #  peers:
   #        - 43.143.86.190:20200

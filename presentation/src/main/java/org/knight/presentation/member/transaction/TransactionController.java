@@ -10,11 +10,15 @@ import org.knight.app.biz.transaction.TransactionService;
 import org.knight.app.biz.transaction.dto.giverecord.CollectionGiveRecordRespDTO;
 import org.knight.app.biz.transaction.dto.member.ReceiverInfoRespDTO;
 import org.knight.app.biz.transaction.dto.order.PayOrderRespDTO;
+import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.presentation.utils.StpUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
@@ -53,7 +57,8 @@ public class TransactionController {
     @ValidationStatusCode(code = "400")
     public Map<String, String> latestCollectionCreateOrder(@RequestParam(name = "collectionId") @NotNull String collectionId) {
         String memberId = StpUserUtil.getLoginIdAsString();
-        return transactionService.latestCollectionCreateOrder(collectionId, memberId);
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        return transactionService.latestCollectionCreateOrder(collectionId, memberId , now);
     }
 
     @PostMapping("confirmPay")
@@ -107,7 +112,8 @@ public class TransactionController {
                                                            @RequestParam(name = "collectionSerialNumber") @NotNull int collectionSerialNumber) {
         String memberId = StpUserUtil.getLoginIdAsString();
         log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder {}", memberId, collectionSerialNumber));
-        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, collectionSerialNumber, memberId);
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, collectionSerialNumber, memberId, now);
     }
 
     @PostMapping("collectionResale")
@@ -137,6 +143,7 @@ public class TransactionController {
         return transactionService.getCollectionReceiverInfo(giveToAccount);
     }
 
+    // TODO: 2024/4/10 这里需要修改为IssuedCollectionId
     @PostMapping("collectionGive")
     @ValidationStatusCode(code = "500")
     public Map<String, Boolean> collectionGive(

@@ -192,6 +192,18 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
                 .isNotNull("identity_card"));
         return Optional.ofNullable(entity).isPresent();
     }
+
+    /**
+     * 获取用户区块链地址
+     *
+     * @param memberId
+     * @return string address
+     */
+    @Override
+    public String getAddressById(String memberId) {
+        return memberMapper.selectOne(new QueryWrapper<MemberEntity>()
+                .eq("id", memberId)).getBlockChainAddr();
+    }
 }
 
 

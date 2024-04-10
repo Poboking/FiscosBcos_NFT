@@ -2,6 +2,7 @@ package org.knight.app.biz.artwork.collection;
 
 import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.AllArgsConstructor;
 import org.knight.app.biz.artwork.dto.collection.*;
@@ -9,15 +10,18 @@ import org.knight.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.knight.app.biz.convert.artwork.CollectionConvert;
 import org.knight.app.biz.convert.artwork.CreatorConvert;
 import org.knight.app.biz.exception.BizException;
+import org.knight.app.biz.exception.collection.CollectionDeleteFailedException;
 import org.knight.infrastructure.common.IdUtils;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.dao.domain.CollectionStoryEntity;
 import org.knight.infrastructure.dao.domain.CreatorEntity;
+import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
 import org.knight.infrastructure.repository.impl.CollectionRepositoryImpl;
 import org.knight.infrastructure.repository.impl.CollectionStoryRepositoryImpl;
 import org.knight.infrastructure.repository.impl.CreatorRepositoryImpl;
+import org.knight.infrastructure.repository.impl.IssuedCollectionRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +45,8 @@ public class CollectionService {
     private CreatorRepositoryImpl creatorRepository;
     @Autowired
     private CollectionStoryRepositoryImpl collectionStoryRepository;
-
+    @Autowired
+    private final IssuedCollectionRepositoryImpl issuedCollectionRepository;
 
     public PageResult<CollectionEntity> getPageList(long current, long pageSize) {
         IPage<CollectionEntity> pageResult = collectionRepository.getPageList(current, pageSize);
@@ -209,8 +214,17 @@ public class CollectionService {
         entity.setDeletedFlag(true);
         entity.setDeletedTime(Timestamp.valueOf(now));
         if (Boolean.FALSE.equals(collectionRepository.saveOrUpdate(entity, new QueryWrapper<CollectionEntity>().eq("id", id)))) {
-            throw new BizException("删除收藏品失败");
+            throw new CollectionDeleteFailedException("删除收藏品失败");
         }
+        List<IssuedCollectionEntity> issuedCollection = issuedCollectionRepository.list(new QueryWrapper<IssuedCollectionEntity>()
+                .eq("collection_id",entity.getId()));
+        issuedCollection.forEach(issuedCollectionEntity -> {
+            issuedCollectionEntity.setDeletedFlag(true);
+            issuedCollectionEntity.setDeletedTime(Timestamp.valueOf(now));
+            if (Boolean.FALSE.equals(issuedCollectionRepository.saveOrUpdate(issuedCollectionEntity, new QueryWrapper<IssuedCollectionEntity>().eq("id", issuedCollectionEntity.getId())))) {
+                throw new CollectionDeleteFailedException("删除发行收藏品失败");
+            }
+        });
         return true;
     }
 
@@ -243,5 +257,11 @@ public class CollectionService {
             throw new BizException("未找到对应的收藏品");
         }
         return entity.getId();
+    }
+
+    public Boolean updateCollectionHash(String collectionId, String collectionHash) {
+        return collectionRepository.update(new UpdateWrapper<CollectionEntity>()
+                .eq("id", collectionId)
+                .set("collection_hash",collectionHash));
     }
 }
