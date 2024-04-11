@@ -2,9 +2,9 @@ package org.knight.infrastructure.repository.impl;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.DictItemEntity;
 import org.knight.infrastructure.dao.mapper.DictItemMapper;
 import org.knight.infrastructure.repository.DictItemRepository;
@@ -30,11 +30,19 @@ public class DictItemRepositoryImpl extends ServiceImpl<DictItemMapper, DictItem
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<DictItemEntity> 分页数据
+     * @return PageInfo<DictItemEntity> 分页数据
      */
     @Override
-    public IPage<DictItemEntity> getPageList(long current, long pageSize) {
-        return dictItemMapper.selectPage(new Page<>(current, pageSize), null);
+    public PageInfo<DictItemEntity> getPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<DictItemEntity> list = dictItemMapper.selectList(null);
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -43,13 +51,20 @@ public class DictItemRepositoryImpl extends ServiceImpl<DictItemMapper, DictItem
      * @param current      当前页
      * @param pageSize     每页大小
      * @param dictTypeCode 字典类型编码
-     * @return IPage<DictItemEntity> 分页数据
+     * @return PageInfo<DictItemEntity> 分页数据
      */
     @Override
-    public IPage<DictItemEntity> getPageListByDictTypeCode(long current, long pageSize, String dictTypeCode) {
-        return dictItemMapper.selectPage(new com.baomidou.mybatisplus.extension.plugins.pagination.Page<>(current, pageSize)
-                , new QueryWrapper<DictItemEntity>()
-                        .eq(!CharSequenceUtil.isBlank(dictTypeCode), "dict_type_code", dictTypeCode));
+    public PageInfo<DictItemEntity> getPageListByDictTypeCode(long current, long pageSize, String dictTypeCode) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<DictItemEntity> list = dictItemMapper.selectList(new QueryWrapper<DictItemEntity>()
+                    .eq(!CharSequenceUtil.isBlank(dictTypeCode), "dict_type_code", dictTypeCode));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**

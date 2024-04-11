@@ -1,7 +1,7 @@
 package org.knight.infrastructure.repository;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.MemberHoldCollectionEntity;
 
 import java.sql.Timestamp;
@@ -18,9 +18,9 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
-    IPage<MemberHoldCollectionEntity> getPageList(long current, long pageSize);
+    PageInfo<MemberHoldCollectionEntity> getPageList(long current, long pageSize);
 
     /**
      * 分页查询
@@ -28,20 +28,20 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
      * @param current  当前页
      * @param pageSize 每页大小
      * @param memberId 用户id
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
-    IPage<MemberHoldCollectionEntity> getPageListByMemberId(long current, long pageSize, String memberId);
+    PageInfo<MemberHoldCollectionEntity> getPageListByMemberId(long current, long pageSize, String memberId);
 
     /**
      * 分页查询
      *
-     * @param current        当前页
-     * @param pageSize       每页大小
+     * @param current         当前页
+     * @param pageSize        每页大小
      * @param holdCollections 藏品id集合
-     * @param memberId       用户id
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @param memberId        用户id
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
-    IPage<MemberHoldCollectionEntity> getPageListByIdsAndMemberId(long current, long pageSize, List<String> holdCollections, String memberId);
+    PageInfo<MemberHoldCollectionEntity> getPageListByIdsAndMemberId(long current, long pageSize, List<String> holdCollections, String memberId);
 
     /**
      * 分页查询
@@ -50,18 +50,18 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
      * @param pageSize 每页大小
      * @param name     作品名称
      * @param memberId 用户id
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
-    IPage<MemberHoldCollectionEntity> getPageListByMemberIdAndName(long current, long pageSize, String name, String memberId);
+    PageInfo<MemberHoldCollectionEntity> getPageListByMemberIdAndName(long current, long pageSize, String name, String memberId);
 
     /**
      * @param current  当前页
      * @param pageSize 每页大小
      * @param status   藏品转售状态
      * @param memberId 用户id
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
-    IPage<MemberHoldCollectionEntity> getPageListByMemberIdAndStatus(long current, long pageSize, String status, String memberId);
+    PageInfo<MemberHoldCollectionEntity> getPageListByMemberIdAndStatus(long current, long pageSize, String status, String memberId);
 
 
     /**
@@ -170,8 +170,8 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
      * @param collectionId 藏品ID
      * @param state        藏品状态
      * @param gainWay      获得方式
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
-    IPage<MemberHoldCollectionEntity> getPageListByParam(Long current, Long pageSize, String memberId, String collectionId, String state, String gainWay);
+    PageInfo<MemberHoldCollectionEntity> getPageListByParam(Long current, Long pageSize, String memberId, String collectionId, String state, String gainWay);
 
 }

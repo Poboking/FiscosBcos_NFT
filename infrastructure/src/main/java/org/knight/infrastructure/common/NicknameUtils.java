@@ -24,5 +24,14 @@ public class NicknameUtils {
         return sb.toString();
     }
 
+    public static String generateCreatorName() {
+        StringBuilder sb = new StringBuilder("创作者_");
+        for (int i = 0; i < 9; i++) {
+            sb.append(CHARS.charAt(random.nextInt(CHARS.length())));
+        }
+        return sb.toString();
+    }
+
+
 }
 

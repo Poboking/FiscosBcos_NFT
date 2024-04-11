@@ -4,6 +4,7 @@ import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
+import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.transaction.PreSaleTaskService;
 import org.knight.app.biz.transaction.TransactionService;
@@ -16,7 +17,6 @@ import org.knight.presentation.utils.StpUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -58,7 +58,17 @@ public class TransactionController {
     public Map<String, String> latestCollectionCreateOrder(@RequestParam(name = "collectionId") @NotNull String collectionId) {
         String memberId = StpUserUtil.getLoginIdAsString();
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
-        return transactionService.latestCollectionCreateOrder(collectionId, memberId , now);
+        return transactionService.latestCollectionCreateOrder(collectionId, memberId, now);
+    }
+
+    @PostMapping("resaleCollectionCreateOrder")
+    @ValidationStatusCode(code = "400")
+    public Map<String, String> resaleCollectionCreateOrder(@RequestParam(name = "resaleCollectionId") @NotNull String resaleCollectionId,
+                                                           @RequestParam(name = "collectionSerialNumber") @NotNull int collectionSerialNumber) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder {}", memberId, collectionSerialNumber));
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, collectionSerialNumber, memberId, now);
     }
 
     @PostMapping("confirmPay")
@@ -73,6 +83,37 @@ public class TransactionController {
     public Map<String, Boolean> cancelOrder(@RequestParam(name = "orderId") @NotNull String orderId) {
         String memberId = StpUserUtil.getLoginIdAsString();
         return Map.of("result", transactionService.cancelOrder(orderId, memberId));
+    }
+
+
+    @PostMapping("collectionResale")
+    @ValidationStatusCode(code = "500")
+    public Map<String, Boolean> collectionResale(
+            @RequestParam(name = "resalePrice") long resalePrice,
+            @RequestParam(name = "holdCollectionId") String holdCollectionId) throws Exception {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): collectionResale", memberId));
+        return Map.of("result", transactionService.collectionResale(memberId, holdCollectionId, resalePrice));
+    }
+
+
+    @PostMapping("cancelResale")
+    @ValidationStatusCode(code = "500")
+    public Map<String, Boolean> cancelResale(@RequestParam(name = "resaleCollectionId") String resaleCollectionId) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): cancelResale", memberId));
+        return Map.of("result", transactionService.cancelResale(memberId, resaleCollectionId));
+    }
+
+
+    @PostMapping("collectionGive")
+    @ValidationStatusCode(code = "500")
+    public Map<String, Boolean> collectionGive(
+            @RequestParam(name = "issuedCollectionId") @NotNull String issuedCollectionId,
+            @RequestParam(name = "giveToAccount") @NotNull String giveToAccount) {
+        String memberId = StpUserUtil.getLoginIdAsString();
+        log.info(CharSequenceUtil.format("User({}): collectionGive", memberId));
+        return Map.of("result", transactionService.collectionGive(memberId, issuedCollectionId, giveToAccount));
     }
 
     @GetMapping("findMyPayOrderByPage")
@@ -106,33 +147,6 @@ public class TransactionController {
         return transactionService.getMyGiveRecord(current, pageSize, memberId, giveDirection);
     }
 
-    @PostMapping("resaleCollectionCreateOrder")
-    @ValidationStatusCode(code = "400")
-    public Map<String, String> resaleCollectionCreateOrder(@RequestParam(name = "resaleCollectionId") @NotNull String resaleCollectionId,
-                                                           @RequestParam(name = "collectionSerialNumber") @NotNull int collectionSerialNumber) {
-        String memberId = StpUserUtil.getLoginIdAsString();
-        log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder {}", memberId, collectionSerialNumber));
-        Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
-        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, collectionSerialNumber, memberId, now);
-    }
-
-    @PostMapping("collectionResale")
-    @ValidationStatusCode(code = "500")
-    public Map<String, Boolean> collectionResale(
-            @RequestParam(name = "resalePrice") long resalePrice,
-            @RequestParam(name = "holdCollectionId") String holdCollectionId) {
-        String memberId = StpUserUtil.getLoginIdAsString();
-        log.info(CharSequenceUtil.format("User({}): collectionResale", memberId));
-        return Map.of("result", transactionService.collectionResale(memberId, holdCollectionId, resalePrice));
-    }
-
-    @PostMapping("cancelResale")
-    @ValidationStatusCode(code = "500")
-    public Map<String, Boolean> cancelResale(@RequestParam(name = "resaleCollectionId") String resaleCollectionId) {
-        String memberId = StpUserUtil.getLoginIdAsString();
-        log.info(CharSequenceUtil.format("User({}): cancelResale", memberId));
-        return Map.of("result", transactionService.cancelResale(memberId, resaleCollectionId));
-    }
 
     @GetMapping("getCollectionReceiverInfo")
     @ValidationStatusCode(code = "400")
@@ -142,17 +156,5 @@ public class TransactionController {
         log.info(CharSequenceUtil.format("User({}): getCollectionReceiverInfo", memberId));
         return transactionService.getCollectionReceiverInfo(giveToAccount);
     }
-
-    // TODO: 2024/4/10 这里需要修改为IssuedCollectionId
-    @PostMapping("collectionGive")
-    @ValidationStatusCode(code = "500")
-    public Map<String, Boolean> collectionGive(
-            @RequestParam(name = "collectionId") @NotNull String collectionId,
-            @RequestParam(name = "giveToAccount") @NotNull String giveToAccount) {
-        String memberId = StpUserUtil.getLoginIdAsString();
-        log.info(CharSequenceUtil.format("User({}): collectionGive", memberId));
-        return Map.of("result", transactionService.collectionGive(memberId, collectionId, giveToAccount));
-    }
-
 
 }

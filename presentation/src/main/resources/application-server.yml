@@ -18,7 +18,7 @@ mybatis:
 ########### PageHelper设置  ############
 pagehelper:
   auto-dialect: true
-  reasonable: true
+  reasonable: false
   support-methods-arguments: true
   params: count=countSql
 

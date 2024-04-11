@@ -132,7 +132,7 @@ public class ChainService {
                                       IssuedCollectionRepositoryImpl issuedCollectionRepo) {
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
         List<CollectionEntity> collectionEntities = collectionRepo.list(new QueryWrapper<CollectionEntity>()
-                .or(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
+                .and(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
                 .isNull("sync_chain_time"));
         List<String> collectionIds = collectionEntities.stream().map(CollectionEntity::getId).collect(Collectors.toList());
 
@@ -193,8 +193,8 @@ public class ChainService {
     public Boolean initIssuedCollectionData(IssuedCollectionRepositoryImpl issuedCollectionRepo,
                                             CollectionRepositoryImpl collectionRepo) {
         List<IssuedCollectionEntity> issuedCollectionEntities = issuedCollectionRepo.list(new QueryWrapper<IssuedCollectionEntity>()
-                .or(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
-                .isNull("unique_id")
+                .and(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
+                .and(e ->e.isNull("unique_id").or().eq("unique_id",""))
                 .isNull("sync_chain_time"));
         List<String> issuedCollectionIds = issuedCollectionEntities.stream().map(IssuedCollectionEntity::getId).collect(Collectors.toList());
         try {
@@ -234,18 +234,19 @@ public class ChainService {
                                 IssuedCollectionRepositoryImpl issuedCollectionRepo,
                                 CollectionRepositoryImpl collectionRepo) {
         List<String> memberIds = memberRepo.list(new QueryWrapper<MemberEntity>()
-                .or(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
+                .and(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
                 .isNull("block_chain_addr")
-                .isNotNull("real_name")
-                .isNotNull("identity_card")).stream().map(MemberEntity::getId).collect(Collectors.toList());
+                .and(e ->e.ne("identity_card", null).or().isNotNull("real_name"))
+                .and(e ->e.ne("real_name","").or().isNotNull("identity_card")))
+                .stream().map(MemberEntity::getId).collect(Collectors.toList());
         List<String> issuedCollectionIds = issuedCollectionRepo.list(new QueryWrapper<IssuedCollectionEntity>()
-                .or(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
-                .isNotNull("unique_id")
+                .and(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
+                .and(e ->e.ne("unique_id", null).or().isNotNull("unique_id"))
                 .isNotNull("sync_chain_time")).stream().map(IssuedCollectionEntity::getId).collect(Collectors.toList());
         List<String> memberHoldCollectionButNotIssuedCollectionIds = holdCollectionRepo.list(new QueryWrapper<MemberHoldCollectionEntity>()
                 .isNull("lose_time")
-                .isNotNull("member_id")
-                .isNotNull("issued_collection_id")
+                .and(e ->e.ne("member_id","").or().isNotNull("member_id"))
+                .and(e ->e.ne("issued_collection_id","").or().isNotNull("issued_collection_id"))
                 .notIn("issued_collection_id", issuedCollectionIds)).stream().map(MemberHoldCollectionEntity::getMemberId).collect(Collectors.toList());
         try {
             // 处理已实名但未上链用户

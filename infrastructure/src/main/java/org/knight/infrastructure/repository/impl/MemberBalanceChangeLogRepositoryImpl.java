@@ -2,9 +2,10 @@ package org.knight.infrastructure.repository.impl;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.MemberBalanceChangeLogEntity;
 import org.knight.infrastructure.dao.mapper.MemberBalanceChangeLogMapper;
 import org.knight.infrastructure.dao.mapper.MemberMapper;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * @author poboking
@@ -25,6 +27,7 @@ public class MemberBalanceChangeLogRepositoryImpl extends ServiceImpl<MemberBala
     private final MemberBalanceChangeLogMapper memberBalanceChangeLogMapper;
 
     private final MemberMapper memberMapper;
+
     @Autowired
     public MemberBalanceChangeLogRepositoryImpl(MemberBalanceChangeLogMapper memberBalanceChangeLogMapper, MemberMapper memberMapper) {
         this.memberBalanceChangeLogMapper = memberBalanceChangeLogMapper;
@@ -35,60 +38,97 @@ public class MemberBalanceChangeLogRepositoryImpl extends ServiceImpl<MemberBala
      * 获取会员余额变动日志的分页列表 - 根据变动类型
      *
      * @param current    当前页码
-     * @param size       每页显示的记录数
+     * @param pageSize   每页显示的记录数
      * @param changeType 变动类型
      * @return 会员余额变动日志的分页列表
      */
     @Override
-    public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long size, String changeType) {
-        return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
-                .eq(!CharSequenceUtil.isBlank(changeType), "change_type", changeType));
+    public PageInfo<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long pageSize, String changeType) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberBalanceChangeLogEntity> list = memberBalanceChangeLogMapper.
+                    selectList(new QueryWrapper<MemberBalanceChangeLogEntity>()
+                            .eq(!CharSequenceUtil.isBlank(changeType), "change_type", changeType));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
      * 获取会员余额变动日志的分页列表 - 全部
      *
-     * @param current 当前页码
-     * @param size    每页显示的记录数
+     * @param current  当前页码
+     * @param pageSize 每页显示的记录数
      * @return 会员余额变动日志的分页列表
      */
     @Override
-    public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long size) {
-        return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), null);
+    public PageInfo<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberBalanceChangeLogEntity> list = memberBalanceChangeLogMapper
+                    .selectList(new Page<>(current, pageSize), null);
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
+
     }
 
     /**
      * 获取会员余额变动日志的分页列表 - 根据变动类型和会员ID
      *
      * @param current  当前页码
-     * @param size     每页显示的记录数
+     * @param pageSize 每页显示的记录数
      * @param memberId 会员ID
      * @return 会员余额变动日志的分页列表
      */
     @Override
-    public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long size, String memberId) {
-        return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
-                .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId));
+    public PageInfo<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long pageSize, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberBalanceChangeLogEntity> list = memberBalanceChangeLogMapper.selectList(new QueryWrapper<MemberBalanceChangeLogEntity>()
+                    .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
      * 获取会员余额变动日志的分页列表 - 根据变动类型和会员ID
      *
      * @param current    当前页码
-     * @param size       每页显示的记录数
+     * @param pageSize   每页显示的记录数
      * @param changeType 变动类型
      * @param memberId   会员ID
      * @return 会员余额变动日志的分页列表
      */
     @Override
-    public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long size, String changeType, String memberId) {
-        return memberBalanceChangeLogMapper.selectPage(new Page<>(current, size), new QueryWrapper<MemberBalanceChangeLogEntity>()
-                .eq(!CharSequenceUtil.isBlank(changeType), "change_type", changeType)
-                .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId));
+    public PageInfo<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long pageSize, String changeType, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberBalanceChangeLogEntity> list = memberBalanceChangeLogMapper.selectList(new QueryWrapper<MemberBalanceChangeLogEntity>()
+                    .eq(!CharSequenceUtil.isBlank(changeType), "change_type", changeType)
+                    .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
+
     }
 
     /**
      * 创建余额变动日志 - 需在Balance改变之后方可调用
+     *
      * @param memberId      会员ID
      * @param balanceChange 余额变动
      * @param changeType    变动类型

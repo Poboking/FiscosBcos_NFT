@@ -1,3 +1,33 @@
 
-Q
-java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8…é­Ÿë1
+L
+java:S3740/"/Provide the parametrized type for this generic.(©œâ×8³Şüäì1
+L
+java:S37405"/Provide the parametrized type for this generic.(Ï‡êò8µŞüäì1
+L
+java:S3740E"/Provide the parametrized type for this generic.(©œâ×8·Şüäì1
+L
+java:S3740J"/Provide the parametrized type for this generic.(Ï‡êò8¹Şüäì1
+L
+java:S3740\"/Provide the parametrized type for this generic.(©œâ×8ºŞüäì1
+L
+java:S3740a"/Provide the parametrized type for this generic.(Ï‡êò8»Şüäì1
+L
+java:S3740s"/Provide the parametrized type for this generic.(©œâ×8½Şüäì1
+L
+java:S3740y"/Provide the parametrized type for this generic.(Ï‡êò8¾Şüäì1
+l
+java:S32521"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ÈŞüäì1
+q
+java:S32527"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8ÌŞüäì1
+l
+java:S3252G"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ÍŞüäì1
+q
+java:S3252L"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8ÏŞüäì1
+l
+java:S3252^"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ÑŞüäì1
+q
+java:S3252c"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8ÓŞüäì1
+l
+java:S3252u"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ÔŞüäì1
+q
+java:S3252{"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8İŞüäì1

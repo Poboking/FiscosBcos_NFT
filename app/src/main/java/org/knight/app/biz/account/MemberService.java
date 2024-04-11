@@ -158,7 +158,7 @@ public class MemberService {
                         .or(wrapper -> wrapper.eq("deleted_flag", false))))
                 .realNameCount(memberRepository.count(new QueryWrapper<MemberEntity>()
                         .and(wrapper -> wrapper.isNull("deleted_flag").or().eq("deleted_flag", false))
-                        .isNotNull("real_name")))
+                        .and(wrapper ->wrapper.isNotNull("real_name")).or().ne("real_name","")))
                 .todayRegisterCount(memberRepository.count(new QueryWrapper<MemberEntity>()
                         .and(wrapper -> wrapper.isNull("deleted_flag").or().eq("deleted_flag", false))
                         .ge("registered_time", nowTime)
@@ -172,5 +172,13 @@ public class MemberService {
         return memberRepository.update(new UpdateWrapper<MemberEntity>()
                 .eq(Optional.ofNullable(loginId).isPresent(), "id", loginId)
                 .set("lately_login_time", now));
+    }
+
+    public void initBalance(String mobile) {
+        if (!memberRepository.update(new UpdateWrapper<MemberEntity>()
+                .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile)
+                .set("balance", NftConstants.初始余额))) {
+            throw new BizException(mobile + ": initBalance fail as a result of db update fail");
+        }
     }
 }

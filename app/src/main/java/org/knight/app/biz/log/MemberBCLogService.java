@@ -1,7 +1,7 @@
 package org.knight.app.biz.log;
 
 import cn.hutool.core.text.CharSequenceUtil;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import org.knight.app.biz.convert.log.MemberBCLogConvert;
 import org.knight.app.biz.log.dto.balance.MemberBCLogRespDTO;
 import org.knight.infrastructure.common.NftConstants;
@@ -29,26 +29,26 @@ public class MemberBCLogService {
     }
 
     public PageResult<MemberBCLogRespDTO> getMemberBCLog(long current, long size, String changeType) {
-        IPage<MemberBalanceChangeLogEntity> pageList = null;
+        PageInfo<MemberBalanceChangeLogEntity> pageList = null;
         if (changeType == null) {
             pageList = repository.getMemberBCLogPageList(current, size);
         } else {
             pageList = repository.getMemberBCLogPageList(current, size, changeType);
         }
         List<MemberBCLogRespDTO> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> recordList.add(MemberBCLogConvert.INSTANCE.convertToRespDto(item)));
+        pageList.getList().forEach(item -> recordList.add(MemberBCLogConvert.INSTANCE.convertToRespDto(item)));
         return PageResult.convertFor(pageList, size, recordList);
     }
 
     public PageResult<MemberBCLogRespDTO> getMemberBCLog(long current, long size, String changeType, String memberId) {
-        IPage<MemberBalanceChangeLogEntity> pageList = null;
+        PageInfo<MemberBalanceChangeLogEntity> pageList = null;
         if (CharSequenceUtil.isBlank(changeType)) {
             pageList = repository.getMemberBCLogPageListByMemberId(current, size, memberId);
         } else {
             pageList = repository.getMemberBCLogPageListByMemberId(current, size, changeType, memberId);
         }
         List<MemberBCLogRespDTO> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> {
+        pageList.getList().forEach(item -> {
             MemberBCLogRespDTO respDTO = MemberBCLogConvert.INSTANCE.convertToRespDto(item);
             if (respDTO.getChangeType().equals(NftConstants.会员余额变动日志类型_系统)){
                 respDTO.setChangeTypeName("系统");

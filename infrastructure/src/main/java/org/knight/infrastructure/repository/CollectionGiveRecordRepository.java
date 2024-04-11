@@ -1,7 +1,7 @@
 package org.knight.infrastructure.repository;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.CollectionGiveRecordEntity;
 
 /**
@@ -19,7 +19,7 @@ public interface CollectionGiveRecordRepository extends IService<CollectionGiveR
      * @param memberId 赠送方ID
      * @return 赠送记录分页列表
      */
-    IPage<CollectionGiveRecordEntity> getPageListByGiveFromId(long current, long pageSize, String memberId);
+    PageInfo<CollectionGiveRecordEntity> getPageListByGiveFromId(long current, long pageSize, String memberId);
 
 
     /**
@@ -30,7 +30,7 @@ public interface CollectionGiveRecordRepository extends IService<CollectionGiveR
      * @param memberId 接收方ID
      * @return 赠送记录分页列表
      */
-    IPage<CollectionGiveRecordEntity> getPageListByGiveToId(long current, long pageSize, String memberId);
+    PageInfo<CollectionGiveRecordEntity> getPageListByGiveToId(long current, long pageSize, String memberId);
 
     /**
      * 根据赠送方ID或接收方ID获取赠送记录
@@ -41,5 +41,5 @@ public interface CollectionGiveRecordRepository extends IService<CollectionGiveR
      * @param memberId1 接收方ID
      * @return 赠送记录分页列表
      */
-    IPage<CollectionGiveRecordEntity> getPageListByGiveToIdOrGiveFormId(long current, long pageSize, String memberId, String memberId1);
+    PageInfo<CollectionGiveRecordEntity> getPageListByGiveToIdOrGiveFormId(long current, long pageSize, String memberId, String memberId1);
 }

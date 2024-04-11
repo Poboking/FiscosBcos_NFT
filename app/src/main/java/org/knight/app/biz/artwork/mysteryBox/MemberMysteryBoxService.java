@@ -2,7 +2,7 @@ package org.knight.app.biz.artwork.mysteryBox;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.CharSequenceUtil;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import org.knight.app.biz.artwork.dto.holdcollection.MyHoldCollectionRespDTO;
 import org.knight.app.biz.convert.artwork.MyHoldCollectionConvert;
 import org.knight.infrastructure.common.NftConstants;
@@ -35,13 +35,13 @@ public class MemberMysteryBoxService {
     }
 
     public PageResult<MyHoldCollectionRespDTO> getHoldMysteryBoxPageList(long current, long pageSize, String memberId) {
-        IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_盲盒);
+        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_盲盒);
         List<String> collectionIds = new ArrayList<>();
-        pageEntity.getRecords().forEach(c -> collectionIds.add(c.getId()));
-        IPage<MemberHoldCollectionEntity> pageHoldEntity = memberHoldCollectionRepository.getPageListByIdsAndMemberId(current, pageSize, collectionIds, memberId);
+        pageEntity.getList().forEach(c -> collectionIds.add(c.getId()));
+        PageInfo<MemberHoldCollectionEntity> pageHoldEntity = memberHoldCollectionRepository.getPageListByIdsAndMemberId(current, pageSize, collectionIds, memberId);
         List<MyHoldCollectionRespDTO> respDTOs = new ArrayList<>();
-        pageHoldEntity.getRecords().forEach(e -> {
-            pageEntity.getRecords().forEach(c -> {
+        pageHoldEntity.getList().forEach(e -> {
+            pageEntity.getList().forEach(c -> {
                 if (e.getCollectionId().equals(c.getId())) {
                     e.setName(Optional.ofNullable(c.getName()).orElse("DataError: Unknown Collection Name"));
                     e.setCover(Optional.ofNullable(c.getCover()).orElse("DataError: Unknown Collection Cover"));
@@ -54,6 +54,7 @@ public class MemberMysteryBoxService {
                 e.setCover("DataError: Unknown Collection Cover");
             }
             MyHoldCollectionRespDTO respDTO = MyHoldCollectionConvert.convertToRespDTO(e);
+            // TODO: 2024/4/11 这里的id需要修改
             respDTO.setId(e.getId());
             respDTO.setHoldTime(DateUtil.format(e.getHoldTime(), NftConstants.DATE_FORMAT));
             respDTOs.add(respDTO);

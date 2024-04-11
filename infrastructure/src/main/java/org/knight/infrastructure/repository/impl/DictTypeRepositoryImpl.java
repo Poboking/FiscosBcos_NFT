@@ -1,13 +1,15 @@
 package org.knight.infrastructure.repository.impl;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.DictTypeEntity;
 import org.knight.infrastructure.dao.mapper.DictTypeMapper;
 import org.knight.infrastructure.repository.DictTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author poboking
@@ -25,11 +27,19 @@ public class DictTypeRepositoryImpl extends ServiceImpl<DictTypeMapper, DictType
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<DictTypeEntity> 分页数据
+     * @return PageInfo<DictTypeEntity> 分页数据
      */
     @Override
-    public IPage<DictTypeEntity> getPageList(long current, long pageSize) {
-        return dictTypeMapper.selectPage(new Page<>(current, pageSize), null);
+    public PageInfo<DictTypeEntity> getPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<DictTypeEntity> list = dictTypeMapper.selectList(null);
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -40,7 +50,7 @@ public class DictTypeRepositoryImpl extends ServiceImpl<DictTypeMapper, DictType
      */
     @Override
     public String getIdByDictTypeCode(String dictTypeCode) {
-        if (dictTypeCode == null || dictTypeCode.isEmpty()){
+        if (dictTypeCode == null || dictTypeCode.isEmpty()) {
             return null;
         }
         return dictTypeMapper.selectList(null).stream()

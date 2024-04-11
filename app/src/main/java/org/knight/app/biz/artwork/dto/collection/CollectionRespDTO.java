@@ -3,6 +3,7 @@ package org.knight.app.biz.artwork.dto.collection;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,4 +47,5 @@ public class CollectionRespDTO extends CollectionBaseDTO {
     private String name;
 
     private List<CollectionStoryDTO> collectionStorys;
+
 }

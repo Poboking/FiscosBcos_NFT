@@ -3,12 +3,9 @@ package org.knight.infrastructure.repository.impl;
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.core.metadata.OrderItem;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.page.PageMethod;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.dao.mapper.CollectionMapper;
 import org.knight.infrastructure.repository.CollectionRepository;
@@ -59,12 +56,19 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      *
      * @param current  当前页
      * @param pageSize 页面大小
-     * @return IPage<CollectionEntity> pageResult
+     * @return PageInfo<CollectionEntity> pageResult
      */
     @Override
-    public IPage<CollectionEntity> getPageList(long current, long pageSize) {
-        PageMethod.startPage((int) current, (int) pageSize);
-        return collectionMapper.selectPage(new Page<>(current, pageSize), null);
+    public PageInfo<CollectionEntity> getPageList(long current, long pageSize) {
+        PageInfo result = null;
+        try {
+            com.github.pagehelper.Page<CollectionEntity> page = PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionEntity> list = collectionMapper.selectList(null);
+            result = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return result;
     }
 
 
@@ -74,12 +78,21 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      * @param current  当前页
      * @param pageSize 页面大小
      * @param name     名称
-     * @return IPage<CollectionEntity> pageResult
+     * @return PageInfo<CollectionEntity> pageResult
      */
     @Override
-    public IPage<CollectionEntity> getPageListByName(long current, long pageSize, String name) {
-        return collectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<CollectionEntity>().like(!CharSequenceUtil.isBlank(name), "name", name));
+    public PageInfo<CollectionEntity> getPageListByName(long current, long pageSize, String name) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionEntity> list = collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
+                    .like(!CharSequenceUtil.isBlank(name), "name", name));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+
+        return pageInfo;
     }
 
     /**
@@ -99,13 +112,20 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      * @param current   当前页
      * @param pageSize  页面大小
      * @param creatorId 创建者id
-     * @return IPage<CollectionEntity> pageResult
+     * @return PageInfo<CollectionEntity> pageResult
      */
     @Override
-    public IPage<CollectionEntity> getPageListByCreatorId(long current, long pageSize, String creatorId) {
-        return collectionMapper.selectPage(new Page<CollectionEntity>(current, pageSize),
-                new QueryWrapper<CollectionEntity>().
-                        eq("creator_id", creatorId));
+    public PageInfo<CollectionEntity> getPageListByCreatorId(long current, long pageSize, String creatorId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionEntity> list = collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
+                    .eq("creator_id", creatorId));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -114,13 +134,20 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      * @param current       当前页
      * @param pageSize      页面大小
      * @param commodityType 商品类型
-     * @return IPage<CollectionEntity> pageResult
+     * @return PageInfo<CollectionEntity> pageResult
      */
     @Override
-    public IPage<CollectionEntity> getPageListByCommodityType(long current, long pageSize, String commodityType) {
-        return collectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<CollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
+    public PageInfo<CollectionEntity> getPageListByCommodityType(long current, long pageSize, String commodityType) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionEntity> list = collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
+                    .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -143,14 +170,22 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      * @param pageSize      页面大小
      * @param creatorId     创建者ID
      * @param commodityType 商品类型
-     * @return IPage<CollectionEntity> pageResult
+     * @return PageInfo<CollectionEntity> pageResult
      */
     @Override
-    public IPage<CollectionEntity> getPageListByCreatorIdAndCommodityType(long current, long pageSize, String creatorId, String commodityType) {
-        return collectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<CollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
-                        .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
+    public PageInfo<CollectionEntity> getPageListByCreatorIdAndCommodityType(long current, long pageSize, String creatorId, String commodityType) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionEntity> list = collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
+                    .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                    .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+
+        return pageInfo;
     }
 
     /**
@@ -160,14 +195,21 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      * @param pageSize      页面大小
      * @param name          藏品名称
      * @param commodityType 商品类型
-     * @return IPage<CollectionEntity> pageResult
+     * @return PageInfo<CollectionEntity> pageResult
      */
     @Override
-    public IPage<CollectionEntity> getPageListByNameAndCommodityType(long current, long pageSize, String name, String commodityType) {
-        return collectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<CollectionEntity>()
-                        .like(!CharSequenceUtil.isBlank(name), "name", name)
-                        .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
+    public PageInfo<CollectionEntity> getPageListByNameAndCommodityType(long current, long pageSize, String name, String commodityType) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionEntity> list = collectionMapper.selectList(new QueryWrapper<CollectionEntity>()
+                    .like(!CharSequenceUtil.isBlank(name), "name", name)
+                    .eq(!CharSequenceUtil.isBlank(commodityType), "commodity_type", commodityType));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**

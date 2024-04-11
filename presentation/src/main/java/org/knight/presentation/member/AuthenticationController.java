@@ -80,6 +80,9 @@ public class AuthenticationController {
                 throw new InternalServerErrorException("register failed as result of registerUser.saved() failed");
             }
         }
+        // TODO: 2024/4/11 为了方便测试, 这里初始化5000余额
+        memberService.initBalance(loginParam.getMobile());
+
         /*
             登录功能
          */
@@ -121,6 +124,9 @@ public class AuthenticationController {
                 throw new UnauthorizedException("login failed as result of registerUser.saved() failed");
             }
         }
+
+        // TODO: 2024/4/11 为方便测试,此处进行余额初始化
+        memberService.initBalance(loginParam.getMobile());
         /*
             登录功能
          */

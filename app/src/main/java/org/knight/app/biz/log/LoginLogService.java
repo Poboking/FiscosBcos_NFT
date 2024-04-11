@@ -1,8 +1,7 @@
 package org.knight.app.biz.log;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.lang.func.VoidFunc0;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import org.knight.app.biz.convert.log.LoginLogConvert;
 import org.knight.app.biz.log.dto.loginlog.LoginLogReqDTO;
 import org.knight.app.biz.log.dto.loginlog.LoginLogRespDTO;
@@ -53,9 +52,9 @@ public class LoginLogService {
      * @return PageResult<LoginLogRespDto> 分页数据
      */
     public PageResult<LoginLogRespDTO> getLoginLog(long current, long pageSize) {
-        IPage<LoginLogEntity> pageList = loginLogRepository.getPageList(current, pageSize);
+        PageInfo<LoginLogEntity> pageList = loginLogRepository.getPageList(current, pageSize);
         List<LoginLogRespDTO> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> recordList.add(LoginLogConvert.INSTANCE.convertToRespDto(item)));
+        pageList.getList().forEach(item -> recordList.add(LoginLogConvert.INSTANCE.convertToRespDto(item)));
         return PageResult.convertFor(pageList, pageSize, recordList);
     }
 
@@ -69,9 +68,9 @@ public class LoginLogService {
      */
     public PageResult<LoginLogRespDTO> getLoginLog(long current, long pageSize, String memberId) {
         String mobile = memberRepository.getMobileByMemberId(memberId);
-        IPage<LoginLogEntity> pageList = loginLogRepository.getLoginLogByMoblie(current, pageSize, mobile);
+        PageInfo<LoginLogEntity> pageList = loginLogRepository.getLoginLogByMoblie(current, pageSize, mobile);
         List<LoginLogRespDTO> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> {
+        pageList.getList().forEach(item -> {
             LoginLogRespDTO respDTO = LoginLogConvert.INSTANCE.convertToRespDto(item);
             respDTO.setLoginTime(DateUtil.format(item.getLoginTime(), NftConstants.DATE_FORMAT));
             if (Objects.isNull(item.getLoginTime())){

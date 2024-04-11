@@ -1,7 +1,7 @@
 package org.knight.infrastructure.repository;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.PayOrderEntity;
 
 import java.sql.Timestamp;
@@ -20,7 +20,7 @@ public interface PayOrderRepository extends IService<PayOrderEntity> {
      * @param pageSize 每页大小
      * @return 分页列表
      */
-    IPage<PayOrderEntity> getPayOrderPageList(long current, long pageSize);
+    PageInfo<PayOrderEntity> getPayOrderPageList(long current, long pageSize);
 
     /**
      * 获取我的支付订单分页列表 - 根据订单状态
@@ -30,7 +30,7 @@ public interface PayOrderRepository extends IService<PayOrderEntity> {
      * @param status   订单状态
      * @return 分页列表
      */
-    IPage<PayOrderEntity> getPayOrderPageList(long current, long pageSize, String status);
+    PageInfo<PayOrderEntity> getPayOrderPageList(long current, long pageSize, String status);
 
     /**
      * 获取我的支付订单分页列表 - 全部
@@ -39,7 +39,7 @@ public interface PayOrderRepository extends IService<PayOrderEntity> {
      * @param pageSize 每页大小
      * @return 分页列表
      */
-    IPage<PayOrderEntity> getPayOrderPageListByMemberId(long current, long pageSize, String memberId);
+    PageInfo<PayOrderEntity> getPayOrderPageListByMemberId(long current, long pageSize, String memberId);
 
     /**
      * 获取我的支付订单分页列表 - 根据订单状态
@@ -49,7 +49,7 @@ public interface PayOrderRepository extends IService<PayOrderEntity> {
      * @param status   订单状态
      * @return 分页列表
      */
-    IPage<PayOrderEntity> getPayOrderPageListByMemberIdAndStatus(long current, long pageSize, String memberId, String status);
+    PageInfo<PayOrderEntity> getPayOrderPageListByMemberIdAndStatus(long current, long pageSize, String memberId, String status);
 
 
     /**

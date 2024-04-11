@@ -2,14 +2,16 @@ package org.knight.infrastructure.repository.impl;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.NoticeEntity;
 import org.knight.infrastructure.dao.mapper.NoticeMapper;
 import org.knight.infrastructure.repository.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author poboking
@@ -28,11 +30,19 @@ public class NoticeRepositoryImpl extends ServiceImpl<NoticeMapper, NoticeEntity
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<NoticeEntity> 通知公告的分页列表
+     * @return PageInfo<NoticeEntity> 通知公告的分页列表
      */
     @Override
-    public IPage<NoticeEntity> getPageList(long current, long pageSize) {
-        return noticeMapper.selectPage(new Page<>(current, pageSize), null);
+    public PageInfo<NoticeEntity> getPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<NoticeEntity> list = noticeMapper.selectList(null);
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -41,12 +51,20 @@ public class NoticeRepositoryImpl extends ServiceImpl<NoticeMapper, NoticeEntity
      * @param current  当前页
      * @param pageSize 每页大小
      * @param title    标题
-     * @return IPage<NoticeEntity> 通知公告的分页列表
+     * @return PageInfo<NoticeEntity> 通知公告的分页列表
      */
     @Override
-    public IPage<NoticeEntity> getPageListByTitle(long current, long pageSize, String title) {
-        return noticeMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<NoticeEntity>()
-                .eq(!CharSequenceUtil.isBlank(title), "title", title));
+    public PageInfo<NoticeEntity> getPageListByTitle(long current, long pageSize, String title) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<NoticeEntity> list = noticeMapper.selectList(new QueryWrapper<NoticeEntity>()
+                    .eq(!CharSequenceUtil.isBlank(title), "title", title));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -55,12 +73,20 @@ public class NoticeRepositoryImpl extends ServiceImpl<NoticeMapper, NoticeEntity
      * @param current  当前页
      * @param pageSize 每页大小
      * @param type     类型
-     * @return IPage<NoticeEntity> 通知公告的分页列表
+     * @return PageInfo<NoticeEntity> 通知公告的分页列表
      */
     @Override
-    public IPage<NoticeEntity> getPageListByType(long current, long pageSize, String type) {
-        return noticeMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<NoticeEntity>()
-                .eq(!CharSequenceUtil.isBlank(type), "type", type));
+    public PageInfo<NoticeEntity> getPageListByType(long current, long pageSize, String type) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<NoticeEntity> list = noticeMapper.selectList(new QueryWrapper<NoticeEntity>()
+                    .eq(!CharSequenceUtil.isBlank(type), "type", type));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**

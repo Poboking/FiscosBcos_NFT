@@ -1,6 +1,53 @@
 
-•
-java:S1128"MRemove this unused import 'com.baomidou.mybatisplus.core.metadata.OrderItem'.(±øîÍûÿÿÿÿ8äÍõ–ì1J$8e5187ef-8151-48e1-8f9b-3904117d532d
-Z
-java:S1128
-"=Remove this unused import 'com.github.pagehelper.PageHelper'.(ğ÷¨¹8‘åö–ì1
+r
+java:S3740?"/Provide the parametrized type for this generic.(ôÕ›Ÿ8²°„Ùì1J$6f676fb4-0206-4a82-b08b-108df1edd0bf
+w
+java:S3740C"/Provide the parametrized type for this generic.(¿øÖîùÿÿÿÿ8²°„Ùì1J$1666c33b-1a0c-4d0e-aa57-164e348bb16d
+r
+java:S3740U"/Provide the parametrized type for this generic.(©œâ×8²°„Ùì1J$941e86b5-6664-48d6-bebf-936d27d96148
+r
+java:S3740Z"/Provide the parametrized type for this generic.(Ï‡êò8²°„Ùì1J$444fffd2-f3dd-4de9-a938-1e92019fad88
+r
+java:S3740w"/Provide the parametrized type for this generic.(©œâ×8²°„Ùì1J$65fb30fb-ffed-4d6b-9f3d-3268ec3b687a
+r
+java:S3740|"/Provide the parametrized type for this generic.(Ï‡êò8²°„Ùì1J$985bc9eb-c802-4b1f-82b6-5c43e3986958
+s
+java:S3740"/Provide the parametrized type for this generic.(©œâ×8²°„Ùì1J$e67bbffa-73b0-427c-b978-8dcb6030ef36
+s
+java:S3740’"/Provide the parametrized type for this generic.(Ï‡êò8²°„Ùì1J$7f014ba7-02f8-4d50-9958-f2d201a878f0
+s
+java:S3740±"/Provide the parametrized type for this generic.(©œâ×8²°„Ùì1J$36de96e4-0a4d-4929-a0c2-218b9e3ede1b
+s
+java:S3740·"/Provide the parametrized type for this generic.(Ï‡êò8²°„Ùì1J$816466c2-18ef-447e-a2cf-3fe012618561
+s
+java:S3740Ê"/Provide the parametrized type for this generic.(©œâ×8²°„Ùì1J$6f943c2d-5385-41a9-b0d6-9bb7b9297021
+s
+java:S3740Ğ"/Provide the parametrized type for this generic.(Ï‡êò8³°„Ùì1J$e6fe7817-ac1d-47d4-9f4c-8ed468057cac
+{
+java:S1854A"8Remove this useless assignment to local variable "page".(š“Õ²8È°„Ùì1J$e0a66206-ef9c-4bbc-a9d3-55c90ee08696
+’
+java:S3252A"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(š“Õ²8É°„Ùì1J$f0b96ea9-7bb7-474d-b915-6d944ecae490
+l
+java:S1481A")Remove this unused "page" local variable.(š“Õ²8Ê°„Ùì1J$9b3d8e0a-1c3e-4180-87f8-4a13524ad98b
+—
+java:S3252E"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8Ë°„Ùì1J$0495f42d-c3de-48c5-9119-ba3d68c442de
+’
+java:S3252W"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8Ì°„Ùì1J$a4f1cbd7-e4e8-44c7-a9d1-975ab4354639
+—
+java:S3252\"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8Ì°„Ùì1J$17b688e1-7509-4529-ba59-fd86604c6a32
+’
+java:S3252y"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8Í°„Ùì1J$2043e726-bf1b-4729-88fd-28beb5c83ca1
+—
+java:S3252~"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8Î°„Ùì1J$3da1f126-9bd5-47c4-bc22-8b9b0fddbfc5
+“
+java:S3252"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8Ï°„Ùì1J$2dc87522-99df-4385-a976-50357d68f97e
+˜
+java:S3252”"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8Ï°„Ùì1J$8dda4343-38d6-4755-b505-174ebaf52245
+“
+java:S3252³"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8Ğ°„Ùì1J$d63ccb43-5cfa-400c-b845-d9ba6919b060
+˜
+java:S3252¹"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8Ñ°„Ùì1J$1f0604b0-e542-4e65-8949-d6e9f8b2d8cd
+“
+java:S3252Ì"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8Ñ°„Ùì1J$9d1e18cc-d619-48dd-975f-999e2afe4e23
+˜
+java:S3252Ò"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8Ò°„Ùì1J$b46a6ae1-8196-4eb2-8a55-582b63a776cd

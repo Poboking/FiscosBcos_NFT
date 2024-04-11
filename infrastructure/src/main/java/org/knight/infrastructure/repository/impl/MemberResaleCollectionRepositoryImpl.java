@@ -3,9 +3,9 @@ package org.knight.infrastructure.repository.impl;
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.dao.domain.MemberResaleCollectionEntity;
 import org.knight.infrastructure.dao.mapper.MemberResaleCollectionMapper;
@@ -33,12 +33,20 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderDescPageList(long current, long pageSize) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>().orderByDesc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderDescPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>().orderByDesc("resale_price"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -46,12 +54,20 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderAscPageList(long current, long pageSize) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>().orderByAsc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderAscPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>().orderByAsc("resale_price"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -60,14 +76,22 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param current   当前页
      * @param pageSize  每页大小
      * @param creatorId 创建者id
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderDescPageListByCreatorId(long current, long pageSize, String creatorId) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
-                        .orderByDesc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderDescPageListByCreatorId(long current, long pageSize, String creatorId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>()
+                            .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                            .orderByDesc("resale_price"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -76,14 +100,22 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param current      当前页
      * @param pageSize     每页大小
      * @param collectionId 收藏品id
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderDescPageListByCollectionId(long current, long pageSize, String collectionId) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
-                        .orderByDesc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderDescPageListByCollectionId(long current, long pageSize, String collectionId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>()
+                            .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
+                            .orderByDesc("resale_price"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -93,15 +125,23 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param pageSize     每页大小
      * @param creatorId    创建者id
      * @param collectionId 收藏品id
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderDescPageListByCreatorIdAndCollectionId(long current, long pageSize, String creatorId, String collectionId) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
-                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
-                        .orderByDesc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderDescPageListByCreatorIdAndCollectionId(long current, long pageSize, String creatorId, String collectionId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>()
+                            .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                            .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
+                            .orderByDesc("resale_price"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -110,14 +150,22 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param current   当前页
      * @param pageSize  每页大小
      * @param creatorId 创建者id
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderAscPageListByCreatorId(long current, long pageSize, String creatorId) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
-                        .orderByDesc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderAscPageListByCreatorId(long current, long pageSize, String creatorId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>()
+                            .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                            .orderByAsc("resale_price"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -126,14 +174,22 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param current      当前页
      * @param pageSize     每页大小
      * @param collectionId 收藏品id
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderAscPageListByCollectionId(long current, long pageSize, String collectionId) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
-                        .orderByAsc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderAscPageListByCollectionId(long current, long pageSize, String collectionId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>()
+                            .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
+                            .orderByAsc("resale_price"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -143,15 +199,23 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param pageSize     每页大小
      * @param collectionId 收藏品id
      * @param creatorId    创建者id
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderAscPageListByCreatorIdAndCollectionId(long current, long pageSize, String creatorId, String collectionId) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
-                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
-                        .orderByAsc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderAscPageListByCreatorIdAndCollectionId(long current, long pageSize, String creatorId, String collectionId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>()
+                            .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
+                            .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                            .orderByAsc("resale_price"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -160,13 +224,21 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param current  当前页
      * @param pageSize 每页大小
      * @param memberId 会员id
-     * @return IPage<MemberHoldCollectionEntity> 分页列表
+     * @return PageInfo<MemberHoldCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPageListByMemberId(long current, long pageSize, String memberId) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId));
+    public PageInfo<MemberResaleCollectionEntity> getPageListByMemberId(Long current, Long pageSize, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage(current.intValue(), pageSize.intValue());
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(
+                    new QueryWrapper<MemberResaleCollectionEntity>()
+                            .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId));
+            pageInfo = new PageInfo(list, pageSize.intValue());
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -175,15 +247,22 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param current  当前页
      * @param pageSize 每页大小
      * @param memberId 会员id
-     * @param state   持有藏品状态
-     * @return IPage<MemberHoldCollectionEntity> 分页列表
+     * @param state    持有藏品状态
+     * @return PageInfo<MemberHoldCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPageListByMemberIdAndStatus(long current, long pageSize, String memberId, String state) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
-                        .eq(!CharSequenceUtil.isBlank(state), "state", state));
+    public PageInfo<MemberResaleCollectionEntity> getPageListByMemberIdAndStatus(Long current, Long pageSize, String memberId, String state) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage(current.intValue(), pageSize.intValue());
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(new QueryWrapper<MemberResaleCollectionEntity>()
+                    .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
+                    .eq(!CharSequenceUtil.isBlank(state), "state", state));
+            pageInfo = new PageInfo(list, pageSize.intValue());
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -195,17 +274,24 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param collectionId  收藏品id
      * @param state         持有藏品状态
      * @param collectionIds 特定类别的收藏品ids
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderDescPageListByParam(Long current, Long pageSize, String creatorId, String collectionId, String state, List<String> collectionIds) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
-                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
-                        .eq(!CharSequenceUtil.isBlank(state), "state", state)
-                        .in(Optional.ofNullable(collectionIds).isPresent(), "collection_id", collectionIds)
-                        .orderByDesc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderDescPageListByParam(Long current, Long pageSize, String creatorId, String collectionId, String state, List<String> collectionIds) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage(current.intValue(), pageSize.intValue());
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(new QueryWrapper<MemberResaleCollectionEntity>()
+                    .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                    .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
+                    .eq(!CharSequenceUtil.isBlank(state), "state", state)
+                    .in(Optional.ofNullable(collectionIds).isPresent(), "collection_id", collectionIds)
+                    .orderByDesc("resale_price"));
+            pageInfo = new PageInfo(list, pageSize.intValue());
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -217,17 +303,24 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * @param collectionId  收藏品id
      * @param state         持有藏品状态
      * @param collectionIds 特定类别的收藏品ids
-     * @return IPage<MemberResaleCollectionEntity> 分页列表
+     * @return PageInfo<MemberResaleCollectionEntity> 分页列表
      */
     @Override
-    public IPage<MemberResaleCollectionEntity> getPriceOrderAscPageListByParam(Long current, Long pageSize, String creatorId, String collectionId, String state, List<String> collectionIds) {
-        return memberResaleCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberResaleCollectionEntity>()
-                        .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
-                        .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
-                        .eq(!CharSequenceUtil.isBlank(state), "state", state)
-                        .in(Optional.ofNullable(collectionIds).isPresent(), "collection_id", collectionIds)
-                        .orderByAsc("resale_price"));
+    public PageInfo<MemberResaleCollectionEntity> getPriceOrderAscPageListByParam(Long current, Long pageSize, String creatorId, String collectionId, String state, List<String> collectionIds) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage(current.intValue(), pageSize.intValue());
+            List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(new QueryWrapper<MemberResaleCollectionEntity>()
+                    .eq(!CharSequenceUtil.isBlank(creatorId), "creator_id", creatorId)
+                    .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
+                    .eq(!CharSequenceUtil.isBlank(state), "state", state)
+                    .in(Optional.ofNullable(collectionIds).isPresent(), "collection_id", collectionIds)
+                    .orderByAsc("resale_price"));
+            pageInfo = new PageInfo(list, pageSize.intValue());
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -243,26 +336,26 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
         if (CharSequenceUtil.isBlank(id) || CharSequenceUtil.isBlank(state) || updateTime == null) {
             return false;
         }
-        if (state.equals(NftConstants.转售的藏品状态_已卖出)){
+        if (state.equals(NftConstants.转售的藏品状态_已卖出)) {
             return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
                     .eq("id", id)
                     .set("state", state)
                     .set("update_time", updateTime)
-                    .set("sold_time",updateTime)) > 0;
+                    .set("sold_time", updateTime)) > 0;
         }
-        if (state.equals(NftConstants.转售的藏品状态_已取消)){
+        if (state.equals(NftConstants.转售的藏品状态_已取消)) {
             return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
                     .eq("id", id)
                     .set("state", state)
                     .set("update_time", updateTime)
-                    .set("cancel_time",updateTime)) > 0;
+                    .set("cancel_time", updateTime)) > 0;
         }
-        if (state.equals(NftConstants.转售的藏品状态_已发布)){
+        if (state.equals(NftConstants.转售的藏品状态_已发布)) {
             return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
                     .eq("id", id)
                     .set("state", state)
                     .set("update_time", updateTime)
-                    .set("resale",updateTime)) > 0;
+                    .set("resale", updateTime)) > 0;
 
         }
 //        if (state.equals(NftConstants.转售的藏品状态_已下架))
@@ -277,7 +370,7 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      */
     @Override
     public boolean checkExist(String resaleCollectionId) {
-        if (CharSequenceUtil.isBlank(resaleCollectionId)){
+        if (CharSequenceUtil.isBlank(resaleCollectionId)) {
             return false;
         }
         return memberResaleCollectionMapper.exists(new QueryWrapper<MemberResaleCollectionEntity>()
@@ -288,15 +381,15 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * 检查是否存在
      *
      * @param resaleCollectionId 出售藏品ID
-     * @param memberId 会员ID
+     * @param memberId           会员ID
      * @return boolean 是否存在
      */
     @Override
-    public boolean checkExist(String resaleCollectionId, String memberId){
-        if (CharSequenceUtil.isBlank(resaleCollectionId)){
+    public boolean checkExist(String resaleCollectionId, String memberId) {
+        if (CharSequenceUtil.isBlank(resaleCollectionId)) {
             return false;
         }
-        if (CharSequenceUtil.isBlank(memberId)){
+        if (CharSequenceUtil.isBlank(memberId)) {
             return false;
         }
         return memberResaleCollectionMapper.exists(new QueryWrapper<MemberResaleCollectionEntity>()
@@ -308,7 +401,7 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
      * 检查状态
      *
      * @param resaleCollectionId 出售藏品ID
-     * @param state         状态
+     * @param state              状态
      * @return boolean 是否存在
      */
     @Override

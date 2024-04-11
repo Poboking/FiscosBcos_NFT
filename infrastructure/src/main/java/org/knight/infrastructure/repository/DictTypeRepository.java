@@ -1,7 +1,7 @@
 package org.knight.infrastructure.repository;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.DictTypeEntity;
 
 /**
@@ -15,9 +15,9 @@ public interface DictTypeRepository extends IService<DictTypeEntity> {
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<DictTypeEntity> 分页数据
+     * @return PageInfo<DictTypeEntity> 分页数据
      */
-    IPage<DictTypeEntity> getPageList(long current, long pageSize);
+    PageInfo<DictTypeEntity> getPageList(long current, long pageSize);
 
     /**
      * 根据字典类型编码获取字典类型ID

@@ -143,10 +143,10 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
     }
 
     public static MemberEntity defaultInit(String nickName, String mobile, String loginPwd) {
-        String uuid = IdUtils.uuid();
+        String id = IdUtils.snowFlakeId();
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
         return MemberEntity.builder()
-                .id(uuid)
+                .id(id)
                 .nickName(nickName)
                 .avatar(NftConstants.默认头像)
                 .mobile(mobile)
@@ -157,7 +157,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
                 .boughtFlag(false)
                 .state(NftConstants.功能状态_启用)
                 .accountLevel(1)
-                .accountLevelPath(uuid)
+                .accountLevelPath(id)
                 .keepLoginDuration(12)
                 .latelyLoginTime(now)
                 .registeredTime(now)
@@ -165,10 +165,10 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
     }
 
     public static MemberEntity hasInviterInit(String nickName, String mobile, String loginPwd, String inviterId) {
-        String uuid = IdUtils.uuid();
+        String id = IdUtils.snowFlakeId();
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
         return MemberEntity.builder()
-                .id(uuid)
+                .id(id)
                 .nickName(nickName)
                 .avatar(NftConstants.默认头像)
                 .mobile(mobile)
@@ -179,7 +179,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
                 .boughtFlag(false)
                 .state(NftConstants.功能状态_启用)
                 .accountLevel(1)
-                .accountLevelPath(uuid)
+                .accountLevelPath(id)
                 .keepLoginDuration(12)
                 .latelyLoginTime(now)
                 .registeredTime(now)
@@ -188,10 +188,10 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
     }
 
     public static MemberEntity quickInit(String nickName, String mobile) {
-        String uuid = IdUtils.uuid();
+        String id = IdUtils.snowFlakeId();
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
         return MemberEntity.builder()
-                .id(uuid)
+                .id(id)
                 .nickName(nickName)
                 .avatar(NftConstants.默认头像)
                 .mobile(mobile)
@@ -201,7 +201,7 @@ public class MemberEntity extends Model<MemberEntity> implements Serializable {
                 .boughtFlag(false)
                 .state(NftConstants.功能状态_启用)
                 .accountLevel(1)
-                .accountLevelPath(uuid)
+                .accountLevelPath(id)
                 .keepLoginDuration(12)
                 .latelyLoginTime(now)
                 .registeredTime(now)

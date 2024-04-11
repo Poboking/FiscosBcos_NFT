@@ -1,7 +1,7 @@
 package org.knight.infrastructure.repository;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.NoticeEntity;
 
 /**
@@ -15,9 +15,9 @@ public interface NoticeRepository extends IService<NoticeEntity> {
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<NoticeEntity> 通知公告的分页列表
+     * @return PageInfo<NoticeEntity> 通知公告的分页列表
      */
-    IPage<NoticeEntity> getPageList(long current, long pageSize);
+    PageInfo<NoticeEntity> getPageList(long current, long pageSize);
 
     /**
      * 获取通知公告的分页列表
@@ -25,9 +25,9 @@ public interface NoticeRepository extends IService<NoticeEntity> {
      * @param current  当前页
      * @param pageSize 每页大小
      * @param title    标题
-     * @return IPage<NoticeEntity> 通知公告的分页列表
+     * @return PageInfo<NoticeEntity> 通知公告的分页列表
      */
-    IPage<NoticeEntity> getPageListByTitle(long current, long pageSize, String title);
+    PageInfo<NoticeEntity> getPageListByTitle(long current, long pageSize, String title);
 
     /**
      * 获取通知公告的分页列表
@@ -35,9 +35,9 @@ public interface NoticeRepository extends IService<NoticeEntity> {
      * @param current  当前页
      * @param pageSize 每页大小
      * @param type     类型
-     * @return IPage<NoticeEntity> 通知公告的分页列表
+     * @return PageInfo<NoticeEntity> 通知公告的分页列表
      */
-    IPage<NoticeEntity> getPageListByType(long current, long pageSize, String type);
+    PageInfo<NoticeEntity> getPageListByType(long current, long pageSize, String type);
 
     /**
      * 获取通知公告的详情

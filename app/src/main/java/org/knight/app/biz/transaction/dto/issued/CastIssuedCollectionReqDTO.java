@@ -1,6 +1,5 @@
 package org.knight.app.biz.transaction.dto.issued;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.*;
 import org.knight.app.biz.transaction.dto.TransactionBaseDTO;
 

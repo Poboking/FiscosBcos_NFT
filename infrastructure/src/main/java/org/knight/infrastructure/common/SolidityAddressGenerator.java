@@ -1,7 +1,5 @@
 package org.knight.infrastructure.common;
 
-import org.fisco.bcos.sdk.utils.Numeric;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

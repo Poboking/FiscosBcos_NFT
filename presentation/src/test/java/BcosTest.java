@@ -1,10 +1,13 @@
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.fisco.bcos.sdk.crypto.keypair.CryptoKeyPair;
 import org.fisco.bcos.sdk.transaction.model.exception.ContractException;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.fisco.service.biz.BcosTestService;
 import org.knight.infrastructure.fisco.service.biz.ChainService;
 import org.knight.infrastructure.fisco.service.biz.DeployService;
+import org.knight.infrastructure.init.service.InitDataService;
 import org.knight.infrastructure.repository.impl.CollectionRepositoryImpl;
 import org.knight.infrastructure.repository.impl.IssuedCollectionRepositoryImpl;
 import org.knight.infrastructure.repository.impl.MemberHoldCollectionRepositoryImpl;
@@ -25,6 +28,8 @@ class BcosTest {
 
     private final BcosTestService bcosTestService;
 
+    private final InitDataService initDataService;
+
     private final DeployService deployService;
 
     private final ChainService chainService;
@@ -38,8 +43,9 @@ class BcosTest {
     private final MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository;
 
     @Autowired
-    BcosTest(BcosTestService bcosTestService, DeployService deployService, ChainService chainService, MemberRepositoryImpl memberRepositoryImpl, CollectionRepositoryImpl collectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository, MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository) {
+    BcosTest(BcosTestService bcosTestService, InitDataService initDataService, DeployService deployService, ChainService chainService, MemberRepositoryImpl memberRepositoryImpl, CollectionRepositoryImpl collectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository, MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository) {
         this.bcosTestService = bcosTestService;
+        this.initDataService = initDataService;
         this.deployService = deployService;
         this.chainService = chainService;
         this.memberRepositoryImpl = memberRepositoryImpl;
@@ -74,7 +80,12 @@ class BcosTest {
 
     @Test
     void firstInit(){
+        initDataService.initCollectionStock();
+    }
 
+    @Test
+    void dataTest(){
+    initDataService.initIssuedCollection();
     }
 
     @Test

@@ -1,6 +1,5 @@
 package org.knight.app.biz.artwork.collection;
 
-import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.knight.app.biz.artwork.dto.collection.CollectionAddReqDTO;
 import org.knight.app.biz.artwork.dto.issuedcollection.IssuedCollectionRespDTO;

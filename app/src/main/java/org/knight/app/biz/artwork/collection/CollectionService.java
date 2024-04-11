@@ -3,7 +3,7 @@ package org.knight.app.biz.artwork.collection;
 import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import org.knight.app.biz.artwork.dto.collection.*;
 import org.knight.app.biz.artwork.dto.creator.CreatorRespDTO;
@@ -49,12 +49,12 @@ public class CollectionService {
     private final IssuedCollectionRepositoryImpl issuedCollectionRepository;
 
     public PageResult<CollectionEntity> getPageList(long current, long pageSize) {
-        IPage<CollectionEntity> pageResult = collectionRepository.getPageList(current, pageSize);
+        PageInfo<CollectionEntity> pageResult = collectionRepository.getPageList(current, pageSize);
         return PageResult.convertFor(pageResult, pageSize);
     }
 
     public PageResult<CollectionEntity> getPageListByName(long current, long pageSize, String name) {
-        IPage<CollectionEntity> pageResult = collectionRepository.getPageListByName(current, pageSize, name);
+        PageInfo<CollectionEntity> pageResult = collectionRepository.getPageListByName(current, pageSize, name);
         return PageResult.convertFor(pageResult, pageSize);
     }
 
@@ -84,9 +84,9 @@ public class CollectionService {
     }
 
     public PageResult<CollectionIntroRespDTO> getIntroPageList(long current, long pageSize) {
-        IPage<CollectionEntity> pageEntity = collectionRepository.getPageList(current, pageSize);
+        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageList(current, pageSize);
         List<CollectionIntroRespDTO> resultList = new ArrayList<>();
-        pageEntity.getRecords().forEach(bean -> {
+        pageEntity.getList().forEach(bean -> {
             CreatorRespDTO creator = getCreatorById(bean.getCreatorId());
             if (creator == null) {
                 return;
@@ -103,9 +103,9 @@ public class CollectionService {
         if (creator == null) {
             return new PageResult<>();
         }
-        IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCreatorId(current, pageSize, creatorId);
+        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCreatorId(current, pageSize, creatorId);
         List<CollectionIntroRespDTO> resultList = new ArrayList<>();
-        pageEntity.getRecords().forEach(bean -> {
+        pageEntity.getList().forEach(bean -> {
             bean.setCreatorName(creator.getName());
             bean.setCreatorAvatar(creator.getAvatar());
             CollectionIntroRespDTO respDTO = CollectionConvert.INSTANCE.convertToIntroRespDTO(bean);
@@ -171,10 +171,14 @@ public class CollectionService {
     }
 
     public PageResult<CollectionRespDTO> findCollectionByPage(long current, long pageSize, String commodityType, String name) {
-        IPage<CollectionEntity> entityIPage = collectionRepository.getPageListByNameAndCommodityType(current, pageSize, name, commodityType);
-        List<CollectionRespDTO> resultList = new ArrayList<>();
-        entityIPage.getRecords().forEach(collectionEntity -> {
-            resultList.add(CollectionConvert.INSTANCE.convertToRespDTO(collectionEntity));
+        PageInfo<CollectionEntity> entityIPage = collectionRepository.getPageListByNameAndCommodityType(current, pageSize, name, commodityType);
+        List<CollectionRespDTO> resultList = new ArrayList<CollectionRespDTO>();
+        entityIPage.getList().forEach(collectionEntity -> {
+            CollectionRespDTO respDTO = CollectionConvert.INSTANCE.convertToRespDTO(collectionEntity);
+            if (Objects.isNull(respDTO.getCollectionStorys())){
+                respDTO.setCollectionStorys(new ArrayList<>());
+            }
+            resultList.add(respDTO);
         });
         return PageResult.convertFor(entityIPage, pageSize, resultList);
     }

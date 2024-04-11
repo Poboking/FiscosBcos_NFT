@@ -3,9 +3,9 @@ package org.knight.infrastructure.repository.impl;
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.dao.domain.PayOrderEntity;
 import org.knight.infrastructure.dao.mapper.PayOrderMapper;
@@ -44,9 +44,16 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
      * @return 分页列表
      */
     @Override
-    public IPage<PayOrderEntity> getPayOrderPageList(long current, long pageSize) {
-        return payOrderMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<PayOrderEntity>().orderByDesc("create_time"));
+    public PageInfo<PayOrderEntity> getPayOrderPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<PayOrderEntity> list = payOrderMapper.selectList( new QueryWrapper<PayOrderEntity>().orderByDesc("create_time"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -54,14 +61,22 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @param state   订单状态
+     * @param state    订单状态
      * @return 分页列表
      */
     @Override
-    public IPage<PayOrderEntity> getPayOrderPageList(long current, long pageSize, String state) {
-        return payOrderMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<PayOrderEntity>()
-                .eq(!CharSequenceUtil.isBlank(state), "state", state)
-                .orderByDesc("create_time"));
+    public PageInfo<PayOrderEntity> getPayOrderPageList(long current, long pageSize, String state) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<PayOrderEntity> list = payOrderMapper.selectList(new QueryWrapper<PayOrderEntity>()
+                    .eq(!CharSequenceUtil.isBlank(state), "state", state)
+                    .orderByDesc("create_time"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -72,10 +87,18 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
      * @return 分页列表
      */
     @Override
-    public IPage<PayOrderEntity> getPayOrderPageListByMemberId(long current, long pageSize, String memberId) {
-        return payOrderMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<PayOrderEntity>()
-                .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
-                .orderByDesc("create_time"));
+    public PageInfo<PayOrderEntity> getPayOrderPageListByMemberId(long current, long pageSize, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<PayOrderEntity> list = payOrderMapper.selectList(new QueryWrapper<PayOrderEntity>()
+                    .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
+                    .orderByDesc("create_time"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -87,11 +110,19 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
      * @return 分页列表
      */
     @Override
-    public IPage<PayOrderEntity> getPayOrderPageListByMemberIdAndStatus(long current, long pageSize, String memberId, String status) {
-        return payOrderMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<PayOrderEntity>()
-                .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
-                .eq(!CharSequenceUtil.isBlank(memberId), "state", status)
-                .orderByDesc("create_time"));
+    public PageInfo<PayOrderEntity> getPayOrderPageListByMemberIdAndStatus(long current, long pageSize, String memberId, String status) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<PayOrderEntity> list = payOrderMapper.selectList(new QueryWrapper<PayOrderEntity>()
+                    .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
+                    .eq(!CharSequenceUtil.isBlank(memberId), "state", status)
+                    .orderByDesc("create_time"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**

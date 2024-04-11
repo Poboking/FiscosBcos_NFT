@@ -1,5 +1,8 @@
 package org.knight.infrastructure.common;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -7,6 +10,7 @@ import java.time.format.DateTimeFormatter;
  * @author: poboking
  * @date: 2024/3/8 11:31
  */
+@Component
 @SuppressWarnings("all")
 public class NftConstants {
 
@@ -108,7 +112,19 @@ public class NftConstants {
     public static final String DIRECTION_FROM = "from";
     public static final String DIRECTION_TO = "to";
     public static final double 单笔销售最大价格 = 1000000;
-    public static final String 平台账户地址 = "0x363a7697f627ea2a694d467ba90c074bf56cd9e6";
+    // TODO: 2024/4/11 这里需要注意, 如果可以的话, 应该改成配置文件注入
+
+    @Value("${fisco.deployAddress}")
+    public static String 平台账户地址;
+    public static final Long 初始余额 = 5000L;
+    public static final String 发行藏品流转类型_转赠 = "转赠藏品";
+    public static final String 发行藏品流转类型_平台自营 = "平台自营购入";
+    public static final String 发行藏品流转类型_平台自营_锁定藏品 = "平台自营购入:锁定藏品中";
+    public static final String 发行藏品流转类型_二级市场 = "二级市场流转";
+    public static final String 发行藏品流转类型_二级市场_锁定藏品 = "二级市场流转:锁定藏品中";
+    public static final String 发行藏品流转类型_盲盒 = "盲盒";
+    public static final String 发行藏品流转类型_空投 = "空投";
+    public static final String 发行藏品流转类型_系统 = "系统流转";
     private static final String 通知公告类型_上新藏品 = "1";
     private static final String 通知公告类型_合成活动 = "2";
     private static final String 通知公告类型_空投活动 = "3";

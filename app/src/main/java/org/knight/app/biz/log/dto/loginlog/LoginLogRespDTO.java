@@ -4,10 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.apache.tomcat.jni.Local;
-
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 /**
  * @project: a20-nft-3_7

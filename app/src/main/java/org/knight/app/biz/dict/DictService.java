@@ -1,6 +1,6 @@
 package org.knight.app.biz.dict;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import org.knight.app.biz.convert.dict.DictItemConvert;
 import org.knight.app.biz.dict.dto.DictItemRespDTo;
@@ -34,18 +34,18 @@ public class DictService {
     }
 
     public PageResult<DictItemRespDTo> getDictItemPageList(long current, long pageSize) {
-        IPage<DictItemEntity> pageList = dictItemRepository.getPageList(current, pageSize);
+        PageInfo<DictItemEntity> pageList = dictItemRepository.getPageList(current, pageSize);
         List<DictItemRespDTo> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> {
+        pageList.getList().forEach(item -> {
             recordList.add(DictItemConvert.INSTANCE.convert(item));
         });
         return PageResult.convertFor(pageList, pageSize, recordList);
     }
 
     public PageResult<DictItemRespDTo> getDictItemPageListByDictTypeCode(long current, long pageSize, String dictTypeCode) {
-        IPage<DictItemEntity> pageList = dictItemRepository.getPageListByDictTypeCode(current, pageSize, dictTypeCode);
+        PageInfo<DictItemEntity> pageList = dictItemRepository.getPageListByDictTypeCode(current, pageSize, dictTypeCode);
         List<DictItemRespDTo> recordList = new ArrayList<>();
-        pageList.getRecords().forEach(item -> {
+        pageList.getList().forEach(item -> {
             recordList.add(DictItemConvert.INSTANCE.convert(item));
         });
         return PageResult.convertFor(pageList, pageSize, recordList);

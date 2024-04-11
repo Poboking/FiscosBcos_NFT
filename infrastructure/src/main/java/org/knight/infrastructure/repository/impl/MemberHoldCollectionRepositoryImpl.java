@@ -1,9 +1,9 @@
 package org.knight.infrastructure.repository.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.dao.domain.MemberHoldCollectionEntity;
 import org.knight.infrastructure.dao.mapper.MemberHoldCollectionMapper;
@@ -36,11 +36,19 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
     @Override
-    public IPage<MemberHoldCollectionEntity> getPageList(long current, long pageSize) {
-        return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize), null);
+    public PageInfo<MemberHoldCollectionEntity> getPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(null);
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -49,29 +57,44 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
      * @param current  当前页
      * @param pageSize 每页大小
      * @param memberId 用户id
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
     @Override
-    public IPage<MemberHoldCollectionEntity> getPageListByMemberId(long current, long pageSize, String memberId) {
-        return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberHoldCollectionEntity>().eq("member_id", memberId));
+    public PageInfo<MemberHoldCollectionEntity> getPageListByMemberId(long current, long pageSize, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(new QueryWrapper<MemberHoldCollectionEntity>().eq("member_id", memberId));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
      * 分页查询 - 根据用户id和作品id
      *
-     * @param current        当前页
-     * @param pageSize       每页大小
+     * @param current       当前页
+     * @param pageSize      每页大小
      * @param collectionIds 作品id
-     * @param memberId       用户id
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @param memberId      用户id
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
     @Override
-    public IPage<MemberHoldCollectionEntity> getPageListByIdsAndMemberId(long current, long pageSize, List<String> collectionIds, String memberId) {
-        return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<MemberHoldCollectionEntity>()
-                .eq("member_id", memberId)
-                .in("collection_id", collectionIds)
-                .orderByDesc("hold_time"));
+    public PageInfo<MemberHoldCollectionEntity> getPageListByIdsAndMemberId(long current, long pageSize, List<String> collectionIds, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(new QueryWrapper<MemberHoldCollectionEntity>()
+                    .eq("member_id", memberId)
+                    .in("collection_id", collectionIds)
+                    .orderByDesc("hold_time"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -81,12 +104,21 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
      * @param pageSize 每页大小
      * @param name     作品名称
      * @param memberId 用户id
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
     @Override
-    public IPage<MemberHoldCollectionEntity> getPageListByMemberIdAndName(long current, long pageSize, String name, String memberId) {
-        return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberHoldCollectionEntity>().like("name", name).eq("member_id", memberId));
+    public PageInfo<MemberHoldCollectionEntity> getPageListByMemberIdAndName(long current, long pageSize, String name, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(new QueryWrapper<MemberHoldCollectionEntity>()
+                    .like("name", name)
+                    .eq("member_id", memberId));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -96,12 +128,21 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
      * @param pageSize 每页大小
      * @param status   藏品转售状态
      * @param memberId 用户id
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
     @Override
-    public IPage<MemberHoldCollectionEntity> getPageListByMemberIdAndStatus(long current, long pageSize, String status, String memberId) {
-        return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<MemberHoldCollectionEntity>().eq("status", status).eq("member_id", memberId));
+    public PageInfo<MemberHoldCollectionEntity> getPageListByMemberIdAndStatus(long current, long pageSize, String status, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(new QueryWrapper<MemberHoldCollectionEntity>()
+                    .eq("state", status)
+                    .eq("member_id", memberId));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -267,15 +308,23 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
      * @param collectionId 藏品ID
      * @param state        藏品状态
      * @param gainWay      获得方式
-     * @return IPage<MemberHoldCollectionEntity> 分页结果
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
     @Override
-    public IPage<MemberHoldCollectionEntity> getPageListByParam(Long current, Long pageSize, String memberId, String collectionId, String state, String gainWay) {
-        return memberHoldCollectionMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<MemberHoldCollectionEntity>()
-                .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
-                .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
-                .eq(Optional.ofNullable(state).isPresent(), "state", state)
-                .eq(Optional.ofNullable(gainWay).isPresent(), "gain_way", gainWay));
+    public PageInfo<MemberHoldCollectionEntity> getPageListByParam(Long current, Long pageSize, String memberId, String collectionId, String state, String gainWay) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage( current.intValue(), pageSize.intValue());
+            List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(new QueryWrapper<MemberHoldCollectionEntity>()
+                    .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
+                    .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
+                    .eq(Optional.ofNullable(state).isPresent(), "state", state)
+                    .eq(Optional.ofNullable(gainWay).isPresent(), "gain_way", gainWay));
+            pageInfo = new PageInfo(list, pageSize.intValue());
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 }
 

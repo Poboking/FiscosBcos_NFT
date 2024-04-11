@@ -2,14 +2,16 @@ package org.knight.infrastructure.repository.impl;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.CollectionGiveRecordEntity;
 import org.knight.infrastructure.dao.mapper.CollectionGiveRecordMapper;
 import org.knight.infrastructure.repository.CollectionGiveRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author poboking
@@ -35,9 +37,17 @@ public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGi
      * @return 赠送记录分页列表
      */
     @Override
-    public IPage<CollectionGiveRecordEntity> getPageListByGiveFromId(long current, long pageSize, String giveFromId) {
-        return collectionGiveRecordMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<CollectionGiveRecordEntity>()
-                .eq(!CharSequenceUtil.isBlank(giveFromId), "give_from_id", giveFromId));
+    public PageInfo<CollectionGiveRecordEntity> getPageListByGiveFromId(long current, long pageSize, String giveFromId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionGiveRecordEntity> list = collectionGiveRecordMapper.selectList(new QueryWrapper<CollectionGiveRecordEntity>()
+                    .eq(!CharSequenceUtil.isBlank(giveFromId), "give_from_id", giveFromId));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -49,9 +59,18 @@ public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGi
      * @return 赠送记录分页列表
      */
     @Override
-    public IPage<CollectionGiveRecordEntity> getPageListByGiveToId(long current, long pageSize, String giveToId) {
-        return collectionGiveRecordMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<CollectionGiveRecordEntity>()
-                .eq(!CharSequenceUtil.isBlank(giveToId), "give_to_id", giveToId));
+    public PageInfo<CollectionGiveRecordEntity> getPageListByGiveToId(long current, long pageSize, String giveToId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionGiveRecordEntity> list = collectionGiveRecordMapper.selectList(new QueryWrapper<CollectionGiveRecordEntity>()
+                    .eq(!CharSequenceUtil.isBlank(giveToId), "give_to_id", giveToId));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
+
     }
 
     /**
@@ -64,9 +83,17 @@ public class CollectionGiveRecordRepositoryImpl extends ServiceImpl<CollectionGi
      * @return 赠送记录分页列表
      */
     @Override
-    public IPage<CollectionGiveRecordEntity> getPageListByGiveToIdOrGiveFormId(long current, long pageSize, String giveFromId, String giveToId) {
-        return collectionGiveRecordMapper.selectPage(new Page<>(current, pageSize), new QueryWrapper<CollectionGiveRecordEntity>()
-                .or(i -> i.eq( "give_from_id", giveFromId).or().eq("give_to_id", giveToId)));
+    public PageInfo<CollectionGiveRecordEntity> getPageListByGiveToIdOrGiveFormId(long current, long pageSize, String giveFromId, String giveToId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<CollectionGiveRecordEntity> list = collectionGiveRecordMapper.selectList(new QueryWrapper<CollectionGiveRecordEntity>()
+                    .and(i -> i.eq("give_from_id", giveFromId).or().eq("give_to_id", giveToId)));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 }
 

@@ -1,6 +1,6 @@
 package org.knight.app.biz.artwork.mysteryBox;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.knight.app.biz.artwork.dto.mysteryBox.MysteryBoxRespDTO;
@@ -32,9 +32,9 @@ public class MysteryBoxService {
     private CreatorRepositoryImpl creatorRepository;
 
     public PageResult<MysteryBoxRespDTO> getPageList(long current, long pageSize) {
-        IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_盲盒);
+        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_盲盒);
         List<MysteryBoxRespDTO> resultList = new ArrayList<>();
-        pageEntity.getRecords().forEach(bean -> {
+        pageEntity.getList().forEach(bean -> {
             CreatorEntity creator = creatorRepository.getById(bean.getCreatorId());
             if (creator == null) {
                 return;
@@ -47,9 +47,9 @@ public class MysteryBoxService {
     }
 
     public PageResult<MysteryBoxRespDTO> getPageListByCreatorId(long current, long pageSize, String creatorId) {
-        IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCreatorIdAndCommodityType(current, pageSize, creatorId, NftConstants.商品类型_盲盒);
+        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCreatorIdAndCommodityType(current, pageSize, creatorId, NftConstants.商品类型_盲盒);
         List<MysteryBoxRespDTO> resultList = new ArrayList<>();
-        pageEntity.getRecords().forEach(bean -> {
+        pageEntity.getList().forEach(bean -> {
             CreatorEntity creator = creatorRepository.getById(creatorId);
             if (creator == null) {
                 return;

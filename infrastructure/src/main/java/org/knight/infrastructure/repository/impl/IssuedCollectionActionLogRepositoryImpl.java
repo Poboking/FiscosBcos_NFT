@@ -67,6 +67,32 @@ public class IssuedCollectionActionLogRepositoryImpl extends ServiceImpl<IssuedC
         return issuedCollectionActionLogMapper.insert(entity) > 0;
     }
 
+
+    /**
+     * 更新操作日志
+     *
+     * @param desc               描述
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户ID
+     * @return boolean
+     */
+    @Override
+    public Boolean updateActionLog(String desc, String issuedCollectionId, String memberId) {
+        if (CharSequenceUtil.isBlank(issuedCollectionId) || CharSequenceUtil.isBlank(memberId)) {
+            return false;
+        }
+        IssuedCollectionActionLogEntity entity = issuedCollectionActionLogMapper.selectOne(new QueryWrapper<IssuedCollectionActionLogEntity>()
+                .eq("issued_collection_id", issuedCollectionId)
+                .eq("member_id", memberId));
+        if (Objects.isNull(entity)) {
+            return false;
+        }
+        entity.setActionDesc(desc);
+        entity.setActionTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
+        return issuedCollectionActionLogMapper.insert(entity) > 0;
+    }
+
+
     /**
      * 根据发行藏品ID获取持有用户ID
      *
@@ -98,6 +124,27 @@ public class IssuedCollectionActionLogRepositoryImpl extends ServiceImpl<IssuedC
                 .eq("issued_collection_id", issuedCollectionId)
                 .eq("member_id", memberId)
                 .lt("action_time", Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)))) > 0;
+    }
+
+    /**
+     * 检查被锁定藏品类别
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户ID
+     * @return string descType
+     */
+    @Override
+    public String checkLockType(String issuedCollectionId, String memberId) {
+        if (CharSequenceUtil.isBlank(issuedCollectionId) || CharSequenceUtil.isBlank(memberId)){
+            return null;
+        }
+        IssuedCollectionActionLogEntity entity = issuedCollectionActionLogMapper.selectOne(new QueryWrapper<IssuedCollectionActionLogEntity>()
+                .eq("issued_collection_id", issuedCollectionId)
+                .eq("member_id", memberId));
+        if (Objects.isNull(entity)){
+            return null;
+        }
+        return entity.getActionDesc();
     }
 }
 

@@ -3,7 +3,7 @@ package org.knight.app.biz.artwork.collection;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import org.knight.app.biz.artwork.dto.holdcollection.MemberHoldCollectionDetailRespDTO;
 import org.knight.app.biz.artwork.dto.holdcollection.MemberHoldCollectionRespDTO;
 import org.knight.app.biz.artwork.dto.holdcollection.MyHoldCollectionDetailRespDTO;
@@ -12,7 +12,6 @@ import org.knight.app.biz.convert.artwork.MemberHoldCollectionConvert;
 import org.knight.app.biz.convert.artwork.MyHoldCollectionConvert;
 import org.knight.app.biz.exception.collection.CollectionNotFoundException;
 import org.knight.app.biz.exception.collection.HoldCollectionNotFoundException;
-import org.knight.app.biz.exception.collection.IssuedCollectionLockException;
 import org.knight.app.biz.exception.collection.IssuedCollectionNotFoundException;
 import org.knight.app.biz.exception.member.CreatorNotFoundException;
 import org.knight.app.biz.exception.member.MemberNotFoundException;
@@ -52,23 +51,23 @@ public class MemberCollectionService {
     }
 
     public PageResult<MemberHoldCollectionEntity> getPageList(long current, long pageSize, String memberId) {
-        IPage<MemberHoldCollectionEntity> pageResult = memberHoldCollectionRepository.getPageListByMemberId(current, pageSize, memberId);
+        PageInfo<MemberHoldCollectionEntity> pageResult = memberHoldCollectionRepository.getPageListByMemberId(current, pageSize, memberId);
         return PageResult.convertFor(pageResult, pageSize);
     }
 
     public PageResult<MemberHoldCollectionEntity> getPageList(long current, long pageSize, String name, String memberId) {
-        IPage<MemberHoldCollectionEntity> pageResult = memberHoldCollectionRepository.getPageListByMemberIdAndName(current, pageSize, name, memberId);
+        PageInfo<MemberHoldCollectionEntity> pageResult = memberHoldCollectionRepository.getPageListByMemberIdAndName(current, pageSize, name, memberId);
         return PageResult.convertFor(pageResult, pageSize);
     }
 
     public PageResult<MyHoldCollectionRespDTO> getMyHoldCollectionPageList(long current, long pageSize, String memberId) {
-        IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_藏品);
+        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_藏品);
         List<String> collectionIds = new ArrayList<>();
-        pageEntity.getRecords().forEach(c -> collectionIds.add(c.getId()));
-        IPage<MemberHoldCollectionEntity> pageHoldEntity = memberHoldCollectionRepository.getPageListByIdsAndMemberId(current, pageSize, collectionIds, memberId);
+        pageEntity.getList().forEach(c -> collectionIds.add(c.getId()));
+        PageInfo<MemberHoldCollectionEntity> pageHoldEntity = memberHoldCollectionRepository.getPageListByIdsAndMemberId(current, pageSize, collectionIds, memberId);
         List<MyHoldCollectionRespDTO> respDTOs = new ArrayList<>();
-        pageHoldEntity.getRecords().forEach(e -> {
-            pageEntity.getRecords().forEach(c -> {
+        pageHoldEntity.getList().forEach(e -> {
+            pageEntity.getList().forEach(c -> {
                 if (e.getCollectionId().equals(c.getId())) {
                     e.setName(Optional.ofNullable(c.getName()).orElse("DataError: Unknown Collection Name"));
                     e.setCover(Optional.ofNullable(c.getCover()).orElse("DataError: Unknown Collection Cover"));
@@ -81,6 +80,7 @@ public class MemberCollectionService {
                 e.setCover("DataError: Unknown Collection Cover");
             }
             MyHoldCollectionRespDTO respDTO = MyHoldCollectionConvert.convertToRespDTO(e);
+            // TODO: 2024/4/11 这里的id需要修改
             respDTO.setId(e.getId());
             respDTO.setHoldTime(DateUtil.format(e.getHoldTime(), NftConstants.DATE_FORMAT));
             respDTOs.add(respDTO);
@@ -116,7 +116,8 @@ public class MemberCollectionService {
         }
         Long quantity = Optional.of(issuedCollectionRepository.count(new QueryWrapper<IssuedCollectionEntity>().eq("collection_id", collection.getId()))).orElse(1L);
         return MemberHoldCollectionDetailRespDTO.builder()
-                .id(holdCollection.getId())
+                // TODO: 2024/4/11 这里的id需要修改
+                .id(holdCollection.getCollectionId())
                 .issuedCollectionId(holdCollection.getIssuedCollectionId())
                 // TODO: 2024/4/6 此处的交易Hash需要修改 具体代码待实现
                 .transactionHash("null")
@@ -168,8 +169,8 @@ public class MemberCollectionService {
                 throw new CollectionNotFoundException("藏品不存在");
             }
         }
-        IPage<MemberHoldCollectionEntity> pageEntity = memberHoldCollectionRepository.getPageListByParam(current, pageSize, memberId, collectionId, state, gainWay);
-        return PageResult.convertFor(pageEntity, pageSize, MemberHoldCollectionConvert.INSTANCE.convertToRespDTO(pageEntity.getRecords()));
+        PageInfo<MemberHoldCollectionEntity> pageEntity = memberHoldCollectionRepository.getPageListByParam(current, pageSize, memberId, collectionId, state, gainWay);
+        return PageResult.convertFor(pageEntity, pageSize, MemberHoldCollectionConvert.INSTANCE.convertToRespDTO(pageEntity.getList()));
     }
 
 }

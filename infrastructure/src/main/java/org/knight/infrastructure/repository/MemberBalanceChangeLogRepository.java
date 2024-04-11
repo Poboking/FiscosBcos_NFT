@@ -1,7 +1,7 @@
 package org.knight.infrastructure.repository;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.MemberBalanceChangeLogEntity;
 
 import java.sql.Timestamp;
@@ -21,7 +21,7 @@ public interface MemberBalanceChangeLogRepository extends IService<MemberBalance
      * @param changeType 变动类型
      * @return 会员余额变动日志的分页列表
      */
-    IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long size, String changeType);
+    PageInfo<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long size, String changeType);
 
     /**
      * 获取会员余额变动日志的分页列表 - 全部
@@ -30,7 +30,7 @@ public interface MemberBalanceChangeLogRepository extends IService<MemberBalance
      * @param size    每页显示的记录数
      * @return 会员余额变动日志的分页列表
      */
-    public IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long size);
+    public PageInfo<MemberBalanceChangeLogEntity> getMemberBCLogPageList(long current, long size);
 
     /**
      * 获取会员余额变动日志的分页列表 - 根据变动类型和会员ID
@@ -40,7 +40,7 @@ public interface MemberBalanceChangeLogRepository extends IService<MemberBalance
      * @param memberId 会员ID
      * @return 会员余额变动日志的分页列表
      */
-    IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long size, String memberId);
+    PageInfo<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long size, String memberId);
 
     /**
      * 获取会员余额变动日志的分页列表 - 根据变动类型和会员ID
@@ -51,7 +51,7 @@ public interface MemberBalanceChangeLogRepository extends IService<MemberBalance
      * @param memberId   会员ID
      * @return 会员余额变动日志的分页列表
      */
-    IPage<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long size, String changeType, String memberId);
+    PageInfo<MemberBalanceChangeLogEntity> getMemberBCLogPageListByMemberId(long current, long size, String changeType, String memberId);
 
 /**
      * 创建余额变动日志

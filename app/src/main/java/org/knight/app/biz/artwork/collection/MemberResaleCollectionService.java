@@ -3,7 +3,7 @@ package org.knight.app.biz.artwork.collection;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.github.pagehelper.PageInfo;
 import org.knight.app.biz.artwork.dto.collection.CollectionQueryReqDTO;
 import org.knight.app.biz.artwork.dto.collection.CollectionResaleDetailRespDTO;
 import org.knight.app.biz.artwork.dto.collection.CollectionResaleRespDTO;
@@ -57,12 +57,12 @@ public class MemberResaleCollectionService {
     }
 
     public PageResult<MemberResaleCollectionEntity> getOrderDescPageList(long current, long pageSize) {
-        IPage<MemberResaleCollectionEntity> pageResult = memberResaleCollectionRepository.getPriceOrderDescPageList(current, pageSize);
+        PageInfo<MemberResaleCollectionEntity> pageResult = memberResaleCollectionRepository.getPriceOrderDescPageList(current, pageSize);
         return PageResult.convertFor(pageResult, pageSize);
     }
 
     public PageResult<MemberResaleCollectionEntity> getOrderAscPageList(long current, long pageSize) {
-        IPage<MemberResaleCollectionEntity> pageResult = memberResaleCollectionRepository.getPriceOrderAscPageList(current, pageSize);
+        PageInfo<MemberResaleCollectionEntity> pageResult = memberResaleCollectionRepository.getPriceOrderAscPageList(current, pageSize);
         return PageResult.convertFor(pageResult, pageSize);
     }
 
@@ -71,9 +71,9 @@ public class MemberResaleCollectionService {
         List<String> Ids = collectionRepository.getIdsByCommodityType(reqDto.getCommodityType());
         if (reqDto.isOrderDesc()) {
 
-            IPage<MemberResaleCollectionEntity> entityIPage = memberResaleCollectionRepository.getPriceOrderDescPageListByParam(
+            PageInfo<MemberResaleCollectionEntity> entityIPage = memberResaleCollectionRepository.getPriceOrderDescPageListByParam(
                     reqDto.getCurrent(), reqDto.getPageSize(), reqDto.getCreatorId(), reqDto.getCollectionId(), NftConstants.持有藏品状态_转售中, Ids);
-            entityIPage.getRecords().forEach(bean -> {
+            entityIPage.getList().forEach(bean -> {
                 CollectionResaleRespDTO resultBean = CollectionConvert.INSTANCE.convertToResaleRespDTO(bean);
                 resultBean.setCollectionSerialNumber(issuedCollectionRepository
                         .getById(bean.getIssuedCollectionId())
@@ -84,9 +84,9 @@ public class MemberResaleCollectionService {
 
         } else {
 
-            IPage<MemberResaleCollectionEntity> entityIPage = memberResaleCollectionRepository.getPriceOrderAscPageListByParam(
+            PageInfo<MemberResaleCollectionEntity> entityIPage = memberResaleCollectionRepository.getPriceOrderAscPageListByParam(
                     reqDto.getCurrent(), reqDto.getPageSize(), reqDto.getCreatorId(), reqDto.getCollectionId(), NftConstants.持有藏品状态_转售中, Ids);
-            entityIPage.getRecords().forEach(bean -> {
+            entityIPage.getList().forEach(bean -> {
                 CollectionResaleRespDTO resultBean = CollectionConvert.INSTANCE.convertToResaleRespDTO(bean);
                 resultBean.setCollectionSerialNumber(issuedCollectionRepository
                         .getById(bean.getIssuedCollectionId())
@@ -99,11 +99,11 @@ public class MemberResaleCollectionService {
     }
 
     public PageResult<MyResaleCollectionRespDTO> getMyResaleCollectionPageList(long current, long pageSize, String memberId) {
-        IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_藏品);
-        IPage<MemberResaleCollectionEntity> pageSoldEntity = memberResaleCollectionRepository.getPageListByMemberIdAndStatus(current, pageSize, memberId, NftConstants.持有藏品状态_转售中);
-        List<MemberResaleCollectionEntity> records = pageSoldEntity.getRecords();
+        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_藏品);
+        PageInfo<MemberResaleCollectionEntity> pageSoldEntity = memberResaleCollectionRepository.getPageListByMemberIdAndStatus(current, pageSize, memberId, NftConstants.持有藏品状态_转售中);
+        List<MemberResaleCollectionEntity> records = pageSoldEntity.getList();
         records.forEach(e -> {
-            pageEntity.getRecords().forEach(c -> {
+            pageEntity.getList().forEach(c -> {
                 if (e.getCollectionId().equals(c.getId())) {
                     e.setName(c.getName());
                     e.setCover(c.getCover());
@@ -114,11 +114,11 @@ public class MemberResaleCollectionService {
     }
 
     public PageResult<MySaleCollectionRespDTO> getMySoldCollectionPageList(long current, long pageSize, String memberId) {
-        IPage<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_藏品);
-        IPage<MemberResaleCollectionEntity> pageSoldEntity = memberResaleCollectionRepository.getPageListByMemberIdAndStatus(current, pageSize, memberId, NftConstants.持有藏品状态_已卖出);
-        List<MemberResaleCollectionEntity> records = pageSoldEntity.getRecords();
+        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_藏品);
+        PageInfo<MemberResaleCollectionEntity> pageSoldEntity = memberResaleCollectionRepository.getPageListByMemberIdAndStatus(current, pageSize, memberId, NftConstants.持有藏品状态_已卖出);
+        List<MemberResaleCollectionEntity> records = pageSoldEntity.getList();
         records.forEach(e -> {
-            pageEntity.getRecords().forEach(c -> {
+            pageEntity.getList().forEach(c -> {
                 if (e.getCollectionId().equals(c.getId())) {
                     e.setName(c.getName());
                     e.setCover(c.getCover());

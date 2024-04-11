@@ -38,6 +38,9 @@ public class IssuedCollectionActLogService {
         }
         List<IssuedCollectionActionLogEntity> entityList = actionLogRepository.list(new QueryWrapper<IssuedCollectionActionLogEntity>()
                 .eq("issued_collection_id", issuedCollectionId));
+        if (entityList.isEmpty()){
+            return null;
+        }
         List<IssuedCollectionActionLogRespDTO> respDTOs = new ArrayList<>();
         entityList.forEach(entity ->{
             IssuedCollectionActionLogRespDTO respDTO = IssuedCollectionActionLogConvert.INSTANCE.convertToRespDTO(entity);

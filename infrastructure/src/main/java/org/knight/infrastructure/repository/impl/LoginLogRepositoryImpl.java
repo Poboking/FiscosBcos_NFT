@@ -2,14 +2,16 @@ package org.knight.infrastructure.repository.impl;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.LoginLogEntity;
 import org.knight.infrastructure.dao.mapper.LoginLogMapper;
 import org.knight.infrastructure.repository.LoginLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author poboking
@@ -32,11 +34,19 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<LoginLogEntity> 分页数据
+     * @return PageInfo<LoginLogEntity> 分页数据
      */
     @Override
-    public IPage<LoginLogEntity> getPageList(long current, long pageSize) {
-        return loginLogMapper.selectPage(new Page<>(current, pageSize), null);
+    public PageInfo<LoginLogEntity> getPageList(long current, long pageSize) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<LoginLogEntity> list = loginLogMapper.selectList(null);
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -45,13 +55,20 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
      * @param current  当前页
      * @param pageSize 每页大小
      * @param id       Log日志ID
-     * @return IPage<LoginLogEntity> 分页数据
+     * @return PageInfo<LoginLogEntity> 分页数据
      */
     @Override
-    public IPage<LoginLogEntity> getPageListById(long current, long pageSize, String id) {
-        return loginLogMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<LoginLogEntity>()
-                        .eq(!CharSequenceUtil.isBlank(id), "id", id));
+    public PageInfo<LoginLogEntity> getPageListById(long current, long pageSize, String id) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<LoginLogEntity> list = loginLogMapper.selectList(new QueryWrapper<LoginLogEntity>()
+                    .eq(!CharSequenceUtil.isBlank(id), "id", id));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**
@@ -60,14 +77,21 @@ public class LoginLogRepositoryImpl extends ServiceImpl<LoginLogMapper, LoginLog
      * @param current  当前页
      * @param pageSize 每页大小
      * @param userName 用户名
-     * @return IPage<LoginLogEntity> 分页数据
+     * @return PageInfo<LoginLogEntity> 分页数据
      */
     @Override
-    public IPage<LoginLogEntity> getLoginLogByMoblie(long current, long pageSize, String userName) {
-        return loginLogMapper.selectPage(new Page<>(current, pageSize),
-                new QueryWrapper<LoginLogEntity>()
-                        .eq(!CharSequenceUtil.isBlank(userName), "user_name", userName)
-                        .orderByDesc("login_time"));
+    public PageInfo<LoginLogEntity> getLoginLogByMoblie(long current, long pageSize, String userName) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<LoginLogEntity> list = loginLogMapper.selectList(new QueryWrapper<LoginLogEntity>()
+                    .eq(!CharSequenceUtil.isBlank(userName), "user_name", userName)
+                    .orderByDesc("login_time"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
     /**

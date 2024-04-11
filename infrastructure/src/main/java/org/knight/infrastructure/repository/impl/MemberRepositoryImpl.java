@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -41,7 +42,7 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
     @Override
     public String getMobileByMemberId(String memberId) {
         MemberEntity entity = memberMapper.selectById(memberId);
-        if (Objects.isNull(entity) || CharSequenceUtil.isBlank(entity.getMobile())){
+        if (Objects.isNull(entity) || CharSequenceUtil.isBlank(entity.getMobile())) {
             return null;
         }
         return entity.getMobile();
@@ -85,8 +86,9 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
         return memberMapper.update(new UpdateWrapper<MemberEntity>()
                 .eq(!memberId.isEmpty(), "id", memberId)
                 .eq(!mobile.isEmpty(), "mobile", mobile)
-                .set(!realName.isEmpty(), "real_name", realName)
-                .set(!ssn.isEmpty(), "identity_card", ssn)) > 0;
+                .set(!CharSequenceUtil.isBlank(realName), "real_name", realName)
+                .set(!CharSequenceUtil.isBlank(ssn), "identity_card", ssn)
+                .set("bind_real_name_time", Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)))) > 0;
     }
 
     /**
@@ -102,6 +104,9 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
         if (amount < 0) {
             return false;
         }
+        if (Boolean.FALSE.equals(checkExist(memberId))) {
+            return false;
+        }
         if (memberMapper.selectById(memberId).getBalance() < amount) {
             return false;
         }
@@ -109,6 +114,27 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
                 new UpdateWrapper<MemberEntity>()
                         .eq("id", memberId)
                         .setSql("balance = balance - " + amount)) > 0;
+    }
+
+    /**
+     * 赠加用户余额
+     *
+     * @param memberId 用户ID
+     * @param amount   金额
+     * @return 是否更新成功
+     */
+    @Override
+    public boolean increaseBalance(String memberId, Double amount) {
+        if (amount < 0) {
+            return false;
+        }
+        if (Boolean.FALSE.equals(checkExist(memberId))) {
+            return false;
+        }
+        return memberMapper.update(null,
+                new UpdateWrapper<MemberEntity>()
+                        .eq("id", memberId)
+                        .setSql("balance = balance + " + amount)) > 0;
     }
 
     /**
@@ -139,7 +165,7 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
     public String getIdByMobile(String memberMobile) {
         MemberEntity entity = memberMapper.selectOne(new QueryWrapper<MemberEntity>()
                 .eq(Optional.ofNullable(memberMobile).isPresent(), "mobile", memberMobile));
-        if (Objects.isNull(entity)){
+        if (Objects.isNull(entity)) {
             return null;
         }
         return entity.getId();
@@ -153,7 +179,7 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
      */
     @Override
     public Boolean checkExist(String memberId) {
-        if (CharSequenceUtil.isBlank(memberId)){
+        if (CharSequenceUtil.isBlank(memberId)) {
             return false;
         }
         return memberMapper.exists(new QueryWrapper<MemberEntity>().eq("id", memberId));
@@ -169,7 +195,7 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
     public String getNameByMemberId(String memberId) {
         MemberEntity entity = memberMapper.selectOne(new QueryWrapper<MemberEntity>()
                 .eq("id", memberId));
-        if (Objects.isNull(entity)){
+        if (Objects.isNull(entity)) {
             return null;
         }
         return entity.getNickName();
@@ -183,15 +209,17 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
      */
     @Override
     public boolean checkRealName(String memberId) {
-        if (CharSequenceUtil.isBlank(memberId)){
+        if (CharSequenceUtil.isBlank(memberId)) {
             return false;
         }
-        MemberEntity entity = memberMapper.selectOne(new QueryWrapper<MemberEntity>()
+
+        List<MemberEntity> entities = memberMapper.selectList(new QueryWrapper<MemberEntity>()
                 .eq("id", memberId)
-                .isNotNull("real_name")
-                .isNotNull("identity_card"));
-        return Optional.ofNullable(entity).isPresent();
+                .and(e -> e.ne("real_name", "").or().isNotNull("real_name"))
+                .and(e -> e.ne("identity_card", "").or().isNotNull("identity_card")));
+        return !entities.isEmpty(); // 如果列表不为空，则表示查询到了符合条件的记录
     }
+
 
     /**
      * 获取用户区块链地址

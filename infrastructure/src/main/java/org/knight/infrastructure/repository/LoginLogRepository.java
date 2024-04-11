@@ -1,7 +1,7 @@
 package org.knight.infrastructure.repository;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.LoginLogEntity;
 
 /**
@@ -15,9 +15,9 @@ public interface LoginLogRepository extends IService<LoginLogEntity> {
      *
      * @param current  当前页
      * @param pageSize 每页大小
-     * @return IPage<LoginLogEntity> 分页数据
+     * @return PageInfo<LoginLogEntity> 分页数据
      */
-    IPage<LoginLogEntity> getPageList(long current, long pageSize);
+    PageInfo<LoginLogEntity> getPageList(long current, long pageSize);
 
     /**
      * 分页查询 - 根据ID
@@ -25,9 +25,9 @@ public interface LoginLogRepository extends IService<LoginLogEntity> {
      * @param current  当前页
      * @param pageSize 每页大小
      * @param id       Log日志ID
-     * @return IPage<LoginLogEntity> 分页数据
+     * @return PageInfo<LoginLogEntity> 分页数据
      */
-    IPage<LoginLogEntity> getPageListById(long current, long pageSize, String id);
+    PageInfo<LoginLogEntity> getPageListById(long current, long pageSize, String id);
 
     /**
      * 分页查询 - 根据用户名
@@ -35,9 +35,9 @@ public interface LoginLogRepository extends IService<LoginLogEntity> {
      * @param current  当前页
      * @param pageSize 每页大小
      * @param userName 用户名
-     * @return IPage<LoginLogEntity> 分页数据
+     * @return PageInfo<LoginLogEntity> 分页数据
      */
-    IPage<LoginLogEntity> getLoginLogByMoblie(long current, long pageSize, String userName);
+    PageInfo<LoginLogEntity> getLoginLogByMoblie(long current, long pageSize, String userName);
 
     /**
      * 保存登录日志
