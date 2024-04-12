@@ -187,28 +187,28 @@ public class CollectionService {
         if (reqDTO.getCollectionId() == null || reqDTO.getPicLinks() == null || reqDTO.getPicLinks().isEmpty()) {
             return false;
         }
-        Set<Map.Entry<Double, String>> set = reqDTO.getPicLinks().entrySet();
-        set.forEach(entry -> {
+        List<PicRespDTO> picLinks = reqDTO.getPicLinks();
+        picLinks.forEach(entry -> {
             if (collectionStoryRepository.getOne(new QueryWrapper<CollectionStoryEntity>()
                     .eq("collection_id", reqDTO.getCollectionId())
-                    .eq("order_no", entry.getKey())) != null) {
+                    .eq("order_no", entry.getSequence())) != null) {
                 collectionStoryRepository.saveOrUpdate(CollectionStoryEntity.builder()
-                        .picLink(entry.getValue())
+                        .picLink(entry.getLink())
                         .build(), new QueryWrapper<CollectionStoryEntity>()
                         .eq("collection_id", reqDTO.getCollectionId())
-                        .eq("order_no", entry.getKey()));
-                set.remove(entry);
+                        .eq("order_no", entry.getSequence()));
+                picLinks.remove(entry);
                 return;
             }
             collectionStoryRepository.saveOrUpdate(CollectionStoryEntity.builder()
                     .id(IdUtils.snowFlakeId())
                     .collectionId(reqDTO.getCollectionId())
-                    .orderNo(entry.getKey())
-                    .picLink(entry.getValue())
+                    .orderNo(entry.getSequence())
+                    .picLink(entry.getLink())
                     .build());
-            set.remove(entry);
+            picLinks.remove(entry);
         });
-        return set.isEmpty();
+        return picLinks.isEmpty();
     }
 
     @Transactional(rollbackFor = Exception.class)

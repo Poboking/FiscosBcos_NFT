@@ -73,11 +73,11 @@ spring:
 
 ############## 区块链配置 #############
 fisco:
-  certPath: conf
-  deployPrivateKey: e79e4a1b2059726897f64630e00ee96c653a85ef2d76e4a3f9b5a6bfec5e8131
-  deployAddress: 0x2fcbdb86f960e72febae7955e99b2cf0887d403f
-  bcosUserContractAddress: 0x13c6a6d2b35339f5a7f8247c7f82d094e842337a
-  bcosNFTContractAddress: 0x79475273094a6e2a0e9bfd3fd4ca218130150e07
+  cert-path: conf
+  deploy-private-key: "e79e4a1b2059726897f64630e00ee96c653a85ef2d76e4a3f9b5a6bfec5e8131"
+  deployAddress: "0x2fcbdb86f960e72febae7955e99b2cf0887d403f"
+  bcos-user-contract-address: "0xa56cba84f9fa3a2ce524dceeee5bb46eaa9094c6"
+  bcos-nft-contract-address: "0xb8ca726a438d3d4703a1c7735ddef8afaea9880e"
   #  maxBlockingQueueSize: 102400
   #  peers:
   #        - 43.143.86.190:20200

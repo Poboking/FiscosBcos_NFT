@@ -41,13 +41,30 @@ public class BlockChainTask {
         this.issuedCollectionRepo = issuedCollectionRepo;
     }
 
+    // TODO: 2024/4/12 待修改
     @Scheduled(initialDelay = 1000 * 30, fixedDelay = Long.MAX_VALUE)
     public void initBlockChainData() {
         try {
+            initBlockChain();
             log.info("["+ LocalDateTime.now().format(NftConstants.DATE_FORMAT) + "]: initBlockChainData");
             chainService.initData(memberHoldCollectionRepo, memberRepo, collectionRepo, issuedCollectionRepo);
         } catch (Exception e) {
             log.error("[定时任务执行失败]: initBlockChainData error ", e);
+        }
+    }
+
+
+    public void initBlockChain() {
+        try {
+            log.info("["+ LocalDateTime.now().format(NftConstants.DATE_FORMAT) + "]: initBlockChain");
+            if (chainService.initChain()) {
+                log.info("["+ LocalDateTime.now().format(NftConstants.DATE_FORMAT) + "]: contract address 初始化成功");
+            } else {
+                log.error("["+ LocalDateTime.now().format(NftConstants.DATE_FORMAT) + "]: contract address 不存在");
+
+            }
+        } catch (Exception e) {
+            log.error("[定时任务执行失败]: initBlockChain error ", e);
         }
     }
 }

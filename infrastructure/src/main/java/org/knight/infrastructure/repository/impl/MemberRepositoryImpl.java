@@ -232,6 +232,25 @@ public class MemberRepositoryImpl extends ServiceImpl<MemberMapper, MemberEntity
         return memberMapper.selectOne(new QueryWrapper<MemberEntity>()
                 .eq("id", memberId)).getBlockChainAddr();
     }
+
+    /**
+     * 获取用户手机号
+     *
+     * @param memberId
+     * @return string mobile
+     */
+    @Override
+    public String getMobileById(String memberId) {
+        if (CharSequenceUtil.isBlank(memberId)){
+            return null;
+        }
+        MemberEntity entity = memberMapper.selectOne(new QueryWrapper<MemberEntity>()
+                .eq("id", memberId));
+        if (Objects.isNull(entity)){
+            return null;
+        }
+        return entity.getMobile();
+    }
 }
 
 

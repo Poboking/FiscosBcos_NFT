@@ -1,6 +1,7 @@
 package org.knight.infrastructure.fisco.service.biz;
 
 import cn.hutool.core.lang.UUID;
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.fisco.bcos.sdk.BcosSDK;
 import org.fisco.bcos.sdk.client.Client;
@@ -20,7 +21,7 @@ import org.knight.infrastructure.exception.BcosTransactionException;
 import org.knight.infrastructure.exception.initialize.BlockChainInitDataFailedException;
 import org.knight.infrastructure.exception.initialize.IssuedCollectionDataInitializeException;
 import org.knight.infrastructure.exception.initialize.UserDataInitializeException;
-import org.knight.infrastructure.fisco.config.ContractAddressContext;
+import org.knight.infrastructure.fisco.config.BcosProperties;
 import org.knight.infrastructure.fisco.module.BlockChainNFT;
 import org.knight.infrastructure.fisco.service.BcosNFT;
 import org.knight.infrastructure.fisco.service.BcosUser;
@@ -55,12 +56,15 @@ public class ChainService {
 
     private final CryptoKeyPair deployCryptoKeyPair;
 
+    private final BcosProperties bcosProperties;
+
     @Autowired
-    public ChainService(BcosSDK bcosSDK, Client client, DeployService deployService, @Qualifier("deployCryptoKeyPair") CryptoKeyPair deployCryptoKeyPair) {
+    public ChainService(BcosSDK bcosSDK, Client client, DeployService deployService, @Qualifier("deployCryptoKeyPair") CryptoKeyPair deployCryptoKeyPair, @Qualifier("bcosProperties") BcosProperties bcosProperties) {
         this.bcosSDK = bcosSDK;
         this.client = client;
         this.deployService = deployService;
         this.deployCryptoKeyPair = deployCryptoKeyPair;
+        this.bcosProperties = bcosProperties;
     }
 
     // TODO: 2024/3/31 22:33 待实现
@@ -88,12 +92,33 @@ public class ChainService {
         return UUID.randomUUID().toString();
     }
 
+    /**
+     * 合约初始化
+     *
+     * @throws ContractException
+     */
+
     public Map<String, String> initDeploy() throws ContractException {
         String bcosUserAddress = deployService.deployBcosUserContract();
-        ContractAddressContext.setBcosUserAddress(bcosUserAddress);
+        bcosProperties.setBcosUserContractAddress(bcosUserAddress);
         String bcosNFTAddress = deployService.deployBcosNFTContract();
-        ContractAddressContext.setBcosNFTAddress(bcosNFTAddress);
+        bcosProperties.setBcosNFTContractAddress(bcosNFTAddress);
         return Map.of("bcosUserAddress", bcosUserAddress, "bcosNFTAddress", bcosNFTAddress);
+    }
+
+    /**
+     * 链上初始化
+     *
+     * @param memberRepo
+     * @return boolean 是否初始化成功
+     */
+    public Boolean initChain() throws ContractException {
+        if (bcosProperties.getBcosNFTContractAddress() == null || bcosProperties.getBcosUserContractAddress() == null) {
+            System.err.println("[" + LocalDateTime.now().format(NftConstants.DATE_FORMAT) + "]: contract address 不存在");
+            initDeploy();
+            return false;
+        }
+        return true;
     }
 
 
@@ -111,12 +136,9 @@ public class ChainService {
                             MemberRepositoryImpl memberRepo,
                             CollectionRepositoryImpl collectionRepo,
                             IssuedCollectionRepositoryImpl issuedCollectionRepo) {
-        try {
-            initIssuedCollectionData(issuedCollectionRepo, collectionRepo);
-            initUserData(memberRepo, holdCollectionRepo, issuedCollectionRepo, collectionRepo);
-        } catch (Exception e) {
-            throw new BlockChainInitDataFailedException("block chain server init data error");
-        }
+        initCollectionData(collectionRepo, issuedCollectionRepo);
+        initIssuedCollectionData(issuedCollectionRepo, collectionRepo);
+        initUserData(memberRepo, holdCollectionRepo, issuedCollectionRepo, collectionRepo);
         return true;
     }
 
@@ -161,7 +183,7 @@ public class ChainService {
                                         serialNumber,
                                         collectionEntity.getQuantity());
                             } catch (Exception e) {
-                                 return null;
+                                return null;
                             }
                             return IssuedCollectionEntity.builder()
                                     .id(issuedCollectionId)
@@ -194,7 +216,7 @@ public class ChainService {
                                             CollectionRepositoryImpl collectionRepo) {
         List<IssuedCollectionEntity> issuedCollectionEntities = issuedCollectionRepo.list(new QueryWrapper<IssuedCollectionEntity>()
                 .and(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
-                .and(e ->e.isNull("unique_id").or().eq("unique_id",""))
+                .and(e -> e.isNull("unique_id").or().eq("unique_id", ""))
                 .isNull("sync_chain_time"));
         List<String> issuedCollectionIds = issuedCollectionEntities.stream().map(IssuedCollectionEntity::getId).collect(Collectors.toList());
         try {
@@ -234,19 +256,19 @@ public class ChainService {
                                 IssuedCollectionRepositoryImpl issuedCollectionRepo,
                                 CollectionRepositoryImpl collectionRepo) {
         List<String> memberIds = memberRepo.list(new QueryWrapper<MemberEntity>()
-                .and(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
-                .isNull("block_chain_addr")
-                .and(e ->e.ne("identity_card", null).or().isNotNull("real_name"))
-                .and(e ->e.ne("real_name","").or().isNotNull("identity_card")))
+                        .and(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
+                        .isNull("block_chain_addr")
+                        .and(e -> e.ne("identity_card", null).or().isNotNull("real_name"))
+                        .and(e -> e.ne("real_name", "").or().isNotNull("identity_card")))
                 .stream().map(MemberEntity::getId).collect(Collectors.toList());
         List<String> issuedCollectionIds = issuedCollectionRepo.list(new QueryWrapper<IssuedCollectionEntity>()
                 .and(e -> e.eq("deleted_flag", false).or().isNull("deleted_flag"))
-                .and(e ->e.ne("unique_id", null).or().isNotNull("unique_id"))
+                .and(e -> e.ne("unique_id", null).or().isNotNull("unique_id"))
                 .isNotNull("sync_chain_time")).stream().map(IssuedCollectionEntity::getId).collect(Collectors.toList());
         List<String> memberHoldCollectionButNotIssuedCollectionIds = holdCollectionRepo.list(new QueryWrapper<MemberHoldCollectionEntity>()
                 .isNull("lose_time")
-                .and(e ->e.ne("member_id","").or().isNotNull("member_id"))
-                .and(e ->e.ne("issued_collection_id","").or().isNotNull("issued_collection_id"))
+                .and(e -> e.ne("member_id", "").or().isNotNull("member_id"))
+                .and(e -> e.ne("issued_collection_id", "").or().isNotNull("issued_collection_id"))
                 .notIn("issued_collection_id", issuedCollectionIds)).stream().map(MemberHoldCollectionEntity::getMemberId).collect(Collectors.toList());
         try {
             // 处理已实名但未上链用户
@@ -307,7 +329,7 @@ public class ChainService {
      * 初始化实名用户
      */
     public String initRealNameUser() {
-        BcosUser bcosUser = BcosUser.load(ContractAddressContext.getBcosUserAddress(), client, deployCryptoKeyPair);
+        BcosUser bcosUser = BcosUser.load(bcosProperties.getBcosUserContractAddress(), client, deployCryptoKeyPair);
         String address;
         try {
             address = generateBlockAccount();
@@ -326,8 +348,8 @@ public class ChainService {
      * @return blockChainNFT
      */
     public BlockChainNFT initHoldCollection(String address, String issuedCollectionId) {
-        BcosUser bcosUser = BcosUser.load(ContractAddressContext.getBcosUserAddress(), client, deployCryptoKeyPair);
-        BcosNFT bcosNFT = BcosNFT.load(ContractAddressContext.getBcosNFTAddress(), client, deployCryptoKeyPair);
+        BcosUser bcosUser = BcosUser.load(bcosProperties.getBcosUserContractAddress(), client, deployCryptoKeyPair);
+        BcosNFT bcosNFT = BcosNFT.load(bcosProperties.getBcosNFTContractAddress(), client, deployCryptoKeyPair);
         BlockChainNFT entity = new BlockChainNFT();
         try {
             BigInteger tokenId = bcosNFT.getTokenIdByTokenURI(issuedCollectionId);
@@ -346,21 +368,6 @@ public class ChainService {
 
 
     /**
-     * 链上初始化
-     *
-     * @param memberRepo
-     * @return boolean 是否初始化成功
-     */
-    public Boolean initChain(MemberHoldCollectionRepositoryImpl holdCollectionRepo,
-                             MemberRepositoryImpl memberRepo,
-                             CollectionRepositoryImpl collectionRepo) throws ContractException {
-        if (ContractAddressContext.getBcosNFTAddress() == null || ContractAddressContext.getBcosUserAddress() == null) {
-            initDeploy();
-        }
-        return true;
-    }
-
-    /**
      * 发行指定数量的藏品NFT
      *
      * @param collectionName     藏品名称
@@ -371,12 +378,12 @@ public class ChainService {
     //这里原本需要传入创作者的区块链地址,  此处暂改为传入创作者ID
     public List<BlockChainNFT> issuedCollection(String collectionName, String createId, String
             issuedCollectionId, Integer issuedAmount) {
-        BcosNFT bcosNFT = BcosNFT.load(ContractAddressContext.getBcosNFTAddress(), client, deployCryptoKeyPair);
+        BcosNFT bcosNFT = BcosNFT.load(bcosProperties.getBcosNFTContractAddress(), client, deployCryptoKeyPair);
         List<BlockChainNFT> results = new ArrayList<>();
         IntStream.range(1, issuedAmount + 1).forEach(i -> {
             try {
                 TransactionReceipt receipt = bcosNFT.createNFT(SolidityAddressGenerator.generateAddress(createId), collectionName, issuedCollectionId, BigInteger.valueOf(i), BigInteger.valueOf(issuedAmount));
-                if (!receipt.isStatusOK()){
+                if (!receipt.isStatusOK()) {
                     throw new BcosIssuedCollectionException("block chain server issued collection error");
                 }
                 BlockChainNFT nft = new BlockChainNFT();
@@ -403,7 +410,7 @@ public class ChainService {
      * @param issuedAmount       发行总数
      */
     public BlockChainNFT issuedCollection(String collectionName, String createId, String issuedCollectionId, Integer serialNumber, Integer issuedAmount) {
-        BcosNFT bcosNFT = BcosNFT.load(ContractAddressContext.getBcosNFTAddress(), client, deployCryptoKeyPair);
+        BcosNFT bcosNFT = BcosNFT.load(bcosProperties.getBcosNFTContractAddress(), client, deployCryptoKeyPair);
         BlockChainNFT result = new BlockChainNFT();
         try {
             TransactionReceipt receipt = bcosNFT.createNFT(SolidityAddressGenerator.generateAddress(createId), issuedCollectionId, collectionName, BigInteger.valueOf(serialNumber), BigInteger.valueOf(issuedAmount));
@@ -413,7 +420,7 @@ public class ChainService {
             System.err.println(receipt.getTransactionHash());
             System.err.println(receipt.getContractAddress());
             System.err.println(receipt);
-            if (!receipt.isStatusOK()){
+            if (!receipt.isStatusOK()) {
                 throw new BcosIssuedCollectionException("block chain server issued collection error:" + receipt.getStatus());
             }
             String tokenId = bcosNFT.getTokenIdByNameAndSerialNumber(collectionName, BigInteger.valueOf(serialNumber)).toString();
@@ -435,7 +442,7 @@ public class ChainService {
      * @return blockChainNFT
      */
     public BlockChainNFT checkIssuedCollection(String issuedCollectionId) {
-        BcosNFT bcosNFT = BcosNFT.load(ContractAddressContext.getBcosNFTAddress(), client, deployCryptoKeyPair);
+        BcosNFT bcosNFT = BcosNFT.load(bcosProperties.getBcosNFTContractAddress(), client, deployCryptoKeyPair);
         BlockChainNFT entity = new BlockChainNFT();
         try {
             BigInteger tokenId = bcosNFT.getTokenIdByTokenURI(issuedCollectionId);
@@ -456,8 +463,8 @@ public class ChainService {
      * @return string            区块链交易Hash
      */
     public String transaction(String fromAddress, String toAddress, String issuedCollectionId) {
-        BcosUser bcosUser = BcosUser.load(ContractAddressContext.getBcosUserAddress(), client, deployCryptoKeyPair);
-        BcosNFT bcosNFT = BcosNFT.load(ContractAddressContext.getBcosNFTAddress(), client, deployCryptoKeyPair);
+        BcosUser bcosUser = BcosUser.load(bcosProperties.getBcosUserContractAddress(), client, deployCryptoKeyPair);
+        BcosNFT bcosNFT = BcosNFT.load(bcosProperties.getBcosNFTContractAddress(), client, deployCryptoKeyPair);
         try {
             BigInteger tokenId = bcosNFT.getTokenIdByTokenURI(issuedCollectionId);
             TransactionReceipt receipt = bcosUser.transferToken(fromAddress, toAddress, tokenId);
@@ -482,4 +489,53 @@ public class ChainService {
         return keyPair.getHexPrivateKey() + "|||" + keyPair.getAddress();
     }
 
+    public void testNFTTransaction(String address) throws ContractException {
+//"0xb8ca726a438d3d4703a1c7735ddef8afaea9880e"
+        BcosNFT bcosNFT = BcosNFT.load(address, client, deployCryptoKeyPair);
+//        BcosNFT bcosNFT = BcosNFT.deploy(client, deployCryptoKeyPair);
+        System.err.println("contract: " + bcosNFT.getContractAddress());
+        System.err.println("owner: " + bcosNFT._contractOwner());
+        String uuid = IdUtils.uuid();
+        System.err.println(uuid);
+        TransactionReceipt receipt = bcosNFT.createNFT(SolidityAddressGenerator.generateAddress("test"), uuid, uuid, BigInteger.valueOf(1), BigInteger.valueOf(1));
+        System.err.println(CharSequenceUtil.format("transactionHash:{}", receipt.getTransactionHash()));
+        System.err.println("isOK:" + receipt.isStatusOK());
+        System.err.println("getStatusMsg" + receipt.getStatusMsg());
+        System.err.println("Status:" + receipt.getStatus());
+        System.err.println("Message:" + receipt.getMessage());
+        System.err.println("Output:" + receipt.getOutput());
+        System.err.println("from:" + receipt.getFrom());
+        System.err.println("to" + receipt.getTo());
+        System.err.println("input:" + receipt.getInput());
+        System.err.println(receipt.toString());
+    }
+
+    public void testUserTransaction(String address) throws ContractException {
+//"0xa56cba84f9fa3a2ce524dceeee5bb46eaa9094c6"
+        BcosUser bcosNFT = BcosUser.load(address, client, deployCryptoKeyPair);
+//        BcosUser bcosNFT = BcosUser.deploy(client, deployCryptoKeyPair);
+        System.err.println("contract: " + bcosNFT.getContractAddress());
+        System.err.println("owner: " + bcosNFT._contractOwner());
+        String uuid = IdUtils.uuid();
+        System.err.println(uuid);
+        TransactionReceipt receipt = bcosNFT.createUser(SolidityAddressGenerator.generateAddress(uuid));
+        System.err.println(CharSequenceUtil.format("transactionHash:{}", receipt.getTransactionHash()));
+        System.err.println("isOK:" + receipt.isStatusOK());
+        System.err.println("getStatusMsg" + receipt.getStatusMsg());
+        System.err.println("Status:" + receipt.getStatus());
+        System.err.println("Message:" + receipt.getMessage());
+        System.err.println("Output:" + receipt.getOutput());
+        System.err.println("from:" + receipt.getFrom());
+        System.err.println("to" + receipt.getTo());
+        System.err.println("input:" + receipt.getInput());
+        System.err.println(receipt.toString());
+    }
+
+
+    public void quickTest() throws ContractException {
+        System.err.println(bcosProperties.getBcosNFTContractAddress());
+        testNFTTransaction(bcosProperties.getBcosNFTContractAddress());
+        System.err.println(bcosProperties.getBcosUserContractAddress());
+        testNFTTransaction(bcosProperties.getBcosUserContractAddress());
+    }
 }

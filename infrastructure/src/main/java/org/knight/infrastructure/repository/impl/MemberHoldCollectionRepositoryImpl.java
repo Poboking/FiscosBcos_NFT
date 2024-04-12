@@ -314,7 +314,7 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
     public PageInfo<MemberHoldCollectionEntity> getPageListByParam(Long current, Long pageSize, String memberId, String collectionId, String state, String gainWay) {
         PageInfo pageInfo = null;
         try {
-            PageHelper.startPage( current.intValue(), pageSize.intValue());
+            PageHelper.startPage(current.intValue(), pageSize.intValue());
             List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(new QueryWrapper<MemberHoldCollectionEntity>()
                     .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
                     .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
@@ -326,6 +326,33 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
         }
         return pageInfo;
     }
+
+    /**
+     * 获取分页列表 - 根据参数体查询
+     *
+     * @param current       当前页
+     * @param pageSize      每页大小
+     * @param collectionIds 藏品ID
+     * @param memberId      用户ID
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
+     */
+    @Override
+    public PageInfo<MemberHoldCollectionEntity> getHoldPageListByIdsAndMemberId(long current, long pageSize, List<String> collectionIds, String memberId) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(new QueryWrapper<MemberHoldCollectionEntity>()
+                    .eq("member_id", memberId)
+                    .in("collection_id", collectionIds)
+                    .eq("state", NftConstants.持有藏品状态_持有中)
+                    .orderByDesc("hold_time"));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
+    }
+
 }
 
 

@@ -12,4 +12,8 @@ public class QuickTest {
     void quickTest() {
         System.out.println("Hello, world!");
     }
+
+    @Test
+    void quickTest2() {
+    }
 }

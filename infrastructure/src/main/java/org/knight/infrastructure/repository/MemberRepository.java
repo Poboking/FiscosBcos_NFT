@@ -112,4 +112,12 @@ public interface MemberRepository extends IService<MemberEntity> {
      * @return string address
      */
     String getAddressById(String memberId);
+
+    /**
+     * 获取用户手机号
+     *
+     * @param memberId
+     * @return string mobile
+     */
+    String getMobileById(String memberId);
 }

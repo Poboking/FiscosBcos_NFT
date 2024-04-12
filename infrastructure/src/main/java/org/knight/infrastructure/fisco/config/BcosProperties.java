@@ -1,5 +1,6 @@
 package org.knight.infrastructure.fisco.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -8,14 +9,17 @@ import org.springframework.stereotype.Component;
  * @author: poboking
  * @date: 2024/3/29 11:33
  */
-@Component
+@Component("bcosProperties")
 @ConfigurationProperties(prefix = "fisco")
 public class BcosProperties {
-    private String certPath;
-    private String deployPublicKey;
-    private String deployPrivateKey;
-    private String bcosUserContractAddress;
 
+    @Value("${fisco.cert-path}")
+    private String certPath;
+    @Value("${fisco.deploy-private-key}")
+    private String deployPrivateKey;
+    @Value("${fisco.bcos-user-contract-address}")
+    private String bcosUserContractAddress;
+    @Value("${fisco.bcos-nft-contract-address}")
     private String bcosNFTContractAddress;
 
     /**
@@ -34,24 +38,6 @@ public class BcosProperties {
      */
     public void setCertPath(String certPath) {
         this.certPath = certPath;
-    }
-
-    /**
-     * get field
-     *
-     * @return deployPublicKey
-     */
-    public String getDeployPublicKey() {
-        return this.deployPublicKey;
-    }
-
-    /**
-     * set field
-     *
-     * @param deployPublicKey
-     */
-    public void setDeployPublicKey(String deployPublicKey) {
-        this.deployPublicKey = deployPublicKey;
     }
 
     /**

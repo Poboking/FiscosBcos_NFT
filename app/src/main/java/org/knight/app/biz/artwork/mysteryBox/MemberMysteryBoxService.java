@@ -38,7 +38,7 @@ public class MemberMysteryBoxService {
         PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_盲盒);
         List<String> collectionIds = new ArrayList<>();
         pageEntity.getList().forEach(c -> collectionIds.add(c.getId()));
-        PageInfo<MemberHoldCollectionEntity> pageHoldEntity = memberHoldCollectionRepository.getPageListByIdsAndMemberId(current, pageSize, collectionIds, memberId);
+        PageInfo<MemberHoldCollectionEntity> pageHoldEntity = memberHoldCollectionRepository.getHoldPageListByIdsAndMemberId(current, pageSize, collectionIds, memberId);
         List<MyHoldCollectionRespDTO> respDTOs = new ArrayList<>();
         pageHoldEntity.getList().forEach(e -> {
             pageEntity.getList().forEach(c -> {

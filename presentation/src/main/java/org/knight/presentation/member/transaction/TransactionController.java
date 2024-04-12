@@ -4,7 +4,6 @@ import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
-import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.transaction.PreSaleTaskService;
 import org.knight.app.biz.transaction.TransactionService;

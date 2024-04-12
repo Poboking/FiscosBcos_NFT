@@ -3,7 +3,7 @@ package org.knight.app.biz.artwork.dto.collection;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
-import java.util.Map;
+import java.util.List;
 
 /**
  * @project: a20-nft-3_7
@@ -21,5 +21,5 @@ public class CollectionUpdateStoryReqDTO extends CollectionBaseDTO{
     private String collectionId;
 
     @NotNull
-    private Map<Double, String> picLinks;
+    private List<PicRespDTO> picLinks;
 }

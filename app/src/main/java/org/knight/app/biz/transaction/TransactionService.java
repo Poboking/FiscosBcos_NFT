@@ -146,6 +146,7 @@ public class TransactionService {
         memberHoldCollectionEntity.setName(collectionEntity.getName());
         memberHoldCollectionEntity.setCover(collectionEntity.getCover());
         memberHoldCollectionEntity.setCollectionId(collectionId);
+        memberHoldCollectionEntity.setPrice(0.0);
         memberHoldCollectionEntity.setGainWay(NftConstants.藏品获取方式_赠送);
         memberHoldCollectionEntity.setHoldTime(now);
         memberHoldCollectionEntity.setIssuedCollectionId(issuedCollectionId);
@@ -190,6 +191,7 @@ public class TransactionService {
         return PageResult.convertFor(pageList, pageSize, recordList);
     }
 
+
     public PageResult<CollectionGiveRecordRespDTO> getMyGiveRecord(long current, long pageSize, String memberId, String giveDirection) {
         PageInfo<CollectionGiveRecordEntity> pageList = null;
         if (giveDirection != null && NftConstants.DIRECTION_FROM.equals(giveDirection)) {
@@ -201,7 +203,17 @@ public class TransactionService {
         }
         List<CollectionGiveRecordRespDTO> recordList = new ArrayList<>();
         pageList.getList().forEach(collectionGiveRecordEntity -> {
-            recordList.add(CollectionGiveRecordConvert.INSTANCE.convertToDTO(collectionGiveRecordEntity));
+            CollectionGiveRecordRespDTO respDTO = CollectionGiveRecordConvert.INSTANCE.convertToDTO(collectionGiveRecordEntity);
+            // TODO: 2024/4/12 这里暂且用转赠记录iD作为 orderId
+            respDTO.setOrderNo(collectionGiveRecordEntity.getId());
+            respDTO.setGiveToMobile(memberRepository.getMobileById(collectionGiveRecordEntity.getGiveToId()));
+            respDTO.setGiveFromMobile(memberRepository.getMobileById(collectionGiveRecordEntity.getGiveFromId()));
+            MemberHoldCollectionEntity holdCollection = holdCollectionRepository.getById(collectionGiveRecordEntity.getHoldCollectionId());
+            if (Objects.isNull(holdCollection)) {
+                respDTO.setCollectionName("DataError: No Found Collection Name");
+            }
+            respDTO.setCollectionName(holdCollection.getName());
+            recordList.add(respDTO);
         });
 
         return PageResult.convertFor(pageList, pageSize, recordList);
@@ -347,7 +359,7 @@ public class TransactionService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public Boolean collectionResale(String memberId, String holdCollectionId, double resalePrice) throws Exception{
+    public Boolean collectionResale(String memberId, String holdCollectionId, double resalePrice) throws Exception {
         if (CharSequenceUtil.isBlank(memberId) || CharSequenceUtil.isBlank(holdCollectionId)) {
             return false;
         }
@@ -358,7 +370,7 @@ public class TransactionService {
         if (Objects.isNull(holdCollection)) {
             throw new CollectionNotFoundException("藏品不存在");
         }
-        try{
+        try {
             MemberResaleCollectionEntity resaleCollection = new MemberResaleCollectionEntity();
             resaleCollection.setId(IdUtils.snowFlakeId());
             resaleCollection.setMemberHoldCollectionId(holdCollectionId);
@@ -374,7 +386,7 @@ public class TransactionService {
                     .eq("member_id", memberId)
                     .eq("collection_id", holdCollectionId)
                     .set("state", NftConstants.持有藏品状态_转售中));
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new CollectionResaleException("藏品转售失败");
         }
 
@@ -499,26 +511,28 @@ public class TransactionService {
         } catch (Exception e) {
             throw new ChainTransactionFailedException("链上交易失败");
         }
+        //修改持有者藏品状态
         if (Boolean.FALSE.equals(holdCollectionRepository.update(new UpdateWrapper<MemberHoldCollectionEntity>()
                 .eq("member_id", memberId)
                 .eq("collection_id", holdCollection.getCollectionId())
                 .eq("issued_collection_id", issuedCollectionId)
                 .set("state", NftConstants.持有藏品状态_已转赠)
                 .set("lose_time", now)))) {
-            throw new HoldCollectionUpdateFailedException("藏品转赠失败");
+            throw new HoldCollectionUpdateFailedException("藏品转赠失败 - 更新持有者藏品状态失败");
         }
+        //修改被转赠者藏品状态
         if (Boolean.FALSE.equals(holdCollectionRepository.save(quickBuildHoldCollectionByGive(
                 receiver.getId(),
                 holdCollection.getCollectionId(),
                 holdCollection.getIssuedCollectionId(),
                 transaction
         )))) {
-            throw new HoldCollectionSaveFailedException("藏品转赠失败");
+            throw new HoldCollectionSaveFailedException("藏品转赠失败 - 更新被转赠者藏品状态失败");
         }
         try {
-            issuedCollectionActLogRepo.lockCollection(NftConstants.发行藏品流转类型_二级市场_锁定藏品, issuedCollectionId, receiver.getId());
+            issuedCollectionActLogRepo.lockCollection(NftConstants.发行藏品流转类型_转赠, issuedCollectionId, receiver.getId());
         } catch (Exception e) {
-            throw new IssuedCollectionActLogUpdateOrAddException("藏品转赠失败");
+            throw new IssuedCollectionActLogUpdateOrAddException("发行藏品记录添加或更新失败");
         }
         try {
             CollectionGiveRecordEntity entity = new CollectionGiveRecordEntity();

@@ -101,7 +101,7 @@ contract BcosNFT {
     }
 
 // 发行指定数量新的 NFT
-    function createNFT(address creatorAddress, string _name, string baseURI, uint256 quantity) public onlyOwner {
+    function createNFT(address creatorAddress, string _name, string baseURI, uint256 quantity) public  {
         string memory baseKey = _name;
         for (uint256 i = 0; i < quantity; i++) {
             uint256 tokenId = generateID();
@@ -115,7 +115,7 @@ contract BcosNFT {
     }
 
 //发行指定序列号的NFT
-    function createNFT(address creatorAddress, string _name, string baseURI, uint256 serialNumber, uint256 quantity) public onlyOwner returns (uint256){
+    function createNFT(address creatorAddress, string _name, string baseURI, uint256 serialNumber, uint256 quantity) public returns (uint256){
         require(serialNumber > 0 && serialNumber <= quantity, "Invalid serial number");
         require(keyToId[generateKey(_name, serialNumber)] == 0, "Token already exists");
         uint256 tokenId = generateID();

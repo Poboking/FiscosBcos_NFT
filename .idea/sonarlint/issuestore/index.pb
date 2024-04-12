@@ -265,8 +265,6 @@ C
 Qinfrastructure/src/main/java/org/knight/infrastructure/fisco/service/Ownable.java,9\2\927c4817161e48258509a9589202ddab2e19c532
 Ç
 Rinfrastructure/src/main/java/org/knight/infrastructure/fisco/service/BcosUser.java,d\9\d9ef02e7a8de4a1d4d9773e3da5206efc2ba8257
-è
-_infrastructure/src/main/java/org/knight/infrastructure/fisco/config/ContractAddressContext.java,0\c\0c2808859fd9f37909d69b48de4bd4e7bae355fd
 
 Opresentation/src/main/java/org/knight/presentation/config/SaTokenConfigure.java,a\4\a4233bbeac0ac861fdbca7bd00579a3e3f94827f
 
@@ -491,3 +489,11 @@ Rapp/src/main/java/org/knight/app/biz/artwork/dto/collection/CollectionRespDTO.j
 Yapp/src/main/java/org/knight/app/biz/exception/transaction/CollectionResaleException.java,e\3\e35ae2e24cf2c3c84dafe9fbef875d7b833f7d3b
 å
 \app/src/main/java/org/knight/app/biz/artwork/dto/collection/CollectionUpdateStoryReqDTO.java,3\8\3856c91ea70005ed1f2d8b5e770e98ce1741f09d
+}
+Mpresentation/src/main/java/org/knight/presentation/member/TestController.java,b\d\bde974c88e2b08a9afaffb6cf9b294e68cf912e3
+{
+Kapp/src/main/java/org/knight/app/biz/artwork/dto/collection/PicRespDTO.java,9\2\924171ac35db7803c736afff82d399b929a032ff
+ë
+ainfrastructure/src/main/java/org/knight/infrastructure/dao/domain/CollectionGiveRecordEntity.java,4\9\4996510e271a7193072427e881dc51a5b38baa4e
+ê
+`app/src/main/java/org/knight/app/biz/exception/transaction/GiveOrderCreationFailedException.java,9\4\94073739c871fb3ec083373bef4ad4905be5bcd4

@@ -1,9 +1,7 @@
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.fisco.bcos.sdk.crypto.keypair.CryptoKeyPair;
 import org.fisco.bcos.sdk.transaction.model.exception.ContractException;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.fisco.service.biz.BcosTestService;
 import org.knight.infrastructure.fisco.service.biz.ChainService;
 import org.knight.infrastructure.fisco.service.biz.DeployService;
@@ -26,6 +24,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = PresentationApplication.class)
 class BcosTest {
 
+    private String userAddress;
+
+    private String nftAddress;
+
     private final BcosTestService bcosTestService;
 
     private final InitDataService initDataService;
@@ -42,6 +44,8 @@ class BcosTest {
 
     private final MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository;
 
+
+
     @Autowired
     BcosTest(BcosTestService bcosTestService, InitDataService initDataService, DeployService deployService, ChainService chainService, MemberRepositoryImpl memberRepositoryImpl, CollectionRepositoryImpl collectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository, MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository) {
         this.bcosTestService = bcosTestService;
@@ -53,6 +57,7 @@ class BcosTest {
         this.issuedCollectionRepository = issuedCollectionRepository;
         this.memberHoldCollectionRepository = memberHoldCollectionRepository;
     }
+
 
     @Test
     void helloWorld() throws ContractException {
@@ -90,17 +95,20 @@ class BcosTest {
 
     @Test
     void testDeploy() throws ContractException {
+        System.err.println("BCOSUSER");
         System.err.println(deployService.deployBcosUserContract());
+        System.err.println("BCOSNFT");
         System.err.println(deployService.deployBcosNFTContract());
     }
 
     @Test
     void testInit() throws ContractException {
-        // TODO: 2024/4/8 待测试 ChainService
+        initDataService.initCollectionCover();
+//        initDataService.initCreator();
 //        chainService.initCollectionData(collectionRepository,issuedCollectionRepository);
 //        chainService.issuedCollection("test","test","test", 1);
 //        chainService.issuedCollection("test","test","test", 2, 2);
-        chainService.initIssuedCollectionData(issuedCollectionRepository, collectionRepository);
+//        chainService.initIssuedCollectionData(issuedCollectionRepository, collectionRepository);
 //        chainService.initUserData(memberRepositoryImpl, memberHoldCollectionRepository, issuedCollectionRepository, collectionRepository);
 //        chainService.initChain(memberHoldCollectionRepository,memberRepositoryImpl,collectionRepository);
     }
@@ -116,4 +124,17 @@ class BcosTest {
     }
 
 
+    @Test
+    void testTransaction() throws ContractException {
+        userAddress = "0xa56cba84f9fa3a2ce524dceeee5bb46eaa9094c6";
+        nftAddress = "0xb8ca726a438d3d4703a1c7735ddef8afaea9880e";
+        chainService.testNFTTransaction(nftAddress);
+        chainService.testUserTransaction(userAddress);
+    }
+
+
+    @Test
+    void quickTest() throws ContractException {
+        chainService.quickTest();
+    }
 }

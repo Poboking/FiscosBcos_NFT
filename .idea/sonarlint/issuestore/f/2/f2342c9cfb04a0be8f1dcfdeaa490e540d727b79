@@ -1,16 +1,15 @@
 
+‰	java:S112ê"FDefine and throw a dedicated exception instead of using a generic one.(é¡Ğş8 İÍ‡í1J$7c0670d7-9bfe-4aae-9dca-ebec3cde9ba7
 
-java:S2259õ"GA "NullPointerException" could be thrown; "nftEntity" is nullable here.(‰±×›ıÿÿÿÿ8ÔŠ°ëì1J$6c0becc8-2025-4eca-9657-32fbb91d1006
-	java:S125¹"<This block of commented-out lines of code should be removed.(ôÅ°©8ãŠ°ëì1J$12eaa8ca-ca7d-4e32-8764-bd2351fe0a49
-u
-java:S1602Ë",Remove useless curly braces around statement(şô—Şùÿÿÿÿ8åŠ°ëì1J$3f0be648-b3ca-43ac-988f-40ad446a406d
-„	java:S125‰"<This block of commented-out lines of code should be removed.(ÔÁ€€úÿÿÿÿ8êŠ°ëì1J$8969b86f-4357-452e-952a-a4e837981bbd
-	java:S125ª"<This block of commented-out lines of code should be removed.(·äö¾8îŠ°ëì1J$624442cd-2559-47a3-b03e-471dda381922
+java:S2259ƒ"GA "NullPointerException" could be thrown; "nftEntity" is nullable here.(‰±×›ıÿÿÿÿ8ˆŞÍ‡í1J$b96c81e8-fafb-460c-bd8c-4f41a1b970a3
+	java:S125º"<This block of commented-out lines of code should be removed.(ôÅ°©8ŸŞÍ‡í1J$f14d5fa2-1bfe-4583-9476-f9014d0e073a
+„	java:S125•"<This block of commented-out lines of code should be removed.(ÔÁ€€úÿÿÿÿ8«ŞÍ‡í1J$b0f518d6-6d33-44b8-b71d-0c31a7d5e384
+	java:S125¶"<This block of commented-out lines of code should be removed.(·äö¾8°ŞÍ‡í1J$ffc930bb-a28b-4a41-921b-3224117b397e
 p
-java:S1602†",Remove useless curly braces around statement(À¨Ù¨8ôŠ°ëì1J$10969e08-353e-4aa2-a3db-8a147ef32a24
+java:S1602’",Remove useless curly braces around statement(À¨Ù¨8¼ŞÍ‡í1J$ea4a426d-e936-4fe6-9df7-e3068313ed1d
 p
-java:S1602",Remove useless curly braces around statement(Ä±Ú€8€‹°ëì1J$7b5c5a95-b224-4f16-8d3e-ffe79323fae3
+java:S1602«",Remove useless curly braces around statement(Ä±Ú€8ĞŞÍ‡í1J$cb655d4f-a0ba-4d95-ad96-d25003b0742f
 z
-java:S6810é"6Async methods should return 'void' or a 'Future' type.(ñâÅ—8†‹°ëì1J$a3119ad9-5803-4341-8def-b4a1db37ce3f
+java:S6810÷"6Async methods should return 'void' or a 'Future' type.(ñâÅ—8ÚŞÍ‡í1J$3a5dfbb4-36a0-45b7-bc79-7657c1ab3e4d
 |
-java:S10689"9Remove this unused "memberBCLogRepository" private field.(­İÅ8Š‹°ëì1J$c655aa6e-ffcf-4a8f-b845-69bb48ba2798
+java:S10689"9Remove this unused "memberBCLogRepository" private field.(­İÅ8ßŞÍ‡í1J$f642d5f5-20b3-438c-934a-2a576c622f98

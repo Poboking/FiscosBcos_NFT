@@ -174,4 +174,14 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
      */
     PageInfo<MemberHoldCollectionEntity> getPageListByParam(Long current, Long pageSize, String memberId, String collectionId, String state, String gainWay);
 
+    /**
+     * 获取分页列表 - 根据参数体查询
+     *
+     * @param current      当前页
+     * @param pageSize     每页大小
+     * @param memberId     用户ID
+     * @param collectionIds 藏品ID
+     * @return PageInfo<MemberHoldCollectionEntity> 分页结果
+     */
+    PageInfo<MemberHoldCollectionEntity> getHoldPageListByIdsAndMemberId(long current, long pageSize, List<String> collectionIds, String memberId);
 }

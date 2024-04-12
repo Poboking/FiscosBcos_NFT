@@ -12,7 +12,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +70,7 @@ public class BcosConfig {
 
     @Bean(name = "deployCryptoKeyPair")
     public CryptoKeyPair cryptoKeyPair(Client client) {
-        String defaultPrivateKey = "1ffd8dd75f2278dfd9171ac5194720ec9a1a1f76b661d5e37ce5bcabfdf26975";
+        String defaultPrivateKey = bcosProperties.getDeployPrivateKey();
         if (!bcosProperties.getDeployPrivateKey().isEmpty() && bcosProperties.getDeployPrivateKey()!=null){
             //配置部署账号
             return client.getCryptoSuite().getKeyPairFactory().createKeyPair(bcosProperties.getDeployPrivateKey());
@@ -81,10 +80,14 @@ public class BcosConfig {
         }
     }
 
-    @PostConstruct
-    public void contractAddressMap() {
-        // 部署合约地址 - 初始化
-        ContractAddressContext.setBcosUserAddress(bcosProperties.getBcosUserContractAddress());
-        ContractAddressContext.setBcosNFTAddress(bcosProperties.getBcosNFTContractAddress());
-    }
+    /**
+     * 傻逼玩意儿, 傻逼代码
+     */
+//    @PostConstruct
+//    public void contractAddressMap() {
+//        // 部署合约地址 - 初始化
+//        ContractAddressContext.setBcosUserAddress(bcosProperties.getBcosUserContractAddress());
+//        ContractAddressContext.setBcosNFTAddress(bcosProperties.getBcosNFTContractAddress());
+//    }
+
 }

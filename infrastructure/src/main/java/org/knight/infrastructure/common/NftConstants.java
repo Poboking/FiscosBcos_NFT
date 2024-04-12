@@ -112,6 +112,8 @@ public class NftConstants {
     public static final String DIRECTION_FROM = "from";
     public static final String DIRECTION_TO = "to";
     public static final double 单笔销售最大价格 = 1000000;
+    public static final String 默认创作者头像 = "https://avatars.githubusercontent.com/u/114393782?v=4";
+    public static final String 默认藏品封面 = "https://www.aijrj.com/upload/202205/19/202205190849271205.png";
     // TODO: 2024/4/11 这里需要注意, 如果可以的话, 应该改成配置文件注入
 
     @Value("${fisco.deployAddress}")

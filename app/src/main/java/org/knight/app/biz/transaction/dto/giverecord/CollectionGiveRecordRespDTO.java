@@ -17,9 +17,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class CollectionGiveRecordRespDTO extends TransactionBaseDTO {
 
+    /**
+     * 这里用 GiveRecordId 作为替代
+     */
+    private String orderNo;
+
     private String giveFromId;
 
+    private String giveFromMobile;
+
     private String giveToId;
+
+    private String giveToMobile;
+
+    private String collectionName;
 
     private LocalDateTime giveTime;
 

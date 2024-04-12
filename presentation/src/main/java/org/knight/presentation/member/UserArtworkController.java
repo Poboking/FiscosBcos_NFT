@@ -7,8 +7,6 @@ import org.knight.app.biz.artwork.collection.MemberCollectionService;
 import org.knight.app.biz.artwork.collection.MemberResaleCollectionService;
 import org.knight.app.biz.artwork.dto.holdcollection.*;
 import org.knight.app.biz.artwork.mysteryBox.MemberMysteryBoxService;
-import org.knight.app.biz.convert.artwork.MyHoldCollectionDetailConvert;
-import org.knight.app.biz.convert.artwork.MyResaleCollectionDetailConvert;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.presentation.utils.StpUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
