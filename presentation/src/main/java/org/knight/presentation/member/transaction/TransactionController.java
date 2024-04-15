@@ -9,7 +9,7 @@ import org.knight.app.biz.transaction.PreSaleTaskService;
 import org.knight.app.biz.transaction.TransactionService;
 import org.knight.app.biz.transaction.dto.giverecord.CollectionGiveRecordRespDTO;
 import org.knight.app.biz.transaction.dto.member.ReceiverInfoRespDTO;
-import org.knight.app.biz.transaction.dto.order.PayOrderRespDTO;
+import org.knight.app.biz.transaction.dto.order.MyPayOrderRespDTO;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.presentation.utils.StpUserUtil;
@@ -62,12 +62,12 @@ public class TransactionController {
 
     @PostMapping("resaleCollectionCreateOrder")
     @ValidationStatusCode(code = "400")
-    public Map<String, String> resaleCollectionCreateOrder(@RequestParam(name = "resaleCollectionId") @NotNull String resaleCollectionId,
-                                                           @RequestParam(name = "collectionSerialNumber") @NotNull int collectionSerialNumber) {
+    public Map<String, String> resaleCollectionCreateOrder(
+            @RequestParam(name = "resaleCollectionId") @NotNull String resaleCollectionId) {
         String memberId = StpUserUtil.getLoginIdAsString();
-        log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder {}", memberId, collectionSerialNumber));
+        log.info(CharSequenceUtil.format("User({}): resaleCollectionCreateOrder", memberId));
         Timestamp now = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
-        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, collectionSerialNumber, memberId, now);
+        return transactionService.resaleCollectionCreateOrder(resaleCollectionId, memberId, now);
     }
 
     @PostMapping("confirmPay")
@@ -117,7 +117,7 @@ public class TransactionController {
 
     @GetMapping("findMyPayOrderByPage")
     @ValidationStatusCode(code = "400")
-    public PageResult<PayOrderRespDTO> findMyPayOrderByPage(
+    public PageResult<MyPayOrderRespDTO> findMyPayOrderByPage(
             @RequestParam(name = "current", defaultValue = "1") long current,
             @RequestParam(name = "pageSize", defaultValue = "10") long pageSize,
             @RequestParam(name = "status", required = false) String status) {
@@ -128,7 +128,7 @@ public class TransactionController {
 
     @GetMapping("findMyPayOrderDetail")
     @ValidationStatusCode(code = "500")
-    public PayOrderRespDTO findMyPayOrderDetail(@RequestParam(name = "orderId") @NotNull String orderId) {
+    public MyPayOrderRespDTO findMyPayOrderDetail(@RequestParam(name = "orderId") @NotNull String orderId) {
         String memberId = StpUserUtil.getLoginIdAsString();
         log.info(CharSequenceUtil.format("User({}): findMyPayOrderDetail", memberId));
         return transactionService.getMyPayOrderDetail(orderId, memberId);

@@ -30,6 +30,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -144,9 +145,15 @@ public class MemberService {
     }
 
     public String getIdByMobile(String mobile) {
-        return memberRepository.getOneOpt(new UpdateWrapper<MemberEntity>()
-                        .eq(Optional.ofNullable(mobile).isPresent(), "mobile", mobile))
-                .map(MemberEntity::getId).orElse("-1");
+        if (CharSequenceUtil.isBlank(mobile)) {
+            return "-1";
+        }
+        MemberEntity member = memberRepository.getOne(new UpdateWrapper<MemberEntity>()
+                .eq("mobile", mobile));
+        if (Objects.isNull(member)) {
+            return "-1";
+        }
+        return member.getId();
     }
 
     public MemberStatisticDataRespDTO getMemberStatisticData() {
@@ -158,7 +165,7 @@ public class MemberService {
                         .or(wrapper -> wrapper.eq("deleted_flag", false))))
                 .realNameCount(memberRepository.count(new QueryWrapper<MemberEntity>()
                         .and(wrapper -> wrapper.isNull("deleted_flag").or().eq("deleted_flag", false))
-                        .and(wrapper ->wrapper.isNotNull("real_name")).or().ne("real_name","")))
+                        .and(wrapper -> wrapper.isNotNull("real_name")).or().ne("real_name", "")))
                 .todayRegisterCount(memberRepository.count(new QueryWrapper<MemberEntity>()
                         .and(wrapper -> wrapper.isNull("deleted_flag").or().eq("deleted_flag", false))
                         .ge("registered_time", nowTime)
@@ -180,5 +187,36 @@ public class MemberService {
                 .set("balance", NftConstants.初始余额))) {
             throw new BizException(mobile + ": initBalance fail as a result of db update fail");
         }
+    }
+
+    public Boolean updateLoginPwd(String oldPwd, String newPwd, String loginId) {
+        if (CharSequenceUtil.isBlank(newPwd)) {
+            return false;
+        }
+        if (CharSequenceUtil.isBlank(oldPwd) && !checkPwdExist(loginId)) {
+            return memberRepository.update(new UpdateWrapper<MemberEntity>()
+                    .eq(Optional.ofNullable(loginId).isPresent(), "id", loginId)
+                    .set("login_pwd", CipherTextUtil.sha256(newPwd)));
+        } else if (CharSequenceUtil.isBlank(oldPwd)) {
+            return false;
+        }
+        return memberRepository.update(new UpdateWrapper<MemberEntity>()
+                .eq(Optional.ofNullable(loginId).isPresent(), "id", loginId)
+                .eq("login_pwd", CipherTextUtil.sha256(oldPwd))
+                .set("login_pwd", CipherTextUtil.sha256(newPwd)));
+    }
+
+    /**
+     * 如果密码存在, 则返回True
+     *
+     * @param memberId 会员ID
+     * @return boolean
+     */
+    private boolean checkPwdExist(String memberId) {
+
+        return memberRepository.getOneOpt(new UpdateWrapper<MemberEntity>()
+                        .eq(Optional.ofNullable(memberId).isPresent(), "id", memberId)
+                        .and(e -> e.isNotNull("login_pwd")).or().ne("login_pwd", ""))
+                .isPresent();
     }
 }

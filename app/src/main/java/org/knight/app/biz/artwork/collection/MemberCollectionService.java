@@ -170,7 +170,63 @@ public class MemberCollectionService {
             }
         }
         PageInfo<MemberHoldCollectionEntity> pageEntity = memberHoldCollectionRepository.getPageListByParam(current, pageSize, memberId, collectionId, state, gainWay);
-        return PageResult.convertFor(pageEntity, pageSize, MemberHoldCollectionConvert.INSTANCE.convertToRespDTO(pageEntity.getList()));
+        List<MemberHoldCollectionRespDTO> respDTOS = new ArrayList<>();
+        pageEntity.getList().forEach(e -> {
+            MemberEntity member = memberRepository.getById(e.getMemberId());
+            CollectionEntity collection = collectionRepository.getById(e.getCollectionId());
+            IssuedCollectionEntity issuedCollection = issuedCollectionRepository.getById(e.getIssuedCollectionId());
+            MemberHoldCollectionRespDTO respDTO = MemberHoldCollectionConvert.INSTANCE.convertToRespDTO(e);
+            if (!Objects.isNull(e.getHoldTime())){
+                respDTO.setHoldTime(e.getHoldTime().toLocalDateTime().format(NftConstants.DATE_FORMAT));
+            }
+            if (!Objects.isNull(e.getLoseTime())){
+                respDTO.setLoseTime(e.getLoseTime().toLocalDateTime().format(NftConstants.DATE_FORMAT));
+            }
+            if (!Objects.isNull(e.getPrice())){
+                respDTO.setPrice(e.getPrice());
+            }
+            if (Objects.isNull(member)) {
+                respDTO.setMemberBlockChainAddr("DataError: Unknown Member BlockChain Addr");
+                respDTO.setMemberMobile("DataError: Unknown Member Mobile");
+            } else {
+                respDTO.setMemberBlockChainAddr(member.getBlockChainAddr());
+                respDTO.setMemberMobile(member.getMobile());
+            }
+            if (Objects.isNull(collection)) {
+                respDTO.setCollectionName("DataError: Unknown Collection Name");
+                respDTO.setCollectionCover("DataError: Unknown Collection Cover");
+                respDTO.setQuantity(0L);
+            } else {
+                respDTO.setCollectionName(collection.getName());
+                respDTO.setCollectionCover(collection.getCover());
+                respDTO.setQuantity(Long.valueOf(collection.getQuantity()));
+            }
+            if (Objects.isNull(issuedCollection)) {
+                respDTO.setCollectionSerialNumber(null);
+                respDTO.setUniqueId("DataError: Unknown UniqueId");
+            } else {
+                respDTO.setCollectionSerialNumber(Long.valueOf(issuedCollection.getCollectionSerialNumber()));
+                respDTO.setUniqueId(issuedCollection.getUniqueId());
+            }
+
+            if (NftConstants.持有藏品状态_持有中.equals(e.getState())) {
+                respDTO.setStateName("持有中");
+            } else if (NftConstants.持有藏品状态_已转赠.equals(e.getState())) {
+                respDTO.setStateName("已转赠");
+            } else if (NftConstants.持有藏品状态_转售中.equals(e.getState())) {
+                respDTO.setStateName("转售中");
+            } else if (NftConstants.持有藏品状态_已卖出.equals(e.getState())) {
+                respDTO.setStateName("已卖出");
+            } else if (NftConstants.持有藏品状态_合成销毁.equals(e.getState())) {
+                respDTO.setStateName("合成销毁");
+            } else if (NftConstants.持有藏品状态_开盲盒销毁.equals(e.getState())) {
+                respDTO.setStateName("开盲盒销毁");
+            } else {
+                respDTO.setStateName("未知状态");
+            }
+            respDTOS.add(respDTO);
+        });
+        return PageResult.convertFor(pageEntity, pageSize, respDTOS);
     }
 
 }

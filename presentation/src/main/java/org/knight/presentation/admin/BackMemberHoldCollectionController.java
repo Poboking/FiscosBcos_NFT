@@ -6,6 +6,7 @@ import org.knight.app.biz.artwork.collection.MemberCollectionService;
 import org.knight.app.biz.artwork.dto.holdcollection.MemberHoldCollectionRespDTO;
 import org.knight.app.biz.log.IssuedCollectionActLogService;
 import org.knight.app.biz.log.dto.collectionlog.IssuedCollectionActionLogRespDTO;
+import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,9 +44,8 @@ public class BackMemberHoldCollectionController {
             @RequestParam(name = "pageSize", defaultValue = "10") Long pageSize,
             @RequestParam(name = "memberMobile", required = false) String memberMobile,
             @RequestParam(name = "collectionName", required = false) String collectionName,
-            @RequestParam(name = "state", defaultValue = "1") String state,
-            @RequestParam(name = "gainWay", required = false) String gainWay
-    ) {
+            @RequestParam(name = "state", defaultValue = NftConstants.持有藏品状态_持有中) String state,
+            @RequestParam(name = "gainWay", required = false) String gainWay) {
         return memberCollectionService.findMemberHoldCollectionByPage(current, pageSize, memberMobile, collectionName, state, gainWay);
     }
 

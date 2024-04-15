@@ -7,7 +7,7 @@ import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
  * @author: poboking
  * @date: 2024/4/11 20:44
  */
-@ExceptionMapper(code = "400", msg = "BadQuest: Collection Already Given")
+@ExceptionMapper(code = "400", msg = "BadRequest: Collection Already Given")
 public class CollectionAlreadyGivenException extends RuntimeException{
     public CollectionAlreadyGivenException(String message) {
         super(message);

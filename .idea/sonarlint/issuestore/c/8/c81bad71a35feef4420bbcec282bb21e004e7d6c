@@ -1,37 +1,43 @@
 
-L
-java:S37400"/Provide the parametrized type for this generic.(©œâ×8ÀÎäì1
-L
-java:S37404"/Provide the parametrized type for this generic.(Ï‡êò8ÀÎäì1
-L
-java:S3740E"/Provide the parametrized type for this generic.(©œâ×8ÀÎäì1
-L
-java:S3740K"/Provide the parametrized type for this generic.(Ï‡êò8ÀÎäì1
-L
-java:S3740["/Provide the parametrized type for this generic.(©œâ×8ÀÎäì1
-L
-java:S3740a"/Provide the parametrized type for this generic.(Ï‡êò8ÀÎäì1
-L
-java:S3740r"/Provide the parametrized type for this generic.(©œâ×8ÀÎäì1
-L
-java:S3740y"/Provide the parametrized type for this generic.(Ï‡êò8ÀÎäì1
-l
-java:S32522"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ÆÀÎäì1
-q
-java:S32526"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8ÇÀÎäì1
-l
-java:S3252G"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ÈÀÎäì1
-q
-java:S3252M"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8ÉÀÎäì1
-l
-java:S3252]"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ÊÀÎäì1
-q
-java:S3252c"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8ÌÀÎäì1
-l
-java:S3252t"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ÎÀÎäì1
-q
-java:S3252{"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8ĞÀÎäì1
-u
-java:S3776Š"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(‡ÏÅùıÿÿÿÿ8ØÀÎäì1
-Y	java:S125È"<This block of commented-out lines of code should be removed.(ø–ùè8àÀÎäì1
-^	java:S125Ï"<This block of commented-out lines of code should be removed.(ˆÏÁùıÿÿÿÿ8ãÀÎäì1
+r
+java:S37402"/Provide the parametrized type for this generic.(©œâ×8îÔ£‡î1J$75534365-8cd3-4592-baf4-46160f79cffc
+r
+java:S37406"/Provide the parametrized type for this generic.(Ï‡êò8îÔ£‡î1J$34c66311-d3bf-4263-8e92-d05a64ce44f3
+r
+java:S3740G"/Provide the parametrized type for this generic.(©œâ×8îÔ£‡î1J$014df5e0-42c1-4e6c-a299-2dfb4fa9e74a
+r
+java:S3740M"/Provide the parametrized type for this generic.(Ï‡êò8îÔ£‡î1J$598017ce-1613-4479-bd7b-b3eb7eac5f54
+r
+java:S3740]"/Provide the parametrized type for this generic.(©œâ×8îÔ£‡î1J$4096e1f8-5ed6-4ff0-a10d-484978f04acd
+r
+java:S3740c"/Provide the parametrized type for this generic.(Ï‡êò8ğÔ£‡î1J$8683556a-a372-490d-855a-9b92d588357a
+r
+java:S3740t"/Provide the parametrized type for this generic.(©œâ×8ğÔ£‡î1J$c381e345-6b83-4c02-8087-9b5b10e1b7c6
+r
+java:S3740{"/Provide the parametrized type for this generic.(Ï‡êò8ğÔ£‡î1J$2bc9b76c-fff6-422a-8bf9-10b29c499901
+s
+java:S3740Œ"/Provide the parametrized type for this generic.(©œâ×8ğÔ£‡î1J$b426bc3f-47d0-41af-a973-17cb7eb6e159
+s
+java:S3740–"/Provide the parametrized type for this generic.(Ï‡êò8ğÔ£‡î1J$eff061fc-f51d-4b73-ab94-8abfd43e9a07
+’
+java:S32524"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8Õ£‡î1J$8e1499d5-966f-430c-9807-eadf6cb05013
+—
+java:S32528"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8‘Õ£‡î1J$d0613d79-473d-4169-b527-092897399594
+’
+java:S3252I"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8’Õ£‡î1J$9fd4a0f0-1fb7-4a49-bd72-54c0bc0d277c
+—
+java:S3252O"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8“Õ£‡î1J$487144d3-db4e-4b58-9ed3-6a24133b3bda
+’
+java:S3252_"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8“Õ£‡î1J$4c35036e-e537-47bd-ad06-2c9ecc1f8d57
+—
+java:S3252e"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8”Õ£‡î1J$90ed7358-fcbe-43f6-b056-7547edb9f6f7
+’
+java:S3252v"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8•Õ£‡î1J$8ab4d410-f23b-40eb-a841-b393eb3cdb3c
+—
+java:S3252}"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8•Õ£‡î1J$29dcd57e-6ad3-45d4-8c17-d3665364a1c8
+	java:S125Ê"<This block of commented-out lines of code should be removed.(ø–ùè8›Õ£‡î1J$486e91d6-6722-4f54-9a50-0fc68d001473
+„	java:S125Ñ"<This block of commented-out lines of code should be removed.(ˆÏÁùıÿÿÿÿ8œÕ£‡î1J$bfc990de-09b9-4897-871f-7df2981cac17
+“
+java:S3252"OUse static access with "com.github.pagehelper.page.PageMethod" for "startPage".(°ÔÏŠ8ŸÕ£‡î1J$d86f14ac-e9d0-4cc5-9e18-bdb99dc1b498
+˜
+java:S3252˜"OUse static access with "com.github.pagehelper.page.PageMethod" for "clearPage".(´İÂóùÿÿÿÿ8¡Õ£‡î1J$177362af-947a-49a7-b564-9e2a8b2f7286

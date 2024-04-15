@@ -1,7 +1,3 @@
 
-X
-java:S68101"6Async methods should return 'void' or a 'Future' type.(¢×ııÿÿÿÿ8Ï®Ó˜ì1
-N
-java:S1602H",Remove useless curly braces around statement(†ö–ûÿÿÿÿ8Ô®Ó˜ì1
-c
-java:S1128"ARemove this unused import 'cn.hutool.core.text.CharSequenceUtil'.(ƒóÍğÿÿÿÿÿ8×®Ó˜ì1
+~
+java:S68100"6Async methods should return 'void' or a 'Future' type.(¢×ııÿÿÿÿ8Ï®Ó˜ì1J$390c7c37-0c66-4a27-a3c3-c4e9ece20726

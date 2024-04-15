@@ -313,7 +313,7 @@ public class CollectionRepositoryImpl extends ServiceImpl<CollectionMapper, Coll
      */
     @Override
     public Boolean checkExist(String collectionId) {
-        if (collectionId.isEmpty()) {
+        if (collectionId.isEmpty() || CharSequenceUtil.isBlank(collectionId)) {
             return false;
         }
         return collectionMapper.exists(new QueryWrapper<CollectionEntity>()

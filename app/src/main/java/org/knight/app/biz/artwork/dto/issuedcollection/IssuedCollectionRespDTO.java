@@ -22,9 +22,9 @@ public class IssuedCollectionRespDTO {
 
     private Integer collectionSerialNumber;
 
-    private LocalDateTime issueTime;
+    private String issueTime;
 
     private String uniqueId;
 
-    private LocalDateTime syncChainTime;
+    private String syncChainTime;
 }

@@ -57,14 +57,14 @@ spring:
 
   ############ Mariadb DB 或 Mysql 设置  ############
   datasource:
-    url: jdbc:mysql://103.108.67.140:3306/open_nft?&characterEncoding=utf-8&autoReconnect=true
+    url: jdbc:mysql://103.108.67.140:3306/open_nft?&characterEncoding=utf-8&autoReconnect=true&connectTimeout=5000&socketTimeout=120000
     username: root
     password: pipinstall
     driver-class-name: com.mysql.cj.jdbc.Driver  # org.mariadb.jdbc.Driver
     # 连接池相关配置
     hikari:
-      maximum-pool-size: 20 # 最大连接数，根据用户量和数据请求量进行调整
-      minimum-idle: 5 # 最小空闲连接数，保持一定数量的空闲连接以减少创建连接的开销
+      maximum-pool-size: 40 # 最大连接数，根据用户量和数据请求量进行调整
+      minimum-idle: 10 # 最小空闲连接数，保持一定数量的空闲连接以减少创建连接的开销
       idle-timeout: 60000 # 连接空闲超时时间，单位为毫秒，超过该时间的空闲连接将被释放
       max-lifetime: 1800000 # 连接的最大生存时间，单位为毫秒，超过该时间的连接将被释放
 
@@ -75,7 +75,7 @@ spring:
 fisco:
   cert-path: conf
   deploy-private-key: "e79e4a1b2059726897f64630e00ee96c653a85ef2d76e4a3f9b5a6bfec5e8131"
-  deployAddress: "0x2fcbdb86f960e72febae7955e99b2cf0887d403f"
+  deploy-address: "0x2fcbdb86f960e72febae7955e99b2cf0887d403f"
   bcos-user-contract-address: "0xa56cba84f9fa3a2ce524dceeee5bb46eaa9094c6"
   bcos-nft-contract-address: "0xb8ca726a438d3d4703a1c7735ddef8afaea9880e"
   #  maxBlockingQueueSize: 102400

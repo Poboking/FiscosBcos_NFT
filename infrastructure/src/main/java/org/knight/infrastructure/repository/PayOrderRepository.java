@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import org.knight.infrastructure.dao.domain.PayOrderEntity;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * @author poboking
@@ -96,4 +97,6 @@ public interface PayOrderRepository extends IService<PayOrderEntity> {
      * @return String 订单状态
      */
     String getSateById(String id);
+
+    PageInfo<PayOrderEntity> getPayOrderPageListByParam(long current, long pageSize, String memberMobile, String collectionName, String bizMode, String state, LocalDateTime startTime, LocalDateTime endTime);
 }

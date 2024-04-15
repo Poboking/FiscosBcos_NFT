@@ -15,7 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -225,7 +227,7 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
         return count(new QueryWrapper<PayOrderEntity>()
                 .eq("biz_mode", bizMode)
                 .eq("state", NftConstants.支付订单状态_已付款)
-                .like(Optional.ofNullable(date).isPresent(), "pay_time", date));
+                .like(Optional.ofNullable(date).isPresent(), "paid_time", date));
     }
 
     /**
@@ -259,6 +261,25 @@ public class PayOrderRepositoryImpl extends ServiceImpl<PayOrderMapper, PayOrder
             return null;
         }
         return order.getState();
+    }
+
+    @Override
+    public PageInfo<PayOrderEntity> getPayOrderPageListByParam(long current, long pageSize, String memberMobile, String collectionName, String bizMode, String state, LocalDateTime startTime, LocalDateTime endTime) {
+        PageInfo pageInfo = null;
+        try {
+            PageHelper.startPage((int) current, (int) pageSize);
+            List<PayOrderEntity> list = payOrderMapper.selectList(new QueryWrapper<PayOrderEntity>()
+                    .eq(!CharSequenceUtil.isBlank(memberMobile), "member_mobile", memberMobile)
+                    .eq(!CharSequenceUtil.isBlank(collectionName), "collection_name", collectionName)
+                    .eq(!CharSequenceUtil.isBlank(bizMode), "biz_mode", bizMode)
+                    .eq(!CharSequenceUtil.isBlank(state), "state", state)
+                    .ge(!Objects.isNull(startTime), "create_time", startTime)
+                    .le(!Objects.isNull(endTime), "create_time", endTime));
+            pageInfo = new PageInfo(list, (int) pageSize);
+        } finally {
+            PageHelper.clearPage();
+        }
+        return pageInfo;
     }
 
 

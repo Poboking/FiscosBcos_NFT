@@ -12,9 +12,6 @@
     </option>
     <groups>
       <group>
-        <name>ITEM</name>
-      </group>
-      <group>
         <name>A20-NFT_ITEM</name>
         <servers>
           <name value="43.143.86.190" />

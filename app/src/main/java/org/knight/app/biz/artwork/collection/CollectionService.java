@@ -8,9 +8,11 @@ import lombok.AllArgsConstructor;
 import org.knight.app.biz.artwork.dto.collection.*;
 import org.knight.app.biz.artwork.dto.creator.CreatorRespDTO;
 import org.knight.app.biz.convert.artwork.CollectionConvert;
+import org.knight.app.biz.convert.artwork.CollectionStoryConvert;
 import org.knight.app.biz.convert.artwork.CreatorConvert;
 import org.knight.app.biz.exception.BizException;
 import org.knight.app.biz.exception.collection.CollectionDeleteFailedException;
+import org.knight.app.biz.exception.collection.CollectionStoryDeleteException;
 import org.knight.infrastructure.common.IdUtils;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
@@ -18,6 +20,7 @@ import org.knight.infrastructure.dao.domain.CollectionEntity;
 import org.knight.infrastructure.dao.domain.CollectionStoryEntity;
 import org.knight.infrastructure.dao.domain.CreatorEntity;
 import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
+import org.knight.infrastructure.fisco.service.biz.ChainService;
 import org.knight.infrastructure.repository.impl.CollectionRepositoryImpl;
 import org.knight.infrastructure.repository.impl.CollectionStoryRepositoryImpl;
 import org.knight.infrastructure.repository.impl.CreatorRepositoryImpl;
@@ -29,6 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @project: a20-nft-3_7
@@ -47,6 +51,10 @@ public class CollectionService {
     private CollectionStoryRepositoryImpl collectionStoryRepository;
     @Autowired
     private final IssuedCollectionRepositoryImpl issuedCollectionRepository;
+    @Autowired
+    private final CollectionStoryRepositoryImpl collectionStoryRepo;
+    @Autowired
+    private final ChainService chainService;
 
     public PageResult<CollectionEntity> getPageList(long current, long pageSize) {
         PageInfo<CollectionEntity> pageResult = collectionRepository.getPageList(current, pageSize);
@@ -68,11 +76,11 @@ public class CollectionService {
 
 
     public CreatorRespDTO getCreatorById(String creatorId) {
-        if (Objects.isNull(creatorId)){
+        if (Objects.isNull(creatorId)) {
             return null;
         }
         CreatorEntity creator = creatorRepository.getById(creatorId);
-        if (Objects.isNull(creator)){
+        if (Objects.isNull(creator)) {
             return null;
         }
         // TODO: 2024/4/8 需要将响应体的time属性都改为string类型
@@ -174,41 +182,61 @@ public class CollectionService {
         PageInfo<CollectionEntity> entityIPage = collectionRepository.getPageListByNameAndCommodityType(current, pageSize, name, commodityType);
         List<CollectionRespDTO> resultList = new ArrayList<CollectionRespDTO>();
         entityIPage.getList().forEach(collectionEntity -> {
+            List<CollectionStoryEntity> collectionStorys = collectionStoryRepo.getListByCollectionId(collectionEntity.getId());
+            CreatorEntity creator = creatorRepository.getById(collectionEntity.getCreatorId());
             CollectionRespDTO respDTO = CollectionConvert.INSTANCE.convertToRespDTO(collectionEntity);
-            if (Objects.isNull(respDTO.getCollectionStorys())){
+            if (collectionStorys.isEmpty()) {
                 respDTO.setCollectionStorys(new ArrayList<>());
+            }else {
+                respDTO.setCollectionStorys(CollectionStoryConvert.INSTANCE.convertToRespDTOList(collectionStorys));
+            }
+            if (Objects.isNull(creator)){
+                respDTO.setCreatorName("DataError: Creator Not Found");
+            }else {
+                respDTO.setCreatorName(creator.getName());
+            }
+            if (NftConstants.商品类型_藏品.equals(respDTO.getCommodityType())){
+                respDTO.setCommodityTypeName("商品类型_藏品");
+            } else if (NftConstants.商品类型_盲盒.equals(respDTO.getCommodityType())) {
+                respDTO.setCommodityTypeName("商品类型_盲盒");
+            }else {
+                respDTO.setCommodityTypeName("DataError: Unknown CommodityType");
             }
             resultList.add(respDTO);
         });
         return PageResult.convertFor(entityIPage, pageSize, resultList);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public Boolean updateCollectionStory(CollectionUpdateStoryReqDTO reqDTO) {
         if (reqDTO.getCollectionId() == null || reqDTO.getPicLinks() == null || reqDTO.getPicLinks().isEmpty()) {
             return false;
         }
         List<PicRespDTO> picLinks = reqDTO.getPicLinks();
+        if(Boolean.FALSE.equals(collectionStoryRepo.deleteByCollectionId(reqDTO.getCollectionId()))){
+            throw new CollectionStoryDeleteException("藏品故事删除失败");
+        }
         picLinks.forEach(entry -> {
             if (collectionStoryRepository.getOne(new QueryWrapper<CollectionStoryEntity>()
                     .eq("collection_id", reqDTO.getCollectionId())
                     .eq("order_no", entry.getSequence())) != null) {
                 collectionStoryRepository.saveOrUpdate(CollectionStoryEntity.builder()
-                        .picLink(entry.getLink())
-                        .build(), new QueryWrapper<CollectionStoryEntity>()
-                        .eq("collection_id", reqDTO.getCollectionId())
-                        .eq("order_no", entry.getSequence()));
-                picLinks.remove(entry);
-                return;
+                                .orderNo(entry.getSequence())
+                                .picLink(entry.getPicLink())
+                                .build(),
+                        new QueryWrapper<CollectionStoryEntity>()
+                                .eq("collection_id", reqDTO.getCollectionId())
+                                .eq("order_no", entry.getSequence()));
+            }else {
+                collectionStoryRepository.saveOrUpdate(CollectionStoryEntity.builder()
+                        .id(IdUtils.snowFlakeId())
+                        .collectionId(reqDTO.getCollectionId())
+                        .orderNo(entry.getSequence())
+                        .picLink(entry.getPicLink())
+                        .build());
             }
-            collectionStoryRepository.saveOrUpdate(CollectionStoryEntity.builder()
-                    .id(IdUtils.snowFlakeId())
-                    .collectionId(reqDTO.getCollectionId())
-                    .orderNo(entry.getSequence())
-                    .picLink(entry.getLink())
-                    .build());
-            picLinks.remove(entry);
         });
-        return picLinks.isEmpty();
+        return true;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -221,7 +249,7 @@ public class CollectionService {
             throw new CollectionDeleteFailedException("删除收藏品失败");
         }
         List<IssuedCollectionEntity> issuedCollection = issuedCollectionRepository.list(new QueryWrapper<IssuedCollectionEntity>()
-                .eq("collection_id",entity.getId()));
+                .eq("collection_id", entity.getId()));
         issuedCollection.forEach(issuedCollectionEntity -> {
             issuedCollectionEntity.setDeletedFlag(true);
             issuedCollectionEntity.setDeletedTime(Timestamp.valueOf(now));
@@ -247,7 +275,7 @@ public class CollectionService {
         entity.setCreatorName(creator.getName());
         entity.setId(IdUtils.snowFlakeId());
         entity.setCreateTime(Timestamp.valueOf(now));
-        if (Boolean.FALSE.equals(collectionRepository.save(entity))){
+        if (Boolean.FALSE.equals(collectionRepository.save(entity))) {
             throw new BizException("添加收藏品失败");
         }
         return true;
@@ -266,6 +294,10 @@ public class CollectionService {
     public Boolean updateCollectionHash(String collectionId, String collectionHash) {
         return collectionRepository.update(new UpdateWrapper<CollectionEntity>()
                 .eq("id", collectionId)
-                .set("collection_hash",collectionHash));
+                .set("collection_hash", collectionHash));
+    }
+
+    public VerificationRespDTO verificationCollection(String issuedCollectionId) {
+        return null;
     }
 }

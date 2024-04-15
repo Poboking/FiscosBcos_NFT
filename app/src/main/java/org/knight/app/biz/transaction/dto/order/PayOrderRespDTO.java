@@ -3,16 +3,14 @@ package org.knight.app.biz.transaction.dto.order;
 import lombok.*;
 import org.knight.app.biz.transaction.dto.TransactionBaseDTO;
 
-import java.time.LocalDateTime;
-
 /**
  * @project: a20-nft-3_7
  * @author: poboking
- * @date: 2024/3/17 23:39
+ * @date: 2024/4/15 16:01
  */
 @EqualsAndHashCode(callSuper = true)
-@Builder
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class PayOrderRespDTO extends TransactionBaseDTO {
@@ -23,7 +21,21 @@ public class PayOrderRespDTO extends TransactionBaseDTO {
 
     private String commodityType;
 
+    private String commodityTypeName;
+
+    private String createTime;
+
+    private String paidTime;
+
+    private String cancelTime;
+
     private Double amount;
+
+    private String bizMode;
+
+    private String bizModeName;
+
+    private String bizOrderNo;
 
     private String state;
 
@@ -35,7 +47,7 @@ public class PayOrderRespDTO extends TransactionBaseDTO {
 
     private String creatorName;
 
-    private LocalDateTime paidTime;
+    private String memberMobile;
 
-    private LocalDateTime createTime;
+    private String memberBlockChainAddr;
 }

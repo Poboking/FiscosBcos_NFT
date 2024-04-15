@@ -32,17 +32,33 @@ public class IssuedCollectionActionLogRepositoryImpl extends ServiceImpl<IssuedC
     }
 
     /**
-     * 检查藏品是否被锁定 - 用户购买
+     * 检查藏品是否被锁定 - 用户购买 - 多线程
      *
      * @param issuedCollectionId 发行藏品ID
      * @param now                操作时间
      * @return boolean
      */
     @Override
-    public boolean checkCollectionLock(String issuedCollectionId, Timestamp now) {
+    public boolean checkMultithreadingCollectionLock(String issuedCollectionId, Timestamp now) {
         return issuedCollectionActionLogMapper.exists(new QueryWrapper<IssuedCollectionActionLogEntity>()
                 .eq("issued_collection_id", issuedCollectionId)
                 .gt("action_time", now));
+    }
+
+    /**
+     * 检查藏品是否被锁定 - 根据流转状态
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @return boolean
+     */
+    @Override
+    public Boolean checkCollectionLock(String issuedCollectionId) {
+        return Objects.nonNull(issuedCollectionActionLogMapper.selectOne(new QueryWrapper<IssuedCollectionActionLogEntity>()
+                .eq("issued_collection_id", issuedCollectionId)
+                        .and(e -> e.eq("action_desc",NftConstants.发行藏品流转类型_二级市场_锁定藏品)
+                                .or().eq("action_desc",NftConstants.发行藏品流转类型_平台自营_锁定藏品))
+                .orderByDesc("action_time")
+                .last("limit 1")));
     }
 
     /**
@@ -81,15 +97,17 @@ public class IssuedCollectionActionLogRepositoryImpl extends ServiceImpl<IssuedC
         if (CharSequenceUtil.isBlank(issuedCollectionId) || CharSequenceUtil.isBlank(memberId)) {
             return false;
         }
-        IssuedCollectionActionLogEntity entity = issuedCollectionActionLogMapper.selectOne(new QueryWrapper<IssuedCollectionActionLogEntity>()
+        IssuedCollectionActionLogEntity entity = issuedCollectionActionLogMapper.selectList(new QueryWrapper<IssuedCollectionActionLogEntity>()
                 .eq("issued_collection_id", issuedCollectionId)
-                .eq("member_id", memberId));
+                .eq("member_id", memberId)
+                .lt("action_time", Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)))
+                .orderByDesc("action_time")).stream().findFirst().orElse(null);
         if (Objects.isNull(entity)) {
             return false;
         }
         entity.setActionDesc(desc);
         entity.setActionTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
-        return issuedCollectionActionLogMapper.insert(entity) > 0;
+        return saveOrUpdate(entity);
     }
 
 

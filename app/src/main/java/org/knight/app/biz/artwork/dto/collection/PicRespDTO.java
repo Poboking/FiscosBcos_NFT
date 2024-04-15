@@ -15,5 +15,5 @@ import lombok.*;
 public class PicRespDTO extends CollectionBaseDTO{
     private Double sequence;
 
-    private String link;
+    private String picLink;
 }

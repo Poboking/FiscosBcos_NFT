@@ -1,110 +1,70 @@
-2024-04-12 13:32:45,425 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
-2024-04-12 13:32:45,466 INFO o.s.b.StartupInfoLogger [main] Starting BcosTest using Java 17.0.9 with PID 19716 (started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7\presentation)
-2024-04-12 13:32:45,472 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
-2024-04-12 13:32:47,329 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-04-12 13:32:47,335 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-04-12 13:32:47,390 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 26 ms. Found 0 Redis repository interfaces.
-2024-04-12 13:32:50,004 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
-2024-04-12 13:32:50,138 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-04-12 13:32:50,138 INFO o.f.b.s.n.NetworkImp [main] 
+2024-04-15 11:54:05,318 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.0.Final
+2024-04-15 11:54:05,366 INFO o.s.b.StartupInfoLogger [main] Starting BcosTest using Java 17.0.9 with PID 18756 (started by NaGaYa in D:\CS\IDEA_javacode\a20-nft-3_7\presentation)
+2024-04-15 11:54:05,376 INFO o.s.b.SpringApplication [main] No active profile set, falling back to 1 default profile: "default"
+2024-04-15 11:54:07,459 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-04-15 11:54:07,466 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-04-15 11:54:07,542 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 31 ms. Found 0 Redis repository interfaces.
+2024-04-15 11:54:10,627 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.infrastructure.fisco.config.BcosConfig
+2024-04-15 11:54:10,789 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-15 11:54:10,790 INFO o.f.b.s.n.NetworkImp [main] 
 * TRACE INFORMATION:
 ----------------------------
 ====> STEP1: try to connect nodes with ecdsa context...
 
-2024-04-12 13:32:50,139 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
-2024-04-12 13:32:50,390 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
-2024-04-12 13:32:52,874 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
+2024-04-15 11:54:10,791 INFO o.f.b.s.n.NetworkImp [main] ====> <==== STEP1-1: Load certificates for ecdsa context success..., start connManager with ECDSA sslContext
+2024-04-15 11:54:11,012 INFO o.f.b.s.n.ConnectionManager [main]  build ECDSA ssl context with configured certificates 
+2024-04-15 11:54:13,230 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-04-12 13:32:52,874 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-04-12 13:32:52,874 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
-2024-04-12 13:32:52,984 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 842054017 
-2024-04-12 13:32:52,984 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 454969965 
-2024-04-12 13:32:52,983 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
+2024-04-15 11:54:13,231 ERROR o.f.b.s.n.ConnectionManager [main] ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
-2024-04-12 13:32:52,986 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
+2024-04-15 11:54:13,231 ERROR o.f.b.s.n.ConnectionManager [main]  all connections have failed, [{"code":1, "msg":"ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}, {"code":1, "msg":"ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency."}] 
-2024-04-12 13:32:52,987 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
+2024-04-15 11:54:13,231 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  handshake failed, host: 43.143.86.190, port: 20200, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-15 11:54:13,231 INFO o.f.b.s.n.NetworkImp [main] <==== STEP1 Result: try to connect nodes with ecdsa context failed. reason:
 Failed to connect to all the nodes!
 * ssl handshake failed:/43.143.86.190:20200
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 * ssl handshake failed:/43.143.86.190:20201
  reason: The node closes the connection. Maybe connect to the sm node with ecdsa context or the node and the SDK are not belong to the same agency.
 
-2024-04-12 13:32:55,239 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
-2024-04-12 13:32:55,240 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
+2024-04-15 11:54:13,231 ERROR o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  handshake failed, host: 43.143.86.190, port: 20201, reason: null, error stack: java.nio.channels.ClosedChannelException 
+2024-04-15 11:54:13,233 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-2]  ssl close completion event, host: 43.143.86.190, port: 20201, ctx: 2030919193 
+2024-04-15 11:54:13,233 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-2-1]  ssl close completion event, host: 43.143.86.190, port: 20200, ctx: 958265016 
+2024-04-15 11:54:15,347 INFO o.f.b.s.n.ConnectionManager [main] The netty has been stopped
+2024-04-15 11:54:15,348 INFO o.f.b.s.n.NetworkImp [main] ----------------------------
 ====> STEP2: connect nodes with ecdsa context failed, try to connect nodes with sm-context...
-2024-04-12 13:32:55,241 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
-2024-04-12 13:32:55,241 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
-2024-04-12 13:32:55,703 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 1283677481
-2024-04-12 13:32:55,703 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
-2024-04-12 13:32:55,709 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
-2024-04-12 13:32:55,709 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 1877386479
-2024-04-12 13:32:55,838 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-15 11:54:15,348 INFO o.f.b.s.n.NetworkImp [main] <==== STEP2-1: Load certificates for sm context success...
+2024-04-15 11:54:15,348 INFO o.f.b.s.n.ConnectionManager [main]  all connections, size: 2, list: [ConnectionInfo{host='43.143.86.190', port=20200}, ConnectionInfo{host='43.143.86.190', port=20201}]
+2024-04-15 11:54:16,056 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20200
+2024-04-15 11:54:16,056 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-2]  handshake success, host: 43.143.86.190, port: 20201, ctx: 1388226512
+2024-04-15 11:54:16,056 INFO o.f.b.s.n.ChannelHandler [nioEventLoopGroup-3-1]  handshake success, host: 43.143.86.190, port: 20200, ctx: 1710988729
+2024-04-15 11:54:16,057 INFO o.f.b.s.n.ConnectionManager [main]  ssl handshake success 43.143.86.190:20201
+2024-04-15 11:54:16,504 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-04-12 13:32:55,838 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":1,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
+2024-04-15 11:54:16,504 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  node: ClientVersion{version='2.9.1 gm', supportedVersion='2.9.1', chainId='1', buildTime='20220922 08:57:35', buildType='Linux/g++/Release', gitBranch='HEAD', gitCommitHash='83a87ad749475c0edcc6d5ce2dabd328a36d3bae'}, content: {"id":0,"jsonrpc":"2.0","result":{"Build Time":"20220922 08:57:35","Build Type":"Linux/g++/Release","Chain Id":"1","FISCO-BCOS Version":"2.9.1 gm","Git Branch":"HEAD","Git Commit Hash":"83a87ad749475c0edcc6d5ce2dabd328a36d3bae","Supported Version":"2.9.1"}}
 
-2024-04-12 13:32:55,840 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
-2024-04-12 13:32:55,840 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
-2024-04-12 13:32:55,886 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-04-12 13:32:55,886 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
-2024-04-12 13:32:55,903 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
-2024-04-12 13:32:55,904 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
-2024-04-12 13:32:55,910 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
-2024-04-12 13:32:55,934 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
-2024-04-12 13:32:55,937 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
-2024-04-12 13:32:56,268 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
-2024-04-12 13:32:56,421 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-12 13:32:56,438 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-12 13:32:56,438 INFO o.f.b.s.a.AmopImp [main] amop module started
-2024-04-12 13:32:56,439 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
-2024-04-12 13:32:56,439 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
-2024-04-12 13:32:56,827 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
-2024-04-12 13:32:56,828 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
-2024-04-12 13:32:57,618 INFO o.s.b.f.a.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: public static java.lang.String org.knight.infrastructure.common.NftConstants.平台账户地址
-2024-04-12 13:32:58,224 INFO c.f.g.Init [main] Graceful Response:已启动
-2024-04-12 13:32:58,693 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
-2024-04-12 13:32:59,856 INFO o.s.b.StartupInfoLogger [main] Started BcosTest in 14.946 seconds (process running for 17.047)
-2024-04-12 13:33:00,688 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2024-04-12 13:33:04,861 INFO o.k.a.b.t.OrderTask [default-task-thread-1] cancelExpiredOrder
-2024-04-12 13:33:07,452 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2898cd46
-2024-04-12 13:33:07,454 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2024-04-12 13:33:07,463 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==>  Preparing: SELECT id,collection_hash,commodity_type,cover,create_time,creator_id,deleted_flag,deleted_time,external_sale_flag,name,price,quantity,sale_time,stock,sync_chain_time,version FROM collection
-2024-04-12 13:33:07,487 DEBUG o.a.i.l.j.BaseJdbcLogger [main] ==> Parameters: 
-2024-04-12 13:33:07,559 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==    Columns: id, collection_hash, commodity_type, cover, create_time, creator_id, deleted_flag, deleted_time, external_sale_flag, name, price, quantity, sale_time, stock, sync_chain_time, version
-2024-04-12 13:33:07,562 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1544943105113849859, 4ec3c059ae984143bacaeae0b955d15a, 1, https://s1.ax1x.com/2022/11/26/ztc30e.png, 2024-03-14 15:32:05, 1592161297795907584, 0, null, 1, 山水知音图立轴, 128.0, 30, 2024-11-28 19:00:00, 30, null, 1
-2024-04-12 13:33:07,565 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1544945390820786179, 99386cdb0c1b4f5a80dac72a5c6c72d9, 1, https://i.ibb.co/jDg3mkD/ZT3TY5.png, 2024-02-05 15:32:09, 23948750298347848448, 0, null, 1, 龙门天王, 120.0, 20, 2024-11-29 14:00:00, 20, null, 1
-2024-04-12 13:33:07,566 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1544950372735385603, b0b6e6aade3d46eaa2bf2f69eeffc34a, 1, https://www.helloimg.com/images/2022/07/07/ZTXVHh.jpg, 2024-04-03 15:27:43, 23948750298347848448, 0, null, 1, 张大千《黄山八景册》西海门, 138.0, 40, 2024-11-26 15:00:00, 40, null, 1
-2024-04-12 13:33:07,567 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1544953568031670275, 6e54039e5f8549c59b1dd1a94aad7a8c, 1, https://s1.ax1x.com/2022/11/26/ztgpAH.png, 2024-03-06 15:27:46, 9238745098237450411, 0, null, 1, 「海马飞天」数字铜镜, 118.0, 10, 2024-11-27 16:00:00, 10, null, 1
-2024-04-12 13:33:07,568 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1544963099243577347, a669e738b9ee4ff09c02d6dc5f728b9d, 1, https://i.postimg.cc/cLDsVn2h/ZTx9wr.png, 2024-02-26 15:27:50, 9238745098237450411, 0, null, 1, 宋徽宗《花鸟看春写意图》, 128.0, 25, 2024-12-01 12:00:00, 25, null, 1
-2024-04-12 13:33:07,569 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1546391985126899715, 909f4609739b4264b6a61d373d9860d5, 1, https://t7.baidu.com/it/u=3635362084,1992212334&fm=193&f=GIF, 2024-04-02 15:27:55, 1592161297795907584, 0, null, 1, 相逢何必曾相识, 100.0, 10, 2024-12-08 16:00:00, 10, null, 1
-2024-04-12 13:33:07,570 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1546695201400029187, 52f5abde785b4c13954e4b35e971022c, 1, https://t7.baidu.com/it/u=1226886105,1225248639&fm=193&f=GIF, 2023-12-12 15:27:57, 9238745098237450411, 0, null, 1, 江湖故人, 20.0, 20, 2024-11-30 11:00:00, 20, null, 1
-2024-04-12 13:33:07,571 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1546882293568634883, c317b798b905452abf20b6d862c91c8c, 1, https://growth-1300522992.cos.ap-guangzhou.myqcloud.com/zz/subjects/004%E5%94%90%E5%AE%8B%E5%A4%A7%E5%AE%B6/%E5%95%86%E5%93%81%E7%B4%A0%E6%9D%90/007%E5%88%98%E6%9D%BE%E5%B9%B4/preview_ce2e55.png, 2024-01-03 15:28:02, 9238745098237450411, 0, null, 1, 刘松年《秋山仙逸图》, 128.0, 30, 2024-12-03 13:00:00, 30, null, 1
-2024-04-12 13:33:07,572 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1548369026005073923, df7a8ed0d9154b9d8531e441ad6a9b7d, 1, https://growth-1300522992.cos.ap-guangzhou.myqcloud.com/zz%2Fsubjects%2F016%E6%95%A6%E7%85%8C%E5%A3%81%E7%94%BB%2F%E5%95%86%E5%93%81%E7%B4%A0%E6%9D%90%2F001%E6%A2%B5%E9%9F%B3%E5%88%9D%E9%97%BB%2Fdetail0_97011f.png, 2024-03-19 15:28:07, 9238745098237450411, 0, null, 1, 敦煌文创-「梵音初闻」, 200.0, 90, 2024-12-02 15:00:00, 90, null, 1
-2024-04-12 13:33:07,573 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1548370180768268291, 6a9fb4ff0eef4355b13c505d3bcd6231, 1, https://i.ibb.co/FsBtdTn/preview-351dc3.png, 2024-01-24 15:28:11, 1592161297795907584, 0, null, 1, 董其昌《山水册》第三开「秋色无远近」, 108.0, 100, 2024-11-25 16:00:00, 100, null, 1
-2024-04-12 13:33:07,575 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1548370670008664068, cfdbeeb9347e4558807f0c979879320d, 1, https://i.postimg.cc/cHRPNq6W/preview1-45e18b.png, 2024-02-14 15:28:16, 9238745098237450411, 0, null, 1, 弘一法师书法格言屏数字臻品之一, 118.0, 20, 2024-12-03 14:30:00, 20, null, 1
-2024-04-12 13:33:07,576 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1592161519041249280, 844204b87e3b4ea78287351d422dc598, 1, https://img2.baidu.com/it/u=1081635636,3784235723&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=628&amp;h=324, 2022-11-14 22:24:22, 1592161297795907584, 0, null, 1, 小鸡吃米图, 188.0, 18, 2022-11-16 14:00:00, 18, null, 1
-2024-04-12 13:33:07,577 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 159216151955549280, 775ca4d6714f43abb7179038bddc3826, 1, https://img2.baidu.com/it/u=1081635636,3784235723&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=628&amp;h=324, 2022-11-14 22:24:22, 1592161297795907584, 0, null, 1, 小鸡吃米图, 188.0, 18, 2022-11-16 14:00:00, 18, null, 1
-2024-04-12 13:33:07,578 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1777586889042165760, d0fc3ef3-5c20-47bc-a480-8aa90264912a, 1, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2024-04-09 14:38:34, 1592161297795907584, 0, null, 0, 测试藏品, 1.0, 1, 2024-04-09 14:38:23, 1, null, null
-2024-04-12 13:33:07,579 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 1777586947493986304, 19fff0a3-e4a6-4f80-b633-88e925f7207b, 1, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2024-04-09 14:38:48, 1592161297795907584, 0, null, 0, 测试藏品, 1.0, 1, 2024-04-09 14:38:23, 1, null, null
-2024-04-12 13:33:07,581 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 22222222222222222222222222222222, 57dd9901b01648dd8f2a5e8124daa729, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2021-11-01 10:10:00, 1592161297795907584, 0, null, 0, Epic Collection, 129.99, 10, 2021-11-06 18:00:00, 10, null, 1
-2024-04-12 13:33:07,586 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 2348972352398475, ecadf82236934bf58767ce7109ecf618, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2024-03-10 14:20:07, 2394875029834755153, 1, 2024-03-12 11:10:22, 0, Collection 9, 219.99, 50, 2024-03-15 13:00:00, 50, null, 1
-2024-04-12 13:33:07,587 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 246802468013579246801357924, 354661dedb6b4016b1b6dcfa22b17812, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2022-01-10 18:45:00, 2394875029837121253, 0, null, 0, Cool Collection, 79.99, 75, 2022-01-15 09:00:00, 30, null, 1
-2024-04-12 13:33:07,588 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 29384759823749812144, d05bc9d2ff694807a460305cc725a504, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2023-10-05 18:10:28, 1592161297795907584, 0, null, 1, Collection 4, 119.99, 25, 2023-10-10 11:00:00, 25, null, 1
-2024-04-12 13:33:07,589 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 33333333333333333333333333333333, 4fa66edaa788427a8aea28afdc8299ca, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2021-10-08 16:20:00, 2394875029837121253, 0, null, 1, Dream Collection, 299.99, 30, 2021-10-13 22:00:00, 30, null, 1
-2024-04-12 13:33:07,590 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 392847509823745, 94ad7ae01b624880aaf763434ad654c9, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2023-12-20 09:15:50, 9283745982734958273, 0, null, 1, Collection 6, 159.99, 35, 2023-12-25 09:00:00, 35, null, 1
-2024-04-12 13:33:07,591 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 39284759827348912414, 2c67ce616c34436cb927e877e7325dd4, 1, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2023-08-20 11:45:32, 2394875029834755153, 0, null, 1, Collection 2, 79.99, 15, 2023-08-25 12:00:00, 15, null, 1
-2024-04-12 13:33:07,592 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 44444444444444444444444444444444, 81cf5e3315f74e509c2be6caebb3038e, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2021-09-03 22:30:00, 1592161297795907584, 0, null, 0, Fantastic Collection, 159.99, 150, 2021-09-08 08:00:00, 100, null, 1
-2024-04-12 13:33:07,593 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 8293475927349854121, 490fb92ee0c648938728ccbd600456ce, 1, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2023-09-10 15:20:45, 2394875029837121253, 1, 2023-09-12 09:21:11, 0, Collection 3, 99.99, 20, 2023-09-15 10:30:00, 20, null, 1
-2024-04-12 13:33:07,594 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 839274509821235823, fd3d8950856548a1baf35b4fdc922196, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2024-01-10 17:55:42, 2394875029837121253, 1, 2024-01-12 10:45:33, 0, Collection 7, 179.99, 40, 2024-01-15 16:00:00, 40, null, 1
-2024-04-12 13:33:07,595 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 8734123095743209123, 5dba6cb26b45442285cb35f8f26bb61e, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2023-07-12 09:34:21, 2394875029837121253, 1, 2023-07-15 14:23:12, 0, Collection 1, 59.99, 10, 2023-07-20 15:30:00, 10, null, 1
-2024-04-12 13:33:07,596 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 920386669823745982, 6fdcd22c50254021870359530d9933d8, 2, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2024-04-05 10:40:18, 0923847509823745098, 0, null, 1, Collection 10, 239.99, 55, 2024-04-10 09:30:00, 55, null, 1
-2024-04-12 13:33:07,596 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 92038745094445902, 6ce6cbb028c04c1f97582d7f0ceca3df, 1, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2024-02-15 08:30:54, 0932745098237490857, 0, null, 1, Collection 8, 199.99, 45, 2024-02-20 07:30:00, 45, null, 1
-2024-04-12 13:33:07,597 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 9283475928374598123214, eaa6d730e56a4b229a71a2c5716c5cb5, 1, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2023-11-15 13:45:37, 8347592834759823745, 1, 2023-11-18 16:30:09, 0, Collection 5, 139.99, 30, 2023-11-20 13:45:00, 30, null, 1
-2024-04-12 13:33:07,598 TRACE o.a.i.l.j.BaseJdbcLogger [main] <==        Row: 987654322287654321, eaa9832b58b4461cb1bae62f0ff2ee27, 3, https://t7.baidu.com/it/u=737555197,308540855&amp;fm=193&amp;f=GIF, 2022-02-15 14:30:00, 1592161297795907584, 0, null, 1, Best Collection Ever, 149.99, 100, 2022-02-20 10:00:00, 80, null, 1
-2024-04-12 13:33:07,599 DEBUG o.a.i.l.j.BaseJdbcLogger [main] <==      Total: 30
-2024-04-12 13:33:07,606 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==>  Preparing: SELECT id,amount,biz_order_no,biz_type,issued_collection_id,collection_id,create_time,member_id,order_deadline,order_no,state,version,paid_time,cancel_time,biz_mode FROM pay_order WHERE (state = ? AND order_deadline < ?)
-2024-04-12 13:33:07,608 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] ==> Parameters: 1(String), 2024-04-12 13:33:04.0(Timestamp)
-2024-04-12 13:33:07,650 DEBUG o.a.i.l.j.BaseJdbcLogger [default-task-thread-1] <==      Total: 0
-2024-04-12 13:33:07,659 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2024-04-12 13:33:14,484 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2024-04-15 11:54:16,506 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-2]  support channel handshake node
+2024-04-15 11:54:16,506 INFO o.f.b.s.c.ChannelMsgHandler$1 [nioEventLoopGroup-3-1]  support channel handshake node
+2024-04-15 11:54:16,561 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-2]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20201, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-15 11:54:16,568 INFO o.f.b.s.c.ChannelMsgHandler$2 [nioEventLoopGroup-3-1]  channel protocol handshake success, set socket channel protocol, host: 43.143.86.190:20200, channel protocol: ChannelProtocol [protocol=3, nodeVersion=2.9.1, EnumProtocol=VERSION_3]
+2024-04-15 11:54:16,575 INFO o.f.b.s.c.ChannelImp [main]  Connect to  nodes: 43.143.86.190:20200, 43.143.86.190:20201, 
+2024-04-15 11:54:16,576 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel success, cryptoType: 1
+2024-04-15 11:54:16,589 INFO o.f.b.s.BcosSDK [main] create BcosSDK, start channel succ, channelProcessorThreadSize: 8, receiptProcessorThreadSize: 8
+2024-04-15 11:54:16,598 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerBlockNumberNotifyHandler
+2024-04-15 11:54:16,599 INFO o.f.b.s.s.GroupManagerServiceImpl [main] registerTransactionNotifyHandler
+2024-04-15 11:54:17,211 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create groupManagerService success
+2024-04-15 11:54:17,381 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-15 11:54:17,394 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-15 11:54:17,394 INFO o.f.b.s.a.AmopImp [main] amop module started
+2024-04-15 11:54:17,395 INFO o.f.b.s.a.AmopImp [main] update subscribe inform 2 peers
+2024-04-15 11:54:17,395 INFO o.f.b.s.BcosSDK [main] create BcosSDK, create Amop success
+2024-04-15 11:54:17,912 INFO o.f.b.s.c.Client [main] build client success for group 1, crypto type 1
+2024-04-15 11:54:17,913 INFO o.f.b.s.BcosSDK [main] create client for group 1 success
+2024-04-15 11:54:18,710 WARN o.s.c.LocalVariableTableParameterNameDiscoverer [main] Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: org.knight.app.biz.transaction.TransactionService
+2024-04-15 11:54:18,808 INFO o.s.b.f.a.AutowiredAnnotationBeanPostProcessor [main] Autowired annotation is not supported on static fields: public static java.lang.String org.knight.infrastructure.common.NftConstants.平台账户地址
+2024-04-15 11:54:19,460 INFO c.f.g.Init [main] Graceful Response:已启动
+2024-04-15 11:54:19,982 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [main] Adding welcome page: class path resource [static/index.html]
+2024-04-15 11:54:21,258 INFO o.s.b.StartupInfoLogger [main] Started BcosTest in 16.329 seconds (process running for 19.081)
+2024-04-15 11:54:21,926 INFO o.f.b.s.e.EventSubscribeImp [pool-11-thread-1] Resend waiting filters, size: 0
+2024-04-15 11:54:22,763 INFO o.f.b.s.e.EventSubscribeImp [pool-12-thread-1] Resend waiting filters, size: 0

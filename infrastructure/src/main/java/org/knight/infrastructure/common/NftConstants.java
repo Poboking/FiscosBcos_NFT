@@ -45,7 +45,7 @@ public class NftConstants {
     public static final String 商品类型_藏品 = "1";
     public static final String 商品类型_盲盒 = "2";
     public static final String 支付订单超时取消 = "payOrderTimeoutCancel";
-    public static final String 支付订单业务模式_平台自营 = "1";
+    public static final String 支付订单业务类型_平台自营 = "1";
     public static final String 支付订单业务类型_二级市场 = "2";
     public static final String 支付订单状态_待付款 = "1";
     public static final String 支付订单状态_已付款 = "2";
@@ -53,6 +53,8 @@ public class NftConstants {
     public static final String 转售的藏品状态_已发布 = "1";
     public static final String 转售的藏品状态_已卖出 = "2";
     public static final String 转售的藏品状态_已取消 = "3";
+    public static final Object 转售的藏品状态_已锁定 = "4";
+    public static final String 转售的藏品状态_已下架 = "5";
     public static final String 持有藏品状态_持有中 = "1";
     public static final String 持有藏品状态_已转赠 = "2";
     public static final String 持有藏品状态_转售中 = "3";
@@ -116,7 +118,7 @@ public class NftConstants {
     public static final String 默认藏品封面 = "https://www.aijrj.com/upload/202205/19/202205190849271205.png";
     // TODO: 2024/4/11 这里需要注意, 如果可以的话, 应该改成配置文件注入
 
-    @Value("${fisco.deployAddress}")
+    @Value("${fisco.deploy-address}")
     public static String 平台账户地址;
     public static final Long 初始余额 = 5000L;
     public static final String 发行藏品流转类型_转赠 = "转赠藏品";

@@ -5,6 +5,7 @@ import org.knight.app.biz.artwork.dto.holdcollection.MemberHoldCollectionRespDTO
 import org.knight.app.biz.artwork.dto.holdcollection.MyHoldCollectionDetailRespDTO;
 import org.knight.infrastructure.dao.domain.MemberHoldCollectionEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -18,9 +19,12 @@ import java.util.List;
 public interface MemberHoldCollectionConvert {
     MemberHoldCollectionConvert INSTANCE = Mappers.getMapper(MemberHoldCollectionConvert.class);
 
+    @Mapping(target = "holdTime", ignore = true)
+    @Mapping(target = "loseTime", ignore = true)
     MemberHoldCollectionRespDTO convertToRespDTO(MemberHoldCollectionEntity bean);
 
     List<MemberHoldCollectionRespDTO> convertToRespDTO(List<MemberHoldCollectionEntity> bean);
+
 
     MyHoldCollectionDetailRespDTO convertToDetailRespDTO(MemberHoldCollectionDetailRespDTO bean);
 

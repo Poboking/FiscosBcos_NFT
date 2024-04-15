@@ -12,6 +12,7 @@ import org.knight.app.biz.exception.block.BlockChainTransactionException;
 import org.knight.app.biz.exception.block.ChainTransactionFailedException;
 import org.knight.app.biz.exception.block.GainFromAddressException;
 import org.knight.app.biz.exception.collection.*;
+import org.knight.app.biz.exception.log.MemberBCLogCreationFailedException;
 import org.knight.app.biz.exception.member.MemberNotFoundException;
 import org.knight.app.biz.exception.member.RealNameNotVerifiedException;
 import org.knight.app.biz.exception.member.ReceiverNotFoundException;
@@ -20,11 +21,13 @@ import org.knight.app.biz.transaction.bo.OrderBO;
 import org.knight.app.biz.transaction.dto.giverecord.CollectionGiveRecordRespDTO;
 import org.knight.app.biz.transaction.dto.issued.CastIssuedCollectionReqDTO;
 import org.knight.app.biz.transaction.dto.member.ReceiverInfoRespDTO;
+import org.knight.app.biz.transaction.dto.order.MyPayOrderRespDTO;
 import org.knight.app.biz.transaction.dto.order.PayOrderRespDTO;
 import org.knight.app.biz.transaction.dto.trade.TradeStatisticDayRespDTO;
 import org.knight.app.biz.transaction.dto.trade.TradeStatisticRespDTO;
 import org.knight.infrastructure.common.*;
 import org.knight.infrastructure.dao.domain.*;
+import org.knight.infrastructure.fisco.config.BcosProperties;
 import org.knight.infrastructure.fisco.module.BlockChainNFT;
 import org.knight.infrastructure.fisco.service.biz.ChainService;
 import org.knight.infrastructure.repository.impl.*;
@@ -49,6 +52,7 @@ import java.util.Objects;
 @Log4j2
 public class TransactionService {
 
+    private final BcosProperties bcosProperties;
     private final PayOrderRepositoryImpl payOrderRepository;
     private final CollectionGiveRecordRepositoryImpl collectionGiveRecordRepository;
     private final MemberRepositoryImpl memberRepository;
@@ -59,13 +63,19 @@ public class TransactionService {
     private final MemberResaleCollectionRepositoryImpl resaleCollectionRepository;
     private final IssuedCollectionRepositoryImpl issuedCollectionRepository;
     private final IssuedCollectionActionLogRepositoryImpl issuedCollectionActLogRepository;
-
     private final IssuedCollectionActionLogRepositoryImpl issuedCollectionActLogRepo;
-
+    private final MemberHoldCollectionRepositoryImpl memberHoldCollectionRepo;
     private final ChainService chainService;
 
     @Autowired
-    public TransactionService(PayOrderRepositoryImpl payOrderRepository, CollectionGiveRecordRepositoryImpl collectionGiveRecordRepository, CollectionRepositoryImpl collectionRepository, MemberRepositoryImpl memberRepository, CreatorRepositoryImpl creatorRepository, MemberBalanceChangeLogRepositoryImpl memberBalanceChangeLogRepository, MemberHoldCollectionRepositoryImpl holdCollectionRepository, MemberResaleCollectionRepositoryImpl resaleCollectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository, IssuedCollectionActionLogRepositoryImpl issuedCollectionActLogRepository, IssuedCollectionActionLogRepositoryImpl issuedCollectionActLogRepo, ChainService chainService) {
+    public TransactionService(BcosProperties bcosProperties, PayOrderRepositoryImpl payOrderRepository,
+                              CollectionGiveRecordRepositoryImpl collectionGiveRecordRepository,
+                              CollectionRepositoryImpl collectionRepository, MemberRepositoryImpl memberRepository,
+                              CreatorRepositoryImpl creatorRepository, MemberBalanceChangeLogRepositoryImpl memberBalanceChangeLogRepository,
+                              MemberHoldCollectionRepositoryImpl holdCollectionRepository, MemberResaleCollectionRepositoryImpl resaleCollectionRepository,
+                              IssuedCollectionRepositoryImpl issuedCollectionRepository, IssuedCollectionActionLogRepositoryImpl issuedCollectionActLogRepository,
+                              IssuedCollectionActionLogRepositoryImpl issuedCollectionActLogRepo, MemberHoldCollectionRepositoryImpl memberHoldCollectionRepo, ChainService chainService) {
+        this.bcosProperties = bcosProperties;
         this.payOrderRepository = payOrderRepository;
         this.collectionGiveRecordRepository = collectionGiveRecordRepository;
         this.collectionRepository = collectionRepository;
@@ -77,6 +87,7 @@ public class TransactionService {
         this.issuedCollectionRepository = issuedCollectionRepository;
         this.issuedCollectionActLogRepository = issuedCollectionActLogRepository;
         this.issuedCollectionActLogRepo = issuedCollectionActLogRepo;
+        this.memberHoldCollectionRepo = memberHoldCollectionRepo;
         this.chainService = chainService;
     }
 
@@ -157,89 +168,47 @@ public class TransactionService {
         return memberHoldCollectionEntity;
     }
 
-    public PageResult<PayOrderRespDTO> getMyPayOrder(long current, long pageSize, String status, String memberId) {
-        PageInfo<PayOrderEntity> pageList = null;
-        if (CharSequenceUtil.isBlank(status)) {
-            pageList = payOrderRepository.getPayOrderPageListByMemberId(current, pageSize, memberId);
-        } else {
-            pageList = payOrderRepository.getPayOrderPageListByMemberIdAndStatus(current, pageSize, memberId, status);
-        }
-        List<PayOrderRespDTO> recordList = new ArrayList<>();
-        pageList.getList().forEach(entity -> {
-            PayOrderRespDTO respDTO = PayOrderConvert.INSTANCE.convertToDTO(entity);
-            CollectionEntity collection = collectionRepository.getById(entity.getCollectionId());
-            CreatorEntity creator = creatorRepository.getById(collection.getCreatorId());
-            respDTO.setCommodityType(collection.getCommodityType());
-            respDTO.setCollectionName(collection.getName());
-            respDTO.setCollectionCover(collection.getCover());
-            respDTO.setCreatorName(creator.getName());
-
-            if (respDTO.getState().equals(NftConstants.支付订单状态_已付款)) {
-                respDTO.setStateName("已付款");
-            } else if (respDTO.getState().equals(NftConstants.支付订单状态_待付款)) {
-                respDTO.setStateName("待付款");
-            } else if (respDTO.getState().equals(NftConstants.支付订单状态_已取消)) {
-                respDTO.setStateName("已取消");
-            } else {
-                respDTO.setStateName("未知");
-            }
-//            if (respDTO.getState().equals(NftConstants.支付订单状态_已退款)) {
-//                respDTO.setStateName("已退款");
-//            }
-            recordList.add(respDTO);
-        });
-        return PageResult.convertFor(pageList, pageSize, recordList);
-    }
-
-
-    public PageResult<CollectionGiveRecordRespDTO> getMyGiveRecord(long current, long pageSize, String memberId, String giveDirection) {
-        PageInfo<CollectionGiveRecordEntity> pageList = null;
-        if (giveDirection != null && NftConstants.DIRECTION_FROM.equals(giveDirection)) {
-            pageList = collectionGiveRecordRepository.getPageListByGiveFromId(current, pageSize, memberId);
-        } else if (giveDirection != null && NftConstants.DIRECTION_TO.equals(giveDirection)) {
-            pageList = collectionGiveRecordRepository.getPageListByGiveToId(current, pageSize, memberId);
-        } else {
-            pageList = collectionGiveRecordRepository.getPageListByGiveToIdOrGiveFormId(current, pageSize, memberId, memberId);
-        }
-        List<CollectionGiveRecordRespDTO> recordList = new ArrayList<>();
-        pageList.getList().forEach(collectionGiveRecordEntity -> {
-            CollectionGiveRecordRespDTO respDTO = CollectionGiveRecordConvert.INSTANCE.convertToDTO(collectionGiveRecordEntity);
-            // TODO: 2024/4/12 这里暂且用转赠记录iD作为 orderId
-            respDTO.setOrderNo(collectionGiveRecordEntity.getId());
-            respDTO.setGiveToMobile(memberRepository.getMobileById(collectionGiveRecordEntity.getGiveToId()));
-            respDTO.setGiveFromMobile(memberRepository.getMobileById(collectionGiveRecordEntity.getGiveFromId()));
-            MemberHoldCollectionEntity holdCollection = holdCollectionRepository.getById(collectionGiveRecordEntity.getHoldCollectionId());
-            if (Objects.isNull(holdCollection)) {
-                respDTO.setCollectionName("DataError: No Found Collection Name");
-            }
-            respDTO.setCollectionName(holdCollection.getName());
-            recordList.add(respDTO);
-        });
-
-        return PageResult.convertFor(pageList, pageSize, recordList);
-    }
-
     @Transactional(rollbackFor = Exception.class)
-    public Map<String, String> resaleCollectionCreateOrder(String resaleCollectionId, int collectionSerialNumber, String memberId, Timestamp now) {
+    public Map<String, String> resaleCollectionCreateOrder(String resaleCollectionId, String memberId, Timestamp now) {
         if (!memberRepository.checkRealName(memberId)) {
             throw new RealNameNotVerifiedException("未实名认证");
         }
-        CollectionEntity collectionEntity = collectionRepository.getById(resaleCollectionId);
-        String issuedCollectionId = issuedCollectionRepository.getIssuedIdByCollectionIdAndSerialNumber(resaleCollectionId, collectionSerialNumber);
-        if (Objects.isNull(collectionEntity)) {
-            throw new CollectionNotFoundException("不存在ID为" + resaleCollectionId + "藏品");
+        MemberResaleCollectionEntity resaleCollection = resaleCollectionRepository.getById(resaleCollectionId);
+        if (Objects.isNull(resaleCollection)) {
+            throw new ResaleCollectionNotFoundException("不存在ID为" + resaleCollectionId + "转售藏品");
         }
-        if (CharSequenceUtil.isBlank(issuedCollectionId)) {
-            throw new IssuedCollectionNotFoundException("不存在ID为" + issuedCollectionId + "发行藏品");
+        if (resaleCollection.getState().equals(NftConstants.转售的藏品状态_已卖出)) {
+            throw new ResaleCollectionSoldOutException("转售藏品已售出");
         }
-        if (issuedCollectionActLogRepository.checkCollectionLock(issuedCollectionId, now)) {
-            throw new IssuedCollectionLockException(CharSequenceUtil.format("多线程异常: [{}] 发行藏品已被锁定", issuedCollectionId));
+        if (resaleCollection.getState().equals(NftConstants.转售的藏品状态_已下架)) {
+            throw new ResaleCollectionSoldOutException("转售藏品已下架");
+        }
+        if (resaleCollection.getState().equals(NftConstants.转售的藏品状态_已取消)) {
+            throw new ResaleCollectionAlreadyCancelException("转售藏品已取消");
+        }
+        if (resaleCollection.getMemberId().equals(memberId)) {
+            throw new ResaleCollectionOwnerException("不能购买自己的转售藏品");
+        }
+        CollectionEntity collectionEntity = collectionRepository.getById(resaleCollection.getCollectionId());
+        if (Objects.isNull(collectionEntity) || CharSequenceUtil.isBlank(collectionEntity.getId())) {
+            throw new CollectionNotFoundException("不存在ResaleCollectionID为" + resaleCollectionId + "转售藏品");
+        }
+        IssuedCollectionEntity issuedCollection = issuedCollectionRepository.getById(resaleCollection.getIssuedCollectionId());
+        if (Objects.isNull(issuedCollection) || CharSequenceUtil.isBlank(issuedCollection.getId())) {
+            throw new IssuedCollectionNotFoundException("[collectionId: " + collectionEntity.getId() + "] 不存在iD为" + resaleCollection.getIssuedCollectionId() + "发行藏品");
+        }
+        if (issuedCollectionActLogRepository.checkMultithreadingCollectionLock(resaleCollection.getIssuedCollectionId(), now)) {
+            throw new IssuedCollectionMultithreadingLockException(CharSequenceUtil.format("多线程异常: [{}] 发行藏品已被锁定", resaleCollection.getIssuedCollectionId()));
         }
         Double amount = collectionEntity.getPrice();
-        if (Boolean.FALSE.equals(issuedCollectionActLogRepository.lockCollection(NftConstants.发行藏品流转类型_二级市场_锁定藏品, issuedCollectionId, memberId))) {
+        if (Boolean.FALSE.equals(issuedCollectionActLogRepository.lockCollection(NftConstants.发行藏品流转类型_二级市场_锁定藏品, issuedCollection.getId(), memberId))) {
             throw new IssuedCollectionActLogUpdateOrAddException("更新或添加发行藏品操作日志失败");
         }
-        PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务类型_二级市场, amount, resaleCollectionId, issuedCollectionId, memberId);
+        // TODO: 2024/4/13 resale订单确定之后, 需要将出售者的hold-collection状态更改
+        if (Boolean.FALSE.equals(resaleCollectionRepository.lockResaleCollection(resaleCollectionId, memberId))) {
+            throw new ResaleCollectionLockException("锁定转售藏品失败");
+        }
+        PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务类型_二级市场, amount, collectionEntity.getId(), issuedCollection.getId(), memberId);
         if (Boolean.FALSE.equals(payOrderRepository.save(entity))) {
             throw new OrderCreationFailedException("生成订单失败");
         }
@@ -264,13 +233,13 @@ public class TransactionService {
         if (Boolean.FALSE.equals(collectionRepository.reduceStock(collectionId))) {
             throw new InsufficientStockException(CharSequenceUtil.format("[{}]库存不足", collectionId));
         }
-        Integer collectionSerialNumber = collectionEntity.getQuantity() - collectionEntity.getStock() + 1;
-        if (collectionSerialNumber <= 0 || collectionSerialNumber > collectionEntity.getQuantity()) {
+        Integer collectionSerialNumber = Math.abs(collectionEntity.getQuantity() - collectionEntity.getStock() + 1);
+        if (collectionSerialNumber < 1 || collectionSerialNumber > collectionEntity.getQuantity()) {
             throw new InsufficientStockException(CharSequenceUtil.format("[{}]库存异常", collectionId));
         }
         String issuedCollectionId = issuedCollectionRepository.getIssuedIdByCollectionIdAndSerialNumber(collectionId, collectionSerialNumber);
-        if (issuedCollectionActLogRepository.checkCollectionLock(issuedCollectionId, now)) {
-            throw new IssuedCollectionLockException(CharSequenceUtil.format("多线程异常: [{}] 发行藏品已被锁定", issuedCollectionId));
+        if (issuedCollectionActLogRepository.checkMultithreadingCollectionLock(issuedCollectionId, now)) {
+            throw new IssuedCollectionMultithreadingLockException(CharSequenceUtil.format("多线程异常: [{}] 发行藏品已被锁定", issuedCollectionId));
         }
         if (collectionSerialNumber > 0 && collectionSerialNumber <= collectionEntity.getQuantity() && CharSequenceUtil.isBlank(issuedCollectionId)) {
             log.error("DataError: 不存在序列号为{}发行藏品", collectionSerialNumber);
@@ -280,8 +249,8 @@ public class TransactionService {
 //            castIssuedCollection(collectionId, memberId, collectionSerialNumber, collectionEntity.getQuantity());
         }
         Double amount = collectionEntity.getPrice();
-        PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务模式_平台自营, amount, collectionId, issuedCollectionId, memberId);
-        if (Boolean.FALSE.equals(issuedCollectionActLogRepository.lockCollection(NftConstants.发行藏品流转类型_平台自营, issuedCollectionId, memberId))) {
+        PayOrderEntity entity = quickBuildPayOrder(NftConstants.支付订单业务类型_平台自营, amount, collectionId, issuedCollectionId, memberId);
+        if (Boolean.FALSE.equals(issuedCollectionActLogRepository.lockCollection(NftConstants.发行藏品流转类型_平台自营_锁定藏品, issuedCollectionId, memberId))) {
             throw new IssuedCollectionActLogUpdateOrAddException("更新或添加发行藏品操作日志失败");
         }
         if (Boolean.FALSE.equals(payOrderRepository.save(entity))) {
@@ -307,31 +276,71 @@ public class TransactionService {
         if (entity.getOrderDeadline().before(now)) {
             throw new OrderExpiredException(CharSequenceUtil.format("[{}]订单已过期", orderId));
         }
-//        if (Boolean.FALSE.equals(collectionRepository.reduceStock(entity.getCollectionId()))) {
-//            throw new InsufficientStockException(CharSequenceUtil.format("[{}]库存不足", entity.getCollectionId()));
-//        }
         if (Boolean.FALSE.equals(memberRepository.reduceBalance(memberId, entity.getAmount()))) {
             throw new InsufficientBalanceException(CharSequenceUtil.format("[{}]余额不足", memberId));
         }
         if (Boolean.FALSE.equals(payOrderRepository.updateStateById(entity.getId(), NftConstants.支付订单状态_已付款, now))) {
             throw new OrderPaymentFailedException(CharSequenceUtil.format("[{}]订单支付失败", orderId));
         }
+
+        //买家余额变动日志
+        try {
+            if (entity.getBizMode().equals(NftConstants.支付订单业务类型_二级市场)) {
+                memberBCLogRepository.createLog(memberId, -Math.abs(entity.getAmount()), NftConstants.会员余额变动日志类型_购买转售的藏品, entity.getOrderNo(), now);
+            } else if (entity.getBizMode().equals(NftConstants.支付订单业务类型_平台自营)) {
+                memberBCLogRepository.createLog(memberId, -Math.abs(entity.getAmount()), NftConstants.会员余额变动日志类型_购买藏品, entity.getOrderNo(), now);
+            } else {
+                memberBCLogRepository.createLog(memberId, -Math.abs(entity.getAmount()), NftConstants.会员余额变动日志类型_系统, entity.getOrderNo(), now);
+            }
+        } catch (Exception e) {
+            throw new MemberBCLogCreationFailedException("[生成会员余额变动日志失败]: " + e);
+        }
+
+        //卖家余额变动日志 & 卖家藏品状态更新
         String fromAddress = null;
         if (entity.getBizMode().equals(NftConstants.支付订单业务类型_二级市场)) {
-            String fromMemberId = issuedCollectionActLogRepository.getHoldMemberIdByIssuedId(entity.getIssuedCollectionId());
+            MemberResaleCollectionEntity resaleCollection = resaleCollectionRepository.getLastEntityByIssuedCollectionId(entity.getIssuedCollectionId());
+            String fromMemberId = resaleCollection.getMemberId();
             fromAddress = memberRepository.getAddressById(fromMemberId);
+            try {
+                resaleCollectionRepository.updateStateById(resaleCollection.getId(), NftConstants.转售的藏品状态_已卖出, now);
+            } catch (Exception e) {
+                throw new ResaleCollectionUpdateFailedException(CharSequenceUtil.format("[{}]更新转售藏品状态失败: {}", resaleCollection.getId(), e));
+            }
+            try {
+                memberHoldCollectionRepo.updateState(resaleCollection.getMemberHoldCollectionId(), NftConstants.持有藏品状态_已卖出, now);
+            } catch (Exception e) {
+                throw new MemberHoldCollectionUpdateFailedException(CharSequenceUtil.format("[{}]更新持有藏品状态失败: {}", resaleCollection.getMemberHoldCollectionId(), e));
+            }
+            try {
+                memberBCLogRepository.createLog(fromMemberId, resaleCollection.getResalePrice(), NftConstants.会员余额变动日志类型_出售藏品, entity.getOrderNo(), now);
+            } catch (Exception e) {
+                throw new MemberBCLogCreationFailedException(CharSequenceUtil.format("[{}][生成转售藏品持有者会员余额变动日志失败]: {} ", fromMemberId, e));
+            }
+            try {
+                memberRepository.increaseBalance(fromMemberId, resaleCollection.getResalePrice());
+            } catch (Exception e) {
+                throw new MemberBalanceUpdateFailedException(CharSequenceUtil.format("[{}][更新转售藏品持有者余额失败]: {} ", fromMemberId, e));
+            }
         }
-        if (entity.getBizMode().equals(NftConstants.支付订单业务模式_平台自营)) {
-            fromAddress = NftConstants.平台账户地址;
+
+
+        if (entity.getBizMode().equals(NftConstants.支付订单业务类型_平台自营)) {
+            fromAddress = bcosProperties.getDeployAddress();
         }
         if (CharSequenceUtil.isBlank(fromAddress)) {
             throw new GainFromAddressException("获取转出地址失败");
         }
+
+
+        //区块链链上交易
         String toAddress = memberRepository.getAddressById(memberId);
-        String transcationHash = chainService.transaction(fromAddress, toAddress, memberId);
-        if (CharSequenceUtil.isBlank(transcationHash)) {
+        String transactionHash = chainService.transaction(fromAddress, toAddress, memberId);
+        if (CharSequenceUtil.isBlank(transactionHash)) {
             throw new BlockChainTransactionException("区块链交易异常");
         }
+
+        //购买者藏品持有
         if (Boolean.FALSE.equals(holdCollectionRepository.increaseByPurchase(
                 IdUtils.snowFlakeId(),
                 entity.getCollectionId(),
@@ -339,7 +348,7 @@ public class TransactionService {
                 memberId,
                 entity.getAmount(),
                 // 这里需要获取区块链交易的hash地址 或 唯一hash值
-                transcationHash
+                transactionHash
                 , now))) {
             throw new HoldCollectionCreationFailedException(CharSequenceUtil.format("[{}]持有藏品创建失败", memberId));
         }
@@ -361,6 +370,7 @@ public class TransactionService {
     @Transactional(rollbackFor = Exception.class)
     public Boolean collectionResale(String memberId, String holdCollectionId, double resalePrice) throws Exception {
         if (CharSequenceUtil.isBlank(memberId) || CharSequenceUtil.isBlank(holdCollectionId)) {
+            System.err.println("Test");
             return false;
         }
         if (resalePrice < 0 || resalePrice > NftConstants.单笔销售最大价格) {
@@ -368,7 +378,10 @@ public class TransactionService {
         }
         MemberHoldCollectionEntity holdCollection = holdCollectionRepository.checkExist(holdCollectionId, memberId);
         if (Objects.isNull(holdCollection)) {
-            throw new CollectionNotFoundException("藏品不存在");
+            throw new CollectionNotFoundException("持有藏品不存在");
+        }
+        if (resaleCollectionRepository.checkResaleExistByIssuedCollection(holdCollection.getIssuedCollectionId(), memberId)) {
+            throw new CollectionAlreadyResaleException("藏品已转售");
         }
         try {
             MemberResaleCollectionEntity resaleCollection = new MemberResaleCollectionEntity();
@@ -380,16 +393,13 @@ public class TransactionService {
             resaleCollection.setIssuedCollectionId(holdCollection.getIssuedCollectionId());
             resaleCollection.setVersion(1L);
             resaleCollection.setResalePrice(resalePrice);
-            resaleCollection.setState(NftConstants.持有藏品状态_转售中);
+            resaleCollection.setState(NftConstants.转售的藏品状态_已发布);
             resaleCollection.setResaleTime(Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
-            return resaleCollectionRepository.save(resaleCollection) && holdCollectionRepository.update(new UpdateWrapper<MemberHoldCollectionEntity>()
-                    .eq("member_id", memberId)
-                    .eq("collection_id", holdCollectionId)
-                    .set("state", NftConstants.持有藏品状态_转售中));
+            holdCollection.setState(NftConstants.持有藏品状态_转售中);
+            return resaleCollectionRepository.saveOrUpdate(resaleCollection) && holdCollectionRepository.saveOrUpdate(holdCollection);
         } catch (Exception e) {
             throw new CollectionResaleException("藏品转售失败");
         }
-
     }
 
 
@@ -418,14 +428,14 @@ public class TransactionService {
                 .build();
     }
 
-    public PayOrderRespDTO getMyPayOrderDetail(String orderId, String memberId) {
+    public MyPayOrderRespDTO getMyPayOrderDetail(String orderId, String memberId) {
         PayOrderEntity entity = payOrderRepository.getById(orderId);
         if (entity == null || !entity.getMemberId().equals(memberId)) {
             throw new OrderNotFoundException(CharSequenceUtil.format("[{}]订单不存在", orderId));
         }
         CollectionEntity collection = collectionRepository.getById(entity.getCollectionId());
         CreatorEntity creator = creatorRepository.getById(collection.getCreatorId());
-        PayOrderRespDTO respDTO = PayOrderRespDTO.builder()
+        MyPayOrderRespDTO respDTO = MyPayOrderRespDTO.builder()
                 .id(entity.getId())
                 .orderNo(entity.getOrderNo())
                 .amount(entity.getAmount())
@@ -561,14 +571,21 @@ public class TransactionService {
         return result;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void cancelOrder(String orderId) {
         try {
+            if (CharSequenceUtil.isBlank(orderId)) {
+                return;
+            }
             PayOrderEntity entity = payOrderRepository.getById(orderId);
+            if (Objects.isNull(entity)) {
+                return;
+            }
             payOrderRepository.updateStateById(orderId, NftConstants.支付订单状态_已取消, Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT)));
             issuedCollectionActLogRepository.unlockCollection(entity.getIssuedCollectionId(), entity.getMemberId());
             collectionRepository.increaseStock(entity.getCollectionId());
         } catch (Exception e) {
-            throw new OrderCancellationFailedException(CharSequenceUtil.format("{}: 订单取消失败", orderId));
+            throw new OrderCancellationFailedException(CharSequenceUtil.format("{}: 订单取消失败 || ", orderId) + e.getMessage());
         }
     }
 
@@ -612,17 +629,21 @@ public class TransactionService {
         if (CharSequenceUtil.isBlank(resaleCollectionId) || Boolean.FALSE.equals(resaleCollectionRepository.checkExist(resaleCollectionId))) {
             throw new MemberNotMatchException("藏品不存在");
         }
+        MemberResaleCollectionEntity resaleCollection = resaleCollectionRepository.getById(resaleCollectionId);
         if (Boolean.FALSE.equals(resaleCollectionRepository.checkExist(resaleCollectionId, memberId))) {
             throw new MemberNotMatchException("藏品不属于当前用户");
         }
-        if (Boolean.FALSE.equals(resaleCollectionRepository.checkState(resaleCollectionId, NftConstants.转售的藏品状态_已发布))) {
-            throw new ResaleNotMatchException("藏品不是转售中状态");
+        if (Boolean.TRUE.equals(resaleCollectionRepository.checkState(resaleCollectionId, NftConstants.转售的藏品状态_已取消))) {
+            throw new ResaleNotMatchException("藏品不是转售中状态: 转售的藏品状态_已取消");
         }
-        if (Boolean.FALSE.equals(resaleCollectionRepository.checkState(resaleCollectionId, NftConstants.转售的藏品状态_已卖出))) {
-            throw new ResaleNotMatchException("藏品不是转售中状态");
+        if (Boolean.TRUE.equals(resaleCollectionRepository.checkState(resaleCollectionId, NftConstants.转售的藏品状态_已卖出))) {
+            throw new ResaleNotMatchException("藏品不是转售中状态: 转售的藏品状态_已卖出");
         }
         if (Boolean.FALSE.equals(resaleCollectionRepository.updateStateById(resaleCollectionId, NftConstants.转售的藏品状态_已取消, now))) {
             throw new ResaleCancellationFailedException("藏品取消转售失败");
+        }
+        if (Boolean.FALSE.equals(memberHoldCollectionRepo.updateState(resaleCollection.getMemberHoldCollectionId(), NftConstants.持有藏品状态_持有中, now))) {
+            throw new MemberHoldCollectionUpdateStateFailedException("藏品取消转售失败: 更新持有藏品状态失败");
         }
         return true;
     }
@@ -651,5 +672,130 @@ public class TransactionService {
             throw new IssuedCollectionCastFailedException(CharSequenceUtil.format("BlockError: {}发行藏品上链失败{}", collectionId, e.getMessage()));
         }
         return null;
+    }
+
+    public PageResult<MyPayOrderRespDTO> getMyPayOrder(long current, long pageSize, String status, String memberId) {
+        PageInfo<PayOrderEntity> pageList = null;
+        if (CharSequenceUtil.isBlank(status)) {
+            pageList = payOrderRepository.getPayOrderPageListByMemberId(current, pageSize, memberId);
+        } else {
+            pageList = payOrderRepository.getPayOrderPageListByMemberIdAndStatus(current, pageSize, memberId, status);
+        }
+        List<MyPayOrderRespDTO> recordList = new ArrayList<>();
+        pageList.getList().stream().filter(entity -> {
+            return collectionRepository.checkExist(entity.getCollectionId());
+        }).forEach(entity -> {
+            MyPayOrderRespDTO respDTO = PayOrderConvert.INSTANCE.convertToMyRespDTO(entity);
+            CollectionEntity collection = collectionRepository.getById(entity.getCollectionId());
+            CreatorEntity creator = creatorRepository.getById(collection.getCreatorId());
+            respDTO.setCommodityType(collection.getCommodityType());
+            respDTO.setCollectionName(collection.getName());
+            respDTO.setCollectionCover(collection.getCover());
+            respDTO.setCreatorName(creator.getName());
+            if (respDTO.getState().equals(NftConstants.支付订单状态_已付款)) {
+                respDTO.setStateName("已付款");
+            } else if (respDTO.getState().equals(NftConstants.支付订单状态_待付款)) {
+                respDTO.setStateName("待付款");
+            } else if (respDTO.getState().equals(NftConstants.支付订单状态_已取消)) {
+                respDTO.setStateName("已取消");
+            } else {
+                respDTO.setStateName("未知");
+            }
+            recordList.add(respDTO);
+        });
+        return PageResult.convertFor(pageList, pageSize, recordList);
+    }
+
+
+    public PageResult<CollectionGiveRecordRespDTO> getMyGiveRecord(long current, long pageSize, String memberId, String giveDirection) {
+        PageInfo<CollectionGiveRecordEntity> pageList = null;
+        String resultDirection;
+        if (giveDirection != null && NftConstants.DIRECTION_FROM.equals(giveDirection)) {
+            resultDirection = giveDirection;
+            pageList = collectionGiveRecordRepository.getPageListByGiveFromId(current, pageSize, memberId);
+        } else if (giveDirection != null && NftConstants.DIRECTION_TO.equals(giveDirection)) {
+            resultDirection = giveDirection;
+            pageList = collectionGiveRecordRepository.getPageListByGiveToId(current, pageSize, memberId);
+        } else {
+            resultDirection = "other";
+            pageList = collectionGiveRecordRepository.getPageListByGiveToIdOrGiveFormId(current, pageSize, memberId, memberId);
+        }
+        List<CollectionGiveRecordRespDTO> recordList = new ArrayList<>();
+        pageList.getList().forEach(collectionGiveRecordEntity -> {
+            CollectionGiveRecordRespDTO respDTO = CollectionGiveRecordConvert.INSTANCE.convertToDTO(collectionGiveRecordEntity);
+            MemberHoldCollectionEntity holdCollection = holdCollectionRepository.getById(collectionGiveRecordEntity.getHoldCollectionId());
+            CollectionEntity collection = collectionRepository.getById(holdCollection.getCollectionId());
+
+            // TODO: 2024/4/12 这里暂且用转赠记录iD作为 orderId
+            respDTO.setOrderNo(collectionGiveRecordEntity.getId());
+            if ("other".equals(resultDirection)) {
+                if (memberId.equals(collectionGiveRecordEntity.getGiveFromId())) {
+                    respDTO.setGiveDirection(NftConstants.DIRECTION_FROM);
+                } else if (memberId.equals(collectionGiveRecordEntity.getGiveToId())) {
+                    respDTO.setGiveDirection(NftConstants.DIRECTION_TO);
+                }
+            } else {
+                respDTO.setGiveDirection(resultDirection);
+            }
+            respDTO.setGiveToMobile(memberRepository.getMobileById(collectionGiveRecordEntity.getGiveToId()));
+            respDTO.setGiveFromMobile(memberRepository.getMobileById(collectionGiveRecordEntity.getGiveFromId()));
+            if (Objects.isNull(collection)) {
+                respDTO.setCollectionName("DataError: No Found Collection Name");
+                respDTO.setCollectionCover("DataError: No Found Collection Cover");
+            } else {
+                respDTO.setCollectionName(collection.getName());
+                respDTO.setCollectionCover(collection.getCover());
+            }
+            recordList.add(respDTO);
+        });
+
+        return PageResult.convertFor(pageList, pageSize, recordList);
+    }
+
+
+    public PageResult<PayOrderRespDTO> findPayOrderByPage(long current, long pageSize, String memberMobile,
+                                                          String collectionName, String bizMode, String state,
+                                                          LocalDateTime createTimeStart, LocalDateTime createTimeEnd) {
+        PageInfo<PayOrderEntity> pageList = payOrderRepository.getPayOrderPageListByParam(current, pageSize, memberMobile, collectionName, bizMode, state, createTimeStart, createTimeEnd);
+        List<PayOrderRespDTO> respDTOS = new ArrayList<>();
+        pageList.getList().forEach(entity -> {
+            PayOrderRespDTO respDTO = PayOrderConvert.INSTANCE.convertToRespDTO(entity);
+            CollectionEntity collection = collectionRepository.getById(entity.getCollectionId());
+            MemberEntity member = memberRepository.getById(entity.getMemberId());
+            if(!Objects.isNull(entity.getCreateTime())){
+                respDTO.setCreateTime(entity.getCreateTime().toLocalDateTime().format(NftConstants.DATE_FORMAT));
+            }
+            if (!Objects.isNull(entity.getCancelTime())){
+                respDTO.setCancelTime(entity.getCancelTime().toLocalDateTime().format(NftConstants.DATE_FORMAT));
+            }
+            if (!Objects.isNull(entity.getPaidTime())){
+                respDTO.setPaidTime(entity.getPaidTime().toLocalDateTime().format(NftConstants.DATE_FORMAT));
+            }
+            if (!Objects.isNull(member)) {
+                respDTO.setMemberMobile(member.getMobile());
+                respDTO.setMemberBlockChainAddr(member.getBlockChainAddr());
+            } else {
+                respDTO.setMemberMobile("DataError: No Found Member Mobile");
+                respDTO.setMemberBlockChainAddr("DataError: No Found Member BlockChain Addr");
+            }
+            if (!Objects.isNull(collection)) {
+                respDTO.setCollectionName(collection.getName());
+                respDTO.setCollectionCover(collection.getCover());
+                respDTO.setCommodityType(collection.getCommodityType());
+            }else {
+                respDTO.setCollectionName("DataError: No Found Collection Name");
+                respDTO.setCollectionCover("DataError: No Found Collection Cover");
+                respDTO.setCommodityType("DataError: No Found Commodity Type");
+            }
+            CreatorEntity creator = creatorRepository.getById(collection.getCreatorId());
+            if (!Objects.isNull(creator)){
+                respDTO.setCreatorName(creator.getName());
+            }else {
+                respDTO.setCreatorName("DataError: No Found Creator Name");
+            }
+
+            respDTOS.add(respDTO);
+        });
+        return PageResult.convertFor(pageList, pageSize, respDTOS);
     }
 }

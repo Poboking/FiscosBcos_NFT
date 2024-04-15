@@ -38,6 +38,7 @@ public class MemberResaleCollectionEntity implements Serializable, MyHoldCollect
 //     */
 //    @TableField(exist = false)
 //    private String collectionSerialNumber;
+
     /**
      * 收藏品封面
      */
@@ -58,6 +59,7 @@ public class MemberResaleCollectionEntity implements Serializable, MyHoldCollect
     /**
      * 锁定支付的成员ID & 购买藏品的成员ID
      */
+    // TODO: 2024/4/13 这里需要做处理，因为这个字段有两个含义，一个是锁定支付的成员ID，一个是购买藏品的成员ID
     private String lockPayMemberId;
     /**
      * 成员持有收藏品ID

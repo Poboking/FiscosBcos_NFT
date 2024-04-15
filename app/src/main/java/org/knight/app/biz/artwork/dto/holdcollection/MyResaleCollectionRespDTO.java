@@ -22,5 +22,5 @@ public class MyResaleCollectionRespDTO extends CollectionBaseDTO {
 
     private String cover;
 
-    private String holdDate;
+    private String resaleDate;
 }

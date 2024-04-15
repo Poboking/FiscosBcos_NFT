@@ -17,6 +17,7 @@ import org.knight.app.biz.convert.artwork.MySaleCollectionConvert;
 import org.knight.app.biz.exception.collection.CollectionNotFoundException;
 import org.knight.app.biz.exception.collection.ResaleCollectionDetailFailedException;
 import org.knight.app.biz.exception.member.MemberNotFoundException;
+import org.knight.app.biz.exception.transaction.ResaleCollectionNotFoundException;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.infrastructure.dao.domain.*;
@@ -46,14 +47,17 @@ public class MemberResaleCollectionService {
 
     private final CreatorRepositoryImpl creatorRepository;
 
+    private final IssuedCollectionActionLogRepositoryImpl issuedCollectionActionLogRepo;
+
     @Autowired
-    public MemberResaleCollectionService(MemberResaleCollectionRepositoryImpl memberResaleCollectionRepository, CollectionRepositoryImpl collectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository, MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository, MemberRepositoryImpl memberRepository, CreatorRepositoryImpl creatorRepository) {
+    public MemberResaleCollectionService(MemberResaleCollectionRepositoryImpl memberResaleCollectionRepository, CollectionRepositoryImpl collectionRepository, IssuedCollectionRepositoryImpl issuedCollectionRepository, MemberHoldCollectionRepositoryImpl memberHoldCollectionRepository, MemberRepositoryImpl memberRepository, CreatorRepositoryImpl creatorRepository, IssuedCollectionActionLogRepositoryImpl issuedCollectionActionLogRepo) {
         this.memberResaleCollectionRepository = memberResaleCollectionRepository;
         this.collectionRepository = collectionRepository;
         this.issuedCollectionRepository = issuedCollectionRepository;
         this.memberHoldCollectionRepository = memberHoldCollectionRepository;
         this.memberRepository = memberRepository;
         this.creatorRepository = creatorRepository;
+        this.issuedCollectionActionLogRepo = issuedCollectionActionLogRepo;
     }
 
     public PageResult<MemberResaleCollectionEntity> getOrderDescPageList(long current, long pageSize) {
@@ -67,71 +71,112 @@ public class MemberResaleCollectionService {
     }
 
     public PageResult<CollectionResaleRespDTO> getPageListByCollectionQueryParam(CollectionQueryReqDTO reqDto) {
-        List<CollectionResaleRespDTO> resultList = new ArrayList<>();
+        List<CollectionResaleRespDTO> respDTOS = new ArrayList<>();
         List<String> Ids = collectionRepository.getIdsByCommodityType(reqDto.getCommodityType());
         if (reqDto.isOrderDesc()) {
 
             PageInfo<MemberResaleCollectionEntity> entityIPage = memberResaleCollectionRepository.getPriceOrderDescPageListByParam(
-                    reqDto.getCurrent(), reqDto.getPageSize(), reqDto.getCreatorId(), reqDto.getCollectionId(), NftConstants.持有藏品状态_转售中, Ids);
+                    reqDto.getCurrent(), reqDto.getPageSize(), reqDto.getCreatorId(), reqDto.getCollectionId(), NftConstants.转售的藏品状态_已发布, Ids);
             entityIPage.getList().forEach(bean -> {
-                CollectionResaleRespDTO resultBean = CollectionConvert.INSTANCE.convertToResaleRespDTO(bean);
-                resultBean.setCollectionSerialNumber(issuedCollectionRepository
+                CollectionEntity collection = collectionRepository.getById(bean.getCollectionId());
+                CollectionResaleRespDTO respDTO = CollectionConvert.INSTANCE.convertToResaleRespDTO(bean);
+                respDTO.setCollectionSerialNumber(issuedCollectionRepository
                         .getById(bean.getIssuedCollectionId())
                         .getCollectionSerialNumber());
-                resultList.add(resultBean);
+                if (Objects.isNull(collection)){
+                    respDTO.setCollectionCover("DataError: Collection Cover Not Found");
+                    respDTO.setCollectionName("DataError: Collection Name Not Found");
+                }else {
+                    respDTO.setCollectionCover(collection.getCover());
+                    respDTO.setCollectionName(collection.getName());
+                    respDTO.setQuantity(collection.getQuantity());
+                    CreatorEntity creator = creatorRepository.getById(collection.getCreatorId());
+                    if (Objects.isNull(creator)) {
+                        respDTO.setCreatorName("DataError: Create Name Not Found");
+                    } else {
+                        respDTO.setCreatorName(creator.getName());
+                    }
+                }
+                respDTOS.add(respDTO);
             });
-            return PageResult.convertFor(entityIPage, reqDto.getPageSize(), resultList);
+            return PageResult.convertFor(entityIPage, reqDto.getPageSize(), respDTOS);
 
         } else {
 
             PageInfo<MemberResaleCollectionEntity> entityIPage = memberResaleCollectionRepository.getPriceOrderAscPageListByParam(
-                    reqDto.getCurrent(), reqDto.getPageSize(), reqDto.getCreatorId(), reqDto.getCollectionId(), NftConstants.持有藏品状态_转售中, Ids);
+                    reqDto.getCurrent(), reqDto.getPageSize(), reqDto.getCreatorId(), reqDto.getCollectionId(), NftConstants.转售的藏品状态_已发布, Ids);
             entityIPage.getList().forEach(bean -> {
-                CollectionResaleRespDTO resultBean = CollectionConvert.INSTANCE.convertToResaleRespDTO(bean);
-                resultBean.setCollectionSerialNumber(issuedCollectionRepository
+                CollectionEntity collection = collectionRepository.getById(bean.getCollectionId());
+                CollectionResaleRespDTO respDTO = CollectionConvert.INSTANCE.convertToResaleRespDTO(bean);
+                respDTO.setCollectionSerialNumber(issuedCollectionRepository
                         .getById(bean.getIssuedCollectionId())
                         .getCollectionSerialNumber());
-                resultList.add(resultBean);
+                if (Objects.isNull(collection)){
+                    respDTO.setCollectionCover("DataError: Collection Cover Not Found");
+                    respDTO.setCollectionName("DataError: Collection Name Not Found");
+                }else {
+                    respDTO.setCollectionCover(collection.getCover());
+                    respDTO.setCollectionName(collection.getName());
+                    respDTO.setQuantity(collection.getQuantity());
+                    CreatorEntity creator = creatorRepository.getById(collection.getCreatorId());
+                    if (Objects.isNull(creator)) {
+                        respDTO.setCreatorName("DataError: Create Name Not Found");
+                    }else {
+                        respDTO.setCreatorName(creator.getName());
+                    }
+                }
+                respDTOS.add(respDTO);
             });
-            return PageResult.convertFor(entityIPage, reqDto.getPageSize(), resultList);
+            return PageResult.convertFor(entityIPage, reqDto.getPageSize(), respDTOS);
         }
 
     }
 
     public PageResult<MyResaleCollectionRespDTO> getMyResaleCollectionPageList(long current, long pageSize, String memberId) {
-        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_藏品);
-        PageInfo<MemberResaleCollectionEntity> pageSoldEntity = memberResaleCollectionRepository.getPageListByMemberIdAndStatus(current, pageSize, memberId, NftConstants.持有藏品状态_转售中);
+        PageInfo<MemberResaleCollectionEntity> pageSoldEntity = memberResaleCollectionRepository.getPageListByMemberIdAndStatus(current, pageSize, memberId, NftConstants.转售的藏品状态_已发布);
         List<MemberResaleCollectionEntity> records = pageSoldEntity.getList();
+        List<MyResaleCollectionRespDTO> respDTOs=  new ArrayList<>();
         records.forEach(e -> {
-            pageEntity.getList().forEach(c -> {
-                if (e.getCollectionId().equals(c.getId())) {
-                    e.setName(c.getName());
-                    e.setCover(c.getCover());
-                }
-            });
+            CollectionEntity collection = collectionRepository.getById(e.getCollectionId());
+            MyResaleCollectionRespDTO respDTO = MyResaleCollectionConvert.INSTANCE.convertToRespDTO(e);
+            if (Objects.isNull(collection)) {
+                respDTO.setName("DataError: Collection Name Not Found");
+                respDTO.setCover("DataError: Collection Cover Not Found");
+            } else if (CharSequenceUtil.isBlank(collection.getName())){
+                respDTO.setName("DataError: Collection Name Not Found");
+            } else if (CharSequenceUtil.isBlank(collection.getCover())){
+                respDTO.setCover("DataError: Collection Cover Not Found");
+            }else {
+                respDTO.setName(collection.getName());
+                respDTO.setCover(collection.getCover());
+            }
+            respDTO.setResaleDate(e.getResaleTime().toLocalDateTime().format(NftConstants.SIMPLE_DATE_FORMAT));
+            respDTOs.add(respDTO);
         });
-        return PageResult.convertFor(pageSoldEntity, pageSize, MyResaleCollectionConvert.INSTANCE.convertToRespDTO(records));
+        return PageResult.convertFor(pageSoldEntity, pageSize, respDTOs);
     }
 
     public PageResult<MySaleCollectionRespDTO> getMySoldCollectionPageList(long current, long pageSize, String memberId) {
-        PageInfo<CollectionEntity> pageEntity = collectionRepository.getPageListByCommodityType(current, pageSize, NftConstants.商品类型_藏品);
         PageInfo<MemberResaleCollectionEntity> pageSoldEntity = memberResaleCollectionRepository.getPageListByMemberIdAndStatus(current, pageSize, memberId, NftConstants.持有藏品状态_已卖出);
         List<MemberResaleCollectionEntity> records = pageSoldEntity.getList();
+        List<MySaleCollectionRespDTO> respDTOs =  new ArrayList<>();
         records.forEach(e -> {
-            pageEntity.getList().forEach(c -> {
-                if (e.getCollectionId().equals(c.getId())) {
-                    e.setName(c.getName());
-                    e.setCover(c.getCover());
-                }
-            });
-            if (CharSequenceUtil.isBlank(e.getName())){
-                e.setName("DataError: Unknown Collection Name");
+            CollectionEntity collection = collectionRepository.getById(e.getCollectionId());
+            MySaleCollectionRespDTO respDTO = MySaleCollectionConvert.INSTANCE.convertToRespDTO(e);
+            if (Objects.isNull(collection)) {
+                respDTO.setName("DataError: Collection Name Not Found");
+                respDTO.setCover("DataError: Collection Cover Not Found");
+            } else if (CharSequenceUtil.isBlank(collection.getName())){
+                respDTO.setName("DataError: Collection Name Not Found");
+            } else if (CharSequenceUtil.isBlank(collection.getCover())){
+                respDTO.setCover("DataError: Collection Cover Not Found");
+            }else {
+                respDTO.setName(collection.getName());
+                respDTO.setCover(collection.getCover());
             }
-            if (CharSequenceUtil.isBlank(e.getCover())){
-                e.setCover("DataError: Unknown Collection Cover");
-            }
+            respDTOs.add(respDTO);
         });
-        return PageResult.convertFor(pageSoldEntity, pageSize, MySaleCollectionConvert.INSTANCE.convertToRespDTO(records));
+        return PageResult.convertFor(pageSoldEntity, pageSize, respDTOs);
     }
 
 
@@ -174,20 +219,40 @@ public class MemberResaleCollectionService {
 
     public MyResaleCollectionDetailRespDTO getMyResaleCollectionDetail(String resaleCollectionId, String memberId) {
         MemberResaleCollectionEntity resaleCollection = memberResaleCollectionRepository.getById(resaleCollectionId);
+        if (Objects.isNull(resaleCollection)){
+            throw new ResaleCollectionNotFoundException(CharSequenceUtil.format("{}:转售藏品不存在", resaleCollectionId));
+        }
         MemberHoldCollectionEntity holdCollection = memberHoldCollectionRepository.getOne(new QueryWrapper<MemberHoldCollectionEntity>()
                 .eq("collection_id", resaleCollection.getCollectionId())
                 .eq("member_id", memberId)
-                .eq("status", NftConstants.持有藏品状态_转售中));
+                .eq("state", NftConstants.持有藏品状态_转售中));
         if (Objects.isNull(holdCollection)) {
-            throw new CollectionNotFoundException(CharSequenceUtil.format("{}:collectionId is null", resaleCollection.getCollectionId()));
+            throw new CollectionNotFoundException(CharSequenceUtil.format("{}:持有藏品不存在", resaleCollection.getCollectionId()));
         }
         if (Boolean.FALSE.equals(collectionRepository.checkExist(holdCollection.getCollectionId()))) {
-            throw new CollectionNotFoundException(CharSequenceUtil.format("{}:collectionId is null", resaleCollection.getCollectionId()));
+            throw new CollectionNotFoundException(CharSequenceUtil.format("{}:藏品不存在", resaleCollection.getCollectionId()));
         }
         if (Boolean.FALSE.equals(memberRepository.checkExist(holdCollection.getMemberId()))) {
-            throw new MemberNotFoundException(CharSequenceUtil.format("{}:memberId is null", memberId));
+            throw new MemberNotFoundException(CharSequenceUtil.format("{}:用户不存在", memberId));
         }
         CollectionResaleDetailRespDTO respDTO = getCollectionDetail(resaleCollectionId);
         return MyResaleCollectionDetailConvert.INSTANCE.convertToRespDTOByResp(respDTO);
+    }
+
+    public Boolean checkResaleCollectionLock(String resaleCollectionId , String memberId) {
+        if (CharSequenceUtil.isBlank(resaleCollectionId) || CharSequenceUtil.isBlank(memberId)){
+            return false;
+        }
+        MemberResaleCollectionEntity entity = memberResaleCollectionRepository.getById(resaleCollectionId);
+        if (Objects.isNull(entity)){
+            return false;
+        }
+        if (CharSequenceUtil.isBlank(entity.getLockPayMemberId())){
+            return false;
+        }
+        if (entity.getLockPayMemberId().equals(memberId)){
+            return false;
+        }
+        return issuedCollectionActionLogRepo.checkCollectionLock(entity.getIssuedCollectionId());
     }
 }

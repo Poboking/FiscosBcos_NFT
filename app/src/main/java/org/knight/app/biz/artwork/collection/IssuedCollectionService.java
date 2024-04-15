@@ -72,9 +72,9 @@ public class IssuedCollectionService {
             respDTOS.add(IssuedCollectionRespDTO.builder()
                     .id(item.getId())
                     .collectionSerialNumber(item.getCollectionSerialNumber())
-                    .issueTime(LocalDateTime.parse(item.getIssueTime().toLocalDateTime().format(NftConstants.DATE_FORMAT)))
+                    .issueTime(item.getIssueTime().toLocalDateTime().format(NftConstants.DATE_FORMAT))
                     .uniqueId(item.getUniqueId())
-                    .syncChainTime(item.getSyncChainTime().toLocalDateTime())
+                    .syncChainTime(item.getSyncChainTime().toLocalDateTime().format(NftConstants.DATE_FORMAT))
                     .build());
         });
         return respDTOS;

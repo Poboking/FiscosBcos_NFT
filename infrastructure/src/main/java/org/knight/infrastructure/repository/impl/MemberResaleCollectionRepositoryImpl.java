@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -340,23 +341,19 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
             return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
                     .eq("id", id)
                     .set("state", state)
-                    .set("update_time", updateTime)
                     .set("sold_time", updateTime)) > 0;
         }
         if (state.equals(NftConstants.转售的藏品状态_已取消)) {
             return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
                     .eq("id", id)
                     .set("state", state)
-                    .set("update_time", updateTime)
                     .set("cancel_time", updateTime)) > 0;
         }
         if (state.equals(NftConstants.转售的藏品状态_已发布)) {
             return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
                     .eq("id", id)
                     .set("state", state)
-                    .set("update_time", updateTime)
-                    .set("resale", updateTime)) > 0;
-
+                    .set("resale_time", updateTime)) > 0;
         }
 //        if (state.equals(NftConstants.转售的藏品状态_已下架))
         return false;
@@ -409,6 +406,78 @@ public class MemberResaleCollectionRepositoryImpl extends ServiceImpl<MemberResa
         return memberResaleCollectionMapper.exists(new QueryWrapper<MemberResaleCollectionEntity>()
                 .eq("id", resaleCollectionId)
                 .eq("state", state));
+    }
+
+    /**
+     * 检查转赠藏品是否存在
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户ID
+     * @return boolean 是否存在
+     */
+    @Override
+    public boolean checkResaleExistByIssuedCollection(String issuedCollectionId, String memberId) {
+        if (CharSequenceUtil.isBlank(issuedCollectionId) || CharSequenceUtil.isBlank(memberId)) {
+            return false;
+        }
+        List<MemberResaleCollectionEntity> list = memberResaleCollectionMapper.selectList(new QueryWrapper<MemberResaleCollectionEntity>()
+                .eq("issued_collection_id", issuedCollectionId)
+                .eq("member_id", memberId)
+                .eq("state", NftConstants.转售的藏品状态_已发布));
+        return !list.isEmpty();
+    }
+
+    /**
+     * 锁定转售藏品
+     *
+     * @param resaleCollectionId id
+     * @param memberId           用户iD
+     * @return boolean
+     */
+    @Override
+    public Boolean lockResaleCollection(String resaleCollectionId, String memberId) {
+        if (CharSequenceUtil.isBlank(resaleCollectionId) || CharSequenceUtil.isBlank(memberId)) {
+            return false;
+        }
+        return memberResaleCollectionMapper.update(new UpdateWrapper<MemberResaleCollectionEntity>()
+                .eq("id", resaleCollectionId)
+                .set("lock_pay_member_id", memberId)) > 0;
+    }
+
+    /**
+     * 获取最新的锁定用户ID - 根据发行藏品ID
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @return string 用户ID
+     */
+    @Override
+    public String getLockMemberByIssuedCollectionId(String issuedCollectionId) {
+        MemberResaleCollectionEntity entity = memberResaleCollectionMapper.selectOne(new QueryWrapper<MemberResaleCollectionEntity>()
+                .eq("issued_collection_id", issuedCollectionId)
+                .orderByDesc("resale_time")
+                .last("limit 1"));
+        if (Objects.isNull(entity)) {
+            return null;
+        }
+        return entity.getLockPayMemberId();
+    }
+
+    /**
+     * 获取转售藏品持有用户ID - 根据发行藏品ID
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @return string 持有者ID
+     */
+    @Override
+    public MemberResaleCollectionEntity getLastEntityByIssuedCollectionId(String issuedCollectionId) {
+        MemberResaleCollectionEntity entity = memberResaleCollectionMapper.selectOne(new QueryWrapper<MemberResaleCollectionEntity>()
+                .eq("issued_collection_id", issuedCollectionId)
+                .orderByDesc("resale_time")
+                .last("limit 1"));
+        if (Objects.isNull(entity)) {
+            return null;
+        }
+        return entity;
     }
 }
 

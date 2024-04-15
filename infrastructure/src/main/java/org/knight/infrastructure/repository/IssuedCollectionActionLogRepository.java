@@ -19,7 +19,15 @@ public interface IssuedCollectionActionLogRepository extends IService<IssuedColl
      * @param now                操作时间
      * @return boolean
      */
-    boolean checkCollectionLock(String issuedCollectionId, Timestamp now);
+    boolean checkMultithreadingCollectionLock(String issuedCollectionId, Timestamp now);
+
+    /**
+     * 检查藏品是否被锁定 - 根据流转状态
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @return boolean
+     */
+    Boolean checkCollectionLock(String issuedCollectionId);
 
     /**
      * 锁定藏品 - 用户购买或转赠等
@@ -59,9 +67,11 @@ public interface IssuedCollectionActionLogRepository extends IService<IssuedColl
 
     /**
      * 检查被锁定藏品类别
+     *
      * @param issuedCollectionId 发行藏品ID
-     * @param memberId 用户ID
+     * @param memberId           用户ID
      * @return string descType
      */
     String checkLockType(String issuedCollectionId, String memberId);
+
 }

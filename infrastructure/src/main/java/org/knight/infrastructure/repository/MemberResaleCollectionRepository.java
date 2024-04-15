@@ -107,15 +107,13 @@ public interface MemberResaleCollectionRepository extends IService<MemberResaleC
     /**
      * 获取分页列表 - 按照会员id和状态
      *
-     * @param current   当前页
-     * @param pageSize  每页大小
-     * @param memberId  会员id
-     * @param state 持有藏品状态
+     * @param current  当前页
+     * @param pageSize 每页大小
+     * @param memberId 会员id
+     * @param state    持有藏品状态
      * @return PageInfo<MemberHoldCollectionEntity> 分页列表
      */
     PageInfo<MemberResaleCollectionEntity> getPageListByMemberIdAndStatus(Long current, Long pageSize, String memberId, String state);
-    
-
 
 
     /**
@@ -179,4 +177,38 @@ public interface MemberResaleCollectionRepository extends IService<MemberResaleC
      * @return boolean 是否存在
      */
     Boolean checkState(String resaleCollectionId, String 转售的藏品状态已发布);
+
+    /**
+     * 检查转赠藏品是否存在
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @param memberId           用户ID
+     * @return boolean 是否存在
+     */
+    boolean checkResaleExistByIssuedCollection(String issuedCollectionId, String memberId);
+
+    /**
+     * 锁定转售藏品
+     *
+     * @param resaleCollectionId id
+     * @param memberId           用户iD
+     * @return boolean
+     */
+    Boolean lockResaleCollection(String resaleCollectionId, String memberId);
+
+    /**
+     * 获取锁定用户ID - 根据发行藏品ID
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @return string 用户ID
+     */
+    String getLockMemberByIssuedCollectionId(String issuedCollectionId);
+
+    /**
+     * 获取转售藏品持有用户ID - 根据发行藏品ID
+     *
+     * @param issuedCollectionId 发行藏品ID
+     * @return string 持有者ID
+     */
+    MemberResaleCollectionEntity getLastEntityByIssuedCollectionId(String issuedCollectionId);
 }

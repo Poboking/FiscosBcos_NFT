@@ -177,11 +177,21 @@ public interface MemberHoldCollectionRepository extends IService<MemberHoldColle
     /**
      * 获取分页列表 - 根据参数体查询
      *
-     * @param current      当前页
-     * @param pageSize     每页大小
-     * @param memberId     用户ID
+     * @param current       当前页
+     * @param pageSize      每页大小
+     * @param memberId      用户ID
      * @param collectionIds 藏品ID
      * @return PageInfo<MemberHoldCollectionEntity> 分页结果
      */
     PageInfo<MemberHoldCollectionEntity> getHoldPageListByIdsAndMemberId(long current, long pageSize, List<String> collectionIds, String memberId);
+
+    /**
+     * 更新藏品状态 - 通过藏品ID
+     *
+     * @param memberHoldCollectionId id
+     * @param state                  状态
+     * @param updateTime             更新时间
+     * @return boolean 是否成功
+     */
+    Boolean updateState(String memberHoldCollectionId, String state, Timestamp updateTime);
 }

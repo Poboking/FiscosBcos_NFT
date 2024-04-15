@@ -1,7 +1,7 @@
 
 n
-java:S1168U"+Return an empty collection instead of null.(•πÔç8Ω∑úªÏ1J$48228698-66da-4d92-8d08-cbc078aaff63
+java:S1168U"+Return an empty collection instead of null.(•πÔç8Ω∑úªÏ1J$a31c3433-4006-4c9b-9e51-f03d19aaa0fe
 n
-java:S1168Z"+Return an empty collection instead of null.(•πÔç8Ω∑úªÏ1J$48a55486-ca5a-48fb-9438-9c3d2cb2eacd
+java:S1168Z"+Return an empty collection instead of null.(•πÔç8Ω∑úªÏ1J$ba9f587f-bf57-4678-8910-800305034924
 ï
-java:S6204]"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(™ô®π8ø∑úªÏ1J$1334f297-3aa3-49d8-908f-36e38b2dbb56
+java:S6204]"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(™ô®π8ø∑úªÏ1J$12de8aef-3471-4a10-9060-5dadcbc04c98

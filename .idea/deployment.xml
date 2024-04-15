@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" uploadOnCheckin="ed1b1bc4-e9dc-44a8-a68c-4dd412dabbe5" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="43.143.86.190" uploadOnCheckin="ed1b1bc4-e9dc-44a8-a68c-4dd412dabbe5" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="43.143.86.190">
         <serverdata>
@@ -11,5 +11,6 @@
       </paths>
     </serverData>
     <option name="myUploadOnCheckinName" value="a20-nft3_7" />
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

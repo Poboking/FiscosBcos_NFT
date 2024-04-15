@@ -15,6 +15,7 @@ import org.knight.app.biz.log.IssuedCollectionActLogService;
 import org.knight.app.biz.log.dto.collectionlog.IssuedCollectionActionLogRespDTO;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.presentation.exception.BadRequestException;
+import org.knight.presentation.utils.StpUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @project: a20-nft-3_7
@@ -48,6 +50,18 @@ public class CollectionController {
         this.issuedCollectionActLogService = issuedCollectionActLogService;
     }
 
+    @GetMapping("checkResaleCollectionLock")
+    @ValidationStatusCode(code = "400")
+    public Map<String , Boolean> checkResaleCollectionLock(@RequestParam(name = "resaleCollectionId") String resaleCollectionId) {
+        String loginId = StpUserUtil.getLoginIdAsString();
+        return Map.of("result", memberResaleCollectionService.checkResaleCollectionLock(resaleCollectionId ,loginId));
+    }
+
+    @GetMapping("verificationCollection")
+    @ValidationStatusCode(code = "400")
+    public VerificationRespDTO verificationCollection(@RequestParam(name = "issuedCollectionId") String issuedCollectionId) {
+        return collectionService.verificationCollection(issuedCollectionId);
+    }
 
     @GetMapping("findLatestCollectionByPage")
     @ValidationStatusCode(code = "400")
@@ -91,8 +105,8 @@ public class CollectionController {
     @GetMapping("findResaleCollectionDetail")
     @ValidationStatusCode(code = "400")
     public CollectionResaleDetailRespDTO findResaleCollectionDetail(
-            @RequestParam(name = "id", required = true) String collectionId) {
-        return memberResaleCollectionService.getCollectionDetail(collectionId);
+            @RequestParam(name = "id", required = true) String resaleCollectionId) {
+        return memberResaleCollectionService.getCollectionDetail(resaleCollectionId);
     }
 
 

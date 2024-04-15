@@ -32,7 +32,11 @@ public class CollectionGiveRecordRespDTO extends TransactionBaseDTO {
 
     private String collectionName;
 
+    private String collectionCover;
+
     private LocalDateTime giveTime;
 
     private String holdCollectionId;
+
+    private String giveDirection;
 }

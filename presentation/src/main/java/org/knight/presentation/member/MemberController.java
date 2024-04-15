@@ -4,6 +4,7 @@ import cn.hutool.core.text.CharSequenceUtil;
 import com.feiniaojin.gracefulresponse.api.ValidationStatusCode;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.log4j.Log4j2;
 import org.knight.app.biz.account.MemberService;
 import org.knight.app.biz.account.dto.account.member.AccountRespDTO;
@@ -17,6 +18,7 @@ import org.knight.app.biz.log.dto.loginlog.LoginLogRespDTO;
 import org.knight.infrastructure.common.PageResult;
 import org.knight.presentation.exception.BadRequestException;
 import org.knight.presentation.exception.InternalServerErrorException;
+import org.knight.presentation.exception.MemberUpdatePwdException;
 import org.knight.presentation.exception.UnauthorizedException;
 import org.knight.presentation.utils.StpUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,16 +73,16 @@ public class MemberController {
     @ValidationStatusCode(code = "400")
     public void bindRealName(@RequestBody MemberBindRealNameReqDTO reqDto) {
         String loginId = StpUserUtil.getLoginIdAsString();
-        if (CharSequenceUtil.isBlank(reqDto.getRealName()) || CharSequenceUtil.isBlank(reqDto.getSsn()) || CharSequenceUtil.isBlank(reqDto.getMobile())){
+        if (CharSequenceUtil.isBlank(reqDto.getRealName()) || CharSequenceUtil.isBlank(reqDto.getSsn()) || CharSequenceUtil.isBlank(reqDto.getMobile())) {
             throw new BadRequestException("bindRealName failed as a result of parameter is null or blank");
         }
         if (Boolean.FALSE.equals(loginId.equals(memberService.getIdByMobile(reqDto.getMobile())))) {
             throw new BadRequestException("bindRealName fail as a result of mobile is not match");
         }
         if (memberService.bindReadName(reqDto, loginId)) {
-            log.info(CharSequenceUtil.format("[{}][{}]: bindRealName success",loginId, reqDto.getMobile()));
+            log.info(CharSequenceUtil.format("[{}][{}]: bindRealName success", loginId, reqDto.getMobile()));
         } else {
-            log.info(CharSequenceUtil.format("[{}][{}]: bindRealName fail",loginId, reqDto.getMobile()));
+            log.info(CharSequenceUtil.format("[{}][{}]: bindRealName fail", loginId, reqDto.getMobile()));
             throw new InternalServerErrorException("bindRealName fail");
         }
     }
@@ -111,6 +113,16 @@ public class MemberController {
         } else {
             log.info("updateNickName fail");
             throw new InternalServerErrorException("updateNickName fail");
+        }
+    }
+
+    @PostMapping("updateLoginPwd")
+    @ValidationStatusCode(code = "400")
+    public void updateLoginPwd(@RequestParam(name = "oldPwd") String oldPwd,@NotNull @RequestParam(name = "newPwd") String newPwd) {
+        String loginId = StpUserUtil.getLoginIdAsString();
+        if (Boolean.FALSE.equals(memberService.updateLoginPwd(oldPwd, newPwd, loginId))) {
+            log.info(CharSequenceUtil.format("[{}]updateLoginPwd fail", loginId));
+            throw new MemberUpdatePwdException(CharSequenceUtil.format("[{}]updateLoginPwd fail", loginId));
         }
     }
 

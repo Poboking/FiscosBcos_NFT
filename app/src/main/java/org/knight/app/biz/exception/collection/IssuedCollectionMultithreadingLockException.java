@@ -8,8 +8,8 @@ import com.feiniaojin.gracefulresponse.api.ExceptionMapper;
  * @date: 2024/4/5 16:21
  */
 @ExceptionMapper(code = "503", msg = "Multithreading Error: Issued Collection Already Locked")
-public class IssuedCollectionLockException extends RuntimeException{
-    public IssuedCollectionLockException(String message) {
+public class IssuedCollectionMultithreadingLockException extends RuntimeException{
+    public IssuedCollectionMultithreadingLockException(String message) {
         super(message);
     }
 }

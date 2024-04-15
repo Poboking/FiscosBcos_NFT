@@ -101,6 +101,6 @@ public class StorageService {
         } catch (Exception e) {
             throw new RuntimeException("Failed to read file " + storageId, e);
         }
-        return "Badquest: image not found";
+        return "BadRequest: image not found";
     }
 }

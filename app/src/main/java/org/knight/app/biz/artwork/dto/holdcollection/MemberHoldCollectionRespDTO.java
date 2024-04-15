@@ -20,6 +20,8 @@ public class MemberHoldCollectionRespDTO {
 
     private String id;
 
+    private Double price;
+
     private String issuedCollectionId;
 
     private String gainWay;
@@ -28,9 +30,9 @@ public class MemberHoldCollectionRespDTO {
 
     private String stateName;
 
-    private LocalDateTime holdTime;
+    private String holdTime;
 
-    private LocalDateTime loseTime;
+    private String loseTime;
 
     private String uniqueId;
 

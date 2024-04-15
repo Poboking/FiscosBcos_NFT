@@ -1,6 +1,8 @@
 package org.knight.infrastructure.repository.impl;
 
+import cn.hutool.core.text.CharSequenceUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -316,10 +319,10 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
         try {
             PageHelper.startPage(current.intValue(), pageSize.intValue());
             List<MemberHoldCollectionEntity> list = memberHoldCollectionMapper.selectList(new QueryWrapper<MemberHoldCollectionEntity>()
-                    .eq(Optional.ofNullable(memberId).isPresent(), "member_id", memberId)
-                    .eq(Optional.ofNullable(collectionId).isPresent(), "collection_id", collectionId)
-                    .eq(Optional.ofNullable(state).isPresent(), "state", state)
-                    .eq(Optional.ofNullable(gainWay).isPresent(), "gain_way", gainWay));
+                    .eq(!CharSequenceUtil.isBlank(memberId), "member_id", memberId)
+                    .eq(!CharSequenceUtil.isBlank(collectionId), "collection_id", collectionId)
+                    .eq(!CharSequenceUtil.isBlank(state), "state", state)
+                    .eq(!CharSequenceUtil.isBlank(gainWay), "gain_way", gainWay));
             pageInfo = new PageInfo(list, pageSize.intValue());
         } finally {
             PageHelper.clearPage();
@@ -351,6 +354,39 @@ public class MemberHoldCollectionRepositoryImpl extends ServiceImpl<MemberHoldCo
             PageHelper.clearPage();
         }
         return pageInfo;
+    }
+
+    /**
+     * 更新藏品状态 - 通过藏品ID
+     *
+     * @param memberHoldCollectionId id
+     * @param state                  状态
+     * @param updateTime             更新时间
+     * @return boolean 是否成功
+     */
+    @Override
+    public Boolean updateState(String memberHoldCollectionId, String state, Timestamp updateTime) {
+        if (CharSequenceUtil.isBlank(memberHoldCollectionId) || CharSequenceUtil.isBlank(state)) {
+            return false;
+        }
+        if (updateTime == null) {
+            updateTime = Timestamp.valueOf(LocalDateTime.now().format(NftConstants.DATE_FORMAT));
+        }
+        if (NftConstants.持有藏品状态_已卖出.equals(state)) {
+            return memberHoldCollectionMapper.update(new UpdateWrapper<MemberHoldCollectionEntity>()
+                    .eq("id", memberHoldCollectionId)
+                    .set("state", state)
+                    .set("lose_time", updateTime)) > 0;
+        }
+        if (NftConstants.持有藏品状态_已转赠.equals(state)) {
+            return memberHoldCollectionMapper.update(new UpdateWrapper<MemberHoldCollectionEntity>()
+                    .eq("id", memberHoldCollectionId)
+                    .set("state", state)
+                    .set("lose_time", updateTime)) > 0;
+        }
+        return memberHoldCollectionMapper.update(new UpdateWrapper<MemberHoldCollectionEntity>()
+                .eq("id", memberHoldCollectionId)
+                .set("state", state)) > 0;
     }
 
 }

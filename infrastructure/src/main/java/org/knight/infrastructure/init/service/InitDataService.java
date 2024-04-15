@@ -6,10 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.knight.infrastructure.common.IdUtils;
 import org.knight.infrastructure.common.NftConstants;
 import org.knight.infrastructure.common.NicknameUtils;
-import org.knight.infrastructure.dao.domain.CollectionEntity;
-import org.knight.infrastructure.dao.domain.CreatorEntity;
-import org.knight.infrastructure.dao.domain.IssuedCollectionEntity;
-import org.knight.infrastructure.dao.domain.MemberEntity;
+import org.knight.infrastructure.dao.domain.*;
 import org.knight.infrastructure.repository.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -112,6 +109,13 @@ public class InitDataService {
                 log.info("initCollectionCover: {} 更新数据成功", collectionEntity.getId());
             }
         });
+    }
+
+    public void initMemberHoldCollection() {
+        List<IssuedCollectionEntity> issuedCollectionEntities = issuedCollectionRepo.list();
+        List<CollectionEntity> collectionEntities = collectionRepo.list();
+        List<MemberHoldCollectionEntity> holdCollectionEntities = memberHoldCollectionRepo.list();
+        List<String> issuedCollectionIds = issuedCollectionEntities.stream().map(IssuedCollectionEntity::getId).collect(Collectors.toList());
     }
 
 
